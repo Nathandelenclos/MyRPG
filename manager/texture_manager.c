@@ -1,0 +1,39 @@
+/*
+** EPITECH PROJECT, 2021
+** MyRunner
+** File description:
+** Manager
+*/
+
+#include "../include/rpg.h"
+
+texture *create_texture(char *filename, char *name, sfIntRect rect)
+{
+    texture *t = malloc(sizeof(texture));
+    t->filename = filename;
+    t->name = name;
+    t->rect = rect;
+    if (filename != NULL)
+        t->texture = sfTexture_createFromFile(t->filename, &t->rect);
+    return t;
+}
+
+texture *get_texture(scene *d, char *name)
+{
+    texture *t;
+    node *tmp = d->textures;
+    if (name == NULL)
+        return NULL;
+    while (tmp != NULL) {
+        t = (texture *)tmp->data;
+        if (my_strcmp(t->name, name))
+            return t;
+        tmp = tmp->next;
+    }
+    return NULL;
+}
+
+void create_textures(scene *d)
+{
+    //create_main_menu_texture(d);
+}
