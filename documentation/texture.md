@@ -53,3 +53,18 @@ load texture. [here](../manager/texture_manager.c)
 texture *create_texture(char *filename, char *name, sfIntRect rect);
 ```
 Create texture. [here](../manager/texture_manager.c)
+***
+# Example
+For this example I use the [dwarf.c](./dwarf.c) for create an example texture.
+```c
+void create_dwarf_texture(scene *d)
+{
+    texture *t = malloc(sizeof(texture));
+    t->filename = "./assets/dwarf_sheet.png";
+    t->name = "dwarf";
+    t->rect = create_rect(512, 32, 0, 32);
+    t->texture = sfTexture_createFromFile(t->filename, &t->rect);
+    put_in_list(&d->textures, t);
+}
+```
+In this function I create texture with default specific value. (You can use 'create_rect' function for create fast rect).
