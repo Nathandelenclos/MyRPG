@@ -13,7 +13,6 @@ jobs:
         with:
           fetch-depth: 0
       - name: Normez
-        id: normez
         run: ./NormEZ.rb -f assets -m
 
   check_repos_size:
