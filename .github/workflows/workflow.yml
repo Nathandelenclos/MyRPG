@@ -21,7 +21,8 @@ jobs:
         run: ./NormEZ.rb -f assets -m
       - name: check
         if: ${{ normez.output != '' }}
-        run: echo "::error"
+        run: echo "::error Normez"
+        continue-on-error: false
 
   check_repos_size:
     runs-on: ubuntu-latest
