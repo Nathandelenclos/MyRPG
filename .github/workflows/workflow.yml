@@ -2,6 +2,7 @@ on:
   push:
     branches-ignore:
       - 'ga-ignore-*'
+
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2026/B-MUL-200-LIL-2-1-myrpg-nathan.delenclos.git"
   EXECUTABLES: "my_rpg"
@@ -15,10 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Normez
-        id: normez
-        run: ./NormEZ.rb -f assets -m
-      - name: check
-        run: echo "${{ jobs.normez.output }}"
+        run: ./NormEZ.rb
 
   check_repos_size:
     runs-on: ubuntu-latest
