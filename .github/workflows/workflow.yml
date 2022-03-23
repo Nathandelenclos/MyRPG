@@ -19,7 +19,7 @@ jobs:
         id: normez
         run: ./NormEZ.rb -f assets -m
       - name: test
-        run: echo "${{ steps.run_tests.outputs.* }}"
+        run: echo "${{ steps.run_tests.outputs }}"
 
   check_repos_size:
     runs-on: ubuntu-latest
