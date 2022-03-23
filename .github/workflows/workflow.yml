@@ -13,7 +13,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Normez
+        id: normez
         run: ./NormEZ.rb -f assets -m
+      - name: check
+        run: echo "${{ jobs.normez.output }}"
+
 
   check_repos_size:
     runs-on: ubuntu-latest
@@ -24,7 +28,6 @@ jobs:
           fetch-depth: 0
       - name: echo-size
         run: du -skh --exclude=".git"
-      - name: check
 
   push_epitech:
     runs-on: ubuntu-latest
