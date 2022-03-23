@@ -1,7 +1,7 @@
 on:
   push:
-    branches-ignore:
-      - 'ga-ignore-*'
+    branches:
+      - 'master'
 
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2026/B-MUL-200-LIL-2-1-myrpg-nathan.delenclos.git"
@@ -9,7 +9,7 @@ env:
 
 jobs:
   normez:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.0
@@ -27,38 +27,13 @@ jobs:
           fetch-depth: 0
       - name: echo-size
         run: du -skh --exclude=".git"
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3.0.0
-        with:
-          fetch-depth: 0
-      - name: update
-        run: sudo apt update
-      - name: upgrade
-        run: sudo apt upgrade
-      - name: build-scfml
-        run: sudo ./build_csfml.sh
-      - name: build
-        run: make
-      - name: Check file existence
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: ${{ env.EXECUTABLES }}
-      - name: File exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        # Only runs if all of the files exists
-        run: echo All files exists!
+      - name: check
 
   push_epitech:
     runs-on: ubuntu-latest
     needs:
       - check_repos_size
       - normez
-      - build
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.0
