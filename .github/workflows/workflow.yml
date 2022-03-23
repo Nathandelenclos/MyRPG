@@ -1,4 +1,8 @@
-on: push
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
 
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2026/B-MUL-200-LIL-2-1-myrpg-nathan.delenclos.git"
@@ -13,7 +17,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Normez
-        run: ./NormEZ.rb
+        id: normez
+        run: ./NormEZ.rb -f assets -m
+      - name: check
+        if: ${{ normez.output != '' }}
+        run: echo "::error"
 
   check_repos_size:
     runs-on: ubuntu-latest
