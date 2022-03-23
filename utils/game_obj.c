@@ -10,9 +10,6 @@
 void create_obj_part_2(game_obj *obj)
 {
     obj->display = 1;
-    obj->time = sfTime_Zero;
-    obj->old_time_an = sfTime_Zero;
-    obj->old_time_ac = sfTime_Zero;
     obj->clock = sfClock_create();
     obj->action = NULL;
     obj->animate = NULL;

@@ -1,51 +1,52 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 1>&2
-   exit 1
-fi
+set -e
 
-SFML_SOURCE_URL="http://www.sfml-dev.org/files/SFML-2.5.1-sources.zip"
-CSFML_SOURCE_URL="http://www.sfml-dev.org/files/CSFML-2.5-sources.zip"
+SFML_VERSION='2.2'
+GLEW_VERSION='1.10.0'
 
-CSFML_ZIP="CSFML.zip"
-SFML_ZIP="SFML.zip"
+get_file()
+{
+	local file_to_get="$1"
+	local mirror="$2"
+	local filename=$(echo $file_to_get | sed -e 's/.*\///')
 
-echo "Download SFML Sources"
-curl -Lo "$SFML_ZIP" $SFML_SOURCE_URL
-echo "Download CSFML Sources"
-curl -Lo "$CSFML_ZIP" $CSFML_SOURCE_URL
+	if ! [[ -f $filename ]]; then
+		if [[ -z $mirror ]]; then
+			wget "$file_to_get"
+		else
+			wget "$file_to_get" || wget "$mirror"
+		fi
+	else
+		echo "-------- $filename already exists locally, skipping..."
+	fi
 
-echo "Unzip SFML"
-unzip -qq -o $SFML_ZIP
-echo "Unzip CSFML"
-unzip -qq -o $CSFML_ZIP
+	extract_archive $filename
+}
 
-mv SFML-* SFML
-mv CSFML-* CSFML
+extract_archive()
+{
+	local file_to_extract="$1"
+	echo "extracting $file_to_extract..."
+	tar -xf $file_to_extract
+}
 
-SFML_PATH="$(realpath SFML)"
-CSFML_PATH="$(realpath CSFML)"
+cd /tmp
+get_file "https://"{www,mirror2}".sfml-dev.org/files/CSFML-$SFML_VERSION-linux-gcc-64-bit.tar.bz2"
+get_file "https://"{www,mirror2}".sfml-dev.org/files/SFML-$SFML_VERSION-linux-gcc-64-bit.tar.gz"
+get_file "https://sourceforge.net/projects/glew/files/glew/$GLEW_VERSION/glew-$GLEW_VERSION.tgz"
 
-echo "SFML Compilation"
-cd SFML
-cmake .
+sudo apt install libx11-dev libxmu-dev libxi-dev libgl-dev libopenal-dev
+cd /tmp/"glew-$GLEW_VERSION"
 make
-make install
-cd ..
 
-echo "CSFML Compilation"
-cd CSFML
-cmake -DSFML_ROOT="$SFML_PATH" -DSFML_INCLUDE_DIR="$SFML_PATH/include" -DCMAKE_MODULE_PATH="$SFML_PATH/cmake/Modules" .
-LD_LIBRARY_PATH="$SFML_PATH/lib"
-make
-make install
-cd ..
+sudo rm -rfv /usr/local/include/{SFML,GL} /usr/local/lib/lib{*sfml*,GLEW*}
+sudo cp -vr /tmp/{"CSFML-$SFML_VERSION","SFML-$SFML_VERSION","glew-$GLEW_VERSION"}/{include,lib} /usr/local
+sudo rm -v /usr/local/lib/libcsfml*".$SFML_VERSION" # Avoid ldconfig warning on identical files with different filenames (/sbin/ldconfig.real: /usr/local/lib/libcsfml-xxx.so.2.2 is not a symbolic link)
+sudo ldconfig
 
-echo "/usr/local/lib/" > /etc/ld.so.conf.d/csfml.conf
-
-# Update the Dynamic Linker Run Time Bindings
-ldconfig
-
-# Clean
-rm -rf "$CSFML_ZIP" "$CSFML_PATH" "$SFML_ZIP" "$SFML_PATH"
+echo -e "\n\n"
+echo "CSFML $SFML_VERSION has been installed"
+echo "Please remember to add -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system in your Makefile"
+echo
+echo "2017 - Paul Laffitte - Epitech Montpellier Promo 2021"
