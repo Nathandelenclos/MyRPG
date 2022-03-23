@@ -36,7 +36,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: install X11
-        run: sudo apt-get install xorg openbox
+        run: sudo apt-get update
+            sudo apt-get upgrade
+            sudo apt-get install xorg
       - name: build-scfml
         run: sudo ./build_csfml.sh
       - name: build
