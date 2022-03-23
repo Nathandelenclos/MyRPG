@@ -8,13 +8,20 @@ env:
   EXECUTABLES: "my_rpg"
 
 jobs:
-  action:
+  checkout:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@v1
+
+  push:
+    runs-on: ubuntu-latest
+    needs:
+      - checkout
+    steps:
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
