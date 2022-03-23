@@ -36,7 +36,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: build-scfml
-        run: ./build_csfml.sh
+        run: sudo ./build_csfml.sh
       - name: build
         run: make
       - name: Check file existence
