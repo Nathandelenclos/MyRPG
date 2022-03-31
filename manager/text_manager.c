@@ -22,7 +22,7 @@ text *create_text(char *filename, char *string, sfColor color, sfVector2f v)
     t->string = my_strdup(string);
     sfText_setString(t->text, t->string);
     t->color = color;
-    sfText_setFillColor(t->text, t->color);
+    sfText_setColor(t->text, t->color);
     t->position = v;
     sfText_setPosition(t->text, t->position);
     return t;
