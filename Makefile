@@ -16,7 +16,11 @@ SPRITES	=	\
 
 SCREENS	=	main_menu/main_menu.c	\
 
-TEXTURES	=	\
+TEXTURES	=	characters/characters.c	\
+				objects/chest_and_obj.c	\
+				objects/particles.c	\
+				objects/walls.c	\
+				objects/tilesets.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
@@ -63,9 +67,12 @@ LIB	=	-lcsfml-graphics	\
 		-lm	\
 		-lmy
 
-CFLAGS	=	-g -I include
+CFLAGS	=	-I include
 
 all:	buildlib $(NAME)
+
+debug:	CFLAGS += -g
+debug:	all
 
 clean:
 	rm -f $(OBJ)
