@@ -12,7 +12,7 @@ void load_screen(sfRenderWindow *window)
     sfSprite *sprite = sfSprite_create();
     sfIntRect rect = create_rect(1080, 720, 0, 0);
     sfTexture *t =
-        sfTexture_createFromFile("./assets/menu_my_defender_blur.jpg", &rect);
+        sfTexture_createFromFile("./assets/logo.png", &rect);
     sfSprite_setTexture(sprite, t, sfTrue);
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_display(window);
@@ -57,14 +57,14 @@ screen *create_hub(void)
 int main(int argc, char **argv)
 {
     screen *hub = create_hub();
-    //sfImage *icon = sfImage_createFromFile("./assets/icon_defender.png");
-    //sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,
-    //    sfImage_getSize(icon).y,
-    //    sfImage_getPixelsPtr(icon));
+    sfImage *icon = sfImage_createFromFile("./assets/logo.png");
+    sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,
+        sfImage_getSize(icon).y,
+        sfImage_getPixelsPtr(icon));
     //load_screen(hub->window);
     screen_manager(hub);
     start(hub);
-    //sfImage_destroy(icon);
+    sfImage_destroy(icon);
     free_game(hub);
     return 0;
 }
