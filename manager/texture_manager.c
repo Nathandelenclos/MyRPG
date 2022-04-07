@@ -35,5 +35,9 @@ texture *get_texture(scene *d, char *name)
 
 void create_textures(scene *d)
 {
-    //create_main_menu_texture(d);
+    create_characters_texture(d);
+    create_chest_and_obj_texture(d);
+    create_particles_texture(d);
+    create_walls_texture(d);
+    create_tilesets_texture(d);
 }
