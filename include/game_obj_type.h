@@ -5,3 +5,9 @@
 ** type of game object
 */
 
+#ifndef GAME_OBJ_TYPE_H
+    #define GAME_OBJ_TYPE_H
+
+
+
+#endif

@@ -12,7 +12,7 @@
 char *my_strdup(char *string)
 {
     int len = my_strlen(string);
-    char *final = my_malloc((void *)(sizeof(char ) * len + 1), MALLOC);
+    char *final = malloc(sizeof(char ) * len + 1);
     for (int i = 0; i < len; ++i)
         final[i] = string[i];
     final[len] = '\0';

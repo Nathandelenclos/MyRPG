@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRPG
+** MyRPG - Header
 ** File description:
 ** header file
 */
