@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG - Manager
 ** File description:
 ** time manager
 */

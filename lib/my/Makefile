@@ -17,6 +17,7 @@ SRC	=	my_insert.c	\
 		my_putfloat.c	\
 		my_charlowcase.c\
 		my_str_isnum.c	\
+		my_count_char.c	\
 		my_compute_power_rec.c	\
 		my_revstr.c	\
 		my_str_isprintable.c	\
@@ -46,6 +47,7 @@ SRC	=	my_insert.c	\
 		my_put_nbr.c	\
 		my_str_islower.c\
 		my_printf.c	\
+		my_printf_bis.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -53,6 +55,8 @@ TEST_FILE	=	../../tests/test_lib2.c	\
 				../../tests/test_lib1.c	\
 
 NAME	=	test
+
+CFLAGS	=	-g
 
 all:	$(NAME)
 

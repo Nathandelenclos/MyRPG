@@ -7,11 +7,12 @@
 
 #include <stdlib.h>
 #include "my.h"
+#include "../linked_list/list.h"
 
 char *my_strdup(char *string)
 {
     int len = my_strlen(string);
-    char *final = malloc(sizeof(char ) * len + 1);
+    char *final = my_malloc((void *)(sizeof(char ) * len + 1), MALLOC);
     for (int i = 0; i < len; ++i)
         final[i] = string[i];
     final[len] = '\0';

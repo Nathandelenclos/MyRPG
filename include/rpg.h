@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG
 ** File description:
 ** header file
 */

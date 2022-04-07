@@ -5,7 +5,3 @@
 ** type of game object
 */
 
-int main(int argc, char *argv[])
-{
-    return 0;
-}
