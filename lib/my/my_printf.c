@@ -5,52 +5,67 @@
 ** printf
 */
 
-#include <stdarg.h>
 #include "my.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
 
-char *norme_octo(char *str, char *buff, int size)
+void print_string(int fd, char *arg, int index, va_list ap)
 {
-    int size_str = my_strlen(str);
-    int diff = size - size_str;
-
-    for (int i = 0; i < diff; ++i)
-        buff[i] = '0';
-    for (int i = diff; i < size; ++i)
-        buff[i] = str[i - diff];
-    buff[size] = '\0';
-    return buff;
+    char *string = (char *) va_arg(ap, char *);
+    write(fd, string, my_strlen(string));
 }
 
-void print_arg(char *string, int i, va_list vaList)
+void print_char(int fd, char *arg, int index, va_list ap)
 {
-    switch (string[i + 1]) {
+    char c = va_arg(ap, int);
+    write(fd, &c, 1);
+}
+
+void tab_function(int fd, char *arg, int index, va_list ap)
+{
+    char **tab_string;
+    int *tab_int;
+    switch (arg[index + 2]) {
     case 's':
-        my_putstr((char *) va_arg(vaList, char *));
+        tab_string = (char **)ap;
+        for (int i = 0; tab_string[i] != NULL; ++i)
+            my_printf(fd, "%s\n", tab_string[i]);
         break;
-    case 'c' | 'C':
-        my_putchar((int) va_arg(vaList,
-        int));
-        break;
-    case '%':
-        my_putchar('%');
-        break;
-    default:
-        my_error("Invalid type.");
+    case 'i':
+        tab_int = (int *)ap;
+        for (int i = 0; tab_int[i] != -0; ++i)
+            my_printf(fd, "%i", tab_int[i]);
         break;
     }
+    return;
 }
 
-int my_printf(char *str, ...)
+void print_dictionary(void (*tab[])(int , char *, int , va_list ))
 {
+    tab['s'] = print_string;
+    tab['S'] = print_string;
+    tab['c'] = print_char;
+    tab['C'] = print_char;
+    tab['%'] = print_char;
+    tab['t'] = tab_function;
+    tab['i'] = print_int;
+    tab['f'] = print_float;
+}
+
+int my_printf(int fd, char *str, ...)
+{
+    void (*print_entries[172])(int fd, char *arg, int index, va_list ap);
+    print_dictionary(print_entries);
     va_list vaList;
     va_start(vaList, str);
     for (int i = 0; i < my_strlen(str); ++i) {
         if (str[i] == '%') {
-            print_arg(str, i, vaList);
+            print_entries[str[i + 1]](fd, str, i, vaList);
             i++;
         } else
-            my_putchar(str[i]);
+            write(fd, &str[i], 1);
     }
     va_end(vaList);
-    return (1);
+    return fd;
 }

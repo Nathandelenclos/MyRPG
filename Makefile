@@ -88,8 +88,8 @@ exe: all
 	./$(NAME)
 
 buildlib:
-	make -C ./lib/my/
 	make -C ./lib/linked_list/
+	make -C ./lib/my/
 
 tests_run:
 	gcc -o unit_tests $(SRC) $(TEST_FILE) -L./lib $(LIB)

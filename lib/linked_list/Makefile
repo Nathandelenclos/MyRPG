@@ -14,6 +14,9 @@ SRC	=	put_in_list.c	\
 		insert_in_list.c	\
 		reverse_list.c	\
 		put_in_end.c	\
+		my_free.c	\
+		my_malloc.c	\
+		search_in_list.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
