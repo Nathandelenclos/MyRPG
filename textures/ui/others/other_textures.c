@@ -7,7 +7,7 @@
 
 #include "../../../include/rpg.h"
 
-void create_coin_texture(scene *d)
+void create_other_things_texture(scene *d)
 {
     put_in_list(&d->textures, create_texture("./assets/ui/others/coin.png",
         "coin", create_rect(8, 8, 0, 0)));
@@ -71,7 +71,7 @@ void create_toggle_texture(scene *d)
 
 void create_others_texture(scene *d)
 {
-    create_coin_texture(d);
+    create_other_things_texture(d);
     create_gold_things_texture(d);
     create_silver_things_texture(d);
     create_toggle_texture(d);
