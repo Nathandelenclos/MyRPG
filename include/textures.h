@@ -28,4 +28,6 @@ void create_walls_texture(scene *d);
 
 void create_tilesets_texture(scene *d);
 
+void create_others_texture(scene *d);
+
 #endif
