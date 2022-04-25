@@ -9,6 +9,7 @@
 
 void events(scene *d, sfEvent event)
 {
+    events_manage(d);
     switch (event.type) {
     case sfEvtClosed:
         sfRenderWindow_close(d->hub->window);
