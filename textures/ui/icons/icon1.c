@@ -53,4 +53,12 @@ void create_icons_texture(scene *d)
     create_icon_facebook_texture(d);
     create_icon_house_texture(d);
     create_icon_human_texture(d);
+    create_icon_questionmark_texture(d);
+    create_icon_ranking_texture(d);
+    create_icon_settings_texture(d);
+    create_icon_triangle_texture(d);
+    create_icon_trophy_texture(d);
+    create_icon_twitter_texture(d);
+    create_icon_watchad_texture(d);
+    create_icon_youtube_texture(d);
 }

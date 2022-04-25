@@ -12,7 +12,13 @@ UTILS	=	life_bar.c	\
 			game_obj.c	\
 			free.c	\
 
-SPRITES	=	\
+SPRITES	=	banners/banners1.c	\
+			banners/banners2.c	\
+			controls/control1.c	\
+			controls/control2.c	\
+			icons/icon1.c	\
+			icons/icon2.c	\
+			icons/icon3.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 
@@ -29,7 +35,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon1.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
-				ui/others/other_texture_part_one.c	\
+				ui/others/other_texture.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\

@@ -19,6 +19,7 @@
 typedef enum group_e {
     HOME_BTN,
     ENEMY,
+    UI,
 } group;
 
 typedef enum type_e {

@@ -16,6 +16,7 @@
 #include "struct.h"
 #include "enum.h"
 #include "textures.h"
+#include "object.h"
 
 #ifndef RPG_H
     #define RPG_H
