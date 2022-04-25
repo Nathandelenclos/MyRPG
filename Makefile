@@ -23,6 +23,11 @@ TEXTURES	=	characters/characters.c	\
 				objects/tilesets.c	\
 				ui/banners/banner1.c	\
 				ui/banners/banner2.c	\
+				ui/controls/control1.c	\
+				ui/controls/control2.c	\
+				ui/icons/icon1.c	\
+				ui/icons/icon2.c	\
+				ui/icons/icon3.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\

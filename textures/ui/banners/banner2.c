@@ -10,7 +10,7 @@
 void create_white_banner_texture(scene *d)
 {
     texture *t = malloc(sizeof(texture));
-    t->filename = "./assets/ui/Banners/Banner_White.png";
+    t->filename = "./assets/ui/banners/banner_white.png";
     t->name = "white_banner";
     t->rect = create_rect(13, 17, 0, 0);
     t->texture = sfTexture_createFromFile(t->filename, &t->rect);
@@ -20,7 +20,7 @@ void create_white_banner_texture(scene *d)
 void create_wreath_banner_texture(scene *d)
 {
     texture *t = malloc(sizeof(texture));
-    t->filename = "./assets/ui/Banners/Banner_Wreath.png";
+    t->filename = "./assets/ui/banners/banner_wreath.png";
     t->name = "wreath_banner";
     t->rect = create_rect(17, 17, 0, 0);
     t->texture = sfTexture_createFromFile(t->filename, &t->rect);
