@@ -8,6 +8,9 @@
 #ifndef GAME_OBJ_TYPE_H
     #define GAME_OBJ_TYPE_H
 
+typedef struct {
+    sftime time;
 
+} dward;
 
 #endif

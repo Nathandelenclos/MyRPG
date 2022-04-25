@@ -19,12 +19,21 @@ void create_skeleton_texture(scene *d)
 
 void create_slime_texture(scene *d)
 {
-    texture *t = malloc(sizeof(texture));
-    t->filename = "./assets/characters/slime.png";
-    t->name = "slime";
-    t->rect = create_rect(224, 160, 0, 0);
-    t->texture = sfTexture_createFromFile(t->filename, &t->rect);
-    put_in_list(&d->textures, t);
+    char *slimes[] = {
+        "enemy_slime", "green_slime", "pink_slime", "slime", "yellow_slime",
+        NULL
+    };
+    char *filename = NULL;
+    for (int i = 0; slimes[i] != NULL; ++i) {
+        filename = malloc(sizeof(char) * 36);
+        filename[0] = '\0';
+        my_strcat(filename, "./assets/characters/");
+        my_strcat(filename, slimes[i]);
+        my_strcat(filename, ".png");
+        put_in_list(&d->textures, create_texture(filename, slimes[i],
+            create_rect(224, 160, 0, 0)));
+        free(filename);
+    }
 }
 
 void create_player_texture(scene *d)

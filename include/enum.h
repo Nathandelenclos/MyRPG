@@ -23,6 +23,7 @@ typedef enum group_e {
 
 typedef enum type_e {
     BASIC,
+    Dwarf
 } type;
 
 typedef enum state_e {
