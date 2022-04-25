@@ -28,6 +28,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon1.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
+				ui/others/other_texture_part_one.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
@@ -36,6 +37,7 @@ MANAGER =	sprites_manager.c	\
 			texture_manager.c	\
 			screen_manager.c	\
 			move_manager.c	\
+			event_manager.c	\
 			thread_manager.c	\
 
 TEXTS	=	fps.c	\

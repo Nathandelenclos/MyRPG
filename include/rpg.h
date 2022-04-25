@@ -61,5 +61,6 @@ void display_fps(scene *d);
 int vector_is_around(sfVector2f v, sfVector2f obj, int margin);
 void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
+void events_manage(scene *d);
 
 #endif

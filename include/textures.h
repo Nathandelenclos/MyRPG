@@ -62,4 +62,6 @@ void create_icon_watchad_texture(scene *d);
 
 void create_icon_youtube_texture(scene *d);
 
+void create_others_texture(scene *d);
+
 #endif

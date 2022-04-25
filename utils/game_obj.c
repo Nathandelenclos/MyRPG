@@ -12,6 +12,7 @@ void create_obj_part_2(game_obj *obj)
     obj->display = 1;
     obj->clock = sfClock_create();
     obj->action = NULL;
+    obj->event = NULL;
     obj->animate = NULL;
     obj->name = NULL;
 }

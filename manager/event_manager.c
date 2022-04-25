@@ -5,7 +5,17 @@
 ** events manager
 */
 
-int main(int argc, char *argv[])
+#include "../include/rpg.h"
+
+void events_manage(scene *d)
 {
-    return 0;
+    game_obj *obj;
+    node *tmp = d->objs;
+
+    while (tmp != NULL) {
+        obj = (game_obj *) tmp->data;
+        if (obj->event != NULL)
+            obj->event(obj, d);
+        tmp = tmp->next;
+    }
 }
