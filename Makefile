@@ -21,6 +21,7 @@ TEXTURES	=	characters/characters.c	\
 				objects/particles.c	\
 				objects/walls.c	\
 				objects/tilesets.c	\
+				ui/create_buttons_texture.c	\
 				ui/banners/banner1.c	\
 				ui/banners/banner2.c	\
 				ui/controls/control1.c	\
