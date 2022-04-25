@@ -28,7 +28,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon1.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
-				ui/others/other_texture_part_one.c	\
+				ui/others/other_textures.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
