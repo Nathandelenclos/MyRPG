@@ -22,6 +22,14 @@ TEXTURES	=	characters/characters.c	\
 				objects/walls.c	\
 				objects/tilesets.c	\
 				ui/create_buttons_texture.c	\
+				ui/banners/banner1.c	\
+				ui/banners/banner2.c	\
+				ui/controls/control1.c	\
+				ui/controls/control2.c	\
+				ui/icons/icon1.c	\
+				ui/icons/icon2.c	\
+				ui/icons/icon3.c	\
+				ui/others/other_texture_part_one.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
