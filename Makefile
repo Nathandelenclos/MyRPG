@@ -21,6 +21,7 @@ TEXTURES	=	characters/characters.c	\
 				objects/particles.c	\
 				objects/walls.c	\
 				objects/tilesets.c	\
+				ui/others/other_texture_part_one.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
