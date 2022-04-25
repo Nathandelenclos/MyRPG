@@ -28,4 +28,10 @@ void create_walls_texture(scene *d);
 
 void create_tilesets_texture(scene *d);
 
+void create_white_banner_texture(scene *d);
+
+void create_wreath_banner_texture(scene *d);
+
+void create_banners_texture(scene *d);
+
 #endif

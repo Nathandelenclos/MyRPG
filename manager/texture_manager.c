@@ -40,4 +40,5 @@ void create_textures(scene *d)
     create_particles_texture(d);
     create_walls_texture(d);
     create_tilesets_texture(d);
+    create_banners_texture(d);
 }

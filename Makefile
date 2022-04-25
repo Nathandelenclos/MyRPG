@@ -21,6 +21,8 @@ TEXTURES	=	characters/characters.c	\
 				objects/particles.c	\
 				objects/walls.c	\
 				objects/tilesets.c	\
+				ui/banners/banner1.c	\
+				ui/banners/banner2.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
