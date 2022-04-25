@@ -29,6 +29,7 @@ MANAGER =	sprites_manager.c	\
 			texture_manager.c	\
 			screen_manager.c	\
 			move_manager.c	\
+			event_manager.c	\
 			thread_manager.c	\
 
 TEXTS	=	fps.c	\
