@@ -5,8 +5,13 @@
 ** include struct
 */
 
+#include <stdlib.h>
+
 #ifndef LINKED_LIST_H
     #define LINKED_LIST_H
+
+    #define FREE 0
+    #define MALLOC 1
 
 struct list_s {
     void *data;
@@ -24,5 +29,8 @@ void insert_in_list(node *previous, void *data);
 void delete_first(node **head);
 void reverse_list(node **head_ref);
 int put_in_end(node **list, void *data);
+void *my_malloc(void *size, int opt);
+void my_free(void *ptr);
+node *search_in_list(node *list, void *ptr);
 
 #endif

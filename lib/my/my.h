@@ -5,10 +5,16 @@
 ** libmy.a
 */
 
-#ifndef MY_H
-#define MY_H
+#include <stdarg.h>
 
-int my_printf(char *str, ...);
+#ifndef MY_H
+    #define MY_H
+    #define true 1
+    #define TRUE 1
+    #define false 0
+    #define FALSE 0
+
+int my_printf(int fd, char *str, ...);
 char *my_strdup(char *str);
 int my_str_to_int(char *string);
 int my_char_is_in_string(char const c, char const *string);
@@ -21,7 +27,7 @@ char *my_int_to_str(int);
 int my_nbr_of_digit(int);
 void unprint(char *string);
 int my_error(char *);
-void my_putfloat(int);
+void my_put_float(float);
 char my_charlowcase(char);
 void my_putchar(char);
 int value_of_string_n(char const *, int);
@@ -55,5 +61,8 @@ char *my_strncpy(char *, char const *, int);
 char *my_strcat(char *, char const *);
 char *my_revstr(char *);
 char *my_strncat(char *, char const *, int);
+void print_int(int fd, char *arg, int index, va_list ap);
+void print_float(int fd, char *arg, int index, va_list ap);
+int my_count_char(char *string, char c);
 
 #endif

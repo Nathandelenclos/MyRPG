@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "my.h"
+#include "../linked_list/list.h"
 
 char *my_strdup(char *string)
 {

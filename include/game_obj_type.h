@@ -5,7 +5,9 @@
 ** type of game object
 */
 
-int main(int argc, char *argv[])
-{
-    return 0;
-}
+#ifndef GAME_OBJ_TYPE_H
+    #define GAME_OBJ_TYPE_H
+
+
+
+#endif

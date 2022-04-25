@@ -15,7 +15,8 @@ int free_list(node *head, void (*p_free)(void *data))
     while (head != NULL) {
         tmp = head;
         head = head->next;
-        p_free(tmp->data);
+        if (tmp->data != NULL)
+            p_free(tmp->data);
         free(tmp);
     }
     return (0);

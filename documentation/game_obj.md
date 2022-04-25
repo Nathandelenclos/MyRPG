@@ -16,9 +16,6 @@ typedef struct game_obj_s {
     void (*animate)(scene *, game_obj *);
     sfClock *clock;
     sfVector2f vector;
-    sfTime time;
-    sfTime old_time_ac;
-    sfTime old_time_an;
 } game_obj;
 ```
 ***
