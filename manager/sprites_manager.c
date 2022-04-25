@@ -12,6 +12,7 @@ void sprites_manager(scene *d)
     game_obj *obj;
     node *tmp = d->objs;
     int z_index = 1;
+
     while (tmp != NULL) {
         obj = (game_obj *) tmp->data;
         if (obj->display == z_index) {
