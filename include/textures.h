@@ -18,14 +18,11 @@
 #ifndef TEXTURES_H_
     #define TEXTURES_H_
 
+int create_buttons_texture(scene *d);
 void create_characters_texture(scene *d);
-
 void create_chest_and_obj_texture(scene *d);
-
 void create_particles_texture(scene *d);
-
 void create_walls_texture(scene *d);
-
 void create_tilesets_texture(scene *d);
 
 #endif

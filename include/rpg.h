@@ -20,7 +20,6 @@
 #ifndef RPG_H
     #define RPG_H
 
-int create_buttons_texture(scene *d);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
 void sprites_manager(scene *d);
