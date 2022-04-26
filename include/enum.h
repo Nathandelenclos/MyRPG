@@ -23,7 +23,7 @@ typedef enum group_e {
 
 typedef enum type_e {
     BASIC,
-    Dwarf
+    SLIME
 } type;
 
 typedef enum state_e {
@@ -37,5 +37,21 @@ enum sound_grp {
     CLICK,
     NEW_GAME
 };
+
+typedef enum {
+    BLUE,
+    BLACK,
+    GREEN,
+    PINK,
+    YELLOW
+} slime_type;
+
+typedef enum {
+    IDLE,
+    MOVE,
+    JUMP,
+    HIT,
+    DESTROY,
+} slime_state;
 
 #endif

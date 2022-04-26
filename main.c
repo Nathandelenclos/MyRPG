@@ -65,6 +65,6 @@ int main(int argc, char **argv)
     screen_manager(hub);
     start(hub);
     sfImage_destroy(icon);
-    free_game(hub);
+    //free_game(hub);
     return 0;
 }

@@ -12,7 +12,8 @@ UTILS	=	life_bar.c	\
 			game_obj.c	\
 			free.c	\
 
-SPRITES	=	\
+SPRITES	=	ennemies/slime.c	\
+			ennemies/slime_animation.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 
