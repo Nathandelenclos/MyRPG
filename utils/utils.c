@@ -5,7 +5,14 @@
 ** utils function
 */
 
-int main(int argc, char *argv[])
+#include "../include/rpg.h"
+
+int get_next_index(node *list)
 {
-    return 0;
+    int i = 0;
+    node *tmp = list;
+
+    for (; tmp != NULL; ++i)
+        tmp = tmp->next;
+    return i;
 }

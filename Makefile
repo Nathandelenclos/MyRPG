@@ -12,6 +12,7 @@ UTILS	=	life_bar.c	\
 			game_obj.c	\
 			free.c	\
 			get_w_scale.c	\
+			utils.c	\
 
 SPRITES	=	ennemies/slime.c	\
 			ennemies/slime_animation.c	\

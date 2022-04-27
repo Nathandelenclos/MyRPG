@@ -22,6 +22,7 @@ game_obj *create_obj(
 )
 {
     game_obj *obj = malloc(sizeof(game_obj));
+    obj->id = get_next_index(d->objs);
     obj->texture = get_texture(d, texture_name);
     obj->sprite = sfSprite_create();
     obj->rect = rect;

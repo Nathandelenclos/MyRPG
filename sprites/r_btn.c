@@ -13,7 +13,7 @@ void animate_rb(game_obj *g, scene *s, sfEvent event)
     sfSprite_setTextureRect(g->sprite, g->rect);
     switch (event.type) {
     case sfEvtMouseButtonPressed:
-        if (is_on_btn(s, event.mouseButton, HOME_BTN, g->name))
+        if (is_on_btn(s, event.mouseButton, g->id))
             g->rect.left = 17;
         sfSprite_setTextureRect(g->sprite, g->rect);
         break;
