@@ -19,8 +19,6 @@
 #ifndef GAME_OBJ_TYPE_H
     #define GAME_OBJ_TYPE_H
 
-// SLIME
-
 typedef struct {
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
