@@ -49,5 +49,7 @@ void create_slime(scene *d, int x, int y, slime_type type);
 int create_sprite_lb(scene *d, char *, int, int);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *, int, int);
+void create_basic_chest(scene *d);
+void create_golden_chest(scene *d);
 
 #endif

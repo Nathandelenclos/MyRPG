@@ -21,11 +21,12 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon1.c	\
 			icons/icon2.c	\
 			icons/icon3.c	\
-      ennemies/slime.c	\
+      		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
-      l_btn.c	\
+      		l_btn.c	\
 			r_btn.c	\
 			s_btn.c	\
+			objects/chests.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 
