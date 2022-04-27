@@ -25,7 +25,7 @@ void create_slime_texture(scene *d)
     };
     char *filename = NULL;
     for (int i = 0; slimes[i] != NULL; ++i) {
-        filename = malloc(sizeof(char) * 36);
+        filename = malloc(sizeof(char) * 37);
         filename[0] = '\0';
         my_strcat(filename, "./assets/characters/");
         my_strcat(filename, slimes[i]);

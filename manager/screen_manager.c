@@ -23,9 +23,7 @@ void scroll(scene *d, float x, float y, group grp)
     }
 }
 
-game_obj *is_on_btn(
-    scene *d, sfMouseButtonEvent event, group grp, char *name
-)
+game_obj *is_on_btn(scene *d, sfMouseButtonEvent event, int id)
 {
     game_obj *obj;
     node *tmp = d->objs;
@@ -33,15 +31,12 @@ game_obj *is_on_btn(
     while (tmp != NULL) {
         obj = (game_obj *) tmp->data;
         sfVector2f scale = sfSprite_getScale(obj->sprite);
-        //sfVector2f w_size = get_w_scale(d, obj);
         position = sfSprite_getPosition(obj->sprite);
-        //printf("%s: Y size is between %f and %f and mult is %f\nX size is between %f and %f and add is %f\n", obj->name, position.y, (position.y * w_size.y) + (float) obj->rect.height, w_size.y, position.x, (position.x * w_size.x) + (float) obj->rect.width, w_size.x);
-        if (obj->grp == grp &&
-            (name == NULL || (obj->name && my_strcmp(obj->name, name))) &&
+        if (obj->id == id &&
             (float) event.y < (position.y + (float) obj->rect.height * scale.y)
-            && (float) event.y > position.y &&
+                && (float) event.y > position.y &&
             (float) (event.x < position.x + (float) obj->rect.width * scale.x)
-            && (float) event.x > position.x) {
+                && (float) event.x > position.x) {
             return obj;
         }
         tmp = tmp->next;
@@ -54,8 +49,8 @@ scene *get_scene(scene *d, state state)
     screen *hub = d->hub;
     node *tmp = hub->datas;
     while (tmp != NULL) {
-        if (((scene *)tmp->data)->state == state)
-            return (scene *)tmp->data;
+        if (((scene *) tmp->data)->state == state)
+            return (scene *) tmp->data;
         tmp = tmp->next;
     }
     return NULL;

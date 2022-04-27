@@ -27,6 +27,7 @@ sfVector2f get_w_scale(scene *d, game_obj *);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
 void sprites_manager(scene *d);
+int get_next_index(node *list);
 game_obj *create_obj(
     scene *d, char *texture_name, sfIntRect rect, sfVector2f *vector
 );
@@ -47,9 +48,7 @@ sound *create_sound(char *filename, enum sound_grp grp, float volume);
 void screen_manager(screen *s);
 void launch_in_thread(void (*function)(void *), void *userData);
 void copy_objs(scene *copy, scene *paste, group grp);
-game_obj *is_on_btn(
-    scene *d, sfMouseButtonEvent event, group grp, char *name
-);
+game_obj *is_on_btn(scene *d, sfMouseButtonEvent event, int id);
 void data_start(screen *screen1);
 life_bar *create_life_bar(
     int width, int height, sfColor main_color, sfColor back_color

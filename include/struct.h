@@ -60,6 +60,7 @@ typedef struct texture_s {
 } texture;
 
 struct game_obj_s {
+    int id;
     type type;
     void *data;
     group grp;
