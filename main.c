@@ -43,7 +43,7 @@ void start(screen *hub)
 screen *create_hub(void)
 {
     screen *hub = malloc(sizeof(screen));
-    hub->state = START;
+    hub->state = PLAY;
     sfVideoMode mode = {1080, 608, 32};
     hub->window = sfRenderWindow_create(mode, "MyRPG", sfDefaultStyle,
         NULL);

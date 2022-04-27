@@ -19,6 +19,7 @@
     #define GAME_OBJ_H
 
 void create_slime(scene *d, int x, int y, slime_type type);
+int create_sprite_map(scene *d);
 int create_sprite_lb(scene *d, char *, int, int);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *, int, int);

@@ -32,6 +32,12 @@ typedef struct {
     int speed;
 } slime;
 
+typedef struct {
+    sfTime time;
+    sfTime old_time_an;
+    double speed;
+} maps;
+
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);
 void move_animate_slime(scene *d, game_obj *g);

@@ -61,4 +61,6 @@ void create_icon_youtube_texture(scene *d);
 
 void create_others_texture(scene *d);
 
+void create_maps_textures(scene *d);
+
 #endif
