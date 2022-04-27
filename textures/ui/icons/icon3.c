@@ -32,7 +32,7 @@ void create_icon_watchad_texture(scene *d)
     texture *t = malloc(sizeof(texture));
     t->filename = "./assets/ui/icons/icon_watchad.png";
     t->name = "icon_watchad";
-    t->rect = create_rect(17, 8, 0, 0);
+    t->rect = create_rect(14, 8, 0, 0);
     t->texture = sfTexture_createFromFile(t->filename, &t->rect);
     put_in_list(&d->textures, t);
 }

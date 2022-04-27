@@ -14,7 +14,14 @@ UTILS	=	life_bar.c	\
 			get_w_scale.c	\
 			utils.c	\
 
-SPRITES	=	ennemies/slime.c	\
+SPRITES	=	banners/banners1.c	\
+			banners/banners2.c	\
+			controls/control1.c	\
+			controls/control2.c	\
+			icons/icon1.c	\
+			icons/icon2.c	\
+			icons/icon3.c	\
+      ennemies/slime.c	\
 			ennemies/slime_animation.c	\
       l_btn.c	\
 			r_btn.c	\

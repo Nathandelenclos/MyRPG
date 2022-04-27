@@ -43,12 +43,5 @@ void create_textures(scene *d)
     create_tilesets_texture(d);
     create_banners_texture(d);
     create_controls_texture(d);
-    create_icon_questionmark_texture(d);
-    create_icon_ranking_texture(d);
-    create_icon_settings_texture(d);
-    create_icon_triangle_texture(d);
-    create_icon_trophy_texture(d);
-    create_icon_twitter_texture(d);
-    create_icon_watchad_texture(d);
-    create_icon_youtube_texture(d);
+    create_icons_texture(d);
 }
