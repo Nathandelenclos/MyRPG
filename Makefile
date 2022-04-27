@@ -13,7 +13,9 @@ UTILS	=	life_bar.c	\
 			free.c	\
 			get_w_scale.c	\
 
-SPRITES	=	l_btn.c	\
+SPRITES	=	ennemies/slime.c	\
+			ennemies/slime_animation.c	\
+      l_btn.c	\
 			r_btn.c	\
 			s_btn.c	\
 
@@ -32,6 +34,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon1.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
+				ui/others/other_textures.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\

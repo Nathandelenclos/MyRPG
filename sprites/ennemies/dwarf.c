@@ -24,6 +24,8 @@ void animated_dwarf(scene *d, game_obj *obj)
 
 void action_dwarf(game_obj *obj, scene *d)
 {
+    dwarf *dw = (dwarf *)obj->data;
+    dw->time
     obj->time = sfClock_getElapsedTime(obj->clock);
     obj->seconds = sfTime_asSeconds(obj->time);
     float seconds = sfTime_asSeconds(obj->old_time_ac);
@@ -39,6 +41,9 @@ void create_dwarf(scene *d, float speed, int life)
     sfIntRect rect = create_rect(40, 30, 20, 7);
     game_obj *hero = create_obj(d, "dwarf", rect, vector);
     set_scale(d, hero->sprite, 3);
+    dwarf *dw = mall;
+    hero->data = dw;
+    hero->type = dwarf;
     hero->name = "dwarf";
     hero->grp = ENEMY;
     hero->display = 3;
