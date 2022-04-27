@@ -61,7 +61,7 @@ int main(int argc, char **argv)
     sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,
         sfImage_getSize(icon).y,
         sfImage_getPixelsPtr(icon));
-    //load_screen(hub->window);
+    load_screen(hub->window);
     screen_manager(hub);
     start(hub);
     sfImage_destroy(icon);

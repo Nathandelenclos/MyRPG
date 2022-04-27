@@ -11,6 +11,8 @@ UTILS	=	life_bar.c	\
 			rect.c	\
 			game_obj.c	\
 			free.c	\
+			get_w_scale.c	\
+			utils.c	\
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
@@ -19,6 +21,11 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon1.c	\
 			icons/icon2.c	\
 			icons/icon3.c	\
+      ennemies/slime.c	\
+			ennemies/slime_animation.c	\
+      l_btn.c	\
+			r_btn.c	\
+			s_btn.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 
@@ -35,7 +42,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon1.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
-				ui/others/other_texture.c	\
+				ui/others/other_textures.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\

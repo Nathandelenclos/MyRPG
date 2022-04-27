@@ -60,6 +60,7 @@ typedef struct texture_s {
 } texture;
 
 struct game_obj_s {
+    int id;
     type type;
     void *data;
     group grp;
@@ -70,7 +71,7 @@ struct game_obj_s {
     int display;
     char *name;
     void (*action)(game_obj *, scene *);
-    void (*event)(game_obj *, scene *);
+    void (*event)(game_obj *, scene *, sfEvent);
     void (*animate)(scene *, game_obj *);
     sfClock *clock;
     sfVector2f vector;

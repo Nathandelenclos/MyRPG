@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2022
+** EPITECH PROJECT, 2021
 ** MyRPG
 ** File description:
-** object
+** type of game object
 */
 
 #include <SFML/Graphics.h>
@@ -45,5 +45,9 @@ void create_icon_trophy(scene *d);
 void create_icon_twitter(scene *d);
 void create_icon_watchad(scene *d);
 void create_icon_youtube(scene *d);
+void create_slime(scene *d, int x, int y, slime_type type);
+int create_sprite_lb(scene *d, char *, int, int);
+int create_sprite_rb(scene *d, char *, int, int);
+int create_sprite_sb(scene *d, char *, int, int);
 
 #endif
