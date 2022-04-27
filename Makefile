@@ -11,8 +11,11 @@ UTILS	=	life_bar.c	\
 			rect.c	\
 			game_obj.c	\
 			free.c	\
+			get_w_scale.c	\
 
-SPRITES	=	\
+SPRITES	=	l_btn.c	\
+			r_btn.c	\
+			s_btn.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 
@@ -29,7 +32,6 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon1.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
-				ui/others/other_texture_part_one.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
