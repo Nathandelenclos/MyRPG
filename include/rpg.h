@@ -11,15 +11,18 @@
 #include <SFML/Audio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
 #include "list.h"
 #include "my.h"
 #include "struct.h"
 #include "enum.h"
 #include "textures.h"
+#include "object.h"
 
 #ifndef RPG_H
     #define RPG_H
 
+sfVector2f get_w_scale(scene *d, game_obj *);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
 void sprites_manager(scene *d);
@@ -61,6 +64,6 @@ void display_fps(scene *d);
 int vector_is_around(sfVector2f v, sfVector2f obj, int margin);
 void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
-void events_manage(scene *d);
+void events_manage(scene *d, sfEvent);
 
 #endif
