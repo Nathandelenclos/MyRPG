@@ -17,7 +17,7 @@ int get_next_index(node *list)
     return i;
 }
 
-sfVector2f create_vector2f(int x, int y)
+sfVector2f create_vector2f(float x, float y)
 {
     sfVector2f vec = {x, y};
     return vec;

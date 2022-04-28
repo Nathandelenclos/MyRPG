@@ -31,7 +31,8 @@ void create_sprite_settings(scene *d)
     d->sounds = get_scene(d, START)->sounds;
     create_sprite_menu(d);
     create_btn_text(d, "   DONE", 95);
-    create_sprite_lb(d, "white_lb", create_vector2f(822.5, 970), "   DONE");
+    create_sprite_lb(d, "white_lb", create_vector2f(822.5, 970.0), "   DONE");
+    create_sprite_slide_b(d, create_vector2f(822.5, 100));
 }
 
 void data_settings(screen *screen1)

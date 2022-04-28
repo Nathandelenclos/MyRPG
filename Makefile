@@ -25,9 +25,10 @@ SPRITES	=	banners/banners1.c	\
       		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
       		objects/chests.c	\
-      		l_btn.c	\
-			r_btn.c	\
-			s_btn.c	\
+      		ui/l_btn.c	\
+			ui/r_btn.c	\
+			ui/s_btn.c	\
+			ui/slide_bar.c	\
 			menu_bg.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
@@ -48,6 +49,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon3.c	\
 				ui/others/other_textures.c	\
 				ui/create_menu_textures.c	\
+				ui/create_slide_bar_texture.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
