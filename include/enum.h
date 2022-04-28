@@ -18,6 +18,7 @@
 
 typedef enum group_e {
     HOME_BTN,
+    UI,
     ENTITY,
     MAP,
 } group;
@@ -26,6 +27,7 @@ typedef enum type_e {
     BASIC,
     SLIME,
     PLAYER,
+    INV,
 } type;
 
 typedef enum state_e {

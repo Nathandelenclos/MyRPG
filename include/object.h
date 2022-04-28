@@ -27,5 +27,6 @@ void create_player(scene *d);
 void idle_player_animation(scene *d, game_obj *g);
 void move_player_animation(scene *d, game_obj *g);
 void hit_player_animation(scene *d, game_obj *g);
+game_obj *create_inventory(scene *d);
 
 #endif

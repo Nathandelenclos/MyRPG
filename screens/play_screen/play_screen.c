@@ -8,10 +8,7 @@
 #include "../../include/my.h"
 #include "../../include/rpg.h"
 #include <SFML/Window.h>
-#include <stdio.h>
 #include <SFML/Graphics.h>
-#include <SFML/Audio.h>
-#include <stdlib.h>
 
 void events_play(scene *d, sfEvent event)
 {
@@ -40,10 +37,6 @@ void create_data_play(scene *d)
     create_sprite_map(d);
     create_player(d);
     display_fps(d);
-    create_slime(d, 100, 100, GREEN);
-    create_slime(d, 100, 200, YELLOW);
-    create_slime(d, 200, 100, BLUE);
-    create_slime(d, 200, 200, BLACK);
 }
 
 void data_play(screen *screen1)

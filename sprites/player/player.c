@@ -47,7 +47,7 @@ void animate_player(scene *d, game_obj *g)
     }
 }
 
-player *create_player_data(void)
+player *create_player_data(scene *d)
 {
     player *data = malloc(sizeof(player));
     data->old_time_an = sfTime_Zero;
@@ -57,6 +57,8 @@ player *create_player_data(void)
     data->move = move_player_animation;
     data->hit = hit_player_animation;
     data->animation_speed = 0.15;
+    data->inv = create_inventory(d);
+    put_in_end(&d->objs, data->inv);
     return data;
 }
 
@@ -69,7 +71,7 @@ void create_player(scene *d)
     sfIntRect rect = create_rect(48, 48, 0, 0);
     game_obj *hero = create_obj(d, "player", rect, vector);
     set_scale(d, hero->sprite, 6);
-    hero->data = create_player_data();
+    hero->data = create_player_data(d);
     hero->type = PLAYER;
     hero->name = "player";
     hero->animate = animate_player;

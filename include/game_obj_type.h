@@ -43,6 +43,7 @@ typedef struct {
     sfTime old_time_an;
     entity_state state;
     double animation_speed;
+    game_obj *inv;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
     void (*jump)(scene *, game_obj *);
