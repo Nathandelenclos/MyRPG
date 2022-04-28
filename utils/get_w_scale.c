@@ -12,8 +12,7 @@ sfVector2f get_w_scale(scene *d, game_obj *obj)
     sfVector2u vector = sfRenderWindow_getSize(d->hub->window);
     sfVector2u mode = {d->hub->mode.width, d->hub->mode.height};
     sfVector2f result =
-    {(float) vector.x - mode.x,
-    (float) vector.y - mode.y};
-    printf("%f x %f\n", result.x, result.y);
+    {(float) vector.x / mode.x,
+    (float) vector.y / mode.y};
     return result;
 }

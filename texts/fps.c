@@ -26,7 +26,7 @@ void display_fps(scene *d)
     my_strcat(points_s, points);
     sfVector2f pos = {0, d->hub->mode.height - 110};
     text *t =
-        create_text("./assets/josefin_sans/josefin_sans_light.ttf", points_s,
+        create_text("./assets/fonts/josefin_sans_light.ttf", points_s,
             sfWhite, pos);
     t->animate = animate_fps;
     sfText_setCharacterSize(t->text, 108);

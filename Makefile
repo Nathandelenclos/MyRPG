@@ -14,18 +14,28 @@ UTILS	=	life_bar.c	\
 			get_w_scale.c	\
 			utils.c	\
 
-SPRITES	=	ennemies/slime.c	\
+SPRITES	=	banners/banners1.c	\
+			banners/banners2.c	\
+			controls/control1.c	\
+			controls/control2.c	\
+			icons/icon1.c	\
+			icons/icon2.c	\
+			icons/icon3.c	\
+      ennemies/slime.c	\
 			ennemies/slime_animation.c	\
-      		l_btn.c	\
+      l_btn.c	\
 			r_btn.c	\
 			s_btn.c	\
 			map.c	\
+			menu_bg.c	\
 			player/player.c	\
 			player/player_animation.c	\
 			player/player_inventory.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			play_screen/play_screen.c	\
+			chest_inventory.c	\
+      objects/chests.c	\
 
 TEXTURES	=	characters/characters.c	\
 				objects/chest_and_obj.c	\
@@ -42,6 +52,8 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon3.c	\
 				ui/others/other_textures.c	\
 				map.c	\
+				ui/chest_inventory.c	\
+				ui/create_menu_textures.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
@@ -54,6 +66,7 @@ MANAGER =	sprites_manager.c	\
 			thread_manager.c	\
 
 TEXTS	=	fps.c	\
+			menu.c	\
 
 TEXTS_PATH	=	texts/
 

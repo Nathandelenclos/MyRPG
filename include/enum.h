@@ -21,6 +21,9 @@ typedef enum group_e {
     UI,
     ENTITY,
     MAP,
+    ENEMY,
+    UI,
+    OBJECT,
 } group;
 
 typedef enum type_e {
@@ -28,12 +31,16 @@ typedef enum type_e {
     SLIME,
     PLAYER,
     INV,
+    MENU_BG,
+    BUTTON,
+    CHEST,
 } type;
 
 typedef enum state_e {
     START,
     PLAY,
     PAUSE,
+    CHEST,
 } state;
 
 enum sound_grp {
@@ -57,5 +64,11 @@ typedef enum {
     HIT,
     DESTROY,
 } entity_state;
+
+typedef enum {
+    OPEN,
+    CLOSE,
+    IDLE_C,
+} chest_state;
 
 #endif

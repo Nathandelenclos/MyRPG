@@ -11,7 +11,7 @@ void create_chest1_texture(scene *d)
 {
     texture *t = malloc(sizeof(texture));
     t->filename = "./assets/objects/chest_01.png";
-    t->name = "chest1";
+    t->name = "basic_chest";
     t->rect = create_rect(64, 16, 0, 0);
     t->texture = sfTexture_createFromFile(t->filename, &t->rect);
     put_in_list(&d->textures, t);
@@ -21,7 +21,7 @@ void create_chest2_texture(scene *d)
 {
     texture *t = malloc(sizeof(texture));
     t->filename = "./assets/objects/chest_02.png";
-    t->name = "chest2";
+    t->name = "golden_chest";
     t->rect = create_rect(64, 16, 0, 0);
     t->texture = sfTexture_createFromFile(t->filename, &t->rect);
     put_in_list(&d->textures, t);

@@ -30,11 +30,11 @@ void play_sound(scene *d, enum sound_grp grp)
 
 void sound_manager(scene *d)
 {
-    //sound *music = create_sound("./assets/soundtrack.wav", MUSIC, 25);
-    //put_in_list(&d->sounds, music);
+    sound *music = create_sound("./assets/menu_soundtrack.wav", MUSIC, 25);
+    put_in_list(&d->sounds, music);
 
-    //sfMusic_setLoop(music->music, sfTrue);
-    //sfMusic_play(music->music);
+    sfMusic_setLoop(music->music, sfTrue);
+    sfMusic_play(music->music);
 }
 
 void destroy_music(screen *hub)

@@ -33,10 +33,10 @@ game_obj *is_on_btn(scene *d, sfMouseButtonEvent event, int id)
         sfVector2f scale = sfSprite_getScale(obj->sprite);
         position = sfSprite_getPosition(obj->sprite);
         if (obj->id == id &&
-            (float) event.y < (position.y + (float) obj->rect.height * scale.y)
-                && (float) event.y > position.y &&
-            (float) (event.x < position.x + (float) obj->rect.width * scale.x)
-                && (float) event.x > position.x) {
+            (float) event.y < (float) (position.y + obj->rect.height * scale.y)
+                && (float) (event.y > position.y) &&
+            (float) (event.x < position.x + obj->rect.width * scale.x)
+                && (float) (event.x > position.x)) {
             return obj;
         }
         tmp = tmp->next;
@@ -67,6 +67,7 @@ scene *create_scene(screen *s, state state)
     d->state = state;
     d->screen = NULL;
     d->event = NULL;
+    d->active = NULL;
     return d;
 }
 
@@ -74,4 +75,5 @@ void screen_manager(screen *s)
 {
     data_start(s);
     data_play(s);
+    data_chest(s);
 }
