@@ -33,6 +33,16 @@ typedef struct {
 } slime;
 
 typedef struct {
+    sfTime time;
+    sfTime old_time_an;
+} menu_bg;
+
+typedef struct {
+    text *t;
+    sfVector2f pos;
+} button;
+
+typedef struct {
     chest_state state;
     sfTime time;
     sfTime old_time_an;
