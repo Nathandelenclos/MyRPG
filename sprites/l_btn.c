@@ -7,6 +7,19 @@
 
 #include "../include/rpg.h"
 
+void lb_window_change(sfEvent event, button *d, game_obj *g, scene *s)
+{
+    if (is_on_btn(s, event.mouseButton, g->id) &&
+        my_strcmp(d->t->string, "   QUIT"))
+        sfRenderWindow_close(s->hub->window);
+    if (is_on_btn(s, event.mouseButton, g->id) &&
+        my_strcmp(d->t->string, " SETTINGS"))
+        s->hub->state = SETTINGS;
+    if (is_on_btn(s, event.mouseButton, g->id) &&
+        my_strcmp(d->t->string, "   DONE"))
+        s->hub->state = START;
+}
+
 void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
 {
     if (event.type == sfEvtMouseButtonPressed) {
@@ -21,12 +34,7 @@ void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
         sfSprite_setTextureRect(g->sprite, g->rect);
     }
     if (event.type == sfEvtMouseButtonReleased) {
-        if (is_on_btn(s, event.mouseButton, g->id) &&
-            my_strcmp(d->t->string, "   QUIT"))
-            sfRenderWindow_close(s->hub->window);
-        if (is_on_btn(s, event.mouseButton, g->id) &&
-            my_strcmp(d->t->string, " SETTINGS"))
-            s->hub->state = SETTINGS;
+        lb_window_change(event, d, g, s);
     }
 }
 
