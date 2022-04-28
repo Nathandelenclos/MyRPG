@@ -32,7 +32,6 @@ void create_data(scene *d)
 {
     create_textures(d);
     create_sprite_menu(d);
-    display_fps(d);
     create_btn_text(d, "   PLAY", 95);
     create_btn_text(d, " SETTINGS", 80);
     create_btn_text(d, "   QUIT", 100);

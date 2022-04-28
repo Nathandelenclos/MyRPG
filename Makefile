@@ -30,6 +30,7 @@ SPRITES	=	banners/banners1.c	\
 			menu_bg.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
+			settings_menu/settings_menu.c	\
 
 TEXTURES	=	characters/characters.c	\
 				objects/chest_and_obj.c	\

@@ -35,6 +35,7 @@ typedef enum state_e {
     START,
     PLAY,
     PAUSE,
+    SETTINGS,
 } state;
 
 enum sound_grp {
