@@ -23,5 +23,9 @@ int create_sprite_map(scene *d);
 int create_sprite_lb(scene *d, char *, int, int);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *, int, int);
+void create_player(scene *d);
+void idle_player_animation(scene *d, game_obj *g);
+void move_player_animation(scene *d, game_obj *g);
+void hit_player_animation(scene *d, game_obj *g);
 
 #endif

@@ -20,6 +20,8 @@ SPRITES	=	ennemies/slime.c	\
 			r_btn.c	\
 			s_btn.c	\
 			map.c	\
+			player/player.c	\
+			player/player_animation.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			play_screen/play_screen.c	\

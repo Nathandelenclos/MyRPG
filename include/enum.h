@@ -18,13 +18,14 @@
 
 typedef enum group_e {
     HOME_BTN,
-    ENEMY,
+    ENTITY,
     MAP,
 } group;
 
 typedef enum type_e {
     BASIC,
-    SLIME
+    SLIME,
+    PLAYER,
 } type;
 
 typedef enum state_e {
@@ -53,6 +54,6 @@ typedef enum {
     JUMP,
     HIT,
     DESTROY,
-} slime_state;
+} entity_state;
 
 #endif

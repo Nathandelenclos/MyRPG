@@ -16,6 +16,14 @@
 void events_play(scene *d, sfEvent event)
 {
     events_manage(d, event);
+    switch (event.type) {
+    case sfEvtClosed:
+        sfRenderWindow_close(d->hub->window);
+        break;
+    case sfEvtKeyPressed:
+        if (event.key.code == sfKeyEscape)
+            sfRenderWindow_close(d->hub->window);
+    }
 }
 
 void play_screen(scene *data)
@@ -30,6 +38,12 @@ void create_data_play(scene *d)
 {
     d->textures = get_scene(d, START)->textures;
     create_sprite_map(d);
+    create_player(d);
+    display_fps(d);
+    create_slime(d, 100, 100, GREEN);
+    create_slime(d, 100, 200, YELLOW);
+    create_slime(d, 200, 100, BLUE);
+    create_slime(d, 200, 200, BLACK);
 }
 
 void data_play(screen *screen1)
