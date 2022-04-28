@@ -17,6 +17,8 @@ void events(scene *d, sfEvent event)
     case sfEvtKeyPressed:
         if (event.key.code == sfKeyEscape)
             sfRenderWindow_close(d->hub->window);
+        if (event.key.code == sfKeySpace)
+            switch_scene(d, CHEST);
     }
 }
 

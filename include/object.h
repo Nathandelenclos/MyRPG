@@ -50,11 +50,14 @@ void create_slime(scene *d, int x, int y, slime_type type);
 int create_sprite_lb(scene *d, char *, sfVector2f, char *);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *, int, int);
+void create_chest_inventory_sprite(scene *d);
+void create_chest_background_sprite(scene *d);
 int create_sprite_menu(scene *d);
 
 //Text
 void create_btn_text(scene *d, char *, int);
 void create_basic_chest(scene *d);
 void create_golden_chest(scene *d);
+
 
 #endif

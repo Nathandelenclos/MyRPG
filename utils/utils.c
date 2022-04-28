@@ -17,6 +17,26 @@ int get_next_index(node *list)
     return i;
 }
 
+void switch_scene(scene *d, state s)
+{
+    scene *new = get_scene(d, s);
+    if (new->active != NULL)
+        new->active(d, new);
+    d->hub->state = s;
+}
+
+game_obj *get_object(scene *d, char *name)
+{
+    game_obj *obj;
+    node *tmp = d->objs;
+    while (tmp != NULL) {
+        obj = (game_obj *) tmp->data;
+        if (my_strcmp(name, obj->name))
+            return obj;
+        tmp = tmp->next;
+    }
+    return NULL;
+
 sfVector2f create_vector2f(int x, int y)
 {
     sfVector2f vec = {x, y};
