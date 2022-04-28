@@ -23,10 +23,12 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon3.c	\
       		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
-      		l_btn.c	\
+			chest_inventory.c	\
+      objects/chests.c	\
+      l_btn.c	\
 			r_btn.c	\
 			s_btn.c	\
-			chest_inventory.c	\
+			menu_bg.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			open_inventory_chest.c	\
@@ -46,6 +48,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon3.c	\
 				ui/others/other_textures.c	\
 				ui/chest_inventory.c	\
+				ui/create_menu_textures.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
@@ -58,6 +61,7 @@ MANAGER =	sprites_manager.c	\
 			thread_manager.c	\
 
 TEXTS	=	fps.c	\
+			menu.c	\
 
 TEXTS_PATH	=	texts/
 

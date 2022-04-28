@@ -20,11 +20,15 @@ typedef enum group_e {
     HOME_BTN,
     ENEMY,
     UI,
+    OBJECT,
 } group;
 
 typedef enum type_e {
     BASIC,
-    SLIME
+    SLIME,
+    MENU_BG,
+    BUTTON,
+    CHEST,
 } type;
 
 typedef enum state_e {
@@ -55,5 +59,11 @@ typedef enum {
     HIT,
     DESTROY,
 } slime_state;
+
+typedef enum {
+    OPEN,
+    CLOSE,
+    IDLE_C,
+} chest_state;
 
 #endif

@@ -33,17 +33,15 @@ void start_screen(scene *data)
 void create_data(scene *d)
 {
     create_textures(d);
+    create_sprite_menu(d);
     display_fps(d);
-    create_sprite_lb(d, "purple_lb", 450, 250);
-    create_sprite_lb(d, "purple_lb", 450, 320);
-    create_sprite_lb(d, "purple_lb", 450, 390);
-    create_sprite_lb(d, "purple_lb", 450, 460);
-    create_sprite_rb(d, "purple_rb", 0, 0);
-    create_sprite_rb(d, "purple_rb", 1000, 0);
-    create_sprite_sb(d, "purple_sb", 1000, 320);
+    create_btn_text(d, "   PLAY", 95);
+    create_btn_text(d, " SETTINGS", 80);
+    create_btn_text(d, "   QUIT", 100);
+    create_sprite_lb(d, "white_lb", create_vector2f(822.5, 500), "   PLAY");
+    create_sprite_lb(d, "white_lb", create_vector2f(822.5, 620), " SETTINGS");
+    create_sprite_lb(d, "white_lb", create_vector2f(822.5, 740), "   QUIT");
     sound_manager(d);
-    create_slime(d, 100, 100, GREEN);
-    create_slime(d, 200, 200, YELLOW);
 }
 
 void data_start(screen *screen1)

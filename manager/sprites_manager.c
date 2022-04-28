@@ -18,7 +18,7 @@ void sprites_manager(scene *d)
         if (obj->display == z_index) {
             sfRenderWindow_drawSprite(d->hub->window, obj->sprite, NULL);
         }
-        if (tmp == NULL && z_index <= 5) {
+        if (tmp->next == NULL && z_index <= 5) {
             z_index++;
             tmp = d->objs;
         }
