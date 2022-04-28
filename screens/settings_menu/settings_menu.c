@@ -28,8 +28,8 @@ void settings_screen(scene *data)
 void create_sprite_settings(scene *d)
 {
     d->textures = get_scene(d, START)->textures;
+    d->sounds = get_scene(d, START)->sounds;
     create_sprite_menu(d);
-    sound_manager(d);
 }
 
 void data_settings(screen *screen1)
