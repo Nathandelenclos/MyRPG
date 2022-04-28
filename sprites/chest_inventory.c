@@ -9,9 +9,11 @@
 
 void create_chest_inventory_sprite(scene *d)
 {
-    sfVector2f vector[2] = {{50, 50}, {0, 0}};
-    sfIntRect rect = create_rect(914, 862, 0, 0);
+    sfVector2f vector[2] = {{d->hub->mode.width / 2 - 913 * 1.75 / 2,
+    d->hub->mode.height / 2 - 490 * 1.75 / 2}, {0, 0}};
+    sfIntRect rect = create_rect(913, 490, 0, 0);
     game_obj *hero = create_obj(d, "chest_inventory", rect, vector);
+    set_scale(d, hero->sprite, 1.75);
     hero->name = "chest_inventor";
     hero->grp = UI;
     hero->display = 1;
