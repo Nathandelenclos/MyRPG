@@ -20,6 +20,21 @@
 typedef struct game_obj_s game_obj;
 typedef struct scene_s scene;
 
+typedef struct {
+    int up;
+    int down;
+    int left;
+    int right;
+    int interact;
+    int *slots;
+} controls;
+
+typedef struct {
+    int volume;
+    int fps;
+    controls *c;
+} settings;
+
 typedef struct screen_s {
     sfVideoMode mode;
     state state;
@@ -27,6 +42,7 @@ typedef struct screen_s {
     sfRenderWindow *window;
     int fps;
     sfClock *clock;
+    settings *s;
 } screen;
 
 typedef struct life_bar_s {

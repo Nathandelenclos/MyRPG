@@ -23,6 +23,7 @@
 #ifndef RPG_H
     #define RPG_H
 
+settings *init_settings_struct(void);
 void data_settings(screen *screen1);
 button *create_button_data(char *text, scene *s, sfVector2f pos);
 text *search_for_text(scene *s, char *name);

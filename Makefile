@@ -13,6 +13,7 @@ UTILS	=	life_bar.c	\
 			free.c	\
 			get_w_scale.c	\
 			utils.c	\
+			init_settings_structs.c	\
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
@@ -21,10 +22,10 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon1.c	\
 			icons/icon2.c	\
 			icons/icon3.c	\
-      ennemies/slime.c	\
+      		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
-      objects/chests.c	\
-      l_btn.c	\
+      		objects/chests.c	\
+      		l_btn.c	\
 			r_btn.c	\
 			s_btn.c	\
 			menu_bg.c	\
