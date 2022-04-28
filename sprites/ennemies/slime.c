@@ -55,7 +55,7 @@ void create_slime_(scene *d, int x, int y, char *name)
     hero->type = SLIME;
     hero->name = my_strdup(name);
     hero->animate = animate_slime;
-    hero->grp = ENEMY;
+    hero->grp = ENTITY;
     hero->display = 1;
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);

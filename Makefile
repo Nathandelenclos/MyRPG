@@ -21,17 +21,21 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon1.c	\
 			icons/icon2.c	\
 			icons/icon3.c	\
-      		ennemies/slime.c	\
+      ennemies/slime.c	\
 			ennemies/slime_animation.c	\
-			chest_inventory.c	\
-      objects/chests.c	\
       l_btn.c	\
 			r_btn.c	\
 			s_btn.c	\
+			map.c	\
 			menu_bg.c	\
+			player/player.c	\
+			player/player_animation.c	\
+			player/player_inventory.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
-			open_inventory_chest.c	\
+			play_screen/play_screen.c	\
+			chest_inventory.c	\
+      objects/chests.c	\
 
 TEXTURES	=	characters/characters.c	\
 				objects/chest_and_obj.c	\
@@ -47,6 +51,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
 				ui/others/other_textures.c	\
+				map.c	\
 				ui/chest_inventory.c	\
 				ui/create_menu_textures.c	\
 

@@ -74,5 +74,6 @@ scene *create_scene(screen *s, state state)
 void screen_manager(screen *s)
 {
     data_start(s);
+    data_play(s);
     data_chest(s);
 }

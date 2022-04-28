@@ -48,6 +48,8 @@ void create_player_texture(scene *d)
 
 void create_characters_texture(scene *d)
 {
+    put_in_list(&d->textures, create_texture("./assets/ui/hotbar.jpg", "hotbar",
+        create_rect(543, 61, 0, 0)));
     create_skeleton_texture(d);
     create_slime_texture(d);
     create_player_texture(d);

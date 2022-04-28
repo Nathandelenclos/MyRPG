@@ -45,7 +45,7 @@ void create_dwarf(scene *d, float speed, int life)
     hero->data = dw;
     hero->type = dwarf;
     hero->name = "dwarf";
-    hero->grp = ENEMY;
+    hero->grp = ENTITY;
     hero->display = 3;
     hero->animate = animated_dwarf;
     hero->action = action_dwarf;

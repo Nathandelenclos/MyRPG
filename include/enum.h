@@ -18,6 +18,9 @@
 
 typedef enum group_e {
     HOME_BTN,
+    UI,
+    ENTITY,
+    MAP,
     ENEMY,
     UI,
     OBJECT,
@@ -26,6 +29,8 @@ typedef enum group_e {
 typedef enum type_e {
     BASIC,
     SLIME,
+    PLAYER,
+    INV,
     MENU_BG,
     BUTTON,
     CHEST,
@@ -58,7 +63,7 @@ typedef enum {
     JUMP,
     HIT,
     DESTROY,
-} slime_state;
+} entity_state;
 
 typedef enum {
     OPEN,

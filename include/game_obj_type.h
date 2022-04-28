@@ -25,7 +25,7 @@ typedef struct {
     void (*jump)(scene *, game_obj *);
     void (*hit)(scene *, game_obj *);
     void (*destroy)(scene *, game_obj *);
-    slime_state state;
+    entity_state state;
     sfTime time;
     sfTime old_time_an;
     int life;
@@ -35,7 +35,26 @@ typedef struct {
 typedef struct {
     sfTime time;
     sfTime old_time_an;
-} menu_bg;
+    float speed;
+} maps;
+
+typedef struct {
+    sfTime time;
+    sfTime old_time_an;
+    entity_state state;
+    double animation_speed;
+    game_obj *inv;
+    void (*idle)(scene *, game_obj *);
+    void (*move)(scene *, game_obj *);
+    void (*jump)(scene *, game_obj *);
+    void (*hit)(scene *, game_obj *);
+    void (*destroy)(scene *, game_obj *);
+} player;
+
+typedef struct {
+    int count;
+    int index;
+} slot;
 
 typedef struct {
     text *t;

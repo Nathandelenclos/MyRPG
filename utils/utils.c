@@ -17,6 +17,12 @@ int get_next_index(node *list)
     return i;
 }
 
+sfVector2f create_vector(float x, float y)
+{
+    sfVector2f v = {x, y};
+    return v;
+}
+
 void switch_scene(scene *d, state s)
 {
     scene *new = get_scene(d, s);
