@@ -26,7 +26,7 @@ void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
             sfRenderWindow_close(s->hub->window);
         if (is_on_btn(s, event.mouseButton, g->id) &&
             my_strcmp(d->t->string, " SETTINGS"))
-            s->state = SETTINGS;
+            s->hub->state = SETTINGS;
     }
 }
 
