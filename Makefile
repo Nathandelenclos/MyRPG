@@ -16,9 +16,10 @@ UTILS	=	life_bar.c	\
 
 SPRITES	=	ennemies/slime.c	\
 			ennemies/slime_animation.c	\
-      l_btn.c	\
+      		l_btn.c	\
 			r_btn.c	\
 			s_btn.c	\
+			menu_bg.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 
@@ -36,6 +37,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
 				ui/others/other_textures.c	\
+				ui/create_menu_textures.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
@@ -48,6 +50,7 @@ MANAGER =	sprites_manager.c	\
 			thread_manager.c	\
 
 TEXTS	=	fps.c	\
+			menu.c	\
 
 TEXTS_PATH	=	texts/
 

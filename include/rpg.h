@@ -23,6 +23,9 @@
 #ifndef RPG_H
     #define RPG_H
 
+button *create_button_data(char *text, scene *s, sfVector2f pos);
+text *search_for_text(scene *s, char *name);
+sfVector2f create_vector2f(int x, int y);
 sfVector2f get_w_scale(scene *d, game_obj *);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);

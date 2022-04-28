@@ -51,4 +51,5 @@ void create_textures(scene *d)
     create_icon_twitter_texture(d);
     create_icon_watchad_texture(d);
     create_icon_youtube_texture(d);
+    create_menu_texture(d);
 }

@@ -23,7 +23,9 @@ typedef enum group_e {
 
 typedef enum type_e {
     BASIC,
-    SLIME
+    SLIME,
+    MENU_BG,
+    BUTTON,
 } type;
 
 typedef enum state_e {

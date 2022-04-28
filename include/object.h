@@ -18,9 +18,14 @@
 #ifndef GAME_OBJ_H
     #define GAME_OBJ_H
 
+//Objects
 void create_slime(scene *d, int x, int y, slime_type type);
-int create_sprite_lb(scene *d, char *, int, int);
+int create_sprite_lb(scene *d, char *, sfVector2f, char *);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *, int, int);
+int create_sprite_menu(scene *d);
+
+//Text
+void create_btn_text(scene *d, char *, int);
 
 #endif
