@@ -61,4 +61,6 @@ void create_icon_youtube_texture(scene *d);
 
 void create_others_texture(scene *d);
 
+void create_chest_inventory_texture(scene *d);
+
 #endif

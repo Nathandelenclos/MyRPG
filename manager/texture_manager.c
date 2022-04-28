@@ -44,4 +44,5 @@ void create_textures(scene *d)
     create_banners_texture(d);
     create_controls_texture(d);
     create_icons_texture(d);
+    create_chest_inventory_texture(d);
 }

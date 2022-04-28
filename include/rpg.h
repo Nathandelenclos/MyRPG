@@ -65,5 +65,8 @@ int vector_is_around(sfVector2f v, sfVector2f obj, int margin);
 void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
 void events_manage(scene *d, sfEvent);
+void data_chest(screen *screen1);
+game_obj *get_object(scene *d, char *name);
+void switch_scene(scene *d, state s);
 
 #endif
