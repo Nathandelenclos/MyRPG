@@ -20,10 +20,14 @@ void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
         }
         sfSprite_setTextureRect(g->sprite, g->rect);
     }
-    if (event.type == sfEvtMouseButtonReleased)
+    if (event.type == sfEvtMouseButtonReleased) {
         if (is_on_btn(s, event.mouseButton, g->id) &&
             my_strcmp(d->t->string, "   QUIT"))
             sfRenderWindow_close(s->hub->window);
+        if (is_on_btn(s, event.mouseButton, g->id) &&
+            my_strcmp(d->t->string, "   PLAY"))
+            switch_scene(s, PLAY);
+    }
 }
 
 void animate_lb(game_obj *g, scene *s, sfEvent event)

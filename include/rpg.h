@@ -25,7 +25,6 @@
 
 button *create_button_data(char *text, scene *s, sfVector2f pos);
 text *search_for_text(scene *s, char *name);
-sfVector2f create_vector2f(int x, int y);
 sfVector2f get_w_scale(scene *d, game_obj *);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
@@ -69,7 +68,7 @@ void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
 void events_manage(scene *d, sfEvent);
 void data_play(screen *screen1);
-sfVector2f create_vector(float x, float y);
+sfVector2f create_vector2f(float x, float y);
 void data_chest(screen *screen1);
 game_obj *get_object(scene *d, char *name);
 void switch_scene(scene *d, state s);

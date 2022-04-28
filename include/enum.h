@@ -22,7 +22,6 @@ typedef enum group_e {
     ENTITY,
     MAP,
     ENEMY,
-    UI,
     OBJECT,
 } group;
 
@@ -33,7 +32,7 @@ typedef enum type_e {
     INV,
     MENU_BG,
     BUTTON,
-    CHEST,
+    CHESTS,
 } type;
 
 typedef enum state_e {

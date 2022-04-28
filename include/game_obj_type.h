@@ -62,6 +62,11 @@ typedef struct {
 } button;
 
 typedef struct {
+    sfTime old_time_an;
+    sfTime time;
+}menu_bg;
+
+typedef struct {
     chest_state state;
     sfTime time;
     sfTime old_time_an;

@@ -17,7 +17,7 @@ int get_next_index(node *list)
     return i;
 }
 
-sfVector2f create_vector(float x, float y)
+sfVector2f create_vector2f(float x, float y)
 {
     sfVector2f v = {x, y};
     return v;
@@ -42,11 +42,6 @@ game_obj *get_object(scene *d, char *name)
         tmp = tmp->next;
     }
     return NULL;
-
-sfVector2f create_vector2f(int x, int y)
-{
-    sfVector2f vec = {x, y};
-    return vec;
 }
 
 button *create_button_data(char *text, scene *s, sfVector2f pos)

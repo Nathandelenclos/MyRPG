@@ -43,7 +43,7 @@ void start(screen *hub)
 screen *create_hub(void)
 {
     screen *hub = malloc(sizeof(screen));
-    hub->state = PLAY;
+    hub->state = START;
     sfVideoMode mode = sfVideoMode_getDesktopMode();
     hub->window = sfRenderWindow_create(mode, "MyRPG", sfFullscreen,
         NULL);
@@ -61,7 +61,6 @@ int main(int argc, char **argv)
     sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,
         sfImage_getSize(icon).y,
         sfImage_getPixelsPtr(icon));
-    sfRenderWindow_setMouseCursorVisible(hub->window, sfFalse);
     load_screen(hub->window);
     screen_manager(hub);
     start(hub);

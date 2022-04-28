@@ -48,7 +48,7 @@ void create_icon_watchad(scene *d);
 void create_icon_youtube(scene *d);
 void create_slime(scene *d, int x, int y, slime_type type);
 int create_sprite_map(scene *d);
-int create_sprite_lb(scene *d, char *, int, int);
+int create_sprite_lb(scene *d, char *name, sfVector2f s_pos, char *text);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *, int, int);
 void create_player(scene *d);
