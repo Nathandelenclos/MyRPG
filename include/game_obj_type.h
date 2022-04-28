@@ -51,6 +51,10 @@ typedef struct {
     void (*destroy)(scene *, game_obj *);
 } player;
 
+typedef struct {
+    int count;
+    int index;
+} slot;
 
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);

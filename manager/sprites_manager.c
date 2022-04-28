@@ -15,9 +15,8 @@ void sprites_manager(scene *d)
 
     while (tmp != NULL) {
         obj = (game_obj *) tmp->data;
-        if (obj->display == z_index) {
+        if (obj->display == z_index)
             sfRenderWindow_drawSprite(d->hub->window, obj->sprite, NULL);
-        }
         if (tmp->next == NULL && z_index <= 5) {
             z_index++;
             tmp = d->objs;

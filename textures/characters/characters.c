@@ -46,8 +46,6 @@ void create_player_texture(scene *d)
     put_in_list(&d->textures, t);
 }
 
-
-
 void create_characters_texture(scene *d)
 {
     put_in_list(&d->textures, create_texture("./assets/ui/hotbar.jpg", "hotbar",

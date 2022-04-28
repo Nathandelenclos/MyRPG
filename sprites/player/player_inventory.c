@@ -10,11 +10,12 @@
 game_obj *create_inventory(scene *d)
 {
     sfVector2f vector[2] = {
-        {(d->hub->mode.width / 2) - ((543 * 6) / 2),
-            (d->hub->mode.height - 61)
-        }, {0, 0}};
+        {(d->hub->mode.width / 2) - (543 / 2),
+            (d->hub->mode.height - 61 )
+            }, {0, 0}};
     sfIntRect rect = create_rect(543, 61, 0, 0);
     game_obj *obj = create_obj(d, "hotbar", rect, vector);
+    obj->data = malloc(sizeof(int ) * 10);
     obj->type = INV;
     obj->name = "inventory";
     obj->grp = UI;
