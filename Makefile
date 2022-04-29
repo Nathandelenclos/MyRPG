@@ -13,6 +13,7 @@ UTILS	=	life_bar.c	\
 			free.c	\
 			get_w_scale.c	\
 			utils.c	\
+			collision.c	\
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
