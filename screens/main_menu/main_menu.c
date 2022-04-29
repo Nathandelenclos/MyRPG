@@ -16,7 +16,9 @@ void events(scene *d, sfEvent event)
         break;
     case sfEvtKeyPressed:
         if (event.key.code == sfKeyEscape)
-            switch_scene(d, START);
+            sfRenderWindow_close(d->hub->window);
+        if (event.key.code == sfKeyEnter)
+            switch_scene(d, PLAY);
     }
 }
 
