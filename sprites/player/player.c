@@ -10,17 +10,23 @@
 void event_player(game_obj *g, scene *d, sfEvent event)
 {
     player *p = (player *) g->data;
+    sfIntRect rect = sfSprite_getTextureRect(g->sprite);
+    if (p->state == HIT)
+        return;
     p->state = IDLE;
-    if (event.type == sfEvtKeyPressed &&
-        (event.key.code <= 74 && event.key.code >= 71)) {
+    if (sfKeyboard_isKeyPressed(71) || sfKeyboard_isKeyPressed(72) ||
+        sfKeyboard_isKeyPressed(73) || sfKeyboard_isKeyPressed(74)) {
         p->state = MOVE;
         if (event.key.shift)
             p->animation_speed = 0.1;
         else
             p->animation_speed = 0.15;
     }
-    if (event.type == sfEvtMouseButtonPressed)
+    if (event.type == sfEvtMouseButtonPressed) {
+        rect.left = 0;
         p->state = HIT;
+        sfSprite_setTextureRect(g->sprite, rect);
+    }
 }
 
 void animate_player(scene *d, game_obj *g)
@@ -34,6 +40,7 @@ void animate_player(scene *d, game_obj *g)
         data->destroy(d, g);
         break;
     case IDLE:
+        g->rect.left = 0;
         data->idle(d, g);
         break;
     case JUMP:
@@ -65,7 +72,8 @@ player *create_player_data(scene *d)
 void create_player(scene *d)
 {
     sfVector2f vector[2] = {
-        {(d->hub->mode.width / 2) - ((48 * 6) / 2),
+        {
+            (d->hub->mode.width / 2) - ((48 * 6) / 2),
             (d->hub->mode.height / 2) - ((48 * 6) / 2)
         }, {0, 0}};
     sfIntRect rect = create_rect(48, 48, 0, 0);
