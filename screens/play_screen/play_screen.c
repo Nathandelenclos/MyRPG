@@ -41,11 +41,17 @@ void create_data_play(scene *d)
     display_fps(d);
 }
 
+void active_play(scene *old, scene *new)
+{
+    sfRenderWindow_setMouseCursorVisible(new->hub->window, sfFalse);
+}
+
 void data_play(screen *screen1)
 {
     scene *d = create_scene(screen1, PLAY);
     d->screen = play_screen;
     d->event = events_play;
+    d->active = active_play;
     create_data_play(d);
     put_in_list(&screen1->datas, d);
 }
