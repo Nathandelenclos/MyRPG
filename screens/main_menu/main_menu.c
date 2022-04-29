@@ -28,6 +28,11 @@ void start_screen(scene *data)
     text_manager(data);
 }
 
+void active_start(scene *old, scene *new)
+{
+    sfRenderWindow_setMouseCursorVisible(new->hub->window, sfTrue);
+}
+
 void create_data(scene *d)
 {
     create_textures(d);
@@ -47,6 +52,7 @@ void data_start(screen *screen1)
     scene *d = create_scene(screen1, START);
     d->screen = start_screen;
     d->event = events;
+    d->active = active_start;
     create_data(d);
     put_in_list(&screen1->datas, d);
 }

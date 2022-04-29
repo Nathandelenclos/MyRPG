@@ -45,6 +45,7 @@ void save_background(scene *old, scene *new)
     sfTexture_updateFromRenderWindow(texture, old->hub->window, 0, 0);
     game_obj *g = get_object(new, "background");
     sfSprite_setTexture(g->sprite, texture, sfTrue);
+    sfRenderWindow_setMouseCursorVisible(new->hub->window, sfTrue);
 }
 
 void data_chest(screen *screen1)
