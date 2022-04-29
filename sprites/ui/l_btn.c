@@ -60,7 +60,8 @@ int create_sprite_lb(scene *d, char *name, sfVector2f s_pos, char *text)
     game_obj *long_b =
         create_obj(d, name, create_rect(55, 21, 0, 0), pos);
     set_scale(d, long_b->sprite, 5);
-    long_b->data = create_button_data(text, d, pos[0]);
+    if (text != NULL)
+        long_b->data = create_button_data(text, d, pos[0]);
     long_b->name = my_strdup(name);
     long_b->type = BUTTON;
     long_b->grp = HOME_BTN;

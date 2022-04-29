@@ -32,7 +32,13 @@ void create_sprite_settings(scene *d)
     create_sprite_menu(d);
     create_btn_text(d, "   DONE", 95);
     create_sprite_lb(d, "white_lb", create_vector2f(822.5, 970.0), "   DONE");
-    create_sprite_slide_b(d, create_vector2f(822.5, 100));
+    create_btn_text(d, my_int_to_str(d->hub->s->volume), 50);
+    create_sprite_sb(d, "white_plus", create_vector2f(265, 200),
+        my_int_to_str(d->hub->s->volume));
+    create_sprite_sb(d, "white_minus", create_vector2f(135, 200),
+        my_int_to_str(d->hub->s->volume));
+    create_sprite_sb(d, "white_sb", create_vector2f(200, 200),
+        my_int_to_str(d->hub->s->volume));
 }
 
 void data_settings(screen *screen1)

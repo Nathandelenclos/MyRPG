@@ -28,7 +28,7 @@ void create_white_banner(scene *d);
 void create_wreath_banner(scene *d);
 void create_arrow_down(scene *d);
 void create_arrow_up(scene *d);
-void create_arrow_left(scene *d);
+void create_arrow_left(scene *d, sfVector2f);
 void create_arrow_right(scene *d);
 void create_small_arrow_down(scene *d);
 void create_small_arrow_up(scene *d);
@@ -49,7 +49,7 @@ void create_icon_youtube(scene *d);
 void create_slime(scene *d, int x, int y, slime_type type);
 int create_sprite_lb(scene *d, char *, sfVector2f, char *);
 int create_sprite_rb(scene *d, char *, int, int);
-int create_sprite_sb(scene *d, char *, int, int);
+int create_sprite_sb(scene *d, char *, sfVector2f, char *);
 int create_sprite_menu(scene *d);
 int create_sprite_slide_b(scene *d, sfVector2f s_pos);
 
