@@ -24,6 +24,7 @@ text *create_text(char *filename, char *string, sfColor color, sfVector2f v)
     t->color = color;
     sfText_setColor(t->text, t->color);
     t->position = v;
+    t->display = sfTrue;
     sfText_setPosition(t->text, t->position);
     t->animate = NULL;
     return t;
@@ -50,7 +51,8 @@ void text_manager(scene *d)
     node *tmp = d->texts;
     while (tmp != NULL) {
         t = (text *)tmp->data;
-        sfRenderWindow_drawText(d->hub->window, t->text, NULL);
+        if (t->display)
+            sfRenderWindow_drawText(d->hub->window, t->text, NULL);
         tmp = tmp->next;
     }
 }

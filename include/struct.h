@@ -27,6 +27,7 @@ typedef struct screen_s {
     sfRenderWindow *window;
     int fps;
     sfClock *clock;
+
 } screen;
 
 typedef struct life_bar_s {
@@ -84,6 +85,7 @@ typedef struct sound_d {
 } sound;
 
 typedef struct text_s {
+    sfBool display;
     sfFont *font;
     char *string;
     sfText *text;

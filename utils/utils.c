@@ -62,4 +62,18 @@ text *search_for_text(scene *s, char *name)
             return t;
         tmp = tmp->next;
     }
+    return NULL;
+}
+
+text *search_for_n_text(scene *s, char *name, int n)
+{
+    text *t;
+    node *tmp = s->texts;
+    while (tmp != NULL) {
+        t = (text *)tmp->data;
+        if (t != NULL && my_strncmp(t->string, name, n))
+            return t;
+        tmp = tmp->next;
+    }
+    return NULL;
 }

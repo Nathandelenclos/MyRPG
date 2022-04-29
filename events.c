@@ -30,6 +30,7 @@ void take_screenshot(scene *d, char *filename)
 
 void event_manager(scene *d, sfEvent event)
 {
+    text *fps = search_for_n_text(d, "FPS=", 4);
     switch (event.type) {
     case sfEvtClosed:
         event_closed(d);
@@ -39,6 +40,9 @@ void event_manager(scene *d, sfEvent event)
             my_printf(1, "take screen...");
             take_screenshot(d, "screenshot.png");
             my_printf(1, "(screenshot.png)\n");
+        }
+        if (event.key.code == sfKeyF3 && fps != NULL) {
+            fps->display = !fps->display;
         }
     }
 }
