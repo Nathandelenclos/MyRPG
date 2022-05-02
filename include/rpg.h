@@ -53,6 +53,7 @@ void launch_in_thread(void (*function)(void *), void *userData);
 void copy_objs(scene *copy, scene *paste, group grp);
 game_obj *is_on_btn(scene *d, sfMouseButtonEvent event, int id);
 void data_start(screen *screen1);
+void print_color(scene *data, int x, int y);
 life_bar *create_life_bar(
     int width, int height, sfColor main_color, sfColor back_color
 );
@@ -64,6 +65,7 @@ texture *create_texture(char *filename, char *name, sfIntRect rect);
 void display_score(scene *d);
 void display_money(scene *d);
 void display_fps(scene *d);
+void collision_map(scene *s, game_obj *g);
 int vector_is_around(sfVector2f v, sfVector2f obj, int margin);
 void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
