@@ -22,25 +22,25 @@ void evt_key_released(game_obj *g, int code)
 void event_map(game_obj *g, scene *s, sfEvent event)
 {
     maps *data = g->data;
+    if (sfKeyboard_isKeyPressed(sfKeyLShift) ||
+        sfKeyboard_isKeyPressed(sfKeyRShift))
+        data->speed = 4;
+    else
+        data->speed = 2;
+    if (sfKeyboard_isKeyPressed(73))
+        g->vector.y = data->speed;
+    if (sfKeyboard_isKeyPressed(74))
+        g->vector.y = -(data->speed);
+    if (sfKeyboard_isKeyPressed(71))
+        g->vector.x = data->speed;
+    if (sfKeyboard_isKeyPressed(72))
+        g->vector.x = -(data->speed);
     switch (event.type) {
-    case sfEvtKeyPressed:
-        if (event.key.shift)
-            data->speed = 4;
-        else
-            data->speed = 2;
-        if (event.key.code == 73)
-            g->vector.y = data->speed;
-        if (event.key.code == 74)
-            g->vector.y = -(data->speed);
-        if (event.key.code == 71)
-            g->vector.x = data->speed;
-        if (event.key.code == 72)
-            g->vector.x = -(data->speed);
-        break;
     case sfEvtKeyReleased:
         evt_key_released(g, event.key.code);
         break;
     }
+
 }
 
 void action_maps(game_obj *g, scene *s)
