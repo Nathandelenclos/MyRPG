@@ -72,16 +72,16 @@ void animate_sb_no_text(game_obj *g, scene *s, sfEvent event)
     }
 }
 
-int create_sprite_sb(scene *d, char *name, sfVector2f s_pos, char *text)
+int create_sprite_sb(scene *d, char *name, btn_param *p, char *text)
 {
-    sfVector2f pos[2] = {{s_pos.x, s_pos.y}, {0, 0}};
+    sfVector2f pos[2] = {{p->pos.x, p->pos.y}, {0, 0}};
     game_obj *long_b =
         create_obj(d, name, create_rect(17, 19, 0, 0), pos);
-    set_scale(d, long_b->sprite, 4);
+    set_scale(d, long_b->sprite, p->scale);
     long_b->name = my_strdup(name);
     long_b->type = BUTTON;
     long_b->grp = HOME_BTN;
-    long_b->display = 1;
+    long_b->display = p->zindex;
     if (text != NULL) {
         long_b->data = create_button_data(text, d, pos[0]);
         long_b->event = animate_sb;

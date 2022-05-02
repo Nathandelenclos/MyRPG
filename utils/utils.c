@@ -7,6 +7,15 @@
 
 #include "../include/rpg.h"
 
+btn_param *create_btn_param(int posx, int posy, int zindex, int scale)
+{
+    btn_param *p = malloc(sizeof(btn_param));
+    p->pos = create_vector2f(posx, posy);
+    p->zindex = zindex;
+    p->scale = scale;
+    return p;
+}
+
 int get_next_index(node *list)
 {
     int i = 0;

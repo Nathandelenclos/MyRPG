@@ -30,6 +30,8 @@ SPRITES	=	banners/banners1.c	\
 			ui/s_btn.c	\
 			ui/slide_bar.c	\
 			menu_bg.c	\
+			settings_bg.c	\
+			ui/tiles.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/settings_menu.c	\

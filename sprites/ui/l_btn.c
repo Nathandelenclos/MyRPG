@@ -54,18 +54,18 @@ void animate_lb(game_obj *g, scene *s, sfEvent event)
     long_button_event(event, d, g, s);
 }
 
-int create_sprite_lb(scene *d, char *name, sfVector2f s_pos, char *text)
+int create_sprite_lb(scene *d, char *name, btn_param *p, char *text)
 {
-    sfVector2f pos[2] = {{s_pos.x, s_pos.y}, {0, 0}};
+    sfVector2f pos[2] = {{p->pos.x, p->pos.y}, {0, 0}};
     game_obj *long_b =
         create_obj(d, name, create_rect(55, 21, 0, 0), pos);
-    set_scale(d, long_b->sprite, 5);
+    set_scale(d, long_b->sprite, p->scale);
     if (text != NULL)
         long_b->data = create_button_data(text, d, pos[0]);
     long_b->name = my_strdup(name);
     long_b->type = BUTTON;
     long_b->grp = HOME_BTN;
-    long_b->display = 1;
+    long_b->display = p->zindex;
     long_b->event = animate_lb;
     sfSprite_setTextureRect(long_b->sprite, long_b->rect);
     sfRenderWindow_drawSprite(d->hub->window, long_b->sprite, NULL);

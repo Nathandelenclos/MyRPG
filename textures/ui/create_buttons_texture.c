@@ -73,7 +73,7 @@ void create_round_buttons(scene *d)
     "white_rb", create_rect(55, 41, 0, 0)));
 }
 
-void create_pm_buttons(scene *d)
+void create_others(scene *d)
 {
     put_in_list(&d->textures,
     create_texture("./assets/ui/square_buttons/white_plus_sb.png",
@@ -81,6 +81,9 @@ void create_pm_buttons(scene *d)
     put_in_list(&d->textures,
     create_texture("./assets/ui/square_buttons/white_minus_sb.png",
     "white_minus", create_rect(55, 41, 0, 0)));
+    put_in_list(&d->textures,
+    create_texture("./assets/ui/long_buttons/white_lt.png",
+    "white_lt", create_rect(55, 20, 0, 0)));
 }
 
 int create_buttons_texture(scene *d)
@@ -88,6 +91,6 @@ int create_buttons_texture(scene *d)
     create_long_buttons(d);
     create_square_buttons(d);
     create_round_buttons(d);
-    create_pm_buttons(d);
+    create_others(d);
     return 0;
 }

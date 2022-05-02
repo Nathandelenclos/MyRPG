@@ -7,9 +7,8 @@
 
 #include "../include/rpg.h"
 
-void create_btn_text(scene *d, char *name, int size)
+void create_btn_text(scene *d, char *name, int size, sfVector2f pos)
 {
-    sfVector2f pos = {-1000, -1000};
     text *t =
         create_text("./assets/fonts/motion-control.bold.otf", name,
             sfBlack, pos);
