@@ -45,8 +45,12 @@ void event_map(game_obj *g, scene *s, sfEvent event)
 
 void action_maps(game_obj *g, scene *s)
 {
-    collision_map(s, g);
     maps *data = g->data;
+    game_obj *p_g = get_object(s, "player");
+    player *p = (player *)p_g->data;
+    if (p->state != MOVE)
+        return;
+    collision_map(s, g);
     data->time = sfClock_getElapsedTime(g->clock);
     float seconds = sfTime_asSeconds(data->time);
     float old_seconds = sfTime_asSeconds(data->old_time_an);
