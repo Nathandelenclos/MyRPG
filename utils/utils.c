@@ -7,12 +7,13 @@
 
 #include "../include/rpg.h"
 
-btn_param *create_btn_param(int posx, int posy, int zindex, int scale)
+btn_param *create_btn_param(sfVector2f pos, int zindex, int scale, group grp)
 {
     btn_param *p = malloc(sizeof(btn_param));
-    p->pos = create_vector2f(posx, posy);
+    p->pos = pos;
     p->zindex = zindex;
     p->scale = scale;
+    p->grp = grp;
     return p;
 }
 

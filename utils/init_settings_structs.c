@@ -15,6 +15,7 @@ controls *init_controls(void)
     c->left = sfKeyLeft;
     c->right = sfKeyRight;
     c->interact = sfKeyE;
+    c->right = sfKeyLShift;
     c->slots = sfKeyNum1, sfKeyNum2, sfKeyNum3, sfKeyNum4, sfKeyNum5,
         sfKeyNum6, sfKeyNum7, sfKeyNum8, sfKeyNum9;
     return c;

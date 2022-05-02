@@ -80,7 +80,7 @@ int create_sprite_sb(scene *d, char *name, btn_param *p, char *text)
     set_scale(d, long_b->sprite, p->scale);
     long_b->name = my_strdup(name);
     long_b->type = BUTTON;
-    long_b->grp = HOME_BTN;
+    long_b->grp = p->grp;
     long_b->display = p->zindex;
     if (text != NULL) {
         long_b->data = create_button_data(text, d, pos[0]);
