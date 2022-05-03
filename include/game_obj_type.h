@@ -74,6 +74,13 @@ typedef struct {
     void (*close)(scene *, game_obj *);
 } chest;
 
+typedef struct {
+    inventory_chest_state state;
+    sfVector2f *pos;
+    sfSprite *slot_s[36];
+    sfTexture *slot_t[36];
+} chest_inventory;
+
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);
 void move_animate_slime(scene *d, game_obj *g);
