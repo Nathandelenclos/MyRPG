@@ -44,7 +44,9 @@ chest_inventory *create_chest_inventory_data(scene *d)
             data->slot_t[i] =  sfTexture_createFromFile
             ("./assets/logo.png", &rect);
             sfSprite_setPosition(data->slot_s[i], data->pos[i]);
-            set_scale(d, data->slot_s[i], 0.1);
+            double f = (rect.width / 140);
+            double y = 1/f;
+            set_scale(d, data->slot_s[i],y);
             sfSprite_setTexture(data->slot_s[i], data->slot_t[i], sfFalse);
             sfRenderWindow_drawSprite(d->hub->window, data->slot_s[i], NULL);
         } else {

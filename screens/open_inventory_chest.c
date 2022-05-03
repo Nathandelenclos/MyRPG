@@ -49,6 +49,10 @@ void chest_screen(scene *data)
     move_manager(data);
     time_manager(data);
     text_manager(data);
+    game_obj *g = get_object(data, "chest_inventory");
+    chest_inventory *d = (chest_inventory *)g->data;
+    for (int i = 0; i < 36; i++)
+        sfRenderWindow_drawSprite(data->hub->window, d->slot_s[i], NULL);
 }
 
 void create_chest_scene_data(scene *d)
@@ -75,9 +79,5 @@ void data_chest(screen *screen1)
     d->event = events_chest;
     d->active = save_background;
     create_chest_scene_data(d);
-    // game_obj *g = get_object(d, "chest_inventory");
-    // chest_inventory *data = (chest_inventory *)g->data;
-    // for (int i = 0; i < 36; i++)
-    //     sfRenderWindow_drawSprite(d->hub->window, data->slot_s[i], NULL);
     put_in_list(&screen1->datas, d);
 }
