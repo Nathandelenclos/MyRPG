@@ -29,6 +29,7 @@ void display_fps(scene *d)
         create_text("./assets/fonts/josefin_sans_light.ttf", points_s,
             sfWhite, pos);
     t->animate = animate_fps;
+    t->name = my_strdup("fps");
     sfText_setCharacterSize(t->text, 108);
     put_in_list(&d->texts, t);
 }

@@ -105,7 +105,8 @@ typedef struct text_s {
     sfVector2f position;
     sfColor color;
     void (*animate)(struct text_s *, scene *d);
-    int zindex;
+    int display;
+    char *name;
     group grp;
 } text;
 

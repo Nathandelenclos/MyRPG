@@ -15,7 +15,7 @@ void events_settings(scene *d, sfEvent event)
         if (event.key.code == sfKeyEscape)
             d->hub->state = START;
     case sfEvtMouseWheelMoved:
-        scroll(d, 0, event.mouseWheel.delta * 10, SCROLL_BTN);
+        scroll_object_by_grp(d, 0, event.mouseWheel.delta * 10, SCROLL_BTN);
     }
 }
 

@@ -41,7 +41,7 @@ void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
 void animate_lb(game_obj *g, scene *s, sfEvent event)
 {
     button *d = (button *) g->data;
-    d->t->zindex = g->display;
+    d->t->display = g->display;
     d->t->position.y = g->position.y - 25;
     g->rect.top = 0;
     g->position = d->pos;
