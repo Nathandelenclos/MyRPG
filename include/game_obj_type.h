@@ -64,7 +64,7 @@ typedef struct {
 typedef struct {
     sfTime old_time_an;
     sfTime time;
-}menu_bg;
+} menu_bg;
 
 typedef struct {
     chest_state state;
@@ -73,6 +73,15 @@ typedef struct {
     void (*open)(scene *, game_obj *);
     void (*close)(scene *, game_obj *);
 } chest;
+
+typedef struct {
+    inventory_chest_state state;
+    sfVector2f *pos;
+    sfSprite *slot_s[36];
+    sfTexture *slot_t[36];
+    sfSprite *stamp_s;
+    sfTexture *stamp_t;
+} chest_inventory;
 
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);

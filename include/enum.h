@@ -70,4 +70,9 @@ typedef enum {
     IDLE_C,
 } chest_state;
 
+typedef enum {
+    FIRST_CLICK,
+    SECOND_CLICK,
+} inventory_chest_state;
+
 #endif
