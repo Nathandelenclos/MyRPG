@@ -16,11 +16,15 @@ chest_inventory *data)
     if (event.x >= pos.x && event.x <= pos.x + 140 && event.y >= pos.y &&
     event.y <= pos.y + 140) {
         if (data->state == FIRST_CLICK) {
+            data->stamp_s = data->slot_s[i];
+            data->stamp_t = data->slot_t[i];
             data->state = SECOND_CLICK;
         } else {
-            data->state = SECOND_CLICK;
+            data->slot_s[i] = data->stamp_s;
+            data->slot_t[i] = data->stamp_t;
+            sfSprite_setPosition(data->slot_s[i], data->pos[i]);
+            data->state = FIRST_CLICK;
         }
-        printf("%d x = %f y = %f\n", i + 1, pos.x, pos.y);
     }
 }
 

@@ -27,7 +27,6 @@ typedef struct screen_s {
     sfRenderWindow *window;
     int fps;
     sfClock *clock;
-
 } screen;
 
 typedef struct life_bar_s {
