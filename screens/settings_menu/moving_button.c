@@ -7,6 +7,28 @@
 
 #include "../../include/rpg.h"
 
+void create_text_setting_basic_right(scene *d)
+{
+    create_btn_text(d, TOUCH[d->hub->s->c->up], 50,
+        create_vector2f(980, 348));
+    create_btn_text(d, TOUCH[d->hub->s->c->down], 50,
+        create_vector2f(980, 448));
+    create_btn_text(d, TOUCH[d->hub->s->c->left], 50,
+        create_vector2f(980, 548));
+    create_btn_text(d, TOUCH[d->hub->s->c->right], 50,
+        create_vector2f(980, 648));
+    create_btn_text(d, TOUCH[d->hub->s->c->run], 50,
+        create_vector2f(980, 748));
+    create_btn_text(d, TOUCH[d->hub->s->c->interact],
+        50, create_vector2f(980, 848));
+    create_btn_text(d, TOUCH[d->hub->s->c->attack],
+        50, create_vector2f(980, 948));
+    create_btn_text(d, TOUCH[d->hub->s->c->menu],
+        50, create_vector2f(980, 1048));
+    create_btn_text(d, TOUCH[d->hub->s->c->screen],
+        50, create_vector2f(980, 1148));
+}
+
 void create_button_setting_basic(scene *d)
 {
     create_sprite_lb(d, "white_lb", create_btn_param(965, 355, 1, 3),
@@ -41,28 +63,6 @@ void create_text_setting_basic_left(scene *d)
     create_btn_text(d, "Attack:", 50, create_vector2f(565, 950));
     create_btn_text(d, "Menu:", 50, create_vector2f(565, 1050));
     create_btn_text(d, "Screenshot:", 50, create_vector2f(565, 1150));
-}
-
-void create_text_setting_basic_right(scene *d)
-{
-    create_btn_text(d, TOUCH[d->hub->s->c->up], 50,
-        create_vector2f(965, 355));
-    create_btn_text(d, TOUCH[d->hub->s->c->down], 50,
-        create_vector2f(965, 455));
-    create_btn_text(d, TOUCH[d->hub->s->c->left], 50,
-        create_vector2f(965, 555));
-    create_btn_text(d, TOUCH[d->hub->s->c->right], 50,
-        create_vector2f(965, 655));
-    create_btn_text(d, TOUCH[d->hub->s->c->run], 50,
-        create_vector2f(965, 755));
-    create_btn_text(d, TOUCH[d->hub->s->c->interact],
-        50, create_vector2f(965, 855));
-    create_btn_text(d, TOUCH[d->hub->s->c->attack],
-        50, create_vector2f(965, 955));
-    create_btn_text(d, TOUCH[d->hub->s->c->menu],
-        50, create_vector2f(965, 1055));
-    create_btn_text(d, TOUCH[d->hub->s->c->screen],
-        50, create_vector2f(965, 1155));
 }
 
 void create_button_setting(scene *d)

@@ -31,8 +31,7 @@ void create_sprite_settings(scene *d)
     d->sounds = get_scene(d, START)->sounds;
     create_settings_menu_sprite(d);
     create_settings_hud_sprite(d);
-    create_button_setting(d);
-    create_btn_text(d, "   DONE", 95, create_vector2f(822.5, 945));
+    create_btn_text(d, "   DONE", 95, create_vector2f(822.5, 950));
     create_sprite_lb(d, "white_lb", create_btn_param(822.5, 970, 2, 5),
         "   DONE");
     create_btn_text(d, my_int_to_str(d->hub->s->volume), 50,
@@ -44,6 +43,7 @@ void create_sprite_settings(scene *d)
         my_int_to_str(d->hub->s->volume));
     create_sprite_sb(d, "white_sb", create_btn_param(600, 80, 2, 4),
         my_int_to_str(d->hub->s->volume));
+    create_button_setting(d);
 }
 
 void data_settings(screen *screen1)
