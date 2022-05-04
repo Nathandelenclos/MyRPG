@@ -65,5 +65,7 @@ void create_btn_text(scene *d, char *, int);
 void create_basic_chest(scene *d);
 void create_golden_chest(scene *d);
 
+//Environment
+void create_rain_env(scene *d);
 
 #endif

@@ -32,6 +32,7 @@ void play_screen(scene *data)
     move_manager(data);
     time_manager(data);
     text_manager(data);
+    env_manager(data);
 }
 
 void create_data_play(scene *d)
@@ -40,6 +41,8 @@ void create_data_play(scene *d)
     create_sprite_map(d);
     create_player(d);
     display_fps(d);
+    create_rain_env(d);
+    d->env_type = RAIN;
 }
 
 void active_play(scene *old, scene *new)

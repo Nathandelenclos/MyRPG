@@ -75,5 +75,8 @@ sfVector2f create_vector2f(float x, float y);
 void data_chest(screen *screen1);
 game_obj *get_object(scene *d, char *name);
 void switch_scene(scene *d, state s);
+void animate_all_particles(scene *s, player *p);
+environment *get_env(scene *d, env_type type);
+void env_manager(scene *d);
 
 #endif

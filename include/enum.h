@@ -70,4 +70,10 @@ typedef enum {
     IDLE_C,
 } chest_state;
 
+typedef enum {
+    NONE,
+    RAIN,
+    SNOW
+} env_type;
+
 #endif

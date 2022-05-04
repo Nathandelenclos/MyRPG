@@ -63,8 +63,10 @@ scene *create_scene(screen *s, state state)
     d->texts = NULL;
     d->sounds = NULL;
     d->textures = NULL;
+    d->envs = NULL;
     d->hub = s;
     d->state = state;
+    d->env_type = NONE;
     d->screen = NULL;
     d->event = NULL;
     d->active = NULL;

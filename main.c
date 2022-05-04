@@ -6,10 +6,12 @@
 */
 
 #include "include/rpg.h"
+#include <time.h>
 
 void load_screen(sfRenderWindow *window)
 {
-    sfSprite *sprite = sfSprite_create();
+    srand((unsigned) time(NULL));
+    /*sfSprite *sprite = sfSprite_create();
     sfIntRect rect = create_rect(1080, 720, 0, 0);
     sfTexture *t =
         sfTexture_createFromFile("./assets/logo.png", &rect);
@@ -17,7 +19,31 @@ void load_screen(sfRenderWindow *window)
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_display(window);
     sfSprite_destroy(sprite);
-    sfTexture_destroy(t);
+    sfTexture_destroy(t);*/
+    sfVertexArray *a = sfVertexArray_create();
+    sfVertexArray_setPrimitiveType(a, sfLines);
+    for (int i = 0; i < 100; ++i) {
+        sfVertex v;
+        v.color = sfBlue;
+        v.texCoords = create_vector2f(rand() % 1920, rand() % 1080);
+        v.position = v.texCoords;
+        sfVertexArray_append(a, v);
+        v.position.y += 5;
+        sfVertexArray_append(a, v);
+
+    }
+    while (1) {
+        sfRenderWindow_clear(window, sfBlack);
+        for (size_t i = 0; i < sfVertexArray_getVertexCount(a); ++i) {
+            sfVertex *v = sfVertexArray_getVertex(a, i);
+            v->position.y += 0.08;
+            if (v->position.y > 1080) {
+                v->position.y = 0;
+            }
+        }
+        sfRenderWindow_drawVertexArray(window, a, NULL);
+        sfRenderWindow_display(window);
+    }
 }
 
 void start(screen *hub)
@@ -61,7 +87,7 @@ int main(int argc, char **argv)
     sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,
         sfImage_getSize(icon).y,
         sfImage_getPixelsPtr(icon));
-    load_screen(hub->window);
+    //load_screen(hub->window);
     screen_manager(hub);
     start(hub);
     sfImage_destroy(icon);

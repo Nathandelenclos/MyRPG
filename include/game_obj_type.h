@@ -38,12 +38,20 @@ typedef struct {
     float speed;
 } maps;
 
+typedef struct particle_s{
+    sfSprite *sprite;
+    sfTexture *texture;
+    void (*animate)(scene  *, struct particle_s *p);
+    int state;
+} particle;
+
 typedef struct {
     sfTime time;
     sfTime old_time_an;
     entity_state state;
     double animation_speed;
     game_obj *inv;
+    node *particles;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
     void (*jump)(scene *, game_obj *);
@@ -79,5 +87,6 @@ void hit_animate_slime(scene *d, game_obj *g);
 void move_animate_slime(scene *d, game_obj *g);
 void jump_animate_slime(scene *d, game_obj *g);
 void idle_animate_slime(scene *d, game_obj *g);
+particle *create_particle(scene *d);
 
 #endif

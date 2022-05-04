@@ -41,13 +41,24 @@ typedef struct life_bar_s {
     int percent;
 } life_bar;
 
+typedef struct env_s {
+    sfVertexArray *array;
+    sfClock *clock;
+    void (*animate)(scene *d, struct env_s *e);
+    sfTime time;
+    sfTime old_time;
+    env_type type;
+} environment;
+
 typedef struct scene_s {
     node *objs;
     node *texts;
+    node *envs;
     node *sounds;
     node *textures;
     state state;
     screen *hub;
+    env_type env_type;
     void (*screen)(scene *data);
     void (*active)(scene *old, scene *new);
     void (*event)(scene *data, sfEvent event);
