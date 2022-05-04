@@ -12,7 +12,7 @@ void animate_rain(scene *d, environment *e)
     e->time = sfClock_getElapsedTime(e->clock);
     float seconds = sfTime_asSeconds(e->time);
     float old_seconds = sfTime_asSeconds(e->old_time);
-    if (seconds - old_seconds >= 90) {
+    if (seconds - old_seconds >= 10) {
         d->env_type = NONE;
         return;
     }

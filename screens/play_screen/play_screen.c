@@ -47,7 +47,27 @@ void create_data_play(scene *d)
 
 void active_play(scene *old, scene *new)
 {
+
+    node *tmp = new->objs;
+    game_obj *obj = NULL;
+    sfColor color;
+
     sfRenderWindow_setMouseCursorVisible(new->hub->window, sfFalse);
+    if (old->state != START)
+        return;
+    for (int t = 0; t <= 255; ++t) {
+        sfRenderWindow_clear(new->hub->window, sfBlack);
+        while (tmp != NULL) {
+            obj = (game_obj *)tmp->data;
+            color = sfSprite_getColor(obj->sprite);
+            color.g = t;
+            sfSprite_setColor(obj->sprite, color);
+            sfRenderWindow_drawSprite(new->hub->window, obj->sprite, NULL);
+            tmp = tmp->next;
+        }
+        tmp = new->objs;
+        sfRenderWindow_display(new->hub->window);
+    }
 }
 
 void data_play(screen *screen1)
