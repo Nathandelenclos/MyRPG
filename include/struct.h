@@ -25,8 +25,20 @@ typedef struct {
     int down;
     int left;
     int right;
+    int run;
     int interact;
-    int *slots;
+    int attack;
+    int menu;
+    int screen;
+    int slot1;
+    int slot2;
+    int slot3;
+    int slot4;
+    int slot5;
+    int slot6;
+    int slot7;
+    int slot8;
+    int slot9;
 } controls;
 
 typedef struct {

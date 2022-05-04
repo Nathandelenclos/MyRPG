@@ -5,7 +5,7 @@
 ** Sprite - create long button
 */
 
-#include "../include/rpg.h"
+#include "../../include/rpg.h"
 
 void lb_window_change(sfEvent event, button *d, game_obj *g, scene *s)
 {
@@ -35,6 +35,7 @@ void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
     }
     if (event.type == sfEvtMouseButtonReleased) {
         lb_window_change(event, d, g, s);
+        lb_change_input(event, d, g, s);
     }
 }
 

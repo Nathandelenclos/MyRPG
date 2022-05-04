@@ -26,6 +26,7 @@ SPRITES	=	banners/banners1.c	\
 			ennemies/slime_animation.c	\
       		objects/chests.c	\
       		ui/l_btn.c	\
+      		ui/event_change_input_setting.c	\
 			ui/r_btn.c	\
 			ui/s_btn.c	\
 			ui/slide_bar.c	\
@@ -35,6 +36,8 @@ SPRITES	=	banners/banners1.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/settings_menu.c	\
+			settings_menu/moving_button.c	\
+			settings_menu/slot_button.c	\
 
 TEXTURES	=	characters/characters.c	\
 				objects/chest_and_obj.c	\
