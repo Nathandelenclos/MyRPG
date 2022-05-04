@@ -35,7 +35,7 @@ slime *create_slime_data(void)
 {
     slime *data = malloc(sizeof(slime));
     data->old_time_an = sfTime_Zero;
-    data->state = HIT;
+    data->state = IDLE;
     data->time = sfTime_Zero;
     data->destroy = destroy_animate_slime;
     data->hit = hit_animate_slime;

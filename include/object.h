@@ -67,5 +67,6 @@ void create_golden_chest(scene *d);
 
 //Environment
 void create_rain_env(scene *d);
+void create_snow_env(scene *d);
 
 #endif

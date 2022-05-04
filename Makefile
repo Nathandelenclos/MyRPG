@@ -37,6 +37,7 @@ SPRITES	=	banners/banners1.c	\
 			chest_inventory.c	\
 
 ENVIRONMENTS	=	rain.c	\
+					snow.c
 
 SCREENS	=	main_menu/main_menu.c	\
 			play_screen/play_screen.c	\

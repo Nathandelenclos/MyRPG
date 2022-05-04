@@ -42,6 +42,12 @@ void create_data_play(scene *d)
     create_player(d);
     display_fps(d);
     create_rain_env(d);
+    create_snow_env(d);
+    create_slime(d, 100,100, BLUE);
+    create_slime(d, 100,200, BLACK);
+    create_slime(d, 100,300, YELLOW);
+    create_slime(d, 200,100, GREEN);
+    create_slime(d, 300,100, PINK);
     d->env_type = RAIN;
 }
 
@@ -60,7 +66,7 @@ void active_play(scene *old, scene *new)
         while (tmp != NULL) {
             obj = (game_obj *)tmp->data;
             color = sfSprite_getColor(obj->sprite);
-            color.g = t;
+            color.a = t;
             sfSprite_setColor(obj->sprite, color);
             sfRenderWindow_drawSprite(new->hub->window, obj->sprite, NULL);
             tmp = tmp->next;
