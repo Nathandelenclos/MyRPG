@@ -27,12 +27,16 @@ SPRITES	=	banners/banners1.c	\
       		objects/chests.c	\
       		ui/l_btn.c	\
       		ui/event_change_input_setting.c	\
+			ui/change_move_input.c	\
+			ui/change_interact_input.c	\
+			ui/change_slot_input.c	\
 			ui/r_btn.c	\
 			ui/s_btn.c	\
 			ui/slide_bar.c	\
 			menu_bg.c	\
 			settings_bg.c	\
 			ui/tiles.c	\
+			ui/input_error_handling.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/settings_menu.c	\
@@ -117,6 +121,7 @@ fclean: clean
 	rm -f $(NAME)
 	make -C ./lib/my/ fclean
 	make -C ./lib/linked_list/ fclean
+	rm vgcore*
 
 re:	fclean all
 
