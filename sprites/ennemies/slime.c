@@ -61,9 +61,8 @@ void action_slime(game_obj *g, scene *d)
         sfSprite_getScale(g->sprite).x));
     float ry = (sfSprite_getPosition(p->sprite).y + ((p->rect.height / 2) *
         sfSprite_getScale(p->sprite).y)) - (pos_map.y + ((g->rect.height / 2) *
-        sfSprite_getScale(p->sprite).y));
+        sfSprite_getScale(g->sprite).y));
     float range = sqrt(rx * rx + ry * ry);
-    //printf("range %i midmobx %i midmoby %i midplayerx %i midplayery %i\n",range, pos_map.x + 80, pos_map.y + 80, sfSprite_getPosition(p->sprite).x + 144, sfSprite_getPosition(p->sprite).y + 144);
     s->time = sfClock_getElapsedTime(g->clock);
     float seconds = sfTime_asSeconds(s->time);
     float old_seconds = sfTime_asSeconds(s->old_time_hit);
@@ -74,7 +73,6 @@ void action_slime(game_obj *g, scene *d)
     if (range <= 150.0 && seconds - old_seconds >= 0.5) {
         ((player *) p->data)->hp -= 2;
         s->old_time_hit = sfClock_getElapsedTime(g->clock);
-        //printf("%i\n", ((player *)p->data)->hp);
         if (((player *) p->data)->hp <= 0) {
             ((player *) p->data)->hp = 100;
             switch_scene(d, START);

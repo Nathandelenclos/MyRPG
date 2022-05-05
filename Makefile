@@ -113,7 +113,6 @@ debug:	all
 
 clean:
 	rm -f $(OBJ)
-	rm vgcore.*
 
 fclean: clean
 	rm -f $(NAME)
