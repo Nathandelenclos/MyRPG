@@ -35,7 +35,9 @@ texture *get_texture(scene *d, char *name)
 
 void create_textures(scene *d)
 {
+    create_menu_texture(d);
     create_buttons_texture(d);
+    create_slide_bar_texture(d);
     create_characters_texture(d);
     create_chest_and_obj_texture(d);
     create_particles_texture(d);
@@ -51,6 +53,8 @@ void create_textures(scene *d)
     create_icon_twitter_texture(d);
     create_icon_watchad_texture(d);
     create_icon_youtube_texture(d);
+    create_icons_texture(d);
+    create_popup(d);
     create_maps_textures(d);
     create_menu_texture(d);
     create_icons_texture(d);

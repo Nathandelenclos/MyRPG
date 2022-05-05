@@ -14,7 +14,6 @@
 #include "my.h"
 #include "enum.h"
 #include "struct.h"
-#include "object.h"
 
 #ifndef GAME_OBJ_TYPE_H
     #define GAME_OBJ_TYPE_H
@@ -73,6 +72,19 @@ typedef struct {
     void (*open)(scene *, game_obj *);
     void (*close)(scene *, game_obj *);
 } chest;
+
+typedef struct {
+    sfVector2f pos;
+    int zindex;
+    int scale;
+    group grp;
+} btn_param;
+
+typedef struct {
+    int size;
+    group grp;
+    int zindex;
+} text_id;
 
 typedef struct {
     inventory_chest_state state;

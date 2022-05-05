@@ -18,6 +18,8 @@
 #ifndef TEXTURES_H_
     #define TEXTURES_H_
 
+void create_popup(scene *d);
+int create_slide_bar_texture(scene *d);
 int create_menu_texture(scene *d);
 int create_buttons_texture(scene *d);
 void create_characters_texture(scene *d);

@@ -27,7 +27,34 @@ text *create_text(char *filename, char *string, sfColor color, sfVector2f v)
     t->display = sfTrue;
     sfText_setPosition(t->text, t->position);
     t->animate = NULL;
+    t->display = 1;
+    t->name = my_strdup(string);
     return t;
+}
+
+text *get_text(scene *d, char *name)
+{
+    node *tmp = d->texts;
+    text *data = NULL;
+    while (tmp != NULL) {
+        data = (text *)tmp->data;
+        if (my_strcmp(data->name, name))
+            return data;
+        tmp = tmp->next;
+    }
+    return NULL;
+}
+
+void scroll_text_grp(scene *d, float x, float y, group grp)
+{
+    node *tmp = d->texts;
+    text *data = NULL;
+    while (tmp != NULL) {
+        data = (text *)tmp->data;
+        if (data->grp == grp)
+            sfText_move(data->text, create_vector2f(x, y));
+        tmp = tmp->next;
+    }
 }
 
 void modify_string(scene *d, char *before, char *after)
@@ -49,9 +76,28 @@ void text_manager(scene *d)
 {
     text *t;
     node *tmp = d->texts;
+    int index = 1;
+
     while (tmp != NULL) {
         t = (text *)tmp->data;
-        if (t->display)
+        if (t->display == index)
+            sfRenderWindow_drawText(d->hub->window, t->text, NULL);
+        if (tmp->next == NULL && index <= 5) {
+            index++;
+            tmp = d->texts;
+        }
+        tmp = tmp->next;
+    }
+}
+
+void draw_text_with_index(scene *d, int index)
+{
+    text *t = NULL;
+    node *tmp = d->texts;
+
+    while (tmp != NULL) {
+        t = (text *)tmp->data;
+        if (t->display == index)
             sfRenderWindow_drawText(d->hub->window, t->text, NULL);
         tmp = tmp->next;
     }

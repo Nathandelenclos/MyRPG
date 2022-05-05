@@ -15,11 +15,20 @@
 #include "enum.h"
 #include "struct.h"
 #include "textures.h"
+#include "game_obj_type.h"
 
 #ifndef OBJECT_H_
     #define OBJECT_H_
 
 //Objects
+int create_sprite_popup(scene *d);
+int create_sprite_bg_settings(scene *d);
+int input_handling(sfKeyCode code, controls *c, scene *s);
+void change_input_slot_p1(button *d, controls *c, sfEvent event, scene *s);
+void change_input_interact(button *d, controls *c, sfEvent event, scene *s);
+void change_input_movement(button *d, controls *c, sfEvent event, scene *s);
+int create_settings_hud_sprite(scene *d);
+int create_settings_menu_sprite(scene *d);
 void create_blue_banner(scene *d);
 void create_green_banner(scene *d);
 void create_purple_banner(scene *d);
@@ -28,7 +37,7 @@ void create_white_banner(scene *d);
 void create_wreath_banner(scene *d);
 void create_arrow_down(scene *d);
 void create_arrow_up(scene *d);
-void create_arrow_left(scene *d);
+void create_arrow_left(scene *d, sfVector2f);
 void create_arrow_right(scene *d);
 void create_small_arrow_down(scene *d);
 void create_small_arrow_up(scene *d);
@@ -59,9 +68,11 @@ game_obj *create_inventory(scene *d);
 void create_chest_inventory_sprite(scene *d);
 void create_chest_background_sprite(scene *d);
 int create_sprite_menu(scene *d);
+int create_sprite_slide_b(scene *d, sfVector2f s_pos);
+int create_sprite_ltile(scene *, char *, btn_param *);
 
 //Text
-void create_btn_text(scene *d, char *, int);
+void create_btn_text(scene *d, char *, text_id *, sfVector2f);
 void create_basic_chest(scene *d);
 void create_golden_chest(scene *d);
 
