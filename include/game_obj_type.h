@@ -53,6 +53,7 @@ typedef struct {
     sfVector2f pos;
     int zindex;
     int scale;
+    group grp;
 } btn_param;
 
 void destroy_animate_slime(scene *d, game_obj *g);

@@ -40,6 +40,8 @@ void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
 void sprites_manager(scene *d);
 int get_next_index(node *list);
+void scroll_text(scene *d, float x, float y, char *name);
+text *get_text(scene *d, char *name);
 game_obj *create_obj(
     scene *d, char *texture_name, sfIntRect rect, sfVector2f *vector
 );
@@ -55,7 +57,8 @@ texture *get_texture(scene *d, char *name);
 void create_textures(scene *d);
 void sound_manager(scene *d);
 void destroy_music(screen *hub);
-void scroll(scene *d, float x, float y, group grp);
+void scroll_object_by_grp(scene *d, float x, float y, group grp);
+void scroll_object_by_name(scene *d, float x, float y, char *name);
 sound *create_sound(char *filename, enum sound_grp grp, float volume);
 void screen_manager(screen *s);
 void launch_in_thread(void (*function)(void *), void *userData);

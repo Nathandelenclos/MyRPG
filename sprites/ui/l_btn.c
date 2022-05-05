@@ -51,6 +51,25 @@ void animate_lb(game_obj *g, scene *s, sfEvent event)
         }
         sfSprite_setTextureRect(g->sprite, g->rect);
     }
+    if (event.type == sfEvtMouseButtonReleased) {
+        lb_window_change(event, d, g, s);
+    }
+}
+
+void animate_lb(game_obj *g, scene *s, sfEvent event)
+{
+    button *d = (button *) g->data;
+    d->t->display = g->display;
+    d->t->position.y = g->position.y - 25;
+    g->rect.top = 0;
+    g->position = d->pos;
+    g->rect.height = 21;
+    if (my_strcmp(" SETTINGS", d->t->string))
+        d->t->position.y = g->position.y - 10;
+    d->t->position.x = g->position.x;
+    sfSprite_setPosition(g->sprite, g->position);
+    sfText_setPosition(d->t->text, d->t->position);
+    sfSprite_setTextureRect(g->sprite, g->rect);
     long_button_event(event, d, g, s);
 }
 
@@ -64,7 +83,7 @@ int create_sprite_lb(scene *d, char *name, btn_param *p, char *text)
         long_b->data = create_button_data(text, d, pos[0]);
     long_b->name = my_strdup(name);
     long_b->type = BUTTON;
-    long_b->grp = HOME_BTN;
+    long_b->grp = p->grp;
     long_b->display = p->zindex;
     long_b->event = animate_lb;
     sfSprite_setTextureRect(long_b->sprite, long_b->rect);

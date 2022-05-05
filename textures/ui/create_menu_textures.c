@@ -20,7 +20,7 @@ void create_settings_menu(scene *d)
     create_texture("./assets/ui/bg_settings.jpg",
     "settings", create_rect(1280, 720, 0, 0)));
     put_in_list(&d->textures,
-    create_texture("./assets/ui/hud_settings.png",
+    create_texture("./assets/ui/settings_hud.png",
     "hud_settings", create_rect(1280, 720, 0, 0)));
 }
 

@@ -38,6 +38,8 @@ typedef enum group_e {
     ENEMY,
     UI,
     OBJECT,
+    BACKGROUND,
+    SCROLL_BTN,
 } group;
 
 typedef enum type_e {
