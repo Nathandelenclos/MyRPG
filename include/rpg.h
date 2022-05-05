@@ -75,5 +75,7 @@ sfVector2f create_vector2f(float x, float y);
 void data_chest(screen *screen1);
 game_obj *get_object(scene *d, char *name);
 void switch_scene(scene *d, state s);
+float get_distance(game_obj *first, game_obj *seconds);
+game_obj *get_closer_object(scene *d, game_obj *obj, group grp);
 
 #endif

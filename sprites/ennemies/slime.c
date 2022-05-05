@@ -92,7 +92,7 @@ void create_slime_(scene *d, int x, int y, char *name)
     hero->type = SLIME;
     hero->name = my_strdup(name);
     hero->animate = animate_slime;
-    hero->grp = ENTITY;
+    hero->grp = ENEMY;
     hero->action = action_slime;
     hero->display = 1;
     game_obj *map = get_object(d, "maps");

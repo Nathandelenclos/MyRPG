@@ -7,26 +7,6 @@
 
 #include "../../include/rpg.h"
 
-float range_player(game_obj *g, scene *d)
-{
-    game_obj *map = get_object(d, "maps");
-    player *p = (player *)g->data;
-    sfVector2f pos_map = sfSprite_getPosition(map->sprite);
-    game_obj *s = get_object(d, "enemy_slime");
-    pos_map.x += s->vector.x * 9.0;
-    pos_map.y += s->vector.y * 9.0;
-    if (s == NULL)
-        return (-1);
-    float rx = (sfSprite_getPosition(g->sprite).x + ((g->rect.width / 2) *
-        sfSprite_getScale(g->sprite).x)) - (pos_map.x + ((s->rect.width / 2) *
-        sfSprite_getScale(s->sprite).x));
-    float ry = (sfSprite_getPosition(g->sprite).y + ((g->rect.height / 2) *
-        sfSprite_getScale(g->sprite).y)) - (pos_map.y + ((s->rect.height / 2) *
-        sfSprite_getScale(s->sprite).y));
-    float range = (float)sqrt(rx * rx + ry * ry);
-    return (range);
-}
-
 void event_player(game_obj *g, scene *d, sfEvent event)
 {
     player *p = (player *) g->data;
@@ -45,8 +25,8 @@ void event_player(game_obj *g, scene *d, sfEvent event)
     if (event.type == sfEvtMouseButtonPressed) {
         rect.left = 0;
         p->state = HIT;
-        printf("%f\n", range_player(g, d));
-        if (range_player(g, d) <= 175.0 && range_player(g, d) >= 0.0) {
+        float distance = get_distance(g, get_closer_object(d, g, ENEMY));
+        if (distance <= 175.0 && distance >= 0.0) {
             game_obj *s = get_object(d, "enemy_slime");
             if (s != NULL) {
                 ((slime *)s->data)->hp -= 5;
@@ -100,8 +80,7 @@ player *create_player_data(scene *d)
 
 void create_player(scene *d)
 {
-    sfVector2f vector[2] = {
-        {
+    sfVector2f vector[2] = {{
             (d->hub->mode.width / 2) - ((48 * 6) / 2),
             (d->hub->mode.height / 2) - ((48 * 6) / 2)
         }, {0, 0}};
