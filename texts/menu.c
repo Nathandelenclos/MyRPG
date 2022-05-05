@@ -7,12 +7,13 @@
 
 #include "../include/rpg.h"
 
-void create_btn_text(scene *d, char *name, int size)
+void create_btn_text(scene *d, char *name, text_id *id, sfVector2f pos)
 {
-    sfVector2f pos = {0, 0};
     text *t =
         create_text("./assets/fonts/motion-control.bold.otf", name,
             sfBlack, pos);
-    sfText_setCharacterSize(t->text, size);
+    t->grp = id->grp;
+    t->display = id->zindex;
+    sfText_setCharacterSize(t->text, id->size);
     put_in_list(&d->texts, t);
 }

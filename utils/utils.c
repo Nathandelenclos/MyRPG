@@ -7,6 +7,16 @@
 
 #include "../include/rpg.h"
 
+btn_param *create_btn_param(sfVector2f pos, int zindex, int scale, group grp)
+{
+    btn_param *p = malloc(sizeof(btn_param));
+    p->pos = pos;
+    p->zindex = zindex;
+    p->scale = scale;
+    p->grp = grp;
+    return p;
+}
+
 int get_next_index(node *list)
 {
     int i = 0;
@@ -21,27 +31,6 @@ sfVector2f create_vector2f(float x, float y)
 {
     sfVector2f v = {x, y};
     return v;
-}
-
-void switch_scene(scene *d, state s)
-{
-    scene *new = get_scene(d, s);
-    if (new->active != NULL)
-        new->active(d, new);
-    d->hub->state = s;
-}
-
-game_obj *get_object(scene *d, char *name)
-{
-    game_obj *obj;
-    node *tmp = d->objs;
-    while (tmp != NULL) {
-        obj = (game_obj *) tmp->data;
-        if (my_strcmp(name, obj->name))
-            return obj;
-        tmp = tmp->next;
-    }
-    return NULL;
 }
 
 button *create_button_data(char *text, scene *s, sfVector2f pos)
@@ -63,6 +52,14 @@ text *search_for_text(scene *s, char *name)
         tmp = tmp->next;
     }
     return NULL;
+}
+
+void switch_scene(scene *d, state s)
+{
+    scene *new = get_scene(d, s);
+    if (new->active != NULL)
+        new->active(d, new);
+    d->hub->state = s;
 }
 
 text *search_for_n_text(scene *s, char *name, int n)

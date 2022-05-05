@@ -14,7 +14,6 @@
 #include "my.h"
 #include "enum.h"
 #include "struct.h"
-#include "object.h"
 
 #ifndef GAME_OBJ_TYPE_H
     #define GAME_OBJ_TYPE_H
@@ -72,7 +71,7 @@ typedef struct {
 typedef struct {
     sfTime old_time_an;
     sfTime time;
-}menu_bg;
+} menu_bg;
 
 typedef struct {
     chest_state state;
@@ -81,6 +80,28 @@ typedef struct {
     void (*open)(scene *, game_obj *);
     void (*close)(scene *, game_obj *);
 } chest;
+
+typedef struct {
+    sfVector2f pos;
+    int zindex;
+    int scale;
+    group grp;
+} btn_param;
+
+typedef struct {
+    int size;
+    group grp;
+    int zindex;
+} text_id;
+
+typedef struct {
+    inventory_chest_state state;
+    sfVector2f *pos;
+    sfSprite *slot_s[36];
+    sfTexture *slot_t[36];
+    sfSprite *stamp_s;
+    sfTexture *stamp_t;
+} chest_inventory;
 
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);

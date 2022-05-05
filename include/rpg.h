@@ -23,14 +23,26 @@
 #ifndef RPG_H
     #define RPG_H
 
+text_id *create_text_id_struct(int size, group grp, int);
+void switch_scene(scene *d, state s);
+void wrong_input(screen *screen1);
+btn_param *create_btn_param(sfVector2f pos, int zindex, int scale, group grp);
+settings *init_settings_struct(void);
+void data_settings(screen *screen1);
+void create_button_setting(scene *d);
+void create_text_setting_invent_left(scene *d);
+void lb_change_input(sfEvent event, button *d, game_obj *g, scene *s);
 button *create_button_data(char *text, scene *s, sfVector2f pos);
 text *search_for_text(scene *s, char *name);
+sfVector2f create_vector2f(float x, float y);
 text *search_for_n_text(scene *s, char *name, int n);
 sfVector2f get_w_scale(scene *d, game_obj *);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
 void sprites_manager(scene *d);
 int get_next_index(node *list);
+void scroll_text_grp(scene *d, float x, float y, group);
+text *get_text(scene *d, char *name);
 game_obj *create_obj(
     scene *d, char *texture_name, sfIntRect rect, sfVector2f *vector
 );
@@ -46,7 +58,8 @@ texture *get_texture(scene *d, char *name);
 void create_textures(scene *d);
 void sound_manager(scene *d);
 void destroy_music(screen *hub);
-void scroll(scene *d, float x, float y, group grp);
+void scroll_object_by_grp(scene *d, float x, float y, group grp);
+void scroll_object_by_name(scene *d, float x, float y, char *name);
 sound *create_sound(char *filename, enum sound_grp grp, float volume);
 void screen_manager(screen *s);
 void launch_in_thread(void (*function)(void *), void *userData);
@@ -70,6 +83,7 @@ int vector_is_around(sfVector2f v, sfVector2f obj, int margin);
 void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
 void events_manage(scene *d, sfEvent);
+void draw_text_with_index(scene *d, int index);
 void data_play(screen *screen1);
 sfVector2f create_vector2f(float x, float y);
 void data_chest(screen *screen1);

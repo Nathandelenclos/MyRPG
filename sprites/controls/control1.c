@@ -35,9 +35,9 @@ void create_arrow_up(scene *d)
     put_in_end(&d->objs, hero);
 }
 
-void create_arrow_left(scene *d)
+void create_arrow_left(scene *d, sfVector2f pos)
 {
-    sfVector2f vector[2] = {{100, 100}, {0, 0}};
+    sfVector2f vector[2] = {{pos.x, pos.y}, {0, 0}};
     sfIntRect rect = create_rect(13, 13, 0, 0);
     game_obj *hero = create_obj(d, "arrow_left", rect, vector);
     set_scale(d, hero->sprite, 10);

@@ -20,6 +20,33 @@
 typedef struct game_obj_s game_obj;
 typedef struct scene_s scene;
 
+typedef struct {
+    int up;
+    int down;
+    int left;
+    int right;
+    int run;
+    int interact;
+    int attack;
+    int menu;
+    int screen;
+    int slot1;
+    int slot2;
+    int slot3;
+    int slot4;
+    int slot5;
+    int slot6;
+    int slot7;
+    int slot8;
+    int slot9;
+} controls;
+
+typedef struct {
+    int volume;
+    int fps;
+    controls *c;
+} settings;
+
 typedef struct screen_s {
     sfVideoMode mode;
     state state;
@@ -27,6 +54,7 @@ typedef struct screen_s {
     sfRenderWindow *window;
     int fps;
     sfClock *clock;
+    settings *s;
 } screen;
 
 typedef struct life_bar_s {
@@ -92,13 +120,15 @@ typedef struct sound_d {
 } sound;
 
 typedef struct text_s {
-    sfBool display;
     sfFont *font;
     char *string;
     sfText *text;
     sfVector2f position;
     sfColor color;
     void (*animate)(struct text_s *, scene *d);
+    int display;
+    char *name;
+    group grp;
 } text;
 
 #endif
