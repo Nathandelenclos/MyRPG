@@ -68,9 +68,17 @@ typedef struct life_bar_s {
     int percent;
 } life_bar;
 
+typedef struct env_s {
+    sfVertexArray *array;
+    void (*animate)(scene *d, struct env_s *e);
+    env_type type;
+    sfBool active;
+} environment;
+
 typedef struct scene_s {
     node *objs;
     node *texts;
+    node *envs;
     node *sounds;
     node *textures;
     state state;

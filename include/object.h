@@ -76,5 +76,12 @@ void create_btn_text(scene *d, char *, text_id *, sfVector2f);
 void create_basic_chest(scene *d);
 void create_golden_chest(scene *d);
 
+//Environment
+void create_rain_env(scene *d);
+void create_snow_env(scene *d);
+void create_regen_env(scene *d);
+void create_spawn_env(scene *d);
+void create_low_life_env(scene *d);
+void create_run_env(scene *d);
 
 #endif

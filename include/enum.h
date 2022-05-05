@@ -93,6 +93,16 @@ typedef enum {
 } chest_state;
 
 typedef enum {
+    NONE,
+    RAIN,
+    SNOW,
+    REGEN,
+    SPAWN,
+    LOW_LIFE,
+    RUN
+} env_type;
+
+typedef enum {
     FIRST_CLICK,
     SECOND_CLICK,
 } inventory_chest_state;

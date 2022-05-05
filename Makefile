@@ -44,7 +44,16 @@ SPRITES	=	banners/banners1.c	\
 			player/player.c	\
 			player/player_animation.c	\
 			player/player_inventory.c	\
+			player/player_particle.c	\
+			objects/chests.c	\
 			chest_inventory.c	\
+
+ENVIRONMENTS	=	rain.c	\
+					snow.c	\
+					regen.c	\
+					spawn.c	\
+					low_life.c	\
+					run.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/settings_menu.c	\
@@ -55,6 +64,7 @@ SCREENS	=	main_menu/main_menu.c	\
 			open_inventory_chest.c	\
 
 TEXTURES	=	characters/characters.c	\
+				characters/particle.c	\
 				objects/chest_and_obj.c	\
 				objects/particles.c	\
 				objects/walls.c	\
@@ -83,6 +93,7 @@ MANAGER =	sprites_manager.c	\
 			move_manager.c	\
 			event_manager.c	\
 			thread_manager.c	\
+			env_manager.c	\
 
 TEXTS	=	fps.c	\
 			menu.c	\
@@ -99,6 +110,8 @@ MANAGER_PATH	=	manager/
 
 UTIL_PATH	=	utils/
 
+ENV_PATH	=	environment/
+
 SRC	=		events.c	\
 			$(addprefix $(MANAGER_PATH), $(MANAGER))	\
 			$(addprefix $(TEXTS_PATH), $(TEXTS))	\
@@ -106,6 +119,7 @@ SRC	=		events.c	\
 			$(addprefix $(SCREEN_PATH), $(SCREENS))	\
 			$(addprefix $(SPRITE_PATH), $(SPRITES))	\
 			$(addprefix $(UTIL_PATH), $(UTILS))	\
+			$(addprefix $(ENV_PATH), $(ENVIRONMENTS))	\
 
 OBJ	=	$(MAIN:.c=.o) $(SRC:.c=.o)
 
