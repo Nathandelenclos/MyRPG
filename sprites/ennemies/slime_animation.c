@@ -95,7 +95,7 @@ void destroy_animate_slime(scene *d, game_obj *g)
         rect.left += 32;
         rect.top = 128;
         if (rect.left > (g->texture->rect.width - (3 * 32)))
-            rect = g->rect;
+            g->display = 0;
         sfSprite_setTextureRect(g->sprite, rect);
         data->old_time_an = sfClock_getElapsedTime(g->clock);
     }

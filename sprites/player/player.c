@@ -7,6 +7,15 @@
 
 #include "../../include/rpg.h"
 
+void print_life_bar_player(scene *d, player *p)
+{
+    life_percent(p->lb, p->hp);
+    sfVector2f v = sfSprite_getPosition(p->inv->sprite);
+    v.y -= 50;
+    sfSprite_setPosition(p->lb->sprite, v);
+    sfRenderWindow_drawSprite(d->hub->window, p->lb->sprite, NULL);
+}
+
 void event_player(game_obj *g, scene *d, sfEvent event)
 {
     player *p = (player *) g->data;
@@ -25,6 +34,12 @@ void event_player(game_obj *g, scene *d, sfEvent event)
     if (event.type == sfEvtMouseButtonPressed) {
         rect.left = 0;
         p->state = HIT;
+        float distance = get_distance(g, get_closer_object(d, g, ENEMY));
+        if (distance <= 175.0 && distance >= 0.0) {
+            game_obj *s = get_object(d, "enemy_slime");
+            if (s != NULL)
+                ((slime *)s->data)->hp -= 5;
+        }
         sfSprite_setTextureRect(g->sprite, rect);
     }
 }
@@ -32,6 +47,7 @@ void event_player(game_obj *g, scene *d, sfEvent event)
 void animate_player(scene *d, game_obj *g)
 {
     player *data = (player *) g->data;
+    print_life_bar_player(d, data);
     switch (data->state) {
     case HIT:
         data->hit(d, g);
@@ -60,19 +76,21 @@ player *create_player_data(scene *d)
     data->old_time_an = sfTime_Zero;
     data->time = sfTime_Zero;
     data->state = IDLE;
+    data->hp = 100;
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
     data->animation_speed = 0.15;
     data->inv = create_inventory(d);
+    data->lb = create_life_bar(300, 20, sfGreen, sfBlack);
+    put_in_end(&d->objs, data->inv);
     data->particles = NULL;
     return data;
 }
 
 void create_player(scene *d)
 {
-    sfVector2f vector[2] = {
-        {
+    sfVector2f vector[2] = {{
             (d->hub->mode.width / 2) - ((48 * 6) / 2),
             (d->hub->mode.height / 2) - ((48 * 6) / 2)
         }, {0, 0}};
@@ -90,5 +108,4 @@ void create_player(scene *d)
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);
     put_in_list(&((player *)(hero->data))->particles, create_particle(d));
-
 }

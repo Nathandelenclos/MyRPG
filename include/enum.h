@@ -62,6 +62,7 @@ typedef enum state_e {
     SETTINGS,
     SETTINGS_ERROR,
     CHEST,
+    GAME_OVER,
 } state;
 
 enum sound_grp {

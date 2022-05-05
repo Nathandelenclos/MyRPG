@@ -71,7 +71,7 @@ life_bar *create_life_bar(
     int width, int height, sfColor main_color, sfColor back_color
 );
 void life_percent(life_bar *lb, float percent);
-void print_life_bar(scene *d, life_bar *lb, int percent);
+void print_life_bar(scene *d, life_bar *lb, float percent, sfVector2f pos);
 void print_main_life(scene *d);
 scene *create_scene(screen *s, state state);
 texture *create_texture(char *filename, char *name, sfIntRect rect);
@@ -89,6 +89,8 @@ sfVector2f create_vector2f(float x, float y);
 void data_chest(screen *screen1);
 game_obj *get_object(scene *d, char *name);
 void switch_scene(scene *d, state s);
+float get_distance(game_obj *first, game_obj *seconds);
+game_obj *get_closer_object(scene *d, game_obj *obj, group grp);
 void animate_all_particles(scene *s, player *p);
 environment *get_env(scene *d, env_type type);
 void env_manager(scene *d);

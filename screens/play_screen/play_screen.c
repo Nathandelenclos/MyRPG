@@ -41,6 +41,7 @@ void create_data_play(scene *d)
     create_env(d);
     create_sprite_map(d);
     create_player(d);
+    create_slime(d, 271, 174, BLACK);
     display_fps(d);
     get_env(d, RUN)->active = sfTrue;
 }

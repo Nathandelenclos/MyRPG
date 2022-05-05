@@ -133,7 +133,7 @@ LIB	=	-lcsfml-graphics	\
 		-lcsfml-audio	\
 		-llist	\
 		-lm	\
-		-lmy
+		-lmy	\
 
 CFLAGS	=	-I include
 

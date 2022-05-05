@@ -27,8 +27,10 @@ typedef struct {
     entity_state state;
     sfTime time;
     sfTime old_time_an;
-    int life;
+    sfTime old_time_hit;
+    int hp;
     int speed;
+    life_bar *lb;
 } slime;
 
 typedef struct {
@@ -47,9 +49,12 @@ typedef struct particle_s{
 typedef struct {
     sfTime time;
     sfTime old_time_an;
+    sfTime old_time_hit;
     entity_state state;
     double animation_speed;
     game_obj *inv;
+    int hp;
+    life_bar *lb;
     node *particles;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
