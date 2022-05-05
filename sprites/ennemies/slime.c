@@ -50,29 +50,33 @@ slime *create_slime_data(void)
 void action_slime(game_obj *g, scene *d)
 {
     game_obj *map = get_object(d, "maps");
-    slime *s = (slime *)g->data;
+    slime *s = (slime *) g->data;
     sfVector2f pos_map = sfSprite_getPosition(map->sprite);
     pos_map.x += g->vector.x * 9.0;
     pos_map.y += g->vector.y * 9.0;
     sfSprite_setPosition(g->sprite, pos_map);
     game_obj *p = get_object(d, "player");
-    float rx = sfSprite_getPosition(p->sprite).x - pos_map.x + 80.0 + 144.0;
-    float ry = sfSprite_getPosition(p->sprite).y - pos_map.y + 80.0 + 144.0;
+    float rx = (sfSprite_getPosition(p->sprite).x + ((p->rect.width / 2) *
+        sfSprite_getScale(p->sprite).x)) - (pos_map.x + ((g->rect.width / 2) *
+        sfSprite_getScale(g->sprite).x));
+    float ry = (sfSprite_getPosition(p->sprite).y + ((p->rect.height / 2) *
+        sfSprite_getScale(p->sprite).y)) - (pos_map.y + ((g->rect.height / 2) *
+        sfSprite_getScale(p->sprite).y));
     float range = sqrt(rx * rx + ry * ry);
     //printf("range %i midmobx %i midmoby %i midplayerx %i midplayery %i\n",range, pos_map.x + 80, pos_map.y + 80, sfSprite_getPosition(p->sprite).x + 144, sfSprite_getPosition(p->sprite).y + 144);
     s->time = sfClock_getElapsedTime(g->clock);
     float seconds = sfTime_asSeconds(s->time);
     float old_seconds = sfTime_asSeconds(s->old_time_hit);
-    if (range <= 100.0)
+    if (range <= 150.0)
         s->state = HIT;
     else
         s->state = IDLE;
-    if (range <= 100.0 && seconds - old_seconds >= 0.5) {
-        ((player *)p->data)->hp -= 2;
+    if (range <= 150.0 && seconds - old_seconds >= 0.5) {
+        ((player *) p->data)->hp -= 2;
         s->old_time_hit = sfClock_getElapsedTime(g->clock);
         //printf("%i\n", ((player *)p->data)->hp);
-        if (((player *)p->data)->hp <= 0) {
-            ((player *)p->data)->hp = 100;
+        if (((player *) p->data)->hp <= 0) {
+            ((player *) p->data)->hp = 100;
             switch_scene(d, START);
         }
     }
