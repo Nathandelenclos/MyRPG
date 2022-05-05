@@ -35,7 +35,11 @@ void create_text_setting_invent_left(scene *d);
 void lb_change_input(sfEvent event, button *d, game_obj *g, scene *s);
 button *create_button_data(char *text, scene *s, sfVector2f pos);
 text *search_for_text(scene *s, char *name);
+<<<<<<< HEAD
 sfVector2f create_vector2f(float x, float y);
+=======
+text *search_for_n_text(scene *s, char *name, int n);
+>>>>>>> preprod
 sfVector2f get_w_scale(scene *d, game_obj *);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
@@ -66,6 +70,7 @@ void launch_in_thread(void (*function)(void *), void *userData);
 void copy_objs(scene *copy, scene *paste, group grp);
 game_obj *is_on_btn(scene *d, sfMouseButtonEvent event, int id);
 void data_start(screen *screen1);
+void print_color(scene *data, int x, int y);
 life_bar *create_life_bar(
     int width, int height, sfColor main_color, sfColor back_color
 );
@@ -77,10 +82,16 @@ texture *create_texture(char *filename, char *name, sfIntRect rect);
 void display_score(scene *d);
 void display_money(scene *d);
 void display_fps(scene *d);
+void collision_map(scene *s, game_obj *g);
 int vector_is_around(sfVector2f v, sfVector2f obj, int margin);
 void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
 void events_manage(scene *d, sfEvent);
 void draw_text_with_index(scene *d, int index);
+void data_play(screen *screen1);
+sfVector2f create_vector2f(float x, float y);
+void data_chest(screen *screen1);
+game_obj *get_object(scene *d, char *name);
+void switch_scene(scene *d, state s);
 
 #endif

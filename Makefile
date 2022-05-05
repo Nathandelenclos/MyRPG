@@ -13,7 +13,11 @@ UTILS	=	life_bar.c	\
 			free.c	\
 			get_w_scale.c	\
 			utils.c	\
+<<<<<<< HEAD
 			init_settings_structs.c	\
+=======
+			collision.c	\
+>>>>>>> preprod
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
@@ -39,12 +43,18 @@ SPRITES	=	banners/banners1.c	\
 			ui/input_error_handling.c	\
 			ui/create_settings_background.c	\
 			ui/error_popup.c	\
+			map.c	\
+			player/player.c	\
+			player/player_animation.c	\
+			chest_inventory.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/settings_menu.c	\
 			settings_menu/moving_button.c	\
 			settings_menu/slot_button.c	\
 			settings_menu/wrong_input_screen.c	\
+			play_screen/play_screen.c	\
+			open_inventory_chest.c	\
 
 TEXTURES	=	characters/characters.c	\
 				objects/chest_and_obj.c	\
@@ -60,6 +70,8 @@ TEXTURES	=	characters/characters.c	\
 				ui/icons/icon2.c	\
 				ui/icons/icon3.c	\
 				ui/others/other_textures.c	\
+				map.c	\
+				ui/chest_inventory.c	\
 				ui/create_menu_textures.c	\
 				ui/create_slide_bar_texture.c	\
 				ui/create_popup_texture.c	\

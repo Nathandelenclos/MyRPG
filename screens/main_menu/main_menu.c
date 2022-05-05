@@ -17,6 +17,8 @@ void events(scene *d, sfEvent event)
     case sfEvtKeyPressed:
         if (event.key.code == sfKeyEscape)
             sfRenderWindow_close(d->hub->window);
+        if (event.key.code == sfKeyEnter)
+            switch_scene(d, PLAY);
     }
 }
 
@@ -26,6 +28,11 @@ void start_screen(scene *data)
     move_manager(data);
     time_manager(data);
     text_manager(data);
+}
+
+void active_start(scene *old, scene *new)
+{
+    sfRenderWindow_setMouseCursorVisible(new->hub->window, sfTrue);
 }
 
 void create_data(scene *d)
@@ -50,6 +57,7 @@ void data_start(screen *screen1)
     scene *d = create_scene(screen1, START);
     d->screen = start_screen;
     d->event = events;
+    d->active = active_start;
     create_data(d);
     put_in_list(&screen1->datas, d);
 }

@@ -44,7 +44,7 @@ screen *create_hub(void)
 {
     screen *hub = malloc(sizeof(screen));
     hub->state = START;
-    sfVideoMode mode = {1920, 1080, 32};
+    sfVideoMode mode = sfVideoMode_getDesktopMode();
     hub->window = sfRenderWindow_create(mode, "MyRPG", sfFullscreen,
         NULL);
     hub->clock = sfClock_create();

@@ -64,7 +64,7 @@ void create_basic_chest(scene *d)
     game_obj *hero = create_obj(d, "basic_chest", rect, vector);
     set_scale(d, hero->sprite, 3);
     hero->data = create_chest_data();
-    hero->type = CHEST;
+    hero->type = CHESTS;
     hero->name = "basic_chest";
     hero->grp = OBJECT;
     hero->display = 1;

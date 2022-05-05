@@ -35,8 +35,10 @@ static const char *TOUCH[] = {"   A", "   B", "   C", "   D", "   E", "   F",
 
 typedef enum group_e {
     HOME_BTN,
-    ENEMY,
     UI,
+    ENTITY,
+    MAP,
+    ENEMY,
     OBJECT,
     BACKGROUND,
     SCROLL_BTN,
@@ -46,9 +48,11 @@ typedef enum group_e {
 typedef enum type_e {
     BASIC,
     SLIME,
+    PLAYER,
+    INV,
     MENU_BG,
     BUTTON,
-    CHEST,
+    CHESTS,
 } type;
 
 typedef enum state_e {
@@ -57,6 +61,7 @@ typedef enum state_e {
     PAUSE,
     SETTINGS,
     SETTINGS_ERROR,
+    CHEST,
 } state;
 
 enum sound_grp {
@@ -79,7 +84,7 @@ typedef enum {
     JUMP,
     HIT,
     DESTROY,
-} slime_state;
+} entity_state;
 
 typedef enum {
     OPEN,

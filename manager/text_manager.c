@@ -24,6 +24,7 @@ text *create_text(char *filename, char *string, sfColor color, sfVector2f v)
     t->color = color;
     sfText_setColor(t->text, t->color);
     t->position = v;
+    t->display = sfTrue;
     sfText_setPosition(t->text, t->position);
     t->animate = NULL;
     t->display = 1;

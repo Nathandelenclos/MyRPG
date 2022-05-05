@@ -55,4 +55,8 @@ void create_textures(scene *d)
     create_icon_youtube_texture(d);
     create_icons_texture(d);
     create_popup(d);
+    create_maps_textures(d);
+    create_menu_texture(d);
+    create_icons_texture(d);
+    create_chest_inventory_texture(d);
 }
