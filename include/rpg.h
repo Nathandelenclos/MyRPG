@@ -58,7 +58,7 @@ life_bar *create_life_bar(
     int width, int height, sfColor main_color, sfColor back_color
 );
 void life_percent(life_bar *lb, float percent);
-void print_life_bar(scene *d, life_bar *lb, int percent);
+void print_life_bar(scene *d, life_bar *lb, float percent, sfVector2f pos);
 void print_main_life(scene *d);
 scene *create_scene(screen *s, state state);
 texture *create_texture(char *filename, char *name, sfIntRect rect);

@@ -31,6 +31,7 @@ typedef struct {
     sfTime old_time_hit;
     int hp;
     int speed;
+    life_bar *lb;
 } slime;
 
 typedef struct {
@@ -47,6 +48,7 @@ typedef struct {
     double animation_speed;
     game_obj *inv;
     int hp;
+    life_bar *lb;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
     void (*jump)(scene *, game_obj *);

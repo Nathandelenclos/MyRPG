@@ -53,13 +53,11 @@ void life_percent(life_bar *lb, float percent)
     sfSprite_setTexture(lb->sprite, lb->texture, sfTrue);
 }
 
-void print_life_bar(scene *d, life_bar *lb, int percent)
+void print_life_bar(scene *d, life_bar *lb, float percent, sfVector2f pos)
 {
     if (lb == NULL)
         return;
-    sfVector2f v = sfSprite_getPosition(lb->obj->sprite);
-    v.y -= lb->obj->rect.height - 15;
-    life_percent(lb, lb->percent);
-    sfSprite_setPosition(lb->sprite, v);
+    life_percent(lb, percent);
+    sfSprite_setPosition(lb->sprite, pos);
     sfRenderWindow_drawSprite(d->hub->window, lb->sprite, NULL);
 }
