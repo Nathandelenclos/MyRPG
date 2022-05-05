@@ -23,9 +23,15 @@
 #ifndef RPG_H
     #define RPG_H
 
-btn_param *create_btn_param(sfVector2f, int, int, group);
+void switch_scene(scene *d, state s);
+void wrong_input(screen *screen1);
+game_obj *get_object(scene *d, char *name);
+btn_param *create_btn_param(int, int, int, int);
 settings *init_settings_struct(void);
 void data_settings(screen *screen1);
+void create_button_setting(scene *d);
+void create_text_setting_invent_left(scene *d);
+void lb_change_input(sfEvent event, button *d, game_obj *g, scene *s);
 button *create_button_data(char *text, scene *s, sfVector2f pos);
 text *search_for_text(scene *s, char *name);
 sfVector2f create_vector2f(float x, float y);

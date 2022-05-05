@@ -23,7 +23,7 @@ void events_play(scene *d, sfEvent event)
         if (event.key.code == sfKeyEscape)
             d->hub->state = PAUSE;
     case sfEvtMouseButtonPressed:
-        if (is_on_btn(d, event.mouseButton, INVISIBLE_BTN, NULL)) {
+        if (is_on_btn(qd, event.mouseButton, INVISIBLE_BTN, NULL)) {
             d->hub->state = BUY;
             d->hub->data_switch->place =
                 is_on_btn(d, event.mouseButton, INVISIBLE_BTN, NULL)->name;

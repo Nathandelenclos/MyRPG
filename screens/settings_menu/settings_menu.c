@@ -1,7 +1,7 @@
 /*
 ** EPITECH PROJECT, 2021
 ** MyRPG
-** File description:
+** File descriptiofn:
 ** Screen
 */
 
@@ -48,6 +48,7 @@ void create_sprite_settings(scene *d)
     create_sprite_sb(d, "white_sb",
      create_btn_param(create_vector2f(600, 80), 2, 4, HOME_BTN),
         my_int_to_str(d->hub->s->volume));
+    create_button_setting(d);
 }
 
 void data_settings(screen *screen1)

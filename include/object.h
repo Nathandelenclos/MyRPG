@@ -21,6 +21,12 @@
     #define OBJECT_H_
 
 //Objects
+int create_sprite_popup(scene *d);
+int create_sprite_bg_settings(scene *d);
+int input_handling(sfKeyCode code, controls *c, scene *s);
+void change_input_slot_p1(button *d, controls *c, sfEvent event, scene *s);
+void change_input_interact(button *d, controls *c, sfEvent event, scene *s);
+void change_input_movement(button *d, controls *c, sfEvent event, scene *s);
 int create_settings_hud_sprite(scene *d);
 int create_settings_menu_sprite(scene *d);
 void create_blue_banner(scene *d);

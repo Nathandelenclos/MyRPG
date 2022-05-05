@@ -7,6 +7,19 @@
 
 #include "../include/rpg.h"
 
+game_obj *get_object(scene *d, char *name)
+{
+    game_obj *obj;
+    node *tmp = d->objs;
+    while (tmp != NULL) {
+        obj = (game_obj *)tmp->data;
+        if (my_strcmp(name, obj->name))
+            return obj;
+        tmp = tmp->next;
+    }
+    return NULL;
+}
+
 void create_obj_part_2(game_obj *obj)
 {
     obj->display = 1;
@@ -27,7 +40,7 @@ game_obj *create_obj(
     obj->sprite = sfSprite_create();
     obj->rect = rect;
     obj->position = vector[0];
-    obj->vector = vector[1];    
+    obj->vector = vector[1];
     create_obj_part_2(obj);
     sfSprite_setPosition(obj->sprite, vector[0]);
     if (obj->texture != NULL)
