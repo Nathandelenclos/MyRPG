@@ -40,6 +40,7 @@ slime *create_slime_data(void)
     data->state = IDLE;
     data->hp = 10;
     data->time = sfTime_Zero;
+    data->state = IDLE;
     data->time = sfTime_Zero;
     data->destroy = destroy_animate_slime;
     data->hit = hit_animate_slime;

@@ -13,6 +13,7 @@ UTILS	=	life_bar.c	\
 			free.c	\
 			get_w_scale.c	\
 			utils.c	\
+			init_settings_structs.c	\
 			collision.c	\
 
 SPRITES	=	banners/banners1.c	\
@@ -24,22 +25,46 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon3.c	\
       		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
-      		l_btn.c	\
-			r_btn.c	\
-			s_btn.c	\
-			map.c	\
+      		objects/chests.c	\
+      		ui/l_btn.c	\
+      		ui/event_change_input_setting.c	\
+			ui/change_move_input.c	\
+			ui/change_interact_input.c	\
+			ui/change_slot_input.c	\
+			ui/r_btn.c	\
+			ui/s_btn.c	\
+			ui/slide_bar.c	\
 			menu_bg.c	\
+			settings_bg.c	\
+			ui/tiles.c	\
+			ui/input_error_handling.c	\
+			ui/create_settings_background.c	\
+			ui/error_popup.c	\
+			map.c	\
 			player/player.c	\
 			player/player_animation.c	\
 			player/player_inventory.c	\
+			player/player_particle.c	\
 			objects/chests.c	\
 			chest_inventory.c	\
 
+ENVIRONMENTS	=	rain.c	\
+					snow.c	\
+					regen.c	\
+					spawn.c	\
+					low_life.c	\
+					run.c	\
+
 SCREENS	=	main_menu/main_menu.c	\
+			settings_menu/settings_menu.c	\
+			settings_menu/moving_button.c	\
+			settings_menu/slot_button.c	\
+			settings_menu/wrong_input_screen.c	\
 			play_screen/play_screen.c	\
 			open_inventory_chest.c	\
 
 TEXTURES	=	characters/characters.c	\
+				characters/particle.c	\
 				objects/chest_and_obj.c	\
 				objects/particles.c	\
 				objects/walls.c	\
@@ -56,6 +81,8 @@ TEXTURES	=	characters/characters.c	\
 				map.c	\
 				ui/chest_inventory.c	\
 				ui/create_menu_textures.c	\
+				ui/create_slide_bar_texture.c	\
+				ui/create_popup_texture.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
@@ -66,6 +93,7 @@ MANAGER =	sprites_manager.c	\
 			move_manager.c	\
 			event_manager.c	\
 			thread_manager.c	\
+			env_manager.c	\
 
 TEXTS	=	fps.c	\
 			menu.c	\
@@ -82,6 +110,8 @@ MANAGER_PATH	=	manager/
 
 UTIL_PATH	=	utils/
 
+ENV_PATH	=	environment/
+
 SRC	=		events.c	\
 			$(addprefix $(MANAGER_PATH), $(MANAGER))	\
 			$(addprefix $(TEXTS_PATH), $(TEXTS))	\
@@ -89,6 +119,7 @@ SRC	=		events.c	\
 			$(addprefix $(SCREEN_PATH), $(SCREENS))	\
 			$(addprefix $(SPRITE_PATH), $(SPRITES))	\
 			$(addprefix $(UTIL_PATH), $(UTILS))	\
+			$(addprefix $(ENV_PATH), $(ENVIRONMENTS))	\
 
 OBJ	=	$(MAIN:.c=.o) $(SRC:.c=.o)
 

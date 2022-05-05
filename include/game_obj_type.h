@@ -14,7 +14,6 @@
 #include "my.h"
 #include "enum.h"
 #include "struct.h"
-#include "object.h"
 
 #ifndef GAME_OBJ_TYPE_H
     #define GAME_OBJ_TYPE_H
@@ -40,6 +39,13 @@ typedef struct {
     float speed;
 } maps;
 
+typedef struct particle_s{
+    sfSprite *sprite;
+    sfTexture *texture;
+    void (*animate)(scene  *, struct particle_s *p);
+    int state;
+} particle;
+
 typedef struct {
     sfTime time;
     sfTime old_time_an;
@@ -49,6 +55,7 @@ typedef struct {
     game_obj *inv;
     int hp;
     life_bar *lb;
+    node *particles;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
     void (*jump)(scene *, game_obj *);
@@ -80,6 +87,19 @@ typedef struct {
 } chest;
 
 typedef struct {
+    sfVector2f pos;
+    int zindex;
+    int scale;
+    group grp;
+} btn_param;
+
+typedef struct {
+    int size;
+    group grp;
+    int zindex;
+} text_id;
+
+typedef struct {
     inventory_chest_state state;
     sfVector2f *pos;
     sfSprite *slot_s[36];
@@ -93,5 +113,6 @@ void hit_animate_slime(scene *d, game_obj *g);
 void move_animate_slime(scene *d, game_obj *g);
 void jump_animate_slime(scene *d, game_obj *g);
 void idle_animate_slime(scene *d, game_obj *g);
+particle *create_particle(scene *d);
 
 #endif

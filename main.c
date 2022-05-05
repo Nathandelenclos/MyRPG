@@ -6,18 +6,11 @@
 */
 
 #include "include/rpg.h"
+#include <time.h>
 
 void load_screen(sfRenderWindow *window)
 {
-    sfSprite *sprite = sfSprite_create();
-    sfIntRect rect = create_rect(1080, 720, 0, 0);
-    sfTexture *t =
-        sfTexture_createFromFile("./assets/logo.png", &rect);
-    sfSprite_setTexture(sprite, t, sfTrue);
-    sfRenderWindow_drawSprite(window, sprite, NULL);
-    sfRenderWindow_display(window);
-    sfSprite_destroy(sprite);
-    sfTexture_destroy(t);
+
 }
 
 void start(screen *hub)
@@ -28,11 +21,11 @@ void start(screen *hub)
     while (sfRenderWindow_isOpen(hub->window)) {
         scene = get_scene(scene, hub->state);
         sfRenderWindow_clear(hub->window, sfBlack);
-        scene->screen(scene);
         while (sfRenderWindow_pollEvent(hub->window, &event)) {
             scene->event(scene, event);
             event_manager(scene, event);
         }
+        scene->screen(scene);
         hub->fps = 1 /
             (sfTime_asMilliseconds(sfClock_restart(hub->clock)) * 0.001);
         sfRenderWindow_display(hub->window);
@@ -51,6 +44,7 @@ screen *create_hub(void)
     hub->fps = 0;
     hub->mode = mode;
     hub->datas = NULL;
+    hub->s = init_settings_struct();
     return hub;
 }
 
@@ -65,6 +59,6 @@ int main(int argc, char **argv)
     screen_manager(hub);
     start(hub);
     sfImage_destroy(icon);
-    //free_game(hub);
+    destroy_music(hub);
     return 0;
 }

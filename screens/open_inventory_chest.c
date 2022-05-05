@@ -66,7 +66,7 @@ void create_chest_scene_data(scene *d)
     create_chest_inventory_sprite(d);
 }
 
-void save_background(scene *old, scene *new)
+void save_chest_background(scene *old, scene *new)
 {
     sfTexture *texture =
     sfTexture_create(old->hub->mode.width, old->hub->mode.height);
@@ -81,7 +81,7 @@ void data_chest(screen *screen1)
     scene *d = create_scene(screen1, CHEST);
     d->screen = chest_screen;
     d->event = events_chest;
-    d->active = save_background;
+    d->active = save_chest_background;
     create_chest_scene_data(d);
     put_in_list(&screen1->datas, d);
 }

@@ -84,6 +84,7 @@ player *create_player_data(scene *d)
     data->inv = create_inventory(d);
     data->lb = create_life_bar(300, 20, sfGreen, sfBlack);
     put_in_end(&d->objs, data->inv);
+    data->particles = NULL;
     return data;
 }
 
@@ -106,4 +107,5 @@ void create_player(scene *d)
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);
+    put_in_list(&((player *)(hero->data))->particles, create_particle(d));
 }

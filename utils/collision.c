@@ -7,27 +7,27 @@
 
 #include "../include/rpg.h"
 
-sfVector2f get_direction(sfUint32 *radar)
+sfVector2f get_direction(sfUint32 *radar, maps *m)
 {
     if (radar[0] != radar[7]) {
         if (radar[3] != radar[7])
-            return create_vector2f(0, -30);
+            return create_vector2f(0, -(m->speed));
         if (radar[2] != radar[7])
-            return create_vector2f(-30, 0);
-        return create_vector2f(-30, -30);
+            return create_vector2f(-(m->speed), 0);
+        return create_vector2f(-(m->speed), -(m->speed));
     }
     if (radar[3] != radar[7]) {
         if (radar[5] != radar[7])
-            return create_vector2f(30, 0);
-        return create_vector2f(30, -30);
+            return create_vector2f((m->speed), 0);
+        return create_vector2f((m->speed), -(m->speed));
     }
     if (radar[2] != radar[7]) {
         if (radar[5] != radar[7])
-            return create_vector2f(0, 30);
-        return create_vector2f(-30, 30);
+            return create_vector2f(0, (m->speed));
+        return create_vector2f(-(m->speed), (m->speed));
     }
     if (radar[5] != radar[7])
-        return create_vector2f(30, 30);
+        return create_vector2f((m->speed), (m->speed));
     return create_vector2f(0, 0);
 }
 
@@ -49,7 +49,7 @@ void collision_map(scene *s, game_obj *g)
         top_left, middle_left, bottom_left, top_right, middle_right,
         bottom_right, bottom_middle, green, 0
     };
-    sfSprite_move(g->sprite, get_direction(all));
+    sfSprite_move(g->sprite, get_direction(all, get_object(s, "maps")->data));
     sfImage_destroy(i);
     sfTexture_destroy(texture);
 }

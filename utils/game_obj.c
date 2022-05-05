@@ -27,7 +27,7 @@ game_obj *create_obj(
     obj->sprite = sfSprite_create();
     obj->rect = rect;
     obj->position = vector[0];
-    obj->vector = vector[1];    
+    obj->vector = vector[1];
     create_obj_part_2(obj);
     sfSprite_setPosition(obj->sprite, vector[0]);
     if (obj->texture != NULL)
