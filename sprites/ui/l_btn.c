@@ -40,17 +40,17 @@ void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
 void animate_lb(game_obj *g, scene *s, sfEvent event)
 {
     button *d = (button *) g->data;
-    d->t->display = g->display;
-    d->t->position.y = g->position.y - 25;
-    g->rect.top = 0;
-    g->position = d->pos;
-    g->rect.height = 21;
-    if (my_strcmp(" SETTINGS", d->t->string))
-        d->t->position.y = g->position.y - 10;
-    d->t->position.x = g->position.x;
-    sfSprite_setPosition(g->sprite, g->position);
-    sfText_setPosition(d->t->text, d->t->position);
-    sfSprite_setTextureRect(g->sprite, g->rect);
+    if (event.type == sfEvtMouseButtonPressed) {
+        if (is_on_btn(s, event.mouseButton, g->id)) {
+            g->rect.top = 21;
+            g->rect.height = 20;
+            d->t->position.y += 3;
+            g->position.y += 3;
+            sfText_setPosition(d->t->text, d->t->position);
+            sfSprite_setPosition(g->sprite, g->position);
+        }
+        sfSprite_setTextureRect(g->sprite, g->rect);
+    }
     long_button_event(event, d, g, s);
 }
 
