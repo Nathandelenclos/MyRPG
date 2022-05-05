@@ -45,7 +45,6 @@ SPRITES	=	banners/banners1.c	\
 			player/player_animation.c	\
 			player/player_inventory.c	\
 			player/player_particle.c	\
-			objects/chests.c	\
 			chest_inventory.c	\
 
 ENVIRONMENTS	=	rain.c	\
