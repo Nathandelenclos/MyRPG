@@ -73,7 +73,11 @@ typedef enum {
 typedef enum {
     NONE,
     RAIN,
-    SNOW
+    SNOW,
+    REGEN,
+    SPAWN,
+    LOW_LIFE,
+    RUN
 } env_type;
 
 #endif

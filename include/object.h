@@ -68,5 +68,9 @@ void create_golden_chest(scene *d);
 //Environment
 void create_rain_env(scene *d);
 void create_snow_env(scene *d);
+void create_regen_env(scene *d);
+void create_spawn_env(scene *d);
+void create_low_life_env(scene *d);
+void create_run_env(scene *d);
 
 #endif

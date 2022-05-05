@@ -9,13 +9,6 @@
 
 void animate_rain(scene *d, environment *e)
 {
-    e->time = sfClock_getElapsedTime(e->clock);
-    float seconds = sfTime_asSeconds(e->time);
-    float old_seconds = sfTime_asSeconds(e->old_time);
-    if (seconds - old_seconds >= 10) {
-        d->env_type = NONE;
-        return;
-    }
     for (size_t i = 0; i < sfVertexArray_getVertexCount(e->array); ++i) {
         sfVertex *v = sfVertexArray_getVertex(e->array, i);
         v->position.y += 10;
@@ -29,9 +22,7 @@ void create_rain_env(scene *d)
 {
     environment *env = malloc(sizeof(environment));
     env->type = RAIN;
-    env->clock = sfClock_create();
-    env->time = sfTime_Zero;
-    env->old_time = sfClock_getElapsedTime(env->clock);
+    env->active = sfFalse;
     env->array = sfVertexArray_create();
     sfVertexArray_setPrimitiveType(env->array, sfQuads);
     for (int i = 0; i < 100; ++i) {

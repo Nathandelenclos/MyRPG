@@ -27,7 +27,6 @@ typedef struct screen_s {
     sfRenderWindow *window;
     int fps;
     sfClock *clock;
-
 } screen;
 
 typedef struct life_bar_s {
@@ -43,11 +42,9 @@ typedef struct life_bar_s {
 
 typedef struct env_s {
     sfVertexArray *array;
-    sfClock *clock;
     void (*animate)(scene *d, struct env_s *e);
-    sfTime time;
-    sfTime old_time;
     env_type type;
+    sfBool active;
 } environment;
 
 typedef struct scene_s {
@@ -58,7 +55,6 @@ typedef struct scene_s {
     node *textures;
     state state;
     screen *hub;
-    env_type env_type;
     void (*screen)(scene *data);
     void (*active)(scene *old, scene *new);
     void (*event)(scene *data, sfEvent event);

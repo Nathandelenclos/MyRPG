@@ -22,9 +22,25 @@ environment *get_env(scene *d, env_type type)
 
 void env_manager(scene *d)
 {
-    environment *env = get_env(d, d->env_type);
-    if (env != NULL) {
-        env->animate(d, env);
-        sfRenderWindow_drawVertexArray(d->hub->window, env->array, NULL);
+    node *tmp = d->envs;
+    environment *env = NULL;
+    while (tmp != NULL) {
+        env = (environment *)tmp->data;
+        if (env->active == sfTrue) {
+            env->animate(d, env);
+            sfRenderWindow_drawVertexArray(d->hub->window, env->array, NULL);
+        }
+        tmp = tmp->next;
     }
+}
+
+void create_env(scene *d)
+{
+    create_rain_env(d);
+    create_snow_env(d);
+    create_snow_env(d);
+    create_regen_env(d);
+    create_spawn_env(d);
+    create_low_life_env(d);
+    create_run_env(d);
 }
