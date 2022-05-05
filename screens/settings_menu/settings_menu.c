@@ -16,6 +16,7 @@ void events_settings(scene *d, sfEvent event)
             d->hub->state = START;
     case sfEvtMouseWheelMoved:
         scroll_object_by_grp(d, 0, event.mouseWheel.delta * 10, SCROLL_BTN);
+        scroll_object_by_grp(d, 0, event.mouseWheel.delta * 10, SCROLL_BTN_IN);
     }
 }
 

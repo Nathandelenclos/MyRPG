@@ -26,7 +26,7 @@
 void switch_scene(scene *d, state s);
 void wrong_input(screen *screen1);
 game_obj *get_object(scene *d, char *name);
-btn_param *create_btn_param(int, int, int, int);
+btn_param *create_btn_param(sfVector2f pos, int zindex, int scale, group grp);
 settings *init_settings_struct(void);
 void data_settings(screen *screen1);
 void create_button_setting(scene *d);

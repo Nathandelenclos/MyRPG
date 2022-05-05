@@ -40,6 +40,7 @@ typedef enum group_e {
     OBJECT,
     BACKGROUND,
     SCROLL_BTN,
+    SCROLL_BTN_IN,
 } group;
 
 typedef enum type_e {
