@@ -112,7 +112,6 @@ typedef struct sound_d {
 } sound;
 
 typedef struct text_s {
-    sfBool display;
     sfFont *font;
     char *string;
     sfText *text;

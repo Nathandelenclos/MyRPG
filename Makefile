@@ -13,11 +13,8 @@ UTILS	=	life_bar.c	\
 			free.c	\
 			get_w_scale.c	\
 			utils.c	\
-<<<<<<< HEAD
 			init_settings_structs.c	\
-=======
 			collision.c	\
->>>>>>> preprod
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
@@ -46,6 +43,7 @@ SPRITES	=	banners/banners1.c	\
 			map.c	\
 			player/player.c	\
 			player/player_animation.c	\
+			player/player_inventory.c	\
 			chest_inventory.c	\
 
 SCREENS	=	main_menu/main_menu.c	\

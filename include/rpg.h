@@ -26,7 +26,6 @@
 text_id *create_text_id_struct(int size, group grp, int);
 void switch_scene(scene *d, state s);
 void wrong_input(screen *screen1);
-game_obj *get_object(scene *d, char *name);
 btn_param *create_btn_param(sfVector2f pos, int zindex, int scale, group grp);
 settings *init_settings_struct(void);
 void data_settings(screen *screen1);
@@ -35,11 +34,8 @@ void create_text_setting_invent_left(scene *d);
 void lb_change_input(sfEvent event, button *d, game_obj *g, scene *s);
 button *create_button_data(char *text, scene *s, sfVector2f pos);
 text *search_for_text(scene *s, char *name);
-<<<<<<< HEAD
 sfVector2f create_vector2f(float x, float y);
-=======
 text *search_for_n_text(scene *s, char *name, int n);
->>>>>>> preprod
 sfVector2f get_w_scale(scene *d, game_obj *);
 void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);

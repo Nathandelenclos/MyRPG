@@ -33,27 +33,6 @@ sfVector2f create_vector2f(float x, float y)
     return v;
 }
 
-void switch_scene(scene *d, state s)
-{
-    scene *new = get_scene(d, s);
-    if (new->active != NULL)
-        new->active(d, new);
-    d->hub->state = s;
-}
-
-game_obj *get_object(scene *d, char *name)
-{
-    game_obj *obj;
-    node *tmp = d->objs;
-    while (tmp != NULL) {
-        obj = (game_obj *) tmp->data;
-        if (my_strcmp(name, obj->name))
-            return obj;
-        tmp = tmp->next;
-    }
-    return NULL;
-}
-
 button *create_button_data(char *text, scene *s, sfVector2f pos)
 {
     button *b = malloc(sizeof(button));
