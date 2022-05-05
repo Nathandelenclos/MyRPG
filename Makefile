@@ -102,7 +102,7 @@ LIB	=	-lcsfml-graphics	\
 		-lcsfml-audio	\
 		-llist	\
 		-lm	\
-		-lmy
+		-lmy	\
 
 CFLAGS	=	-I include
 
@@ -113,6 +113,7 @@ debug:	all
 
 clean:
 	rm -f $(OBJ)
+	rm vgcore.*
 
 fclean: clean
 	rm -f $(NAME)

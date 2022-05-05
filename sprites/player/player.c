@@ -7,6 +7,24 @@
 
 #include "../../include/rpg.h"
 
+int range_player(game_obj *g, scene *d)
+{
+    game_obj *map = get_object(d, "maps");
+    player *p = (player *)g->data;
+    sfVector2f pos_map = sfSprite_getPosition(map->sprite);
+    pos_map.x += g->vector.x * 9;
+    pos_map.y += g->vector.y * 9;
+    game_obj *s = get_object(d, "enemy_slime");
+    if (s == NULL)
+        return (-1);
+    int rx = sfSprite_getPosition(s->sprite).x - pos_map.x + 160 / 2;
+    int ry = sfSprite_getPosition(s->sprite).y - pos_map.y + 160 / 2;
+    int range = sqrt(rx * rx + ry * ry);
+    p->time = sfClock_getElapsedTime(g->clock);
+    float seconds = sfTime_asSeconds(p->time);
+    float old_seconds = sfTime_asSeconds(p->old_time_hit);
+}
+
 void event_player(game_obj *g, scene *d, sfEvent event)
 {
     player *p = (player *) g->data;
@@ -25,9 +43,18 @@ void event_player(game_obj *g, scene *d, sfEvent event)
     if (event.type == sfEvtMouseButtonPressed) {
         rect.left = 0;
         p->state = HIT;
+        if (range_player(g, d) <= 80 && range_player(g, d) >= 0) {
+            game_obj *s = get_object(d, "enemy_slime");
+            if (s != NULL) {
+                ((slime *)s->data)->hp -= 5;
+                printf("%i\n", ((slime *)s->data)->hp);
+            }
+        }
         sfSprite_setTextureRect(g->sprite, rect);
     }
 }
+
+//calcul de range pour tous les slimes qui existent passer par tous les games obj si grp SLIME calcul range si attack player in range hp points reduce
 
 void animate_player(scene *d, game_obj *g)
 {
@@ -60,6 +87,7 @@ player *create_player_data(scene *d)
     data->old_time_an = sfTime_Zero;
     data->time = sfTime_Zero;
     data->state = IDLE;
+    data->hp = 100;
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;

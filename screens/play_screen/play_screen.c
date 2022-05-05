@@ -39,6 +39,7 @@ void create_data_play(scene *d)
     d->textures = get_scene(d, START)->textures;
     create_sprite_map(d);
     create_player(d);
+    create_slime(d, 271, 174, BLACK);
     display_fps(d);
 }
 

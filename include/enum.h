@@ -40,6 +40,7 @@ typedef enum state_e {
     PLAY,
     PAUSE,
     CHEST,
+    GAME_OVER,
 } state;
 
 enum sound_grp {
