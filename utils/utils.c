@@ -51,3 +51,11 @@ text *search_for_text(scene *s, char *name)
         tmp = tmp->next;
     }
 }
+
+void switch_scene(scene *d, state s)
+{
+    scene *new = get_scene(d, s);
+    if (new->active != NULL)
+        new->active(d, new);
+    d->hub->state = s;
+}

@@ -76,6 +76,7 @@ typedef struct scene_s {
     state state;
     screen *hub;
     void (*screen)(scene *data);
+    void (*active)(scene *old, scene *new);
     void (*event)(scene *data, sfEvent event);
 } scene;
 

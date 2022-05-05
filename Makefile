@@ -37,11 +37,14 @@ SPRITES	=	banners/banners1.c	\
 			settings_bg.c	\
 			ui/tiles.c	\
 			ui/input_error_handling.c	\
+			ui/create_settings_background.c	\
+			ui/error_popup.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/settings_menu.c	\
 			settings_menu/moving_button.c	\
 			settings_menu/slot_button.c	\
+			settings_menu/wrong_input_screen.c	\
 
 TEXTURES	=	characters/characters.c	\
 				objects/chest_and_obj.c	\
@@ -59,6 +62,7 @@ TEXTURES	=	characters/characters.c	\
 				ui/others/other_textures.c	\
 				ui/create_menu_textures.c	\
 				ui/create_slide_bar_texture.c	\
+				ui/create_popup_texture.c	\
 
 MANAGER =	sprites_manager.c	\
 			time_manager.c	\
@@ -121,7 +125,6 @@ fclean: clean
 	rm -f $(NAME)
 	make -C ./lib/my/ fclean
 	make -C ./lib/linked_list/ fclean
-	rm vgcore*
 
 re:	fclean all
 

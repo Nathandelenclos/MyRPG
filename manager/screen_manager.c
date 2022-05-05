@@ -67,6 +67,7 @@ scene *create_scene(screen *s, state state)
     d->state = state;
     d->screen = NULL;
     d->event = NULL;
+    d->active = NULL;
     return d;
 }
 
@@ -74,4 +75,5 @@ void screen_manager(screen *s)
 {
     data_start(s);
     data_settings(s);
+    wrong_input(s);
 }
