@@ -44,10 +44,16 @@ text *get_text(scene *d, char *name)
     return NULL;
 }
 
-void scroll_text(scene *d, float x, float y, char *name)
+void scroll_text_grp(scene *d, float x, float y, group grp)
 {
-    text *t = get_text(d, name);
-    sfText_move(t->text, create_vector2f(x, y));
+    node *tmp = d->texts;
+    text *data = NULL;
+    while (tmp != NULL) {
+        data = (text *)tmp->data;
+        if (data->grp == grp)
+            sfText_move(data->text, create_vector2f(x, y));
+        tmp = tmp->next;
+    }
 }
 
 void modify_string(scene *d, char *before, char *after)
@@ -79,6 +85,19 @@ void text_manager(scene *d)
             index++;
             tmp = d->texts;
         }
+        tmp = tmp->next;
+    }
+}
+
+void draw_text_with_index(scene *d, int index)
+{
+    text *t = NULL;
+    node *tmp = d->texts;
+
+    while (tmp != NULL) {
+        t = (text *)tmp->data;
+        if (t->display == index)
+            sfRenderWindow_drawText(d->hub->window, t->text, NULL);
         tmp = tmp->next;
     }
 }

@@ -45,3 +45,12 @@ settings *init_settings_struct(void)
     s->c = init_controls();
     return s;
 }
+
+text_id *create_text_id_struct(int size, group grp, int zindex)
+{
+    text_id *id = malloc(sizeof(text_id));
+    id->size = size;
+    id->grp = grp;
+    id->zindex = zindex;
+    return id;
+}

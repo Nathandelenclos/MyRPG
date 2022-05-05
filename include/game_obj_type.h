@@ -56,6 +56,12 @@ typedef struct {
     group grp;
 } btn_param;
 
+typedef struct {
+    int size;
+    group grp;
+    int zindex;
+} text_id;
+
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);
 void move_animate_slime(scene *d, game_obj *g);

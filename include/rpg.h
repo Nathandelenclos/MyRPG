@@ -23,6 +23,7 @@
 #ifndef RPG_H
     #define RPG_H
 
+text_id *create_text_id_struct(int size, group grp, int);
 void switch_scene(scene *d, state s);
 void wrong_input(screen *screen1);
 game_obj *get_object(scene *d, char *name);
@@ -40,7 +41,7 @@ void event_manager(scene *d, sfEvent event);
 scene *get_scene(scene *d, state state);
 void sprites_manager(scene *d);
 int get_next_index(node *list);
-void scroll_text(scene *d, float x, float y, char *name);
+void scroll_text_grp(scene *d, float x, float y, group);
 text *get_text(scene *d, char *name);
 game_obj *create_obj(
     scene *d, char *texture_name, sfIntRect rect, sfVector2f *vector
@@ -80,5 +81,6 @@ int vector_is_around(sfVector2f v, sfVector2f obj, int margin);
 void play_sound(scene *d, enum sound_grp grp);
 void free_game(screen *hub);
 void events_manage(scene *d, sfEvent);
+void draw_text_with_index(scene *d, int index);
 
 #endif

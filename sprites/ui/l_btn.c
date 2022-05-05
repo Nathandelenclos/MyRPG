@@ -40,6 +40,8 @@ void long_button_event(sfEvent event, button *d, game_obj *g, scene *s)
 void animate_lb(game_obj *g, scene *s, sfEvent event)
 {
     button *d = (button *) g->data;
+    d->t->position = sfText_getPosition(d->t->text);
+    g->position = sfSprite_getPosition(g->sprite);
     if (event.type == sfEvtMouseButtonPressed) {
         if (is_on_btn(s, event.mouseButton, g->id)) {
             g->rect.top = 21;

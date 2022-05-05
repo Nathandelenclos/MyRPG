@@ -30,6 +30,7 @@ void display_fps(scene *d)
             sfWhite, pos);
     t->animate = animate_fps;
     t->name = my_strdup("fps");
+    t->display = 5;
     sfText_setCharacterSize(t->text, 108);
     put_in_list(&d->texts, t);
 }

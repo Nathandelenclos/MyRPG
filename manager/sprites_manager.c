@@ -39,15 +39,15 @@ void scroll_object_by_grp(scene *d, float x, float y, group grp)
 
 void sprites_manager(scene *d)
 {
-    game_obj *obj;
+    game_obj *obj = NULL;
     node *tmp = d->objs;
     int z_index = 1;
 
     while (tmp != NULL) {
         obj = (game_obj *) tmp->data;
-        if (obj->display == z_index) {
+        if (obj->display == z_index)
             sfRenderWindow_drawSprite(d->hub->window, obj->sprite, NULL);
-        }
+        draw_text_with_index(d, z_index);
         if (tmp->next == NULL && z_index <= 5) {
             z_index++;
             tmp = d->objs;
