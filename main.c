@@ -21,11 +21,11 @@ void start(screen *hub)
     while (sfRenderWindow_isOpen(hub->window)) {
         scene = get_scene(scene, hub->state);
         sfRenderWindow_clear(hub->window, sfBlack);
+        scene->screen(scene);
         while (sfRenderWindow_pollEvent(hub->window, &event)) {
             scene->event(scene, event);
             event_manager(scene, event);
         }
-        scene->screen(scene);
         hub->fps = 1 /
             (sfTime_asMilliseconds(sfClock_restart(hub->clock)) * 0.001);
         sfRenderWindow_display(hub->window);

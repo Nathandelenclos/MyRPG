@@ -35,6 +35,7 @@ void regeneration_player(game_obj *g, scene *d)
         get_env(d, LOW_LIFE)->active = sfTrue;
     else
         get_env(d, LOW_LIFE)->active = sfFalse;
+    p->lb->main_color = sfColor_fromRGB(255 - (255*p->hp/100), (float )(p->hp) * 2.55, 0);
 }
 
 void print_life_bar_player(scene *d, player *p)
@@ -110,7 +111,7 @@ player *create_player_data(scene *d)
     data->old_time_hp = sfTime_Zero;
     data->time = sfTime_Zero;
     data->state = IDLE;
-    data->hp = 100;
+    data->hp = 10;
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
