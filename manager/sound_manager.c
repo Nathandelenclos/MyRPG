@@ -49,7 +49,9 @@ void destroy_music(screen *hub)
             tmp_d = d->sounds;
         while (tmp_d != NULL) {
             t = (sound *)tmp_d->data;
-            sfMusic_destroy(t->music);
+            if (t->music != NULL)
+                sfMusic_destroy(t->music);
+            t->music = NULL;
             tmp_d = tmp_d->next;
         }
         tmp = tmp->next;

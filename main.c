@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     load_screen(hub->window);
     screen_manager(hub);
     start(hub);
-    sfImage_destroy(icon);
     destroy_music(hub);
+    sfImage_destroy(icon);
     return 0;
 }
