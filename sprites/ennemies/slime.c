@@ -36,12 +36,11 @@ slime *create_slime_data(sfVector2f hp_hit)
     slime *data = malloc(sizeof(slime));
     data->old_time_an = sfTime_Zero;
     data->old_time_hit = sfTime_Zero;
+    data->old_time_disp = sfTime_Zero;
     data->hp = hp_hit.x;
     data->hp_max = hp_hit.x;
     data->attack = hp_hit.y;
     data->lb = create_life_bar(100, 5, sfGreen, sfBlack);
-    data->state = IDLE;
-    data->time = sfTime_Zero;
     data->state = IDLE;
     data->time = sfTime_Zero;
     data->destroy = destroy_animate_slime;
@@ -67,6 +66,7 @@ void action_slime(game_obj *g, scene *d)
     s->time = sfClock_getElapsedTime(g->clock);
     float seconds = sfTime_asSeconds(s->time);
     float old_seconds = sfTime_asSeconds(s->old_time_hit);
+    float old_seconds_disp = sfTime_asSeconds(s->old_time_disp);
     if (distance <= 150.0)
         s->state = HIT;
     else
@@ -81,8 +81,16 @@ void action_slime(game_obj *g, scene *d)
             switch_scene(d, START);
         }
     }
-    if (s->hp <= 0)
+    if (s->hp <= 0) {
         s->state = DESTROY;
+        if (seconds - old_seconds_disp >= 120) {
+            s->old_time_disp = sfClock_getElapsedTime(g->clock);
+            s->hp = s->hp_max;
+            s->state = IDLE;
+            g->display = 1;
+        }
+    } else
+        s->old_time_disp = sfClock_getElapsedTime(g->clock);
 }
 
 void create_slime_(scene *d, sfVector2f pos, char *name, sfVector2f hp_hit)

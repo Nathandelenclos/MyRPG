@@ -28,6 +28,7 @@ typedef struct {
     sfTime time;
     sfTime old_time_an;
     sfTime old_time_hit;
+    sfTime old_time_disp;
     int hp;
     int hp_max;
     int attack;
