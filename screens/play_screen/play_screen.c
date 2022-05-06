@@ -97,7 +97,6 @@ void create_data_play(scene *d)
     create_player(d);
     create_all_slimes(d);
     create_bed(d, create_vector2f(292, 227));
-    create_slime(d, 271, 174, BLACK);
     display_fps(d);
 }
 
