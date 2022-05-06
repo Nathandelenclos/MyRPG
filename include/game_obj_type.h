@@ -50,6 +50,7 @@ typedef struct {
     sfTime time;
     sfTime old_time_an;
     sfTime old_time_hit;
+    sfTime old_time_hp;
     entity_state state;
     double animation_speed;
     game_obj *inv;
