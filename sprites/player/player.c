@@ -9,42 +9,32 @@
 
 void regeneration_player(game_obj *g, scene *d)
 {
-    // game_obj *map = get_object(d, "maps");
-    // slime *s = (slime *) g->data;
-    game_obj *p = get_object(d, "player");
-    sfVector2f pos_map = sfSprite_getPosition(map->sprite);
-    pos_map.x += g->vector.x * 9.0;
-    pos_map.y += g->vector.y * 9.0;
-    sfSprite_setPosition(g->sprite, pos_map);
-    pos_map.y -= 10;
-    pos_map.x += 30;
-    float distance = get_distance(g, p);
-    s->time = sfClock_getElapsedTime(g->clock);
-    float seconds = sfTime_asSeconds(s->time);
-    float old_seconds = sfTime_asSeconds(s->old_time_hit);
-    if (distance <= 150.0)
-        s->state = HIT;
-    else
-        s->state = IDLE;
-    if (g->display)
-        print_life_bar(d, s->lb, s->hp * 10, pos_map);
-    if (g->display && distance <= 150.0 && seconds - old_seconds >= 0.5) {
-        ((player *) p->data)->hp -= 2;
-        s->old_time_hit = sfClock_getElapsedTime(g->clock);
-        if (((player *) p->data)->hp <= 0) {
-            ((player *) p->data)->hp = 100;
-            switch_scene(d, START);
-        }
-    }
-    if (s->hp <= 0)
-        s->state = DESTROY;
-    
-
     game_obj *map = get_object(d, "maps");
-    player *s = (player *) g->data;
-    sfVector2f pos_map = sfSprite_getPosition(map->sprite);
-    pos_map.x += g->vector.x * 9.0;
-    pos_map.y += g->vector.y * 9.0;
+    player *p = (player *) g->data;
+    sfVector2f pos_mapbg = sfSprite_getPosition(map->sprite);
+    sfVector2f pos_maphd = pos_mapbg;
+    sfVector2f pos_player = sfSprite_getPosition(g->sprite);
+    pos_mapbg.x += 276 * 9.0;
+    pos_mapbg.y += 303 * 9.0;
+    pos_maphd.x += 341 * 9.0;
+    pos_maphd.y += 225 * 9.0;
+    p->time = sfClock_getElapsedTime(g->clock);
+    float seconds = sfTime_asSeconds(p->time);
+    float old_seconds = sfTime_asSeconds(p->old_time_hp);
+    if (pos_player.x >= pos_mapbg.x && pos_player.x <= pos_maphd.x &&
+    pos_player.y <= pos_mapbg.y && pos_player.y >= pos_maphd.y && g->display) {
+        //printf("second %f old_second %f hp %d\n", seconds, old_seconds, p->hp);
+        if (seconds - old_seconds >= 0.4 && p->hp > 0 && p->hp < 100) {
+            p->hp += 1;
+            p->old_time_hp = sfClock_getElapsedTime(g->clock);
+        }
+        get_env(d, REGEN)->active = sfTrue;
+    } else
+        get_env(d, REGEN)->active = sfFalse;
+    if (p->hp > 0 && p->hp <= 15)
+        get_env(d, LOW_LIFE)->active = sfTrue;
+    else
+        get_env(d, LOW_LIFE)->active = sfFalse;
 }
 
 void print_life_bar_player(scene *d, player *p)
@@ -114,6 +104,8 @@ player *create_player_data(scene *d)
 {
     player *data = malloc(sizeof(player));
     data->old_time_an = sfTime_Zero;
+    data->old_time_hit = sfTime_Zero;
+    data->old_time_hp = sfTime_Zero;
     data->time = sfTime_Zero;
     data->state = IDLE;
     data->hp = 100;
@@ -143,6 +135,7 @@ void create_player(scene *d)
     hero->animate = animate_player;
     hero->event = event_player;
     hero->grp = ENTITY;
+    hero->action = regeneration_player;
     hero->display = 2;
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
