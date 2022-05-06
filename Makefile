@@ -46,6 +46,7 @@ SPRITES	=	banners/banners1.c	\
 			player/player_inventory.c	\
 			player/player_particle.c	\
 			chest_inventory.c	\
+			bed/bed.c	\
 
 ENVIRONMENTS	=	rain.c	\
 					snow.c	\
@@ -68,6 +69,7 @@ TEXTURES	=	characters/characters.c	\
 				objects/particles.c	\
 				objects/walls.c	\
 				objects/tilesets.c	\
+				objects/bed_texture.c	\
 				ui/create_buttons_texture.c	\
 				ui/banners/banner1.c	\
 				ui/banners/banner2.c	\

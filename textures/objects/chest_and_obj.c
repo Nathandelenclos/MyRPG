@@ -42,4 +42,5 @@ void create_chest_and_obj_texture(scene *d)
     create_chest1_texture(d);
     create_chest2_texture(d);
     create_objects_texture(d);
+//    create_bed_texture(d);
 }

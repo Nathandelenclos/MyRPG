@@ -32,7 +32,6 @@ static const char *TOUCH[] = {"   A", "   B", "   C", "   D", "   E", "   F",
     "  F11", "  F12", "  F13", "  F14", "  F15",
     " Pause", "K Count", "-", "B Space", "\\", ";", " Enter", NULL};
 
-
 typedef enum group_e {
     HOME_BTN,
     UI,
@@ -53,6 +52,7 @@ typedef enum type_e {
     MENU_BG,
     BUTTON,
     CHESTS,
+    BED,
 } type;
 
 typedef enum state_e {

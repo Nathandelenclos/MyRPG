@@ -95,5 +95,6 @@ void animate_all_particles(scene *s, player *p);
 environment *get_env(scene *d, env_type type);
 void env_manager(scene *d);
 void create_env(scene *d);
+void create_bed(scene *d, sfVector2f pos);
 
 #endif
