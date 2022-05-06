@@ -21,10 +21,10 @@ void regeneration_player(game_obj *g, scene *d)
     p->time = sfClock_getElapsedTime(g->clock);
     float seconds = sfTime_asSeconds(p->time);
     float old_seconds = sfTime_asSeconds(p->old_time_hp);
-    if (pos_player.x >= pos_mapbg.x && pos_player.x <= pos_maphd.x &&
-    pos_player.y <= pos_mapbg.y && pos_player.y >= pos_maphd.y && g->display) {
-        //printf("second %f old_second %f hp %d\n", seconds, old_seconds, p->hp);
-        if (seconds - old_seconds >= 0.4 && p->hp > 0 && p->hp < 100) {
+    if (pos_player.x + 144 >= pos_mapbg.x && pos_player.x + 144 <= pos_maphd.x
+    && pos_player.y + 144 <= pos_mapbg.y && pos_player.y + 144 >= pos_maphd.y
+    && g->display) {
+        if (seconds - old_seconds >= 0.2 && p->hp > 0 && p->hp < 100) {
             p->hp += 1;
             p->old_time_hp = sfClock_getElapsedTime(g->clock);
         }
