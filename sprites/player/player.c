@@ -53,15 +53,17 @@ void event_player(game_obj *g, scene *d, sfEvent event)
     if (p->state == HIT)
         return;
     p->state = IDLE;
-    if (sfKeyboard_isKeyPressed(71) || sfKeyboard_isKeyPressed(72) ||
-        sfKeyboard_isKeyPressed(73) || sfKeyboard_isKeyPressed(74)) {
+    if (sfKeyboard_isKeyPressed(d->hub->s->c->up) ||
+    sfKeyboard_isKeyPressed(d->hub->s->c->down) ||
+    sfKeyboard_isKeyPressed(d->hub->s->c->left) ||
+    sfKeyboard_isKeyPressed(d->hub->s->c->right)) {
         p->state = MOVE;
         if (event.key.shift)
             p->animation_speed = 0.1;
         else
             p->animation_speed = 0.15;
     }
-    if (event.type == sfEvtMouseButtonPressed) {
+    if (sfKeyboard_isKeyPressed(d->hub->s->c->attack)) {
         rect.left = 0;
         p->state = HIT;
         float distance = get_distance(g, get_closer_object(d, g, ENEMY));

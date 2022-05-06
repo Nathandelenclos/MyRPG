@@ -11,44 +11,44 @@
 void create_button_setting_invent(scene *d)
 {
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 1355), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot1]);
+        (char *) TOUCH[d->hub->s->c->slot1]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 1455), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot2]);
+        (char *) TOUCH[d->hub->s->c->slot2]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 1555), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot3]);
+        (char *) TOUCH[d->hub->s->c->slot3]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 1655), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot4]);
+        (char *) TOUCH[d->hub->s->c->slot4]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 1755), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot5]);
+        (char *) TOUCH[d->hub->s->c->slot5]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 1855), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot6]);
+        (char *) TOUCH[d->hub->s->c->slot6]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 1955), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot7]);
+        (char *) TOUCH[d->hub->s->c->slot7]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 2055), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot8]);
+        (char *) TOUCH[d->hub->s->c->slot8]);
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1065, 2155), 1, 3, SCROLL_BTN_IN),
-        TOUCH[d->hub->s->c->slot9]);
+        (char *) TOUCH[d->hub->s->c->slot9]);
 }
 
 void create_text_setting_invent_right(scene *d)
 {
-    create_btn_text(d, TOUCH[d->hub->s->c->slot1], create_text_id_struct(50, SCROLL_BTN_IN, 1),
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot1], create_text_id_struct(50, SCROLL_BTN_IN, 1),
         create_vector2f(1080, 1350));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot2], create_text_id_struct(50, SCROLL_BTN_IN, 1),
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot2], create_text_id_struct(50, SCROLL_BTN_IN, 1),
         create_vector2f(1080, 1450));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot3], create_text_id_struct(50, SCROLL_BTN_IN, 1),
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot3], create_text_id_struct(50, SCROLL_BTN_IN, 1),
         create_vector2f(1080, 1550));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot4], create_text_id_struct(50, SCROLL_BTN_IN, 1),
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot4], create_text_id_struct(50, SCROLL_BTN_IN, 1),
         create_vector2f(1080, 1650));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot5], create_text_id_struct(50, SCROLL_BTN_IN, 1),
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot5], create_text_id_struct(50, SCROLL_BTN_IN, 1),
         create_vector2f(1080, 1750));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot6],
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot6],
         create_text_id_struct(50, SCROLL_BTN_IN, 1), create_vector2f(1080, 1850));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot7],
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot7],
         create_text_id_struct(50, SCROLL_BTN_IN, 1), create_vector2f(1080, 1950));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot8],
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot8],
         create_text_id_struct(50, SCROLL_BTN_IN, 1), create_vector2f(1080, 2050));
-    create_btn_text(d, TOUCH[d->hub->s->c->slot9],
+    create_btn_text(d, (char *) TOUCH[d->hub->s->c->slot9],
         create_text_id_struct(50, SCROLL_BTN_IN, 1), create_vector2f(1080, 2150));
 }
 

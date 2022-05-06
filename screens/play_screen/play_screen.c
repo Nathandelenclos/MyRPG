@@ -18,7 +18,7 @@ void events_play(scene *d, sfEvent event)
         sfRenderWindow_close(d->hub->window);
         break;
     case sfEvtKeyPressed:
-        if (event.key.code == sfKeyEscape)
+        if (event.key.code == d->hub->s->c->menu)
             switch_scene(d, START);
         if (event.key.code == sfKeySpace)
             switch_scene(d, CHEST);
