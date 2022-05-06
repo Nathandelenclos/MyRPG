@@ -16,22 +16,48 @@ void print_life_bar_player(scene *d, player *p)
     sfRenderWindow_drawSprite(d->hub->window, p->lb->sprite, NULL);
 }
 
+// g->texture = get_texture(d, "player_mirror");
+// if (g->texture != NULL) {
+//     sfSprite_setTexture(g->sprite, g->texture, sfTrue);
+// }
+
+int is_mirror(player *p)
+{
+    if (p->state == IDLE_MIRROR || p->state == HIT_MIRROR
+    || p->state == MOVE_MIRROR) {
+        return 1;
+    }
+    return 0;
+}
+//sfKeyboard_isKeyPressed(71) || sfKeyboard_isKeyPressed(72) ||
 void event_player(game_obj *g, scene *d, sfEvent event)
 {
     player *p = (player *) g->data;
     sfIntRect rect = sfSprite_getTextureRect(g->sprite);
-    if (p->state == HIT)
+    if (p->state == HIT || p->state == HIT_MIRROR)
         return;
-    p->state = IDLE;
-    if (sfKeyboard_isKeyPressed(71) || sfKeyboard_isKeyPressed(72) ||
-        sfKeyboard_isKeyPressed(73) || sfKeyboard_isKeyPressed(74)) {
+    if (p->state == IDLE_MIRROR || p->state == MOVE_MIRROR)
+        printf("IDLE_MIRROR\n");
+    else
+        p->state = IDLE;
+    if ((sfKeyboard_isKeyPressed(71)) || (sfKeyboard_isKeyPressed(73) ||
+        sfKeyboard_isKeyPressed(74)) && is_mirror(p)) {
+        p->state = MOVE_MIRROR;
+        if (event.key.shift)
+            p->animation_speed = 0.1;
+        else
+            p->animation_speed = 0.15;
+    } else if (sfKeyboard_isKeyPressed(73) ||
+        sfKeyboard_isKeyPressed(74) || sfKeyboard_isKeyPressed(72)) {
         p->state = MOVE;
         if (event.key.shift)
             p->animation_speed = 0.1;
         else
             p->animation_speed = 0.15;
     }
-    if (event.type == sfEvtMouseButtonPressed) {
+    if (event.type == sfEvtMouseButtonPressed && is_mirror(p)) {
+        printf("HIT_MIRROR\n");
+    } else if (event.type == sfEvtMouseButtonPressed) {
         rect.left = 0;
         p->state = HIT;
         float distance = get_distance(g, get_closer_object(d, g, ENEMY));
@@ -65,8 +91,6 @@ void animate_player(scene *d, game_obj *g)
     case MOVE:
         data->move(d, g);
         break;
-    default:
-        data->idle(d, g);
     }
 }
 

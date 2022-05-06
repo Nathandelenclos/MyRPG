@@ -21,6 +21,7 @@
     #define OBJECT_H_
 
 //Objects
+void create_player_mirror(scene *d);
 int create_sprite_popup(scene *d);
 int create_sprite_bg_settings(scene *d);
 int input_handling(sfKeyCode code, controls *c, scene *s);
