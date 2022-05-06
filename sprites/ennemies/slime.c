@@ -31,14 +31,16 @@ void animate_slime(scene *d, game_obj *g)
     }
 }
 
-slime *create_slime_data(void)
+slime *create_slime_data(sfVector2f hp_hit)
 {
     slime *data = malloc(sizeof(slime));
     data->old_time_an = sfTime_Zero;
     data->old_time_hit = sfTime_Zero;
+    data->hp = hp_hit.x;
+    data->hp_max = hp_hit.x;
+    data->attack = hp_hit.y;
     data->lb = create_life_bar(100, 5, sfGreen, sfBlack);
     data->state = IDLE;
-    data->hp = 10;
     data->time = sfTime_Zero;
     data->state = IDLE;
     data->time = sfTime_Zero;
@@ -70,9 +72,9 @@ void action_slime(game_obj *g, scene *d)
     else
         s->state = IDLE;
     if (g->display)
-        print_life_bar(d, s->lb, s->hp * 10, pos_map);
-    if (g->display && distance <= 150.0 && seconds - old_seconds >= 0.5) {
-        ((player *) p->data)->hp -= 2;
+        print_life_bar(d, s->lb, s->hp * 100 / s->hp_max, pos_map);
+    if (g->display && distance <= 150.0 && seconds - old_seconds >= 0.7) {
+        ((player *) p->data)->hp -= s->attack;
         s->old_time_hit = sfClock_getElapsedTime(g->clock);
         if (((player *) p->data)->hp <= 0) {
             ((player *) p->data)->hp = 100;
@@ -83,13 +85,13 @@ void action_slime(game_obj *g, scene *d)
         s->state = DESTROY;
 }
 
-void create_slime_(scene *d, int x, int y, char *name)
+void create_slime_(scene *d, sfVector2f pos, char *name, sfVector2f hp_hit)
 {
-    sfVector2f vector[2] = {{x, y}, {x, y}};
+    sfVector2f vector[2] = {pos, pos};
     sfIntRect rect = create_rect(32, 32, 0, 0);
     game_obj *hero = create_obj(d, name, rect, vector);
     set_scale(d, hero->sprite, 5);;
-    hero->data = create_slime_data();
+    hero->data = create_slime_data(hp_hit);
     hero->type = SLIME;
     hero->name = my_strdup(name);
     hero->animate = animate_slime;
@@ -98,31 +100,31 @@ void create_slime_(scene *d, int x, int y, char *name)
     hero->display = 1;
     game_obj *map = get_object(d, "maps");
     sfVector2f pos_map = sfSprite_getPosition(map->sprite);
-    pos_map.x += x * 9;
-    pos_map.y += y * 9;
+    pos_map.x += pos.x * 9;
+    pos_map.y += pos.y * 9;
     sfSprite_setPosition(hero->sprite, pos_map);
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);
 }
 
-void create_slime(scene *d, int x, int y, slime_type type)
+void create_slime(scene *d, sfVector2f pos, slime_type type, sfVector2f hp_hit)
 {
     switch (type) {
     case BLACK:
-        create_slime_(d, x, y, "enemy_slime");
+        create_slime_(d, pos, "enemy_slime", hp_hit);
         break;
     case BLUE:
-        create_slime_(d, x, y, "slime");
+        create_slime_(d, pos, "slime", hp_hit);
         break;
     case GREEN:
-        create_slime_(d, x, y, "green_slime");
+        create_slime_(d, pos, "green_slime", hp_hit);
         break;
     case PINK:
-        create_slime_(d, x, y, "pink_slime");
+        create_slime_(d, pos, "pink_slime", hp_hit);
         break;
     case YELLOW:
-        create_slime_(d, x, y, "yellow_slime");
+        create_slime_(d, pos, "yellow_slime", hp_hit);
         break;
     }
 }

@@ -29,6 +29,8 @@ typedef struct {
     sfTime old_time_an;
     sfTime old_time_hit;
     int hp;
+    int hp_max;
+    int attack;
     int speed;
     life_bar *lb;
 } slime;

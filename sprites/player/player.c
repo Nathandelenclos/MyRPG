@@ -28,7 +28,10 @@ void regeneration_player(game_obj *g, scene *d)
             p->hp += 1;
             p->old_time_hp = sfClock_getElapsedTime(g->clock);
         }
-        get_env(d, REGEN)->active = sfTrue;
+        if (p->hp >= 100)
+            get_env(d, REGEN)->active = sfFalse;
+        else
+            get_env(d, REGEN)->active = sfTrue;
     } else
         get_env(d, REGEN)->active = sfFalse;
     if (p->hp > 0 && p->hp <= 15)
@@ -69,9 +72,9 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         p->state = HIT;
         float distance = get_distance(g, get_closer_object(d, g, ENEMY));
         if (distance <= 175.0 && distance >= 0.0) {
-            game_obj *s = get_object(d, "enemy_slime");
+            game_obj *s = get_closer_object(d, g, ENEMY);
             if (s != NULL)
-                ((slime *)s->data)->hp -= 5;
+                ((slime *)s->data)->hp -= 3;
         }
         sfSprite_setTextureRect(g->sprite, rect);
     }
@@ -111,7 +114,7 @@ player *create_player_data(scene *d)
     data->old_time_hp = sfTime_Zero;
     data->time = sfTime_Zero;
     data->state = IDLE;
-    data->hp = 10;
+    data->hp = 100;
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
