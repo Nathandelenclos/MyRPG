@@ -111,13 +111,13 @@ void create_data_play(scene *d)
     create_env(d);
     create_sprite_map(d);
     create_player(d);
-    create_pnj_simon(d, create_vector2f(269, 281));
+    create_pnj(d, create_vector2f(269, 281));
     create_all_slimes(d);
     create_bed(d, create_vector2f(292, 227));
     create_all_trees(d);
     display_fps(d);
-    create_basic_chest(d, 200, 200);
-    create_basic_chest(d, 200, 220);
+    create_basic_chest(d, 304, 225);
+    create_basic_chest(d, 328, 225);
     game_obj *p = get_object(d, "player");
     game_obj *c = get_closer_object(d, p, CHESTS_G);
     game_obj *slime = get_closer_object(d, p, ENEMY);

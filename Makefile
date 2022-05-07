@@ -105,6 +105,7 @@ MANAGER =	sprites_manager.c	\
 
 TEXTS	=	fps.c	\
 			menu.c	\
+			discuss.c	\
 
 TEXTS_PATH	=	texts/
 

@@ -19,6 +19,7 @@
 #include "textures.h"
 #include "object.h"
 #include "game_obj_type.h"
+#include "discuss.h"
 
 #ifndef RPG_H
     #define RPG_H

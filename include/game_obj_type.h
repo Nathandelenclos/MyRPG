@@ -93,7 +93,9 @@ typedef struct {
 typedef struct {
     sfTime time;
     sfTime old_time_an;
-} pnj_simon;
+    int dialog;
+    int quest;
+} pnj;
 
 typedef struct {
     int count;

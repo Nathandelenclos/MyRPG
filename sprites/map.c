@@ -70,7 +70,7 @@ maps *create_maps_data(void)
 
 int create_sprite_map(scene *d)
 {
-    sfVector2f pos[2] = {{-1750, -1900}, {0, 0}};
+    sfVector2f pos[2] = {{-1610, -1550}, {0, 0}};
     game_obj *map =
         create_obj(d, "maps", create_rect(787, 775, 0, 0), pos);
     set_scale(d, map->sprite, 9);
