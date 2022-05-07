@@ -28,6 +28,7 @@ void switch_scene(scene *d, state s);
 void wrong_input(screen *screen1);
 btn_param *create_btn_param(sfVector2f pos, int zindex, int scale, group grp);
 settings *init_settings_struct(void);
+void create_tree(scene *d, sfVector2f pos);
 void data_settings(screen *screen1);
 void create_button_setting(scene *d);
 void create_text_setting_invent_left(scene *d);

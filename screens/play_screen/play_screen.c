@@ -93,6 +93,17 @@ void create_all_slimes(scene *d)
         (d, create_vector2f(307, 440), BLACK, create_vector2f(24, 7));
 }
 
+void create_all_trees(scene *d)
+{
+    create_tree(d, create_vector2f(270, 420));
+    create_tree(d, create_vector2f(444, 298));
+    create_tree(d, create_vector2f(592, 434));
+    create_tree(d, create_vector2f(190, 300));
+    create_tree(d, create_vector2f(160, 200));
+    create_tree(d, create_vector2f(160, 418));
+    create_tree(d, create_vector2f(320, 350));
+}
+
 void create_data_play(scene *d)
 {
     d->textures = get_scene(d, START)->textures;
@@ -101,6 +112,7 @@ void create_data_play(scene *d)
     create_player(d);
     create_all_slimes(d);
     create_bed(d, create_vector2f(292, 227));
+    create_all_trees(d);
     display_fps(d);
     create_basic_chest(d, 200, 200);
     create_basic_chest(d, 200, 220);
