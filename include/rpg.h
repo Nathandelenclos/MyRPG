@@ -58,6 +58,7 @@ texture *get_texture(scene *d, char *name);
 void create_textures(scene *d);
 void sound_manager(scene *d);
 void display_chest(scene *d, inventory *ci);
+void fade_scene(scene *old);
 void destroy_music(screen *hub);
 void scroll_object_by_grp(scene *d, float x, float y, group grp);
 void scroll_object_by_name(scene *d, float x, float y, char *name);

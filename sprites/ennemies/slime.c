@@ -60,8 +60,8 @@ void action_slime(game_obj *g, scene *d)
     pos_map.x += g->vector.x * 9.0;
     pos_map.y += g->vector.y * 9.0;
     sfSprite_setPosition(g->sprite, pos_map);
-    pos_map.y -= 10;
-    pos_map.x += 30;
+    pos_map.y += 20;
+    pos_map.x += 35;
     float distance = get_distance(g, p);
     s->time = sfClock_getElapsedTime(g->clock);
     float seconds = sfTime_asSeconds(s->time);

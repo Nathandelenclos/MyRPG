@@ -115,7 +115,7 @@ player *create_player_data(scene *d)
     data->time = sfTime_Zero;
     data->state = IDLE;
     data->hp = 100;
-    data->slot_select = 1;
+    data->slot_select = 0;
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
