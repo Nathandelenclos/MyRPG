@@ -12,28 +12,13 @@
 
 void active_discuss(scene *old, scene *new)
 {
-    // node *tmp = new->objs;
-    // game_obj *obj = NULL;
-    // sfColor color;
-
-    // sfRenderWindow_setMouseCursorVisible(new->hub->window, sfFalse);
-    // if (old->state != START)
-    //     return;
-    // for (int t = 0; t <= 255; ++t) {
-    //     sfRenderWindow_clear(new->hub->window, sfBlack);
-    //     while (tmp != NULL) {
-    //         obj = (game_obj *) tmp->data;
-    //         color = sfSprite_getColor(obj->sprite);
-    //         color.a = t;
-    //         sfSprite_setColor(obj->sprite, color);
-    //         sfRenderWindow_drawSprite(new->hub->window, obj->sprite, NULL);
-    //         tmp = tmp->next;
-    //     }
-    //     tmp = new->objs;
-    //     sfRenderWindow_display(new->hub->window);
-    // }
-
+    game_obj *obj = get_closer_object(old, get_object(old, "player"), PNJ_ENTITY);
+    game_obj *obj_b = get_object(new, "big_pnj");
+    obj_b->data = obj->data;
+    obj_b->animate = obj->animate;
+    obj_b->texture = obj->texture;
     save_chest_background(old, new);
+    sfSprite_setTexture(obj_b->sprite, obj->texture->texture, sfFalse);
 }
 
 void events_discuss(scene *d, sfEvent event)
@@ -54,6 +39,7 @@ void create_scene_data_discuss(scene *d)
 {
     d->textures = get_scene(d, START)->textures;
     create_chest_background_sprite(d);
+    create_big_pnj(d, create_vector2f(0, -100), 40);
 }
 
 void data_discuss(screen *screen1)

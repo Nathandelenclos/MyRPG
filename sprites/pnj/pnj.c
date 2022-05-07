@@ -7,7 +7,7 @@
 
 #include "../../include/rpg.h"
 
-void animate_pnj_simon(scene *d, game_obj *g)
+void animate_pnj(scene *d, game_obj *g)
 {
     pnj_simon *data = (pnj_simon *)g->data;
     data->time = sfClock_getElapsedTime(g->clock);
@@ -53,7 +53,7 @@ void create_pnj_simon(scene *d, sfVector2f pos)
     hero->data = create_pnj_simon_data(d);
     hero->type = PNJ;
     hero->name = "pnj_simon";
-    hero->animate = animate_pnj_simon;
+    hero->animate = animate_pnj;
     // hero->event = event_pnj_simon;
     hero->grp = PNJ_ENTITY;
     hero->action = action_pnj_simon;
@@ -64,4 +64,22 @@ void create_pnj_simon(scene *d, sfVector2f pos)
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);
+}
+
+game_obj *create_big_pnj(scene *d, sfVector2f pos, int scale)
+{
+    sfVector2f vector[2] = {pos, pos};
+    sfIntRect rect = create_rect(48, 35, 0, 0);
+    game_obj *hero = create_obj(d, NULL, rect, vector);
+    set_scale(d, hero->sprite, scale);
+    hero->type = PNJ;
+    hero->name = "big_pnj";
+    // hero->event = event_pnj_simon;
+    hero->grp = PNJ_ENTITY;
+    hero->display = 1;
+    sfSprite_setPosition(hero->sprite, pos);
+    sfSprite_setTextureRect(hero->sprite, hero->rect);
+    sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
+    put_in_end(&d->objs, hero);
+    return hero;
 }

@@ -85,5 +85,6 @@ void create_spawn_env(scene *d);
 void create_low_life_env(scene *d);
 void create_run_env(scene *d);
 void data_discuss(screen *screen1);
+game_obj *create_big_pnj(scene *d, sfVector2f pos, int scale);
 
 #endif
