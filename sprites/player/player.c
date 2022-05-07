@@ -89,9 +89,9 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         p->state = HIT_MIRROR;
         float distance = get_distance(g, get_closer_object(d, g, ENEMY));
         if (distance <= 175.0 && distance >= 0.0) {
-            game_obj *s = get_object(d, "enemy_slime");
+            game_obj *s = get_closer_object(d, g, ENEMY);
             if (s != NULL)
-                ((slime *)s->data)->hp -= 5;
+                ((slime *)s->data)->hp -= 3;
         }
         sfSprite_setTextureRect(g->sprite, rect);
     } else if (sfKeyboard_isKeyPressed(d->hub->s->c->attack) && !is_mirror(p)) {
