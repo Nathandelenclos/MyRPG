@@ -57,6 +57,13 @@ typedef struct {
 } slot_inv;
 
 typedef struct {
+    sfVector2f *pos;
+    slot_inv **slot;
+    slot_inv *stamp;
+    int size;
+} inventory;
+
+typedef struct {
     sfTime time;
     sfTime old_time_an;
     sfTime old_time_hit;
@@ -64,6 +71,7 @@ typedef struct {
     entity_state state;
     double animation_speed;
     game_obj *inv;
+    inventory *inventory;
     int hp;
     life_bar *lb;
     void (*idle)(scene *, game_obj *);
@@ -82,14 +90,6 @@ typedef struct {
     sfTime old_time_an;
     sfTime time;
 } menu_bg;
-
-typedef struct {
-    inventory_chest_state state;
-    sfVector2f *pos;
-    slot_inv **slot;
-    slot_inv *stamp;
-    int size;
-} inventory;
 
 typedef struct {
     chest_state state;
@@ -125,7 +125,9 @@ void jump_animate_slime(scene *d, game_obj *g);
 void idle_animate_slime(scene *d, game_obj *g);
 particle *create_particle(scene *d);
 chest *create_chest_data(scene *d);
-inventory *create_inventory_data(scene *d, int size);
+inventory *create_inventory_data(scene *d, int size, sfVector2f *pos);
 void push_items(inventory *ci, int i, game_obj *obj);
+sfVector2f *init_inventory_pos_places_p(void);
+sfVector2f *init_inventory_pos_places_c(void);
 
 #endif

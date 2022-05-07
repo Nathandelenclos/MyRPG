@@ -102,11 +102,13 @@ void create_data_play(scene *d)
     display_fps(d);
     create_basic_chest(d, 530, 200);
     create_basic_chest(d, 530, 300);
-    game_obj *player = get_object(d, "player");
-    game_obj *c = get_closer_object(d, player, CHESTS_G);
-    game_obj *slime = get_closer_object(d, player, ENEMY);
+    game_obj *p = get_object(d, "player");
+    game_obj *c = get_closer_object(d, p, CHESTS_G);
+    game_obj *slime = get_closer_object(d, p, ENEMY);
+    game_obj *slime_en = get_object(d, "enemy_slime");
     chest *ci = c->data;
     push_items(ci->inventory, 5, slime);
+    push_items(((player *)p->data)->inventory, 2, slime_en);
 }
 
 void active_play(scene *old, scene *new)

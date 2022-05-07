@@ -118,6 +118,7 @@ player *create_player_data(scene *d)
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
+    data->inventory = create_inventory_data(d, 9, init_inventory_pos_places_p());
     data->animation_speed = 0.15;
     data->inv = create_inventory(d);
     data->lb = create_life_bar(300, 20, sfGreen, sfBlack);

@@ -6,35 +6,10 @@
 */
 #include "../../include/rpg.h"
 
-sfVector2f *init_inventory_pos_places(void)
-{
-    sfVector2f *pos = malloc(sizeof(sfVector2f) * 36);
-    for (int i = 0; i < 36; i++) {
-        if (i >= 0 && i < 9) {
-            pos[i].x = 275 + i * 157;
-            pos[i].y = 356 - 140;
-        }
-        if (i >= 9 && i < 18) {
-            pos[i].x = 275 + (i - 9) * 157;
-            pos[i].y = 356 + 157 - 140;
-        }
-        if (i >= 18 && i < 27) {
-            pos[i].x = 275 + (i - 18) * 157;
-            pos[i].y = 356 + 157 * 2 - 140;
-        }
-        if (i >= 27 && i < 36) {
-            pos[i].x = 275 + (i - 27) * 157;
-            pos[i].y = 869 - 140;
-        }
-    }
-    return (pos);
-}
-
-inventory *create_inventory_data(scene *d, int size)
+inventory *create_inventory_data(scene *d, int size, sfVector2f *pos)
 {
     inventory *data = malloc(sizeof(inventory));
-    data->pos = init_inventory_pos_places();
-    data->state = FIRST_CLICK;
+    data->pos = pos;
     data->size = size;
     data->slot = malloc(sizeof(slot_inv *) * ((size) + 1));
     for (int i = 0; i < (size) + 1; ++i)
@@ -89,6 +64,6 @@ chest *create_chest_data(scene *d)
     data->time = sfTime_Zero;
     data->open = open_animate_chest;
     data->close = close_animate_chest;
-    data->inventory = create_inventory_data(d, 27);
+    data->inventory = create_inventory_data(d, 27, init_inventory_pos_places_c());
     return data;
 }

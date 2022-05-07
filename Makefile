@@ -15,6 +15,7 @@ UTILS	=	life_bar.c	\
 			utils.c	\
 			init_settings_structs.c	\
 			collision.c	\
+			position.c	\
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\

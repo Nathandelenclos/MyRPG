@@ -10,44 +10,59 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
-void action_click_on_case(
-    int i, sfMouseButtonEvent event, sfVector2f pos,
-    inventory *data
-)
+void action_click_on_case(scene *d, int i, sfMouseButtonEvent event, inventory *data)
 {
-    if (event.x >= pos.x && event.x <= pos.x + 140 && event.y >= pos.y &&
-        event.y <= pos.y + 140) {
-        if (data->state == FIRST_CLICK) {
-            data->stamp = data->slot[i];
-            data->stamp = data->slot[i];
-            data->state = SECOND_CLICK;
+    sfVector2f *pos = d->state == CHEST ? init_inventory_pos_places_c() : init_inventory_pos_places_p();
+    static slot_inv *stamp = NULL;
+    static int stamp_i = -1;
+    static inventory *stamp_inv = NULL;
+    static inventory_chest_state state = FIRST_CLICK;
+    printf("i => %i, pos[i].x => %f, pos[i].y => %f\n", i, pos[i].x, pos[i].y);
+    if (event.x >= pos[i].x && event.x <= pos[i].x + 140 && event.y >= pos[i].y &&
+        event.y <= pos[i].y + 140) {
+        printf("%i\n", i);
+        if (data->size == 9 && i >= 27)
+            i -= 27;
+        printf("%i\n", i);
+        if (state == FIRST_CLICK) {
+            stamp = data->slot[i];
+            stamp_i = i;
+            stamp_inv = data;
+            printf("FIRST CLICK\n");
+            state = SECOND_CLICK;
         } else {
-            data->slot[i] = data->stamp;
-            data->slot[i] = data->stamp;
-            sfSprite_setPosition(data->slot[i]->sprite, data->pos[i]);
-            data->state = FIRST_CLICK;
+            stamp_inv->slot[stamp_i] = data->slot[i];
+            data->slot[i] = stamp;
+            printf("SECOND CLICK\n");
+            state = FIRST_CLICK;
         }
     }
+    free(pos);
 }
 
 void events_chest(scene *d, sfEvent event)
 {
-    game_obj *g = get_object(d, "chest_inventory");
-    inventory *data = (inventory *) g->data;
     events_manage(d, event);
+    scene *play = get_scene(d, PLAY);
+    game_obj *p = get_object(play, "player");
+    game_obj *c = get_closer_object(play, p, CHESTS_G);
+    inventory *inv = NULL;
     switch (event.type) {
     case sfEvtClosed:
         sfRenderWindow_close(d->hub->window);
         break;
     case sfEvtKeyPressed:
-        if (event.key.code == sfKeyEscape)
+        if (event.key.code == sfKeyEscape) {
             switch_scene(d, PLAY);
+            action_click_on_case(d, 0, event.mouseButton, NULL);
+        }
         break;
-        /*case sfEvtMouseButtonPressed:
-            for (int i = 0; i < 36; i++) {
-                action_click_on_case(i, event.mouseButton, data->pos[i], data);
-            }
-            break;*/
+    case sfEvtMouseButtonPressed:
+        for (int i = 0; i < 36; i++) {
+            inv = i >= 27 ? ((player *)p->data)->inventory: ((chest *)c->data)->inventory;
+            action_click_on_case(d, i, event.mouseButton, inv);
+        }
+        break;
     }
 }
 
@@ -55,13 +70,19 @@ void display_chest(scene *d, inventory *ci)
 {
     double f = 0.0;
     double y = 0.0;
-    for (int i = 0; i < 27; ++i) {
+    for (int i = 0; i < ci->size; ++i) {
         if (ci->slot[i] != NULL) {
+            ci->pos = d->state == CHEST ? init_inventory_pos_places_c()
+                                        : init_inventory_pos_places_p();
             f = (ci->slot[i]->rect.width / 140.0);
             y = 1 / f;
             set_scale(d, ci->slot[i]->sprite, y);
-            sfSprite_setPosition(ci->slot[i]->sprite, ci->pos[i]);
-            sfRenderWindow_drawSprite(d->hub->window, ci->slot[i]->sprite, NULL);
+            sfSprite_setPosition(ci->slot[i]->sprite,
+                ci->pos[d->state == CHEST && ci->size == 9 ? i + 27 : i]);
+
+            sfRenderWindow_drawSprite(d->hub->window, ci->slot[i]->sprite,
+                NULL);
+            free(ci->pos);
         }
     }
 }
@@ -72,9 +93,12 @@ void chest_screen(scene *data)
     move_manager(data);
     time_manager(data);
     text_manager(data);
-    game_obj *obj = get_closer_object(get_scene(data, PLAY),
-        get_object(get_scene(data, PLAY), "player"), CHESTS_G);
+    scene *play = get_scene(data, PLAY);
+    game_obj *obj = get_closer_object(play,
+        get_object(play, "player"), CHESTS_G);
+    game_obj *p = get_object(play, "player");
     display_chest(data, ((chest *) obj->data)->inventory);
+    display_chest(data, ((player *) p->data)->inventory);
 }
 
 void create_chest_scene_data(scene *d)
