@@ -26,6 +26,7 @@ SPRITES	=	banners/banners1.c	\
       		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
       		objects/chests.c	\
+      		objects/chests_animation.c	\
       		ui/l_btn.c	\
       		ui/event_change_input_setting.c	\
 			ui/change_move_input.c	\
@@ -44,7 +45,6 @@ SPRITES	=	banners/banners1.c	\
 			player/player.c	\
 			player/player_animation.c	\
 			player/player_inventory.c	\
-			player/player_particle.c	\
 			chest_inventory.c	\
 
 ENVIRONMENTS	=	rain.c	\
@@ -142,7 +142,8 @@ debug:	CFLAGS += -g
 debug:	all
 
 clean:
-	rm -f $(OBJ)
+	find . -name "*.o" -delete
+	find . -name "vgcore*" -delete
 
 fclean: clean
 	rm -f $(NAME)

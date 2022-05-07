@@ -20,8 +20,11 @@ void events_play(scene *d, sfEvent event)
     case sfEvtKeyPressed:
         if (event.key.code == d->hub->s->c->menu)
             switch_scene(d, START);
-        if (event.key.code == sfKeySpace)
+        if (event.key.code == sfKeySpace) {
+            /*game_obj *obj = get_closer_object(d, get_object(d, "player"), CHESTS_G);
+            ((chest *)obj->data)->open(d, obj);*/
             switch_scene(d, CHEST);
+        }
         break;
     }
 }
@@ -38,55 +41,55 @@ void play_screen(scene *data)
 void create_all_slimes(scene *d)
 {
     create_slime
-    (d, create_vector2f(530, 220), PINK, create_vector2f(9, 2));
+        (d, create_vector2f(530, 220), PINK, create_vector2f(9, 2));
     create_slime
-    (d, create_vector2f(520, 180), PINK, create_vector2f(9, 2));
+        (d, create_vector2f(520, 180), PINK, create_vector2f(9, 2));
     create_slime
-    (d, create_vector2f(580, 205), PINK, create_vector2f(9, 2));
+        (d, create_vector2f(580, 205), PINK, create_vector2f(9, 2));
     create_slime
-    (d, create_vector2f(630, 180), PINK, create_vector2f(9, 2));
+        (d, create_vector2f(630, 180), PINK, create_vector2f(9, 2));
     create_slime
-    (d, create_vector2f(630, 220), PINK, create_vector2f(9, 2));
+        (d, create_vector2f(630, 220), PINK, create_vector2f(9, 2));
     create_slime
-    (d, create_vector2f(280, 180), BLUE, create_vector2f(12, 3));
+        (d, create_vector2f(280, 180), BLUE, create_vector2f(12, 3));
     create_slime
-    (d, create_vector2f(280, 90), BLUE, create_vector2f(12, 3));
+        (d, create_vector2f(280, 90), BLUE, create_vector2f(12, 3));
     create_slime
-    (d, create_vector2f(350, 155), BLUE, create_vector2f(12, 3));
+        (d, create_vector2f(350, 155), BLUE, create_vector2f(12, 3));
     create_slime
-    (d, create_vector2f(400, 90), BLUE, create_vector2f(12, 3));
+        (d, create_vector2f(400, 90), BLUE, create_vector2f(12, 3));
     create_slime
-    (d, create_vector2f(400, 180), BLUE, create_vector2f(12, 3));
+        (d, create_vector2f(400, 180), BLUE, create_vector2f(12, 3));
     create_slime
-    (d, create_vector2f(530, 410), GREEN, create_vector2f(15, 4));
+        (d, create_vector2f(530, 410), GREEN, create_vector2f(15, 4));
     create_slime
-    (d, create_vector2f(530, 330), GREEN, create_vector2f(15, 4));
+        (d, create_vector2f(530, 330), GREEN, create_vector2f(15, 4));
     create_slime
-    (d, create_vector2f(595, 370), GREEN, create_vector2f(15, 4));
+        (d, create_vector2f(595, 370), GREEN, create_vector2f(15, 4));
     create_slime
-    (d, create_vector2f(670, 330), GREEN, create_vector2f(15, 4));
+        (d, create_vector2f(670, 330), GREEN, create_vector2f(15, 4));
     create_slime
-    (d, create_vector2f(670, 410), GREEN, create_vector2f(15, 4));
+        (d, create_vector2f(670, 410), GREEN, create_vector2f(15, 4));
     create_slime
-    (d, create_vector2f(480, 610), YELLOW, create_vector2f(18, 5));
+        (d, create_vector2f(480, 610), YELLOW, create_vector2f(18, 5));
     create_slime
-    (d, create_vector2f(480, 500), YELLOW, create_vector2f(18, 5));
+        (d, create_vector2f(480, 500), YELLOW, create_vector2f(18, 5));
     create_slime
-    (d, create_vector2f(530, 560), YELLOW, create_vector2f(18, 5));
+        (d, create_vector2f(530, 560), YELLOW, create_vector2f(18, 5));
     create_slime
-    (d, create_vector2f(570, 500), YELLOW, create_vector2f(18, 5));
+        (d, create_vector2f(570, 500), YELLOW, create_vector2f(18, 5));
     create_slime
-    (d, create_vector2f(570, 610), YELLOW, create_vector2f(18, 5));
+        (d, create_vector2f(570, 610), YELLOW, create_vector2f(18, 5));
     create_slime
-    (d, create_vector2f(280, 570), BLACK, create_vector2f(24, 7));
+        (d, create_vector2f(280, 570), BLACK, create_vector2f(24, 7));
     create_slime
-    (d, create_vector2f(310, 518), BLACK, create_vector2f(24, 7));
+        (d, create_vector2f(310, 518), BLACK, create_vector2f(24, 7));
     create_slime
-    (d, create_vector2f(365, 491), BLACK, create_vector2f(24, 7));
+        (d, create_vector2f(365, 491), BLACK, create_vector2f(24, 7));
     create_slime
-    (d, create_vector2f(290, 483), BLACK, create_vector2f(24, 7));
+        (d, create_vector2f(290, 483), BLACK, create_vector2f(24, 7));
     create_slime
-    (d, create_vector2f(307, 440), BLACK, create_vector2f(24, 7));
+        (d, create_vector2f(307, 440), BLACK, create_vector2f(24, 7));
 }
 
 void create_data_play(scene *d)
@@ -97,6 +100,13 @@ void create_data_play(scene *d)
     create_player(d);
     create_all_slimes(d);
     display_fps(d);
+    create_basic_chest(d, 530, 200);
+    create_basic_chest(d, 530, 300);
+    game_obj *player = get_object(d, "player");
+    game_obj *c = get_closer_object(d, player, CHESTS_G);
+    game_obj *slime = get_closer_object(d, player, ENEMY);
+    chest *ci = c->data;
+    push_items(ci->inventory, 5, slime);
 }
 
 void active_play(scene *old, scene *new)

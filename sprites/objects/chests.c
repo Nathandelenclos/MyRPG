@@ -5,69 +5,42 @@
 ** chests
 */
 
-#include "../include/rpg.h"
+#include "../../include/rpg.h"
 
-void close_animate_chest(scene *d, game_obj *g)
+void push_items(inventory *ci, int i, game_obj *obj)
 {
-    chest *data = (chest *)g->data;
-    if (data->state != CLOSE)
+    if (obj == NULL)
         return;
-    data->time = sfClock_getElapsedTime(g->clock);
-    float seconds = sfTime_asSeconds(data->time);
-    float old_seconds = sfTime_asSeconds(data->old_time_an);
-    if (seconds - old_seconds >= 0.23) {
-        sfIntRect rect = sfSprite_getTextureRect(g->sprite);
-        rect.left -= 16;
-        rect.top = 0;
-        if (rect.left < 16) {
-            data->state = IDLE_C;
-        }
-        sfSprite_setTextureRect(g->sprite, rect);
-        data->old_time_an = sfClock_getElapsedTime(g->clock);
-    }
+    ci->slot[i] = malloc(sizeof(slot_inv));
+    ci->slot[i]->obj = obj;
+    ci->slot[i]->sprite = sfSprite_create();
+    ci->slot[i]->rect = obj->rect;
+    ci->slot[i]->texture = obj->texture->texture;
+    sfSprite_setTexture(ci->slot[i]->sprite, ci->slot[i]->texture, sfTrue);
+    sfSprite_setTextureRect(ci->slot[i]->sprite, ci->slot[i]->rect);
 }
 
-void open_animate_chest(scene *d, game_obj *g)
+void action_chest(game_obj *obj, scene *d)
 {
-    chest *data = (chest *)g->data;
-    if (data->state != OPEN)
-        return;
-    data->time = sfClock_getElapsedTime(g->clock);
-    float seconds = sfTime_asSeconds(data->time);
-    float old_seconds = sfTime_asSeconds(data->old_time_an);
-    if (seconds - old_seconds >= 0.23) {
-        sfIntRect rect = sfSprite_getTextureRect(g->sprite);
-        rect.left += 16;
-        rect.top = 0;
-        if (rect.left > 2 * 16) {
-            data->state = IDLE_C;
-        }
-        sfSprite_setTextureRect(g->sprite, rect);
-        data->old_time_an = sfClock_getElapsedTime(g->clock);
-    }
+    game_obj *map = get_object(d, "maps");
+    sfVector2f pos_map = sfSprite_getPosition(map->sprite);
+    pos_map.x += obj->vector.x * 9.0;
+    pos_map.y += obj->vector.y * 9.0;
+    sfSprite_setPosition(obj->sprite, pos_map);
 }
 
-chest *create_chest_data(void)
+void create_basic_chest(scene *d, float x, float y)
 {
-    chest *data = malloc(sizeof(chest));
-    data->old_time_an = sfTime_Zero;
-    data->time = sfTime_Zero;
-    data->open = open_animate_chest;
-    data->close = close_animate_chest;
-    return data;
-}
-
-void create_basic_chest(scene *d)
-{
-    sfVector2f vector[2] = {{100, 100}, {0, 0}};
+    sfVector2f vector[2] = {{-50, -50}, {x, y}};
     sfIntRect rect = create_rect(16, 16, 0, 0);
     game_obj *hero = create_obj(d, "basic_chest", rect, vector);
     set_scale(d, hero->sprite, 3);
-    hero->data = create_chest_data();
+    hero->data = create_chest_data(d);
     hero->type = CHESTS;
     hero->name = "basic_chest";
-    hero->grp = OBJECT;
+    hero->grp = CHESTS_G;
     hero->display = 1;
+    hero->action = action_chest;
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);
@@ -79,10 +52,10 @@ void create_golden_chest(scene *d)
     sfIntRect rect = create_rect(16, 16, 0, 0);
     game_obj *hero = create_obj(d, "golden_chest", rect, vector);
     set_scale(d, hero->sprite, 3);
-    hero->data = create_chest_data();
-    hero->type = CHEST;
+    hero->data = create_chest_data(d);
+    hero->type = CHESTS;
     hero->name = "golden_chest";
-    hero->grp = OBJECT;
+    hero->grp = CHESTS_G;
     hero->display = 1;
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);

@@ -50,6 +50,13 @@ typedef struct particle_s{
 } particle;
 
 typedef struct {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfIntRect rect;
+    game_obj *obj;
+} slot_inv;
+
+typedef struct {
     sfTime time;
     sfTime old_time_an;
     sfTime old_time_hit;
@@ -59,18 +66,12 @@ typedef struct {
     game_obj *inv;
     int hp;
     life_bar *lb;
-    node *particles;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
     void (*jump)(scene *, game_obj *);
     void (*hit)(scene *, game_obj *);
     void (*destroy)(scene *, game_obj *);
 } player;
-
-typedef struct {
-    int count;
-    int index;
-} slot;
 
 typedef struct {
     text *t;
@@ -83,9 +84,18 @@ typedef struct {
 } menu_bg;
 
 typedef struct {
+    inventory_chest_state state;
+    sfVector2f *pos;
+    slot_inv **slot;
+    slot_inv *stamp;
+    int size;
+} inventory;
+
+typedef struct {
     chest_state state;
     sfTime time;
     sfTime old_time_an;
+    inventory *inventory;
     void (*open)(scene *, game_obj *);
     void (*close)(scene *, game_obj *);
 } chest;
@@ -104,13 +114,9 @@ typedef struct {
 } text_id;
 
 typedef struct {
-    inventory_chest_state state;
-    sfVector2f *pos;
-    sfSprite *slot_s[36];
-    sfTexture *slot_t[36];
-    sfSprite *stamp_s;
-    sfTexture *stamp_t;
-} chest_inventory;
+    slot_inv **slots;
+    int selected;
+} player_inv;
 
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);
@@ -118,5 +124,8 @@ void move_animate_slime(scene *d, game_obj *g);
 void jump_animate_slime(scene *d, game_obj *g);
 void idle_animate_slime(scene *d, game_obj *g);
 particle *create_particle(scene *d);
+chest *create_chest_data(scene *d);
+inventory *create_inventory_data(scene *d, int size);
+void push_items(inventory *ci, int i, game_obj *obj);
 
 #endif

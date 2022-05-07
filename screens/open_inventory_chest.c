@@ -10,19 +10,21 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
-void action_click_on_case(int i, sfMouseButtonEvent event, sfVector2f pos,
-chest_inventory *data)
+void action_click_on_case(
+    int i, sfMouseButtonEvent event, sfVector2f pos,
+    inventory *data
+)
 {
     if (event.x >= pos.x && event.x <= pos.x + 140 && event.y >= pos.y &&
-    event.y <= pos.y + 140) {
+        event.y <= pos.y + 140) {
         if (data->state == FIRST_CLICK) {
-            data->stamp_s = data->slot_s[i];
-            data->stamp_t = data->slot_t[i];
+            data->stamp = data->slot[i];
+            data->stamp = data->slot[i];
             data->state = SECOND_CLICK;
         } else {
-            data->slot_s[i] = data->stamp_s;
-            data->slot_t[i] = data->stamp_t;
-            sfSprite_setPosition(data->slot_s[i], data->pos[i]);
+            data->slot[i] = data->stamp;
+            data->slot[i] = data->stamp;
+            sfSprite_setPosition(data->slot[i]->sprite, data->pos[i]);
             data->state = FIRST_CLICK;
         }
     }
@@ -31,7 +33,7 @@ chest_inventory *data)
 void events_chest(scene *d, sfEvent event)
 {
     game_obj *g = get_object(d, "chest_inventory");
-    chest_inventory *data = (chest_inventory *)g->data;
+    inventory *data = (inventory *) g->data;
     events_manage(d, event);
     switch (event.type) {
     case sfEvtClosed:
@@ -40,9 +42,26 @@ void events_chest(scene *d, sfEvent event)
     case sfEvtKeyPressed:
         if (event.key.code == sfKeyEscape)
             switch_scene(d, PLAY);
-    case sfEvtMouseButtonPressed:
-        for (int i = 0; i < 36; i++) {
-            action_click_on_case(i, event.mouseButton, data->pos[i], data);
+        break;
+        /*case sfEvtMouseButtonPressed:
+            for (int i = 0; i < 36; i++) {
+                action_click_on_case(i, event.mouseButton, data->pos[i], data);
+            }
+            break;*/
+    }
+}
+
+void display_chest(scene *d, inventory *ci)
+{
+    double f = 0.0;
+    double y = 0.0;
+    for (int i = 0; i < 27; ++i) {
+        if (ci->slot[i] != NULL) {
+            f = (ci->slot[i]->rect.width / 140.0);
+            y = 1 / f;
+            set_scale(d, ci->slot[i]->sprite, y);
+            sfSprite_setPosition(ci->slot[i]->sprite, ci->pos[i]);
+            sfRenderWindow_drawSprite(d->hub->window, ci->slot[i]->sprite, NULL);
         }
     }
 }
@@ -53,10 +72,9 @@ void chest_screen(scene *data)
     move_manager(data);
     time_manager(data);
     text_manager(data);
-    game_obj *g = get_object(data, "chest_inventory");
-    chest_inventory *d = (chest_inventory *)g->data;
-    for (int i = 0; i < 36; i++)
-        sfRenderWindow_drawSprite(data->hub->window, d->slot_s[i], NULL);
+    game_obj *obj = get_closer_object(get_scene(data, PLAY),
+        get_object(get_scene(data, PLAY), "player"), CHESTS_G);
+    display_chest(data, ((chest *) obj->data)->inventory);
 }
 
 void create_chest_scene_data(scene *d)
@@ -69,7 +87,7 @@ void create_chest_scene_data(scene *d)
 void save_chest_background(scene *old, scene *new)
 {
     sfTexture *texture =
-    sfTexture_create(old->hub->mode.width, old->hub->mode.height);
+        sfTexture_create(old->hub->mode.width, old->hub->mode.height);
     sfTexture_updateFromRenderWindow(texture, old->hub->window, 0, 0);
     game_obj *g = get_object(new, "background");
     sfSprite_setTexture(g->sprite, texture, sfTrue);

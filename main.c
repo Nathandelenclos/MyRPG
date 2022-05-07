@@ -26,8 +26,10 @@ void start(screen *hub)
             scene->event(scene, event);
             event_manager(scene, event);
         }
+        sfTime dtime = sfClock_restart(hub->clock);
+        hub->delta_time = sfTime_asMilliseconds(dtime);
         hub->fps = 1 /
-            (sfTime_asMilliseconds(sfClock_restart(hub->clock)) * 0.001);
+            (sfTime_asMilliseconds(dtime) * 0.001);
         sfRenderWindow_display(hub->window);
     }
     sfRenderWindow_destroy(hub->window);

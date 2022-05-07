@@ -15,7 +15,15 @@ game_obj *create_inventory(scene *d)
             }, {0, 0}};
     sfIntRect rect = create_rect(543, 61, 0, 0);
     game_obj *obj = create_obj(d, "hotbar", rect, vector);
-    obj->data = malloc(sizeof(int ) * 10);
+    obj->data = malloc(sizeof(player_inv));
+    player_inv *inv = obj->data;
+    inv->slots = malloc(sizeof(slot_inv *) * 10);
+    for (int i = 0; i < 9; ++i) {
+        inv->slots[i] = malloc(sizeof(slot_inv));
+        inv->slots[i]->obj = NULL;
+        inv->slots[i]->texture = NULL;
+        inv->slots[i]->sprite = NULL;
+    }
     obj->type = INV;
     obj->name = "inventory";
     obj->grp = UI;
