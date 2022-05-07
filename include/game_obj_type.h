@@ -68,6 +68,11 @@ typedef struct {
 } player;
 
 typedef struct {
+    sfTime time;
+    sfTime old_time_an;
+} pnj_simon;
+
+typedef struct {
     int count;
     int index;
 } slot;

@@ -47,6 +47,7 @@ SPRITES	=	banners/banners1.c	\
 			player/player_particle.c	\
 			chest_inventory.c	\
 			bed/bed.c	\
+			pnj/pnj.c	\
 
 ENVIRONMENTS	=	rain.c	\
 					snow.c	\
@@ -62,6 +63,7 @@ SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/wrong_input_screen.c	\
 			play_screen/play_screen.c	\
 			open_inventory_chest.c	\
+			discuss.c	\
 
 TEXTURES	=	characters/characters.c	\
 				characters/particle.c	\

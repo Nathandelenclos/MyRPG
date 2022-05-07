@@ -78,6 +78,10 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         }
         sfSprite_setTextureRect(g->sprite, rect);
     }
+    if (event.key.code == d->hub->s->c->interact &&
+    get_distance(g, get_closer_object(d, g, PNJ_ENTITY)) <= 200) {
+        switch_scene(d, DISCUSS);
+    }
 }
 
 void animate_player(scene *d, game_obj *g)

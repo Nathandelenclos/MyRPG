@@ -61,6 +61,7 @@ int create_sprite_lb(scene *d, char *name, btn_param *p, char *text);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *name, btn_param *p, char *text);
 void create_player(scene *d);
+void create_pnj_simon(scene *d, sfVector2f pos);
 void idle_player_animation(scene *d, game_obj *g);
 void move_player_animation(scene *d, game_obj *g);
 void hit_player_animation(scene *d, game_obj *g);
@@ -83,5 +84,6 @@ void create_regen_env(scene *d);
 void create_spawn_env(scene *d);
 void create_low_life_env(scene *d);
 void create_run_env(scene *d);
+void data_discuss(screen *screen1);
 
 #endif

@@ -96,5 +96,7 @@ environment *get_env(scene *d, env_type type);
 void env_manager(scene *d);
 void create_env(scene *d);
 void create_bed(scene *d, sfVector2f pos);
+void play_screen(scene *data);
+void save_chest_background(scene *old, scene *new);
 
 #endif

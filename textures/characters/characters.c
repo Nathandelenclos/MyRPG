@@ -36,6 +36,16 @@ void create_slime_texture(scene *d)
     }
 }
 
+void create_pnj_simon_texture(scene *d)
+{
+    texture *t = malloc(sizeof(texture));
+    t->filename = "./assets/characters/pnj_simon.png";
+    t->name = "pnj_simon";
+    t->rect = create_rect(288, 35, 0, 0);
+    t->texture = sfTexture_createFromFile(t->filename, &t->rect);
+    put_in_list(&d->textures, t);
+}
+
 void create_player_texture(scene *d)
 {
     texture *t = malloc(sizeof(texture));
@@ -53,4 +63,5 @@ void create_characters_texture(scene *d)
     create_skeleton_texture(d);
     create_slime_texture(d);
     create_player_texture(d);
+    create_pnj_simon_texture(d);
 }

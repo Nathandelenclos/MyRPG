@@ -65,5 +65,6 @@ void screen_manager(screen *s)
     data_settings(s);
     wrong_input(s);
     data_play(s);
+    data_discuss(s);
     data_chest(s);
 }

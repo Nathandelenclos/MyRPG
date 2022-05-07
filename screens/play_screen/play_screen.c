@@ -95,6 +95,7 @@ void create_data_play(scene *d)
     create_env(d);
     create_sprite_map(d);
     create_player(d);
+    create_pnj_simon(d, create_vector2f(269, 281));
     create_all_slimes(d);
     create_bed(d, create_vector2f(292, 227));
     display_fps(d);
