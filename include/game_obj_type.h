@@ -74,6 +74,7 @@ typedef struct {
     inventory *inventory;
     int hp;
     life_bar *lb;
+    int slot_select;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
     void (*jump)(scene *, game_obj *);

@@ -70,6 +70,7 @@ void create_chest_background_sprite(scene *d);
 int create_sprite_menu(scene *d);
 int create_sprite_slide_b(scene *d, sfVector2f s_pos);
 int create_sprite_ltile(scene *, char *, btn_param *);
+game_obj *create_slot_pointer(scene *d);
 
 //Text
 void create_btn_text(scene *d, char *, text_id *, sfVector2f);

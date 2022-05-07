@@ -115,6 +115,7 @@ player *create_player_data(scene *d)
     data->time = sfTime_Zero;
     data->state = IDLE;
     data->hp = 100;
+    data->slot_select = 1;
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
@@ -123,6 +124,7 @@ player *create_player_data(scene *d)
     data->inv = create_inventory(d);
     data->lb = create_life_bar(300, 20, sfGreen, sfBlack);
     put_in_end(&d->objs, data->inv);
+    put_in_end(&d->objs, create_slot_pointer(d));
     return data;
 }
 
