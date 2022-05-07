@@ -56,7 +56,7 @@ void create_icon_trophy(scene *d);
 void create_icon_twitter(scene *d);
 void create_icon_watchad(scene *d);
 void create_icon_youtube(scene *d);
-void create_slime(scene *d, int x, int y, slime_type type);
+void create_slime(scene *d, sfVector2f pos, slime_type type, sfVector2f hp_hit);
 int create_sprite_map(scene *d);
 int create_sprite_lb(scene *d, char *name, btn_param *p, char *text);
 int create_sprite_rb(scene *d, char *, int, int);

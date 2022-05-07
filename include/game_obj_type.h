@@ -28,7 +28,10 @@ typedef struct {
     sfTime time;
     sfTime old_time_an;
     sfTime old_time_hit;
+    sfTime old_time_disp;
     int hp;
+    int hp_max;
+    int attack;
     int speed;
     life_bar *lb;
 } slime;
@@ -50,6 +53,7 @@ typedef struct {
     sfTime time;
     sfTime old_time_an;
     sfTime old_time_hit;
+    sfTime old_time_hp;
     entity_state state;
     double animation_speed;
     game_obj *inv;

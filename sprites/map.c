@@ -7,37 +7,36 @@
 
 #include "../include/rpg.h"
 
-void evt_key_released(game_obj *g, int code)
+void evt_key_released(scene *s, game_obj *g, int code)
 {
-    if (code == 73)
+    if (code == s->hub->s->c->up)
         g->vector.y = 0;
-    if (code == 74)
+    if (code == s->hub->s->c->down)
         g->vector.y = 0;
-    if (code == 71)
+    if (code == s->hub->s->c->left)
         g->vector.x = 0;
-    if (code == 72)
+    if (code == s->hub->s->c->right)
         g->vector.x = 0;
 }
 
 void event_map(game_obj *g, scene *s, sfEvent event)
 {
     maps *data = g->data;
-    if (sfKeyboard_isKeyPressed(sfKeyLShift) ||
-        sfKeyboard_isKeyPressed(sfKeyRShift))
+    if (sfKeyboard_isKeyPressed(s->hub->s->c->run))
         data->speed = 4;
     else
         data->speed = 2;
-    if (sfKeyboard_isKeyPressed(73))
+    if (sfKeyboard_isKeyPressed(s->hub->s->c->up))
         g->vector.y = data->speed;
-    if (sfKeyboard_isKeyPressed(74))
+    if (sfKeyboard_isKeyPressed(s->hub->s->c->down))
         g->vector.y = -(data->speed);
-    if (sfKeyboard_isKeyPressed(71))
+    if (sfKeyboard_isKeyPressed(s->hub->s->c->left))
         g->vector.x = data->speed;
-    if (sfKeyboard_isKeyPressed(72))
+    if (sfKeyboard_isKeyPressed(s->hub->s->c->right))
         g->vector.x = -(data->speed);
     switch (event.type) {
     case sfEvtKeyReleased:
-        evt_key_released(g, event.key.code);
+        evt_key_released(s, g, event.key.code);
         break;
     }
 

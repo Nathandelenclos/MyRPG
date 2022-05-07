@@ -36,7 +36,7 @@ void event_manager(scene *d, sfEvent event)
         event_closed(d);
         break;
     case sfEvtKeyPressed:
-        if (event.key.code == sfKeyF4) {
+        if (event.key.code == d->hub->s->c->screen) {
             my_printf(1, "Taking screenshot..");
             take_screenshot(d, "screenshot.png");
             my_printf(1, "(screenshot.png)\n");
