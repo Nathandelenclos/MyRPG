@@ -46,6 +46,16 @@ void create_player_texture(scene *d)
     put_in_list(&d->textures, t);
 }
 
+void create_player_mirror_texture(scene *d)
+{
+    texture *t = malloc(sizeof(texture));
+    t->filename = "./assets/characters/player_mirror.png";
+    t->name = "player_mirror";
+    t->rect = create_rect(288, 240, 0, 0);
+    t->texture = sfTexture_createFromFile(t->filename, &t->rect);
+    put_in_list(&d->textures, t);
+}
+
 void create_characters_texture(scene *d)
 {
     put_in_list(&d->textures, create_texture("./assets/ui/hotbar.jpg", "hotbar",
@@ -53,4 +63,5 @@ void create_characters_texture(scene *d)
     create_skeleton_texture(d);
     create_slime_texture(d);
     create_player_texture(d);
+    create_player_mirror_texture(d);
 }

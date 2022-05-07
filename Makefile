@@ -43,6 +43,7 @@ SPRITES	=	banners/banners1.c	\
 			map.c	\
 			player/player.c	\
 			player/player_animation.c	\
+			player/player_animation_mirror.c	\
 			player/player_inventory.c	\
 			player/player_particle.c	\
 			chest_inventory.c	\

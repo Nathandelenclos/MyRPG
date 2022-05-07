@@ -21,6 +21,7 @@
     #define OBJECT_H_
 
 //Objects
+void create_player_mirror(scene *d);
 int create_sprite_popup(scene *d);
 int create_sprite_bg_settings(scene *d);
 int input_handling(sfKeyCode code, controls *c, scene *s);
@@ -64,6 +65,9 @@ void create_player(scene *d);
 void idle_player_animation(scene *d, game_obj *g);
 void move_player_animation(scene *d, game_obj *g);
 void hit_player_animation(scene *d, game_obj *g);
+void idle_player_animation_mirror(scene *d, game_obj *g);
+void move_player_animation_mirror(scene *d, game_obj *g);
+void hit_player_animation_mirror(scene *d, game_obj *g);
 game_obj *create_inventory(scene *d);
 void create_chest_inventory_sprite(scene *d);
 void create_chest_background_sprite(scene *d);
