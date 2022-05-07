@@ -45,6 +45,15 @@ void animate_lb(game_obj *g, scene *s, sfEvent event)
     button *d = (button *) g->data;
     d->t->position = sfText_getPosition(d->t->text);
     g->position = sfSprite_getPosition(g->sprite);
+    if (hover_on_btn(s, g->id)) {
+        sfColor color = sfSprite_getColor(g->sprite);
+        color.a = 135;
+        sfSprite_setColor(g->sprite, color);
+    } else {
+        sfColor color = sfSprite_getColor(g->sprite);
+        color.a = 255;
+        sfSprite_setColor(g->sprite, color);
+    }
     if (event.type == sfEvtMouseButtonPressed) {
         if (is_on_btn(s, event.mouseButton, g->id)) {
             g->rect.top = 21;

@@ -48,6 +48,15 @@ void sb_settings_change(sfEvent event, button *d, game_obj *g, scene *s)
 
 void square_button_event(sfEvent event, button *d, game_obj *g, scene *s)
 {
+    if (hover_on_btn(s, g->id)) {
+        sfColor color = sfSprite_getColor(g->sprite);
+        color.a = 135;
+        sfSprite_setColor(g->sprite, color);
+    } else {
+        sfColor color = sfSprite_getColor(g->sprite);
+        color.a = 255;
+        sfSprite_setColor(g->sprite, color);
+    }
     if (event.type == sfEvtMouseButtonPressed) {
         if (is_on_btn(s, event.mouseButton, g->id)) {
             g->rect.left = 17;
@@ -81,6 +90,15 @@ void animate_sb_no_text(game_obj *g, scene *s, sfEvent event)
     g->rect.left = 0;
     int a = 0;
     sfSprite_setTextureRect(g->sprite, g->rect);
+    if (hover_on_btn(s, g->id)) {
+        sfColor color = sfSprite_getColor(g->sprite);
+        color.a = 135;
+        sfSprite_setColor(g->sprite, color);
+    } else {
+        sfColor color = sfSprite_getColor(g->sprite);
+        color.a = 255;
+        sfSprite_setColor(g->sprite, color);
+    }
     switch (event.type) {
     case sfEvtMouseButtonPressed:
         if (is_on_btn(s, event.mouseButton, g->id)) {
