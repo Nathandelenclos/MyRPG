@@ -29,8 +29,9 @@ void close_animate_chest(scene *d, game_obj *g)
         sfIntRect rect = sfSprite_getTextureRect(g->sprite);
         rect.left -= 16;
         rect.top = 0;
-        if (rect.left < 16) {
+        if (rect.left < 0) {
             data->state = IDLE_C;
+            return;
         }
         sfSprite_setTextureRect(g->sprite, rect);
         data->old_time_an = sfClock_getElapsedTime(g->clock);
@@ -49,8 +50,9 @@ void open_animate_chest(scene *d, game_obj *g)
         sfIntRect rect = sfSprite_getTextureRect(g->sprite);
         rect.left += 16;
         rect.top = 0;
-        if (rect.left > 2 * 16) {
+        if (rect.left > 3 * 16) {
             data->state = IDLE_C;
+            return;
         }
         sfSprite_setTextureRect(g->sprite, rect);
         data->old_time_an = sfClock_getElapsedTime(g->clock);

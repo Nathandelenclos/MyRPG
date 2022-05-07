@@ -13,6 +13,8 @@
 void events_play(scene *d, sfEvent event)
 {
     events_manage(d, event);
+    game_obj *p = get_object(d, "player");
+    game_obj *chest = get_closer_object(d, p, CHESTS_G);
     switch (event.type) {
     case sfEvtClosed:
         sfRenderWindow_close(d->hub->window);
@@ -20,11 +22,8 @@ void events_play(scene *d, sfEvent event)
     case sfEvtKeyPressed:
         if (event.key.code == d->hub->s->c->menu)
             switch_scene(d, START);
-        if (event.key.code == sfKeySpace) {
-            /*game_obj *obj = get_closer_object(d, get_object(d, "player"), CHESTS_G);
-            ((chest *)obj->data)->open(d, obj);*/
+        if (event.key.code == d->hub->s->c->interact && get_distance(p, chest) < 150)
             switch_scene(d, CHEST);
-        }
         break;
     }
 }
@@ -102,8 +101,8 @@ void create_data_play(scene *d)
     create_player(d);
     create_all_slimes(d);
     display_fps(d);
-    create_basic_chest(d, 530, 200);
-    create_basic_chest(d, 530, 300);
+    create_basic_chest(d, 200, 200);
+    create_basic_chest(d, 200, 300);
     game_obj *p = get_object(d, "player");
     game_obj *c = get_closer_object(d, p, CHESTS_G);
     game_obj *slime = get_closer_object(d, p, ENEMY);
