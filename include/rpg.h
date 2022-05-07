@@ -24,6 +24,7 @@
 #ifndef RPG_H
     #define RPG_H
 
+game_obj *hover_on_btn(scene *d, int id);
 text_id *create_text_id_struct(int size, group grp, int);
 void switch_scene(scene *d, state s);
 void wrong_input(screen *screen1);

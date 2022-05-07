@@ -10,6 +10,28 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
+game_obj *hover_on_btn(scene *d, int id)
+{
+    game_obj *obj;
+    node *tmp = d->objs;
+    sfVector2f position;
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(d->hub->window);
+    while (tmp != NULL) {
+        obj = (game_obj *) tmp->data;
+        sfVector2f scale = sfSprite_getScale(obj->sprite);
+        position = sfSprite_getPosition(obj->sprite);
+        if (obj->id == id &&
+            (float) mouse.y < (float) (position.y + obj->rect.height * scale.y)
+                && (float) (mouse.y > position.y) &&
+            (float) (mouse.x < position.x + obj->rect.width * scale.x)
+                && (float) (mouse.x > position.x)) {
+            return obj;
+        }
+        tmp = tmp->next;
+    }
+    return NULL;
+}
+
 game_obj *is_on_btn(scene *d, sfMouseButtonEvent event, int id)
 {
     game_obj *obj;
