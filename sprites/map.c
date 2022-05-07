@@ -48,7 +48,7 @@ void action_maps(game_obj *g, scene *s)
     maps *data = g->data;
     game_obj *p_g = get_object(s, "player");
     player *p = (player *)p_g->data;
-    if (p->state != MOVE)
+    if (p->state != MOVE && p->state != MOVE_MIRROR)
         return;
     collision_map(s, g);
     data->time = sfClock_getElapsedTime(g->clock);

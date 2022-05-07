@@ -16,11 +16,6 @@ void print_life_bar_player(scene *d, player *p)
     sfRenderWindow_drawSprite(d->hub->window, p->lb->sprite, NULL);
 }
 
-// g->texture = get_texture(d, "player_mirror");
-// if (g->texture != NULL) {
-//     sfSprite_setTexture(g->sprite, g->texture, sfTrue);
-// }
-
 int is_mirror(player *p)
 {
     if (p->state == IDLE_MIRROR || p->state == HIT_MIRROR
@@ -29,26 +24,26 @@ int is_mirror(player *p)
     }
     return 0;
 }
-//sfKeyboard_isKeyPressed(71) || sfKeyboard_isKeyPressed(72) ||
+
 void event_player(game_obj *g, scene *d, sfEvent event)
 {
     player *p = (player *) g->data;
     sfIntRect rect = sfSprite_getTextureRect(g->sprite);
     if (p->state == HIT || p->state == HIT_MIRROR)
         return;
-    if (p->state == IDLE_MIRROR || p->state == MOVE_MIRROR)
-        printf("IDLE_MIRROR\n");
-    else
+    if (is_mirror(p))
+        p->state = IDLE_MIRROR;
+    else if (!is_mirror(p))
         p->state = IDLE;
-    if ((sfKeyboard_isKeyPressed(71)) || (sfKeyboard_isKeyPressed(73) ||
-        sfKeyboard_isKeyPressed(74)) && is_mirror(p)) {
+    if ((sfKeyboard_isKeyPressed(71)) || ((sfKeyboard_isKeyPressed(73) ||
+        sfKeyboard_isKeyPressed(74)) && is_mirror(p))) {
         p->state = MOVE_MIRROR;
         if (event.key.shift)
             p->animation_speed = 0.1;
         else
             p->animation_speed = 0.15;
-    } else if (sfKeyboard_isKeyPressed(73) ||
-        sfKeyboard_isKeyPressed(74) || sfKeyboard_isKeyPressed(72)) {
+    } else if (sfKeyboard_isKeyPressed(72) || ((sfKeyboard_isKeyPressed(73) ||
+        sfKeyboard_isKeyPressed(74)) && !is_mirror(p))) {
         p->state = MOVE;
         if (event.key.shift)
             p->animation_speed = 0.1;
@@ -56,8 +51,16 @@ void event_player(game_obj *g, scene *d, sfEvent event)
             p->animation_speed = 0.15;
     }
     if (event.type == sfEvtMouseButtonPressed && is_mirror(p)) {
-        printf("HIT_MIRROR\n");
-    } else if (event.type == sfEvtMouseButtonPressed) {
+        rect.left = 0;
+        p->state = HIT_MIRROR;
+        float distance = get_distance(g, get_closer_object(d, g, ENEMY));
+        if (distance <= 175.0 && distance >= 0.0) {
+            game_obj *s = get_object(d, "enemy_slime");
+            if (s != NULL)
+                ((slime *)s->data)->hp -= 5;
+        }
+        sfSprite_setTextureRect(g->sprite, rect);
+    } else if (event.type == sfEvtMouseButtonPressed && !is_mirror(p)) {
         rect.left = 0;
         p->state = HIT;
         float distance = get_distance(g, get_closer_object(d, g, ENEMY));
@@ -76,12 +79,14 @@ void animate_player(scene *d, game_obj *g)
     print_life_bar_player(d, data);
     switch (data->state) {
     case HIT:
+        data->hit = hit_player_animation;
         data->hit(d, g);
         break;
     case DESTROY:
         data->destroy(d, g);
         break;
     case IDLE:
+        data->idle = idle_player_animation;
         g->rect.left = 0;
         data->idle(d, g);
         break;
@@ -89,6 +94,26 @@ void animate_player(scene *d, game_obj *g)
         data->jump(d, g);
         break;
     case MOVE:
+        data->move = move_player_animation;
+        data->move(d, g);
+        break;
+    case HIT_MIRROR:
+        data->hit = hit_player_animation_mirror;
+        data->hit(d, g);
+        break;
+    case DESTROY_MIRROR:
+        data->destroy(d, g);
+        break;
+    case IDLE_MIRROR:
+        data->idle = idle_player_animation_mirror;
+        g->rect.left = 0;
+        data->idle(d, g);
+        break;
+    case JUMP_MIRROR:
+        data->jump(d, g);
+        break;
+    case MOVE_MIRROR:
+        data->move = move_player_animation_mirror;
         data->move(d, g);
         break;
     }
