@@ -53,7 +53,7 @@ tree *create_tree_data(scene *d)
     return (data);
 }
 
-void event_tree(game_obj *g, scene *d, sfEvent *event)
+void event_tree(game_obj *g, scene *d, sfEvent event)
 {
     game_obj *p = get_object(d, "player");
     game_obj *obj = get_closer_object(d, p, TREES);
