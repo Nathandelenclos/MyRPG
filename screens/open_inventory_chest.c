@@ -10,30 +10,29 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 
-void action_click_on_case(scene *d, int i, sfMouseButtonEvent event, inventory *data)
+void action_click_on_case(
+    scene *d, int i, sfMouseButtonEvent event, inventory *data
+)
 {
-    sfVector2f *pos = d->state == CHEST ? init_inventory_pos_places_c() : init_inventory_pos_places_p();
+    sfVector2f *pos = d->state == CHEST ? init_inventory_pos_places_c()
+                                        : init_inventory_pos_places_p();
     static slot_inv *stamp = NULL;
     static int stamp_i = -1;
     static inventory *stamp_inv = NULL;
     static inventory_chest_state state = FIRST_CLICK;
-    printf("i => %i, pos[i].x => %f, pos[i].y => %f\n", i, pos[i].x, pos[i].y);
-    if (event.x >= pos[i].x && event.x <= pos[i].x + 140 && event.y >= pos[i].y &&
+    if (event.x >= pos[i].x && event.x <= pos[i].x + 140 &&
+        event.y >= pos[i].y &&
         event.y <= pos[i].y + 140) {
-        printf("%i\n", i);
         if (data->size == 9 && i >= 27)
             i -= 27;
-        printf("%i\n", i);
         if (state == FIRST_CLICK) {
             stamp = data->slot[i];
             stamp_i = i;
             stamp_inv = data;
-            printf("FIRST CLICK\n");
             state = SECOND_CLICK;
         } else {
             stamp_inv->slot[stamp_i] = data->slot[i];
             data->slot[i] = stamp;
-            printf("SECOND CLICK\n");
             state = FIRST_CLICK;
         }
     }
@@ -59,11 +58,13 @@ void events_chest(scene *d, sfEvent event)
         break;
     case sfEvtMouseButtonPressed:
         for (int i = 0; i < 36; i++) {
-            inv = i >= 27 ? ((player *)p->data)->inventory: ((chest *)c->data)->inventory;
+            inv = i >= 27 ? ((player *) p->data)->inventory
+                          : ((chest *) c->data)->inventory;
             action_click_on_case(d, i, event.mouseButton, inv);
         }
         break;
     }
+
 }
 
 void display_chest(scene *d, inventory *ci)
@@ -74,12 +75,11 @@ void display_chest(scene *d, inventory *ci)
         if (ci->slot[i] != NULL) {
             ci->pos = d->state == CHEST ? init_inventory_pos_places_c()
                                         : init_inventory_pos_places_p();
-            f = (ci->slot[i]->rect.width / 140.0);
+            f = (ci->slot[i]->rect.width / (d->state == CHEST ? 140.0 : 70.0));
             y = 1 / f;
             set_scale(d, ci->slot[i]->sprite, y);
             sfSprite_setPosition(ci->slot[i]->sprite,
                 ci->pos[d->state == CHEST && ci->size == 9 ? i + 27 : i]);
-
             sfRenderWindow_drawSprite(d->hub->window, ci->slot[i]->sprite,
                 NULL);
             free(ci->pos);

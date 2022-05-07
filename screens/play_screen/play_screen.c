@@ -36,6 +36,8 @@ void play_screen(scene *data)
     time_manager(data);
     text_manager(data);
     env_manager(data);
+    game_obj *p = get_object(data, "player");
+    display_chest(data, ((player *) p->data)->inventory);
 }
 
 void create_all_slimes(scene *d)

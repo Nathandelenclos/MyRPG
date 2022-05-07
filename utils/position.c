@@ -11,8 +11,8 @@ sfVector2f *init_inventory_pos_places_p(void)
 {
     sfVector2f *pos = malloc(sizeof(sfVector2f) * 9);
     for (int i = 0; i < 9; i++) {
-        pos[i].x = 697 + i * 60.5;
-        pos[i].y = 1028;
+        pos[i].x = 685 + i * 60.5;
+        pos[i].y = 1015;
     }
     return (pos);
 }
