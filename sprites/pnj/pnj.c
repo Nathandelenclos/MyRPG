@@ -54,7 +54,6 @@ void create_pnj_simon(scene *d, sfVector2f pos)
     hero->type = PNJ;
     hero->name = "pnj_simon";
     hero->animate = animate_pnj;
-    // hero->event = event_pnj_simon;
     hero->grp = PNJ_ENTITY;
     hero->action = action_pnj_simon;
     hero->display = 1;
@@ -74,7 +73,6 @@ game_obj *create_big_pnj(scene *d, sfVector2f pos, int scale)
     set_scale(d, hero->sprite, scale);
     hero->type = PNJ;
     hero->name = "big_pnj";
-    // hero->event = event_pnj_simon;
     hero->grp = PNJ_ENTITY;
     hero->display = 1;
     sfSprite_setPosition(hero->sprite, pos);
