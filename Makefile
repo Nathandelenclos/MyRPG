@@ -47,6 +47,7 @@ SPRITES	=	banners/banners1.c	\
 			player/player_particle.c	\
 			chest_inventory.c	\
 			bed/bed.c	\
+			trees/trees.c	\
 
 ENVIRONMENTS	=	rain.c	\
 					snow.c	\

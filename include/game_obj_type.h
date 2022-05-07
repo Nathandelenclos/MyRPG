@@ -37,6 +37,14 @@ typedef struct {
 } slime;
 
 typedef struct {
+    void (*fruit)(scene *, game_obj *);
+    tree_state state;
+    sfTime time;
+    sfTime old_time_fruit;
+} tree;
+
+
+typedef struct {
     sfTime time;
     sfTime old_time_an;
     float speed;

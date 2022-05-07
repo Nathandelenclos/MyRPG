@@ -39,6 +39,7 @@ typedef enum group_e {
     MAP,
     ENEMY,
     OBJECT,
+    TREES,
     BACKGROUND,
     SCROLL_BTN,
     SCROLL_BTN_IN,
@@ -52,6 +53,7 @@ typedef enum type_e {
     MENU_BG,
     BUTTON,
     CHESTS,
+    TREE,
     BED,
 } type;
 
@@ -86,6 +88,11 @@ typedef enum {
     HIT,
     DESTROY,
 } entity_state;
+
+typedef enum {
+    FRUIT,
+    NO_FRUIT,
+} tree_state;
 
 typedef enum {
     OPEN,
