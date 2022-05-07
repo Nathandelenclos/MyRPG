@@ -102,7 +102,7 @@ void create_data_play(scene *d)
     create_all_slimes(d);
     display_fps(d);
     create_basic_chest(d, 200, 200);
-    create_basic_chest(d, 200, 300);
+    create_basic_chest(d, 200, 220);
     game_obj *p = get_object(d, "player");
     game_obj *c = get_closer_object(d, p, CHESTS_G);
     game_obj *slime = get_closer_object(d, p, ENEMY);
