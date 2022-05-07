@@ -12,9 +12,9 @@ void init_slot(controls *c)
     c->slot1 = sfKeyNum1;
     c->slot2 = sfKeyNum2;
     c->slot3 = sfKeyNum3;
-    c->slot4 = sfKeyNum4;
+    c->slot4 = sfKeyQuote;
     c->slot5 = sfKeyNum5;
-    c->slot6 = sfKeyNum6;
+    c->slot6 = sfKeyDash;
     c->slot7 = sfKeyNum7;
     c->slot8 = sfKeyNum8;
     c->slot9 = sfKeyNum9;

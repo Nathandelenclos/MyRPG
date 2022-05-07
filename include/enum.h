@@ -42,6 +42,7 @@ typedef enum group_e {
     BACKGROUND,
     SCROLL_BTN,
     SCROLL_BTN_IN,
+    CHESTS_G
 } group;
 
 typedef enum type_e {
