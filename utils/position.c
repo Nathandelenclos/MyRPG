@@ -40,3 +40,10 @@ sfVector2f *init_inventory_pos_places_c(void)
     }
     return (pos);
 }
+
+int get_free_space_inv(inventory *inv)
+{
+    int i = 0;
+    for (; inv->slot[i] != NULL; ++i);
+    return i;
+}

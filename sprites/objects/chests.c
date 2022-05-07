@@ -9,7 +9,7 @@
 
 void push_items(inventory *ci, int i, game_obj *obj)
 {
-    if (obj == NULL)
+    if (obj == NULL && i >= ci->size)
         return;
     ci->slot[i] = malloc(sizeof(slot_inv));
     ci->slot[i]->obj = obj;

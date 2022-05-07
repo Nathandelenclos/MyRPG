@@ -53,3 +53,23 @@ void copy_objs(scene *copy, scene *paste, group grp)
         tmp = tmp->next;
     }
 }
+
+game_obj *obj_dup(scene *d, game_obj *obj)
+{
+    game_obj *dup = malloc(sizeof(game_obj));
+    dup->sprite = sfSprite_create();
+    dup->texture = obj->texture;
+    dup->rect = obj->rect;
+    dup->position = obj->position;
+    dup->data = obj->data;
+    dup->animate = obj->animate;
+    dup->event = obj->event;
+    dup->type = obj->type;
+    dup->name = my_strdup(obj->name);
+    dup->action = obj->action;
+    dup->display = obj->display;
+    dup->grp = obj->grp;
+    dup->clock = sfClock_create();
+    dup->id = get_next_index(d->objs);
+    return dup;
+}

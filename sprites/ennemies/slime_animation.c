@@ -85,7 +85,9 @@ void hit_animate_slime(scene *d, game_obj *g)
 void destroy_animate_slime(scene *d, game_obj *g)
 {
     slime *data = (slime *)g->data;
-    if (data->state != DESTROY)
+    game_obj *p = get_object(d, "player");
+    player *p_data = p->data;
+    if (data->state != DESTROY && g->display == 0)
         return;
     data->time = sfClock_getElapsedTime(g->clock);
     float seconds = sfTime_asSeconds(data->time);
@@ -94,8 +96,12 @@ void destroy_animate_slime(scene *d, game_obj *g)
         sfIntRect rect = sfSprite_getTextureRect(g->sprite);
         rect.left += 32;
         rect.top = 128;
-        if (rect.left > (g->texture->rect.width - (3 * 32)))
+        if (rect.left > (g->texture->rect.width - (3 * 32))) {
+            if (g->display != 0)
+                push_items(p_data->inventory, get_free_space_inv(p_data->inventory),
+                    obj_dup(d, g));
             g->display = 0;
+        }
         sfSprite_setTextureRect(g->sprite, rect);
         data->old_time_an = sfClock_getElapsedTime(g->clock);
     }
