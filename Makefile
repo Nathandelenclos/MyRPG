@@ -15,6 +15,8 @@ UTILS	=	life_bar.c	\
 			utils.c	\
 			init_settings_structs.c	\
 			collision.c	\
+			position.c	\
+			fade_scene.c	\
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
@@ -26,6 +28,7 @@ SPRITES	=	banners/banners1.c	\
       		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
       		objects/chests.c	\
+      		objects/chests_animation.c	\
       		ui/l_btn.c	\
       		ui/event_change_input_setting.c	\
 			ui/change_move_input.c	\
@@ -43,11 +46,13 @@ SPRITES	=	banners/banners1.c	\
 			map.c	\
 			player/player.c	\
 			player/player_animation.c	\
+			player/player_animation_mirror.c	\
 			player/player_inventory.c	\
-			player/player_particle.c	\
 			chest_inventory.c	\
 			bed/bed.c	\
 			pnj/pnj.c	\
+			trees/trees.c	\
+
 
 ENVIRONMENTS	=	rain.c	\
 					snow.c	\
@@ -146,7 +151,8 @@ debug:	CFLAGS += -g
 debug:	all
 
 clean:
-	rm -f $(OBJ)
+	find . -name "*.o" -delete
+	find . -name "vgcore*" -delete
 
 fclean: clean
 	rm -f $(NAME)

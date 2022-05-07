@@ -7,12 +7,12 @@
 
 #include "../../include/rpg.h"
 
-void idle_player_animation(scene *d, game_obj *g)
+void idle_player_animation_mirror(scene *d, game_obj *g)
 {
     player *data = (player *)g->data;
-    if (data->state != IDLE)
+    if (data->state != IDLE_MIRROR)
         return;
-    g->texture = get_texture(d, "player");
+    g->texture = get_texture(d, "player_mirror");
     if (g->texture != NULL)
         sfSprite_setTexture(g->sprite, g->texture->texture, sfFalse);
     data->time = sfClock_getElapsedTime(g->clock);
@@ -29,12 +29,12 @@ void idle_player_animation(scene *d, game_obj *g)
     }
 }
 
-void move_player_animation(scene *d, game_obj *g)
+void move_player_animation_mirror(scene *d, game_obj *g)
 {
     player *data = (player *)g->data;
-    if (data->state != MOVE)
+    if (data->state != MOVE_MIRROR)
         return;
-    g->texture = get_texture(d, "player");
+    g->texture = get_texture(d, "player_mirror");
     if (g->texture != NULL)
         sfSprite_setTexture(g->sprite, g->texture->texture, sfFalse);
     data->time = sfClock_getElapsedTime(g->clock);
@@ -51,13 +51,13 @@ void move_player_animation(scene *d, game_obj *g)
     }
 }
 
-void hit_player_animation(scene *d, game_obj *g)
+void hit_player_animation_mirror(scene *d, game_obj *g)
 {
     player *data = (player *)g->data;
     sfIntRect rect = sfSprite_getTextureRect(g->sprite);
-    if (data->state != HIT)
+    if (data->state != HIT_MIRROR)
         return;
-    g->texture = get_texture(d, "player");
+    g->texture = get_texture(d, "player_mirror");
     if (g->texture != NULL)
         sfSprite_setTexture(g->sprite, g->texture->texture, sfFalse);
     data->time = sfClock_getElapsedTime(g->clock);
@@ -68,7 +68,7 @@ void hit_player_animation(scene *d, game_obj *g)
         rect.top = 96;
         if (rect.left > g->texture->rect.width - (3 * 48)) {
             rect = g->rect;
-            data->state = IDLE;
+            data->state = IDLE_MIRROR;
         }
         sfSprite_setTextureRect(g->sprite, rect);
         data->old_time_an = sfClock_getElapsedTime(g->clock);

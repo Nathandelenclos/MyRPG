@@ -24,7 +24,7 @@ void animate_particle(scene *s, particle *p)
 
 void animate_all_particles(scene *s, player *p)
 {
-    node *tmp = p->particles;
+    node *tmp = ;
     particle *par = NULL;
     while (tmp != NULL) {
         par = (particle *)tmp->data;

@@ -37,6 +37,14 @@ typedef struct {
 } slime;
 
 typedef struct {
+    void (*fruit)(scene *, game_obj *);
+    tree_state state;
+    sfTime time;
+    sfTime old_time_fruit;
+} tree;
+
+
+typedef struct {
     sfTime time;
     sfTime old_time_an;
     float speed;
@@ -50,6 +58,20 @@ typedef struct particle_s{
 } particle;
 
 typedef struct {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfIntRect rect;
+    game_obj *obj;
+} slot_inv;
+
+typedef struct {
+    sfVector2f *pos;
+    slot_inv **slot;
+    slot_inv *stamp;
+    int size;
+} inventory;
+
+typedef struct {
     sfTime time;
     sfTime old_time_an;
     sfTime old_time_hit;
@@ -57,9 +79,10 @@ typedef struct {
     entity_state state;
     double animation_speed;
     game_obj *inv;
+    inventory *inventory;
     int hp;
     life_bar *lb;
-    node *particles;
+    int slot_select;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
     void (*jump)(scene *, game_obj *);
@@ -91,6 +114,7 @@ typedef struct {
     chest_state state;
     sfTime time;
     sfTime old_time_an;
+    inventory *inventory;
     void (*open)(scene *, game_obj *);
     void (*close)(scene *, game_obj *);
 } chest;
@@ -109,13 +133,9 @@ typedef struct {
 } text_id;
 
 typedef struct {
-    inventory_chest_state state;
-    sfVector2f *pos;
-    sfSprite *slot_s[36];
-    sfTexture *slot_t[36];
-    sfSprite *stamp_s;
-    sfTexture *stamp_t;
-} chest_inventory;
+    slot_inv **slots;
+    int selected;
+} player_inv;
 
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);
@@ -123,5 +143,10 @@ void move_animate_slime(scene *d, game_obj *g);
 void jump_animate_slime(scene *d, game_obj *g);
 void idle_animate_slime(scene *d, game_obj *g);
 particle *create_particle(scene *d);
+chest *create_chest_data(scene *d);
+inventory *create_inventory_data(scene *d, int size, sfVector2f *pos);
+void push_items(inventory *ci, int i, game_obj *obj);
+sfVector2f *init_inventory_pos_places_p(void);
+sfVector2f *init_inventory_pos_places_c(void);
 
 #endif

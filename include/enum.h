@@ -40,19 +40,23 @@ typedef enum group_e {
     MAP,
     ENEMY,
     OBJECT,
+    TREES,
     BACKGROUND,
     SCROLL_BTN,
     SCROLL_BTN_IN,
+    CHESTS_G
 } group;
 
 typedef enum type_e {
     BASIC,
     SLIME,
     PLAYER,
+    PLAYER_MIRROR,
     INV,
     MENU_BG,
     BUTTON,
     CHESTS,
+    TREE,
     BED,
     PNJ,
 } type;
@@ -84,11 +88,21 @@ typedef enum {
 
 typedef enum {
     IDLE,
+    IDLE_MIRROR,
     MOVE,
+    MOVE_MIRROR,
     JUMP,
+    JUMP_MIRROR,
     HIT,
+    HIT_MIRROR,
     DESTROY,
+    DESTROY_MIRROR,
 } entity_state;
+
+typedef enum {
+    FRUIT,
+    NO_FRUIT,
+} tree_state;
 
 typedef enum {
     OPEN,
