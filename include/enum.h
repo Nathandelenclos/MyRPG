@@ -43,12 +43,14 @@ typedef enum group_e {
     BACKGROUND,
     SCROLL_BTN,
     SCROLL_BTN_IN,
+    CHESTS_G
 } group;
 
 typedef enum type_e {
     BASIC,
     SLIME,
     PLAYER,
+    PLAYER_MIRROR,
     INV,
     MENU_BG,
     BUTTON,
@@ -83,10 +85,15 @@ typedef enum {
 
 typedef enum {
     IDLE,
+    IDLE_MIRROR,
     MOVE,
+    MOVE_MIRROR,
     JUMP,
+    JUMP_MIRROR,
     HIT,
+    HIT_MIRROR,
     DESTROY,
+    DESTROY_MIRROR,
 } entity_state;
 
 typedef enum {
