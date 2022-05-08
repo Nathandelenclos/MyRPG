@@ -54,6 +54,7 @@ typedef struct screen_s {
     sfRenderWindow *window;
     int fps;
     sfClock *clock;
+    sfClock *clock2;
     int delta_time;
     settings *s;
 } screen;

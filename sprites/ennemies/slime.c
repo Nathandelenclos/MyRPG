@@ -58,18 +58,22 @@ void action_slime(game_obj *g, scene *d)
     game_obj *p = get_object(d, "player");
     sfVector2f pos_map = sfSprite_getPosition(map->sprite);
     sfTime move = sfClock_getElapsedTime(g->clock);
-    int sec = (sfTime_asMilliseconds(move) % 1000) % 10;
+    int sec = sfTime_asMilliseconds(move) / 1000;
+    sec %= 2;
+    if (is_on_window(g, d)) {
+        if (sec == 1) {
+            g->vector.x += (g->position.x * (float) d->hub->delta_time) / 8;
+            g->vector.y += (g->position.y * (float) d->hub->delta_time) / 8;
+        } else if (sec == 0) {
+            g->vector.x -= (g->position.x * (float) d->hub->delta_time) / 8;
+            g->vector.y -= (g->position.y * (float) d->hub->delta_time) / 8;
+        }
+    }
     pos_map.x += g->vector.x * 9.0;
     pos_map.y += g->vector.y * 9.0;
     sfSprite_setPosition(g->sprite, pos_map);
     if (!is_on_window(g, d))
         return;
-    if (sec <= 5)
-        sfSprite_move(g->sprite, g->position);
-    else {
-        sfVector2f inv = create_vector2f(-g->position.x, -g->position.y);
-        sfSprite_move(g->sprite, inv);
-    }
     pos_map.y += 20;
     pos_map.x += 35;
     float distance = get_distance(g, p);
@@ -80,7 +84,7 @@ void action_slime(game_obj *g, scene *d)
     if (distance <= 150.0)
         s->state = HIT;
     else
-        s->state = IDLE;
+        s->state = MOVE;
     if (g->display)
         print_life_bar(d, s->lb, s->hp * 100 / s->hp_max, pos_map);
     if (g->display && distance <= 150.0 && seconds - old_seconds >= 0.7) {
@@ -106,7 +110,10 @@ void action_slime(game_obj *g, scene *d)
 void create_slime_(scene *d, sfVector2f pos, char *name, sfVector2f hp_hit)
 {
     sfVector2f vector[2] =
-        {create_vector2f(rand() % (5 - -5) + -5, rand() % (5 - -5) + -5), pos};
+        {
+            create_vector2f(((float) (rand() % (10 - -10) + -10)) / 100,
+                ((float) (rand() % (10 - -10) + -10)) / 100), pos
+        };
     sfIntRect rect = create_rect(32, 32, 0, 0);
     game_obj *hero = create_obj(d, name, rect, vector);
     set_scale(d, hero->sprite, 5);;

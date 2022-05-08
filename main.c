@@ -50,6 +50,7 @@ screen *create_hub(void)
     hub->window = sfRenderWindow_create(mode, "MyRPG", sfFullscreen,
         NULL);
     hub->clock = sfClock_create();
+    hub->clock2 = sfClock_create();
     hub->fps = 0;
     hub->mode = mode;
     hub->datas = NULL;
@@ -59,6 +60,7 @@ screen *create_hub(void)
 
 int main(int argc, char **argv)
 {
+    srand(rand());
     screen *hub = create_hub();
     sfImage *icon = sfImage_createFromFile("./assets/logo.png");
     sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,

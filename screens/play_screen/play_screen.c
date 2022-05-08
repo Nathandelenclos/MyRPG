@@ -68,9 +68,9 @@ void create_all_slimes(scene *d)
     create_slime
         (d, create_vector2f(630, 180), PINK, create_vector2f(9, 2));
     create_slime
-        (d, create_vector2f(630, 220), PINK, create_vector2f(9, 2));
+        (d, create_vector2f(630, 200), PINK, create_vector2f(9, 2));
     create_slime
-        (d, create_vector2f(280, 180), BLUE, create_vector2f(12, 3));
+        (d, create_vector2f(280, 170), BLUE, create_vector2f(12, 3));
     create_slime
         (d, create_vector2f(280, 90), BLUE, create_vector2f(12, 3));
     create_slime
@@ -78,7 +78,7 @@ void create_all_slimes(scene *d)
     create_slime
         (d, create_vector2f(400, 90), BLUE, create_vector2f(12, 3));
     create_slime
-        (d, create_vector2f(400, 180), BLUE, create_vector2f(12, 3));
+        (d, create_vector2f(400, 170), BLUE, create_vector2f(12, 3));
     create_slime
         (d, create_vector2f(530, 410), GREEN, create_vector2f(15, 4));
     create_slime
