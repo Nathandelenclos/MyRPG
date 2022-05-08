@@ -41,7 +41,7 @@ void event_manager(scene *d, sfEvent event)
             take_screenshot(d, "screenshot.png");
             my_printf(1, "(screenshot.png)\n");
         }
-        if (event.key.code == sfKeyF3 && fps != NULL) {
+        if (event.key.code == d->hub->s->c->info && fps != NULL) {
             fps->display = !fps->display;
         }
     }

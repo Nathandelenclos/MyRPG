@@ -35,6 +35,8 @@ void event_slot(game_obj *g, scene *d, sfEvent event)
             p->slot_select = 7;
         if (event.key.code == d->hub->s->c->slot9)
             p->slot_select = 8;
+        if (event.key.code == d->hub->s->c->drop)
+            p->inventory->slot[p->slot_select] = NULL;
     }
 }
 
