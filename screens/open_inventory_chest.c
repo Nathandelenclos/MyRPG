@@ -114,6 +114,9 @@ void save_chest_background(scene *old, scene *new)
         sfTexture_create(old->hub->mode.width, old->hub->mode.height);
     sfTexture_updateFromRenderWindow(texture, old->hub->window, 0, 0);
     game_obj *g = get_object(new, "background");
+    sfColor c = sfSprite_getColor(g->sprite);
+    c.a = 135;
+    sfSprite_setColor(g->sprite, c);
     sfSprite_setTexture(g->sprite, texture, sfTrue);
     sfRenderWindow_setMouseCursorVisible(new->hub->window, sfTrue);
 }
