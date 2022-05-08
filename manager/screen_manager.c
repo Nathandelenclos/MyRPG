@@ -73,6 +73,7 @@ scene *create_scene(screen *s, state state)
     d->sounds = NULL;
     d->textures = NULL;
     d->envs = NULL;
+    d->clock = sfClock_create();
     d->hub = s;
     d->state = state;
     d->screen = NULL;

@@ -22,7 +22,8 @@ void events_play(scene *d, sfEvent event)
     case sfEvtKeyPressed:
         if (event.key.code == d->hub->s->c->menu)
             switch_scene(d, START);
-        if (event.key.code == d->hub->s->c->interact && get_distance(p, chest) < 150)
+        if (event.key.code == d->hub->s->c->interact &&
+            get_distance(p, chest) < 150)
             switch_scene(d, CHEST);
         break;
     }
@@ -30,12 +31,26 @@ void events_play(scene *d, sfEvent event)
 
 void play_screen(scene *data)
 {
+    sfTime time = sfClock_getElapsedTime(data->clock);
+    game_obj *p = get_object(data, "player");
+    game_obj *map = get_object(data, "maps");
+    int seconds = sfTime_asMilliseconds(time) / 1000;
+    seconds %= 20;
+    sfColor color = sfSprite_getColor(map->sprite);
     sprites_manager(data);
     move_manager(data);
     time_manager(data);
     text_manager(data);
     env_manager(data);
-    game_obj *p = get_object(data, "player");
+    if (seconds < 5 || seconds > 15)
+        get_env(data, RAIN)->active = sfTrue;
+    else
+        get_env(data, RAIN)->active = sfFalse;
+    if (seconds < 10)
+        color.a = 100;
+    else
+        color.a = 255;
+    sfSprite_setColor(map->sprite, color);
     if (p != NULL)
         display_chest(data, ((player *) p->data)->inventory);
 }

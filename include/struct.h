@@ -84,6 +84,7 @@ typedef struct scene_s {
     node *textures;
     state state;
     screen *hub;
+    sfClock *clock;
     void (*screen)(scene *data);
     void (*active)(scene *old, scene *new);
     void (*event)(scene *data, sfEvent event);
