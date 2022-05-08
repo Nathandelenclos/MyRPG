@@ -64,6 +64,7 @@ ENVIRONMENTS	=	rain.c	\
 					run.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
+			main_menu/pause_menu.c	\
 			settings_menu/settings_menu.c	\
 			settings_menu/moving_button.c	\
 			settings_menu/slot_button.c	\

@@ -91,4 +91,5 @@ void screen_manager(screen *s)
     data_discuss(s);
     data_chest(s);
     data_game_over(s);
+    data_pause(s);
 }

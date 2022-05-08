@@ -21,7 +21,7 @@ void events_play(scene *d, sfEvent event)
         break;
     case sfEvtKeyPressed:
         if (event.key.code == d->hub->s->c->menu)
-            switch_scene(d, START);
+            switch_scene(d, PAUSE);
         if (event.key.code == d->hub->s->c->interact &&
             get_distance(p, chest) < 150)
             switch_scene(d, CHEST);
