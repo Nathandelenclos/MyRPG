@@ -111,6 +111,7 @@ void clear_inventory(inventory *inv);
 int is_on_window(game_obj *g, scene *d);
 void data_pause(screen *screen1);
 void data_win(screen *screen1);
+void check_quest(scene *s, pnj *p);
 
 static int (*quests[])(scene *) = {first_quest, seconds_quest, NULL};
 

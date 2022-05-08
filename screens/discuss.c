@@ -32,13 +32,12 @@ void active_discuss(scene *old, scene *new)
     save_chest_background(old, new);
     sfSprite_setTexture(obj_b->sprite, obj->texture->texture, sfFalse);
     if (p->step == 2) {
-        p->step = 0;
-        if (count_max_quest() > p->dialog) {
+        if (count_max_quest() > (p->dialog + 1)) {
             p->dialog++;
             p->quest = quests[p->dialog];
+            p->step = 0;
         }
-    }
-    if (p->step != 0)
+    } else if (p->step == 1)
         p->step = p->quest(old) ? 2 : 1;
 }
 
@@ -54,7 +53,7 @@ void events_discuss(scene *d, sfEvent event)
         break;
     case sfEvtKeyPressed:
         if (event.key.code == sfKeyEscape) {
-            p->step = p->quest(d) ? 2 : 1;
+            check_quest(d, p);
             switch_scene(d, PLAY);
         }
         break;

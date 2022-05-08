@@ -17,6 +17,7 @@ UTILS	=	life_bar.c	\
 			collision.c	\
 			position.c	\
 			fade_scene.c	\
+			quest.c	\
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
