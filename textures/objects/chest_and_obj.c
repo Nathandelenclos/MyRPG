@@ -45,5 +45,4 @@ void create_chest_and_obj_texture(scene *d)
     put_in_list(&d->textures,
         create_texture("./assets/objects/apples.png", "apple",
             create_simple_rect(55, 36)));
-    //    create_bed_texture(d);
 }
