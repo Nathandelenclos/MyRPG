@@ -38,4 +38,3 @@ game_obj *create_apple(scene *d)
     put_in_end(&d->objs, hero);
     return hero;
 }
-

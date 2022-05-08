@@ -31,16 +31,6 @@ sfVector2f *init_inventory_pos_places(void)
     return (pos);
 }
 
-// sfVector2f *init_inventory_pos_places(void)
-// {
-//     sfVector2f *pos = malloc(sizeof(sfVector2f) * 9);
-//     for (int i = 0; i < 9; i++) {
-//         pos[i].x = 697 + i * 60.5;
-//         pos[i].y = 1028;
-//     }
-//     return (pos);
-// }
-
 void create_chest_inventory_sprite(scene *d)
 {
     sfVector2f vector[2] = {{

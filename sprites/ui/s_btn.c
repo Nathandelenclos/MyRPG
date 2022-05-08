@@ -7,42 +7,17 @@
 
 #include "../../include/rpg.h"
 
-void sb_settings_change(sfEvent event, button *d, game_obj *g, scene *s)
+void square_button_pressed(sfEvent event, button *d, game_obj *g, scene *s)
 {
-    sound *music = (sound *)s->sounds->data;
-    if (is_on_btn(s, event.mouseButton, g->id) &&
-        my_strcmp(g->name, "white_plus")) {
-        if (my_strcmp(d->t->name, my_int_to_str(s->hub->s->fps)) && s->hub->s->fps < 300 && s->hub->s->fps > 14) {
-            s->hub->s->fps++;
-            modify_string(s, d->t->string,
-            my_int_to_str(s->hub->s->fps));
-            d->t->name = my_int_to_str(s->hub->s->fps);
-            sfRenderWindow_setFramerateLimit(s->hub->window, s->hub->s->fps);
+    if (event.type == sfEvtMouseButtonPressed) {
+        if (is_on_btn(s, event.mouseButton, g->id)) {
+            g->rect.left = 17;
+            d->t->position.y += 8;
+            g->position.y += 3;
+            sfText_setPosition(d->t->text, d->t->position);
+            sfSprite_setPosition(g->sprite, g->position);
         }
-        if (my_strcmp(d->t->name, my_int_to_str(s->hub->s->volume)) && s->hub->s->volume < 100 && s->hub->s->volume > -1) {
-            s->hub->s->volume++;
-            modify_string(s, d->t->string,
-            my_int_to_str(s->hub->s->volume));
-            d->t->name = my_int_to_str(s->hub->s->volume);
-            sfMusic_setVolume(music->music, s->hub->s->volume);
-        }
-    }
-    if (is_on_btn(s, event.mouseButton, g->id) &&
-        my_strcmp(g->name, "white_minus")) {
-        if (my_strcmp(d->t->name, my_int_to_str(s->hub->s->fps)) && s->hub->s->fps > 15 && s->hub->s->fps < 300) {
-            s->hub->s->fps--;
-            modify_string(s, d->t->string,
-            my_int_to_str(s->hub->s->fps));
-            d->t->name = my_int_to_str(s->hub->s->fps);
-            sfRenderWindow_setFramerateLimit(s->hub->window, s->hub->s->fps);
-        }
-        if (my_strcmp(d->t->name, my_int_to_str(s->hub->s->volume)) && s->hub->s->volume > 0 && s->hub->s->volume < 101) {
-            s->hub->s->volume--;
-            modify_string(s, d->t->string,
-            my_int_to_str(s->hub->s->volume));
-            d->t->name = my_int_to_str(s->hub->s->volume);
-            sfMusic_setVolume(music->music, s->hub->s->volume);
-        }
+        sfSprite_setTextureRect(g->sprite, g->rect);
     }
 }
 
@@ -57,16 +32,7 @@ void square_button_event(sfEvent event, button *d, game_obj *g, scene *s)
         color.a = 255;
         sfSprite_setColor(g->sprite, color);
     }
-    if (event.type == sfEvtMouseButtonPressed) {
-        if (is_on_btn(s, event.mouseButton, g->id)) {
-            g->rect.left = 17;
-            d->t->position.y += 8;
-            g->position.y += 3;
-            sfText_setPosition(d->t->text, d->t->position);
-            sfSprite_setPosition(g->sprite, g->position);
-        }
-        sfSprite_setTextureRect(g->sprite, g->rect);
-    }
+    square_button_pressed(event, d, g, s);
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
         sb_settings_change(event, d, g, s);
     }

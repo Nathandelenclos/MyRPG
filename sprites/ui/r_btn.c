@@ -25,7 +25,7 @@ void animate_rb(game_obj *g, scene *s, sfEvent event)
 int create_sprite_rb(scene *d, char *name, int x, int y)
 {
     sfVector2f pos[2] = {{x, y}, {0, 0}};
-    game_obj *round_b = 
+    game_obj *round_b =
         create_obj(d, name, create_rect(17, 17, 0, 0), pos);
     set_scale(d, round_b->sprite, 3);
     round_b->name = my_strdup(name);
