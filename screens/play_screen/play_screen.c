@@ -132,7 +132,6 @@ void create_data_play(scene *d)
     create_all_slimes(d);
     create_bed(d, create_vector2f(292, 227));
     create_all_trees(d);
-    display_fps(d);
     create_basic_chest(d, 304, 225);
     create_golden_chest(d, 328, 225);
     game_obj *p = get_object(d, "player");

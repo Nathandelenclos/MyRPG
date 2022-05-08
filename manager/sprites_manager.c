@@ -83,11 +83,14 @@ void sprites_manager(scene *d)
     game_obj *obj = NULL;
     node *tmp = d->objs;
     int z_index = 1;
+    d->hub->entity_load = 0;
 
     while (tmp != NULL) {
         obj = (game_obj *) tmp->data;
-        if (obj->display == z_index && is_on_window(obj, d))
+        if (obj->display == z_index && is_on_window(obj, d)) {
             sfRenderWindow_drawSprite(d->hub->window, obj->sprite, NULL);
+            d->hub->entity_load++;
+        }
         draw_text_with_index(d, z_index);
         if (tmp->next == NULL && z_index <= 5) {
             z_index++;

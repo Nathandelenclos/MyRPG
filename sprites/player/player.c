@@ -109,7 +109,7 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         if (distance <= 175.0 && distance >= 0.0) {
             game_obj *s = get_closer_object(d, g, ENEMY);
             if (s != NULL)
-                ((slime *) s->data)->hp -= 3;
+                ((slime *) s->data)->hp -= p->damage;
         }
         sfSprite_setTextureRect(g->sprite, rect);
     } else if (sfKeyboard_isKeyPressed(d->hub->s->c->attack) && !is_mirror(p)) {
@@ -119,7 +119,7 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         if (distance <= 175.0 && distance >= 0.0) {
             game_obj *s = get_closer_object(d, g, ENEMY);
             if (s != NULL)
-                ((slime *) s->data)->hp -= 3;
+                ((slime *) s->data)->hp -= p->damage;
         }
         sfSprite_setTextureRect(g->sprite, rect);
     }

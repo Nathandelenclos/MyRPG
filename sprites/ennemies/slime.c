@@ -92,6 +92,9 @@ void action_slime(game_obj *g, scene *d)
         s->old_time_hit = sfClock_getElapsedTime(g->clock);
         if (((player *) p->data)->hp <= 0) {
             ((player *) p->data)->hp = 100;
+            ((player *) p->data)->damage = 3;
+            ((player *) p->data)->total_hp = 100;
+            ((player *) p->data)->xp = 0;
             switch_scene(d, GAME_OVER);
         }
     }

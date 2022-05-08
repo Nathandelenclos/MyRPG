@@ -85,6 +85,9 @@ void create_btn_text(scene *d, char *, text_id *, sfVector2f);
 void create_basic_chest(scene *d, float x, float y);
 void create_golden_chest(scene *d, float x, float y);
 void display_dialog(scene *d, pnj *p);
+void display_sprite_load(scene *d);
+void create_debug(scene *d);
+void display_delta_time(scene *d);
 
 //Environment
 void create_rain_env(scene *d);

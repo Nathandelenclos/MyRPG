@@ -52,6 +52,7 @@ screen *create_hub(void)
     hub->clock = sfClock_create();
     hub->clock2 = sfClock_create();
     hub->fps = 0;
+    hub->entity_load = 0;
     hub->mode = mode;
     hub->datas = NULL;
     hub->s = init_settings_struct();

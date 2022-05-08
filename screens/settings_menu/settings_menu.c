@@ -72,6 +72,5 @@ void data_settings(screen *screen1)
     d->screen = settings_screen;
     d->event = events_settings;
     create_sprite_settings(d);
-    display_fps(d);
     put_in_list(&screen1->datas, d);
 }

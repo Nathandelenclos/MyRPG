@@ -55,6 +55,7 @@ typedef struct screen_s {
     node *datas;
     sfRenderWindow *window;
     int fps;
+    int entity_load;
     sfClock *clock;
     sfClock *clock2;
     int delta_time;

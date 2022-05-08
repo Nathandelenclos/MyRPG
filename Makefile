@@ -114,6 +114,8 @@ QUEST =	simon_quest.c	\
 TEXTS	=	fps.c	\
 			menu.c	\
 			discuss.c	\
+			entity_load.c	\
+			delta_time.c	\
 
 TEXTS_PATH	=	texts/
 
