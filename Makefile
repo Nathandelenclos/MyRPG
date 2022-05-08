@@ -11,8 +11,10 @@ UTILS	=	life_bar.c	\
 			rect.c	\
 			game_obj.c	\
 			free.c	\
+			free2.c	\
 			get_w_scale.c	\
 			utils.c	\
+			utils2.c	\
 			init_settings_structs.c	\
 			collision.c	\
 			position.c	\
@@ -26,7 +28,9 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon2.c	\
 			icons/icon3.c	\
       		ennemies/slime.c	\
+			ennemies/slime2.c	\
 			ennemies/slime_animation.c	\
+			ennemies/slime_animation2.c	\
       		objects/chests.c	\
       		objects/apples.c	\
       		objects/chests_animation.c	\
@@ -37,6 +41,7 @@ SPRITES	=	banners/banners1.c	\
 			ui/change_slot_input.c	\
 			ui/r_btn.c	\
 			ui/s_btn.c	\
+			ui/s_btn2.c	\
 			ui/slide_bar.c	\
 			menu_bg.c	\
 			settings_bg.c	\
@@ -47,9 +52,13 @@ SPRITES	=	banners/banners1.c	\
 			ui/error_popup.c	\
 			map.c	\
 			player/player.c	\
+			player/player2.c	\
+			player/regeneration.c	\
 			player/player_animation.c	\
 			player/player_animation_mirror.c	\
 			player/player_inventory.c	\
+			player/player_inventory2.c	\
+			player/case_animation.c	\
 			chest_inventory.c	\
 			bed/bed.c	\
 			pnj/pnj.c	\
@@ -82,6 +91,7 @@ SCREENS	=	main_menu/main_menu.c	\
 			discuss.c	\
 
 TEXTURES	=	characters/characters.c	\
+				characters/characters2.c	\
 				characters/particle.c	\
 				objects/chest_and_obj.c	\
 				objects/particles.c	\

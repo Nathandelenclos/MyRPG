@@ -49,5 +49,6 @@ void create_maps_textures(scene *d);
 void create_chest_inventory_texture(scene *d);
 void create_particle_texture(scene *d);
 void create_bed_texture(scene *d);
+void create_player_mirror_texture(scene *d);
 
 #endif
