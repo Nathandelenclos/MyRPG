@@ -18,6 +18,8 @@ void init_slot(controls *c)
     c->slot7 = sfKeyNum7;
     c->slot8 = sfKeyNum8;
     c->slot9 = sfKeyNum9;
+    c->drop = sfKeyD;
+    c->info = sfKeyF3;
 }
 
 controls *init_controls(void)

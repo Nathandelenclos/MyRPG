@@ -10,9 +10,9 @@
 game_obj *create_golden_apple(scene *d)
 {
     sfVector2f vector[2] = {{0, 0}, {0, 0}};
-    sfIntRect rect = create_rect(12, 15, 13, 0);
+    sfIntRect rect = create_rect(27.5, 30, 27.5, 6);
     game_obj *hero = create_obj(d, "apple", rect, vector);
-    set_scale(d, hero->sprite, 3);
+    set_scale(d, hero->sprite, 2);
     hero->type = APPLE;
     hero->name = "golden_apple";
     hero->grp = OBJECT;
@@ -26,9 +26,9 @@ game_obj *create_golden_apple(scene *d)
 game_obj *create_apple(scene *d)
 {
     sfVector2f vector[2] = {{0, 0}, {0, 0}};
-    sfIntRect rect = create_rect(12, 15, 0, 0);
+    sfIntRect rect = create_rect(23, 30, 4, 6);
     game_obj *hero = create_obj(d, "apple", rect, vector);
-    set_scale(d, hero->sprite, 3);
+    set_scale(d, hero->sprite, 2);
     hero->type = APPLE;
     hero->name = "apple";
     hero->grp = OBJECT;

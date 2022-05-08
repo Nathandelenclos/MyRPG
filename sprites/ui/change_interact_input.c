@@ -23,6 +23,13 @@ void change_ingame_interact(button *d, controls *c, sfEvent event, scene *s)
             c->attack = event.key.code;
         }
     }
+    if (event.key.code && my_strcmp(d->t->string, TOUCH[c->drop])) {
+        if (input_handling(event.key.code, c, s)) {
+            modify_string(s, (char *)TOUCH[c->drop],
+            (char *)TOUCH[event.key.code]);
+            c->drop = event.key.code;
+        }
+    }
 }
 
 void change_menu_interact(button *d, controls *c, sfEvent event, scene *s)
@@ -39,6 +46,13 @@ void change_menu_interact(button *d, controls *c, sfEvent event, scene *s)
             modify_string(s, (char *)TOUCH[c->screen],
             (char *)TOUCH[event.key.code]);
             c->screen = event.key.code;
+        }
+    }
+    if (event.key.code && my_strcmp(d->t->string, TOUCH[c->info])) {
+        if (input_handling(event.key.code, c, s)) {
+            modify_string(s, (char *)TOUCH[c->info],
+            (char *)TOUCH[event.key.code]);
+            c->info = event.key.code;
         }
     }
 }

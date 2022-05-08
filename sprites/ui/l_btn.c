@@ -14,7 +14,8 @@ void lb_window_change(sfEvent event, button *d, game_obj *g, scene *s)
         sfRenderWindow_close(s->hub->window);
     if (is_on_btn(s, event.mouseButton, g->id) &&
         (my_strcmp(d->t->string, "   PLAY") ||
-        my_strcmp(d->t->string, "RESPAWN"))) {
+        my_strcmp(d->t->string, "RESPAWN") ||
+        my_strcmp(d->t->string, "CONTINUE"))) {
         switch_scene(s, PLAY);
     }
     if (is_on_btn(s, event.mouseButton, g->id) &&
