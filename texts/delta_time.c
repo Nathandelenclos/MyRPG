@@ -24,9 +24,9 @@ void display_delta_time(scene *d)
     points_s[0] = '\0';
     my_strcat(points_s, "Delta time: ");
     my_strcat(points_s, points);
-    sfVector2f pos = {0,100};
+    sfVector2f pos = {0, 100};
     text *t = create_text("./assets/fonts/motion-control.bold.otf",
-        points_s,sfWhite, pos);
+        points_s, sfWhite, pos);
     t->animate = animate_delta;
     t->name = my_strdup("delta_time");
     t->display = 0;

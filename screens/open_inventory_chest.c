@@ -53,7 +53,7 @@ void action_click_on_case(
 )
 {
     sfVector2f *pos = d->state == CHEST ? init_inventory_pos_places_c()
-                                        : init_inventory_pos_places_p();
+                                        : inventory_pos_places_p();
 
     if (event.x >= pos[i].x && event.x <= pos[i].x + 140 &&
         event.y >= pos[i].y &&

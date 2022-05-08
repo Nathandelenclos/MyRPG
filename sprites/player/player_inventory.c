@@ -41,7 +41,7 @@ void event_slot(game_obj *g, scene *d, sfEvent event)
 
 void animate_slot(scene *d, game_obj *g)
 {
-    sfVector2f *v = init_inventory_pos_places_p();
+    sfVector2f *v = inventory_pos_places_p();
     player *p = get_object(d, "player")->data;
     sfSprite_setPosition(g->sprite, v[p->slot_select]);
 }
@@ -72,7 +72,7 @@ game_obj *create_inventory(scene *d)
 
 game_obj *create_slot_pointer(scene *d)
 {
-    sfVector2f *v = init_inventory_pos_places_p();
+    sfVector2f *v = inventory_pos_places_p();
     sfVector2f vector[2] = {{v[0].x + 12, v[0].y + 13}, {0, 0}};
     sfIntRect rect = create_rect(60, 61, 0, 0);
     game_obj *obj = create_obj(d, "slot_pointer", rect, vector);

@@ -161,7 +161,7 @@ particle *create_particle(scene *d);
 chest *create_chest_data(scene *d);
 inventory *create_inventory_data(scene *d, int size, sfVector2f *pos);
 void push_items(inventory *ci, int i, game_obj *obj);
-sfVector2f *init_inventory_pos_places_p(void);
+sfVector2f *inventory_pos_places_p(void);
 sfVector2f *init_inventory_pos_places_c(void);
 
 #endif

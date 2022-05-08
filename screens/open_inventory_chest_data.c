@@ -17,7 +17,7 @@ void display_chest(scene *d, inventory *ci)
     for (int i = 0; i < ci->size; ++i) {
         if (ci->slot[i] != NULL) {
             ci->pos = d->state == CHEST ? init_inventory_pos_places_c()
-                                        : init_inventory_pos_places_p();
+                                        : inventory_pos_places_p();
             f = (ci->slot[i]->rect.width / (d->state == CHEST ? 140.0 : 70.0));
             y = 1 / f;
             set_scale(d, ci->slot[i]->sprite, y);

@@ -33,7 +33,7 @@ texture *get_texture(scene *d, char *name)
     return NULL;
 }
 
-void create_textures(scene *d)
+void create_textures_part_1(scene *d)
 {
     create_menu_texture(d);
     create_buttons_texture(d);
@@ -50,6 +50,11 @@ void create_textures(scene *d)
     create_icon_settings_texture(d);
     create_icon_triangle_texture(d);
     create_particle_texture(d);
+}
+
+void create_textures(scene *d)
+{
+    create_textures_part_1(d);
     create_icon_trophy_texture(d);
     create_icon_twitter_texture(d);
     create_icon_watchad_texture(d);

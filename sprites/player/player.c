@@ -40,13 +40,10 @@ player *create_player_data(scene *d)
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
-    data->inventory =
-        create_inventory_data(d, 9, init_inventory_pos_places_p());
+    data->inventory = create_inventory_data(d, 9, inventory_pos_places_p());
     data->animation_speed = 0.15;
     data->inv = create_inventory(d);
     data->lb = create_life_bar(500, 20, sfGreen, sfBlack);
-    put_in_end(&d->objs, data->inv);
-    put_in_end(&d->objs, create_slot_pointer(d));
     return data;
 }
 
@@ -70,4 +67,6 @@ void create_player(scene *d)
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);
+    put_in_end(&d->objs, ((player *)hero->data)->inv);
+    put_in_end(&d->objs, create_slot_pointer(d));
 }

@@ -65,7 +65,6 @@ SPRITES	=	banners/banners1.c	\
 			pnj/pnj.c	\
 			trees/trees.c	\
 
-
 ENVIRONMENTS	=	rain.c	\
 					snow.c	\
 					regen.c	\
