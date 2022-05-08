@@ -55,9 +55,9 @@ void create_basic_chest(scene *d, float x, float y)
     put_in_end(&d->objs, hero);
 }
 
-void create_golden_chest(scene *d)
+void create_golden_chest(scene *d, float x, float y)
 {
-    sfVector2f vector[2] = {{100, 100}, {0, 0}};
+    sfVector2f vector[2] = {{-50, -50}, {x, y}};
     sfIntRect rect = create_rect(16, 16, 0, 0);
     game_obj *hero = create_obj(d, "golden_chest", rect, vector);
     set_scale(d, hero->sprite, 5);
@@ -66,6 +66,7 @@ void create_golden_chest(scene *d)
     hero->name = "golden_chest";
     hero->grp = CHESTS_G;
     hero->display = 1;
+    hero->action = action_chest;
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);

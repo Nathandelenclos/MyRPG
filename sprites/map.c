@@ -39,14 +39,13 @@ void event_map(game_obj *g, scene *s, sfEvent event)
         evt_key_released(s, g, event.key.code);
         break;
     }
-
 }
 
 void action_maps(game_obj *g, scene *s)
 {
     maps *data = g->data;
     game_obj *p_g = get_object(s, "player");
-    player *p = (player *)p_g->data;
+    player *p = (player *) p_g->data;
     if (p->state != MOVE && p->state != MOVE_MIRROR)
         return;
     collision_map(s, g);
@@ -70,7 +69,7 @@ maps *create_maps_data(void)
 
 int create_sprite_map(scene *d)
 {
-    sfVector2f pos[2] = {{-1000, -1000}, {0, 0}};
+    sfVector2f pos[2] = {{-1610, -1550}, {0, 0}};
     game_obj *map =
         create_obj(d, "maps", create_rect(787, 775, 0, 0), pos);
     set_scale(d, map->sprite, 9);

@@ -36,6 +36,7 @@ typedef enum group_e {
     HOME_BTN,
     UI,
     ENTITY,
+    PNJ_ENTITY,
     MAP,
     ENEMY,
     OBJECT,
@@ -57,6 +58,8 @@ typedef enum type_e {
     CHESTS,
     TREE,
     BED,
+    PNJ,
+    APPLE,
 } type;
 
 typedef enum state_e {
@@ -67,6 +70,7 @@ typedef enum state_e {
     SETTINGS_ERROR,
     CHEST,
     GAME_OVER,
+    DISCUSS,
 } state;
 
 enum sound_grp {

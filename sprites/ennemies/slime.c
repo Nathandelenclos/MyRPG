@@ -83,7 +83,7 @@ void action_slime(game_obj *g, scene *d)
     }
     if (s->hp <= 0) {
         s->state = DESTROY;
-        if (seconds - old_seconds_disp >= 120) {
+        if (seconds - old_seconds_disp >= 15) {
             s->old_time_disp = sfClock_getElapsedTime(g->clock);
             s->hp = s->hp_max;
             s->state = IDLE;

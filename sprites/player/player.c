@@ -105,6 +105,10 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         }
         sfSprite_setTextureRect(g->sprite, rect);
     }
+    if (event.key.code == d->hub->s->c->interact &&
+    get_distance(g, get_closer_object(d, g, PNJ_ENTITY)) <= 200) {
+        switch_scene(d, DISCUSS);
+    }
 }
 
 void animate_player(scene *d, game_obj *g)
@@ -191,7 +195,7 @@ void create_player(scene *d)
     hero->event = event_player;
     hero->grp = ENTITY;
     hero->action = regeneration_player;
-    hero->display = 2;
+    hero->display = 4;
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);

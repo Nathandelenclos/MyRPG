@@ -7,6 +7,40 @@
 
 #include "../include/rpg.h"
 
+sfVector2f *init_inventory_pos_places(void)
+{
+    sfVector2f *pos = malloc(sizeof(sfVector2f) * 36);
+    for (int i = 0; i < 36; i++) {
+        if (i >= 0 && i < 9) {
+            pos[i].x = 275 + i * 157;
+            pos[i].y = 356 - 140;
+        }
+        if (i >= 9 && i < 18) {
+            pos[i].x = 275 + (i - 9) * 157;
+            pos[i].y = 356 + 157 - 140;
+        }
+        if (i >= 18 && i < 27) {
+            pos[i].x = 275 + (i - 18) * 157;
+            pos[i].y = 356 + 157 * 2 - 140;
+        }
+        if (i >= 27 && i < 36) {
+            pos[i].x = 275 + (i - 27) * 157;
+            pos[i].y = 869 - 140;
+        }
+    }
+    return (pos);
+}
+
+// sfVector2f *init_inventory_pos_places(void)
+// {
+//     sfVector2f *pos = malloc(sizeof(sfVector2f) * 9);
+//     for (int i = 0; i < 9; i++) {
+//         pos[i].x = 697 + i * 60.5;
+//         pos[i].y = 1028;
+//     }
+//     return (pos);
+// }
+
 void create_chest_inventory_sprite(scene *d)
 {
     sfVector2f vector[2] = {{

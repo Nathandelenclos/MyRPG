@@ -36,7 +36,8 @@ void play_screen(scene *data)
     text_manager(data);
     env_manager(data);
     game_obj *p = get_object(data, "player");
-    display_chest(data, ((player *) p->data)->inventory);
+    if (p != NULL)
+        display_chest(data, ((player *) p->data)->inventory);
 }
 
 void create_all_slimes(scene *d)
@@ -110,19 +111,17 @@ void create_data_play(scene *d)
     create_env(d);
     create_sprite_map(d);
     create_player(d);
+    create_pnj(d, create_vector2f(269, 281));
     create_all_slimes(d);
     create_bed(d, create_vector2f(292, 227));
     create_all_trees(d);
     display_fps(d);
-    create_basic_chest(d, 200, 200);
-    create_basic_chest(d, 200, 220);
+    create_basic_chest(d, 304, 225);
+    create_golden_chest(d, 328, 225);
     game_obj *p = get_object(d, "player");
     game_obj *c = get_closer_object(d, p, CHESTS_G);
-    game_obj *slime = get_closer_object(d, p, ENEMY);
-    game_obj *slime_en = get_object(d, "enemy_slime");
     chest *ci = c->data;
-    push_items(ci->inventory, 5, slime);
-    push_items(((player *)p->data)->inventory, 2, slime_en);
+    push_items(ci->inventory, 0, create_apple(d));
 }
 
 void active_play(scene *old, scene *new)

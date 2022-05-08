@@ -23,7 +23,7 @@
 //Objects
 int create_sprite_bg_game_over(scene *d);
 void create_player_mirror(scene *d);
-int create_sprite_popup(scene *d);
+game_obj *create_sprite_popup(scene *d, sfVector2f pos);
 int create_sprite_bg_settings(scene *d);
 int input_handling(sfKeyCode code, controls *c, scene *s);
 void change_input_slot_p1(button *d, controls *c, sfEvent event, scene *s);
@@ -63,6 +63,7 @@ int create_sprite_lb(scene *d, char *name, btn_param *p, char *text);
 int create_sprite_rb(scene *d, char *, int, int);
 int create_sprite_sb(scene *d, char *name, btn_param *p, char *text);
 void create_player(scene *d);
+void create_pnj(scene *d, sfVector2f pos);
 void idle_player_animation(scene *d, game_obj *g);
 void move_player_animation(scene *d, game_obj *g);
 void hit_player_animation(scene *d, game_obj *g);
@@ -76,11 +77,14 @@ int create_sprite_menu(scene *d);
 int create_sprite_slide_b(scene *d, sfVector2f s_pos);
 int create_sprite_ltile(scene *, char *, btn_param *);
 game_obj *create_slot_pointer(scene *d);
+game_obj *create_golden_apple(scene *d);
+game_obj *create_apple(scene *d);
 
 //Text
 void create_btn_text(scene *d, char *, text_id *, sfVector2f);
 void create_basic_chest(scene *d, float x, float y);
-void create_golden_chest(scene *d);
+void create_golden_chest(scene *d, float x, float y);
+void display_dialog(scene *d, pnj *p);
 
 //Environment
 void create_rain_env(scene *d);
@@ -89,5 +93,11 @@ void create_regen_env(scene *d);
 void create_spawn_env(scene *d);
 void create_low_life_env(scene *d);
 void create_run_env(scene *d);
+void data_discuss(screen *screen1);
+game_obj *create_big_pnj(scene *d, sfVector2f pos, int scale);
+
+//Quest
+int first_quest(scene *d);
+int seconds_quest(scene *d);
 
 #endif

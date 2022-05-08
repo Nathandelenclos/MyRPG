@@ -29,7 +29,7 @@ void create_sprite_settings_error(scene *d)
     d->textures = get_scene(d, SETTINGS)->textures;
     d->sounds = get_scene(d, SETTINGS)->sounds;
     create_sprite_bg_settings(d);
-    create_sprite_popup(d);
+    create_sprite_popup(d, create_vector2f(598.5, 414.5));
     create_btn_text(d, "INPUT IS NOT VALID!", create_text_id_struct(60, HOME_BTN, 3), create_vector2f(760, 500));
     create_btn_text(d, "(press any key to disable this error message)", create_text_id_struct(20, HOME_BTN, 3), create_vector2f(785, 620));
 }

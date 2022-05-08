@@ -28,6 +28,7 @@ SPRITES	=	banners/banners1.c	\
       		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
       		objects/chests.c	\
+      		objects/apples.c	\
       		objects/chests_animation.c	\
       		ui/l_btn.c	\
       		ui/event_change_input_setting.c	\
@@ -51,7 +52,9 @@ SPRITES	=	banners/banners1.c	\
 			player/player_inventory.c	\
 			chest_inventory.c	\
 			bed/bed.c	\
+			pnj/pnj.c	\
 			trees/trees.c	\
+
 
 ENVIRONMENTS	=	rain.c	\
 					snow.c	\
@@ -68,6 +71,7 @@ SCREENS	=	main_menu/main_menu.c	\
 			play_screen/play_screen.c	\
 			play_screen/game_over_screen.c	\
 			open_inventory_chest.c	\
+			discuss.c	\
 
 TEXTURES	=	characters/characters.c	\
 				characters/particle.c	\
@@ -102,12 +106,17 @@ MANAGER =	sprites_manager.c	\
 			thread_manager.c	\
 			env_manager.c	\
 
+QUEST =	simon_quest.c	\
+
 TEXTS	=	fps.c	\
 			menu.c	\
+			discuss.c	\
 
 TEXTS_PATH	=	texts/
 
 SCREEN_PATH	=	screens/
+
+QUEST_PATH	=	quest/
 
 SPRITE_PATH	=	sprites/
 
@@ -127,6 +136,7 @@ SRC	=		events.c	\
 			$(addprefix $(SPRITE_PATH), $(SPRITES))	\
 			$(addprefix $(UTIL_PATH), $(UTILS))	\
 			$(addprefix $(ENV_PATH), $(ENVIRONMENTS))	\
+			$(addprefix $(QUEST_PATH), $(QUEST))	\
 
 OBJ	=	$(MAIN:.c=.o) $(SRC:.c=.o)
 

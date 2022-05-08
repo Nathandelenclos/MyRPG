@@ -19,6 +19,7 @@
 #include "textures.h"
 #include "object.h"
 #include "game_obj_type.h"
+#include "discuss.h"
 
 #ifndef RPG_H
     #define RPG_H
@@ -103,5 +104,10 @@ environment *get_env(scene *d, env_type type);
 void env_manager(scene *d);
 void create_env(scene *d);
 void create_bed(scene *d, sfVector2f pos);
+void play_screen(scene *data);
+void save_chest_background(scene *old, scene *new);
+int count_max_quest(void);
+
+static int (*quests[])(scene *) = {first_quest, seconds_quest, NULL};
 
 #endif
