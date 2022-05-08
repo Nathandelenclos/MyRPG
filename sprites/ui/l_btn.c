@@ -13,13 +13,15 @@ void lb_window_change(sfEvent event, button *d, game_obj *g, scene *s)
         my_strcmp(d->t->string, "   QUIT"))
         sfRenderWindow_close(s->hub->window);
     if (is_on_btn(s, event.mouseButton, g->id) &&
-        my_strcmp(d->t->string, "   PLAY"))
+        (my_strcmp(d->t->string, "   PLAY") ||
+        my_strcmp(d->t->string, "RESPAWN")))
         switch_scene(s, PLAY);
     if (is_on_btn(s, event.mouseButton, g->id) &&
         my_strcmp(d->t->string, " SETTINGS"))
         switch_scene(s, SETTINGS);
     if (is_on_btn(s, event.mouseButton, g->id) &&
-        my_strcmp(d->t->string, "   DONE"))
+        (my_strcmp(d->t->string, "   DONE") ||
+        my_strcmp(d->t->string, "MAIN MENU")))
         switch_scene(s, START);
 }
 

@@ -88,4 +88,5 @@ void screen_manager(screen *s)
     wrong_input(s);
     data_play(s);
     data_chest(s);
+    data_game_over(s);
 }

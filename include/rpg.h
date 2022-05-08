@@ -23,6 +23,7 @@
 #ifndef RPG_H
     #define RPG_H
 
+void data_game_over(screen *screen1);
 game_obj *hover_on_btn(scene *d, int id);
 text_id *create_text_id_struct(int size, group grp, int);
 void switch_scene(scene *d, state s);

@@ -42,6 +42,7 @@ SPRITES	=	banners/banners1.c	\
 			ui/tiles.c	\
 			ui/input_error_handling.c	\
 			ui/create_settings_background.c	\
+			ui/create_lose_background.c	\
 			ui/error_popup.c	\
 			map.c	\
 			player/player.c	\
@@ -65,6 +66,7 @@ SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/slot_button.c	\
 			settings_menu/wrong_input_screen.c	\
 			play_screen/play_screen.c	\
+			play_screen/game_over_screen.c	\
 			open_inventory_chest.c	\
 
 TEXTURES	=	characters/characters.c	\
