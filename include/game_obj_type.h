@@ -82,7 +82,11 @@ typedef struct {
     game_obj *inv;
     inventory *inventory;
     int hp;
+    int total_hp;
+    int damage;
     life_bar *lb;
+    life_bar *xp_lb;
+    int xp;
     int slot_select;
     void (*idle)(scene *, game_obj *);
     void (*move)(scene *, game_obj *);
@@ -141,6 +145,13 @@ typedef struct {
     int selected;
 } player_inv;
 
+typedef struct {
+    slot_inv *stamp;
+    int stamp_i;
+    inventory *stamp_inv;
+    inventory_chest_state state;
+} stamp_inv;
+
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);
 void move_animate_slime(scene *d, game_obj *g);
@@ -150,7 +161,7 @@ particle *create_particle(scene *d);
 chest *create_chest_data(scene *d);
 inventory *create_inventory_data(scene *d, int size, sfVector2f *pos);
 void push_items(inventory *ci, int i, game_obj *obj);
-sfVector2f *init_inventory_pos_places_p(void);
+sfVector2f *inventory_pos_places_p(void);
 sfVector2f *init_inventory_pos_places_c(void);
 
 #endif

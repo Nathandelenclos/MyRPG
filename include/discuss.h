@@ -19,7 +19,8 @@ static const char *DIALOG[][4] = {{
     "Maybe your legs are a bit numb, or you are too dumb... Whatever.\n"
     "Can you please go get that item in the chest for me please?",
     "Ok, looks like you can still use your legs.\n",
-    NULL},{
+    NULL
+}, {
     "Try running around a bit.\n"
     "However, be careful about the mobs you could get hurt.",
     "...",

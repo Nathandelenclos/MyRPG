@@ -10,6 +10,18 @@
 sfVector2f pos_management_action_slime(game_obj *g, scene *d, game_obj *map)
 {
     sfVector2f pos_map = sfSprite_getPosition(map->sprite);
+    sfTime move = sfClock_getElapsedTime(g->clock);
+    int sec = sfTime_asMilliseconds(move) / 1000;
+    sec %= 2;
+    if (is_on_window(g, d)) {
+        if (sec == 1) {
+            g->vector.x += (g->position.x * (float) d->hub->delta_time) / 8;
+            g->vector.y += (g->position.y * (float) d->hub->delta_time) / 8;
+        } else if (sec == 0) {
+            g->vector.x -= (g->position.x * (float) d->hub->delta_time) / 8;
+            g->vector.y -= (g->position.y * (float) d->hub->delta_time) / 8;
+        }
+    }
     pos_map.x += g->vector.x * 9.0;
     pos_map.y += g->vector.y * 9.0;
     sfSprite_setPosition(g->sprite, pos_map);
@@ -34,11 +46,15 @@ void action_living_slime(game_obj *g, scene *d, float distance, sfVector2f sec)
 {
     slime *s = (slime *) g->data;
     game_obj *p = get_object(d, "player");
+
     if (g->display && distance <= 150.0 && sec.x - sec.y >= 0.7) {
         ((player *) p->data)->hp -= s->attack;
         s->old_time_hit = sfClock_getElapsedTime(g->clock);
         if (((player *) p->data)->hp <= 0) {
             ((player *) p->data)->hp = 100;
+            ((player *) p->data)->damage = 3;
+            ((player *) p->data)->total_hp = 100;
+            ((player *) p->data)->xp = 0;
             switch_scene(d, GAME_OVER);
         }
     }

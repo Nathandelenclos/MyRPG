@@ -107,6 +107,9 @@ void create_btn_text(scene *d, char *, text_id *, sfVector2f);
 void create_basic_chest(scene *d, float x, float y);
 void create_golden_chest(scene *d, float x, float y);
 void display_dialog(scene *d, pnj *p);
+void display_sprite_load(scene *d);
+void create_debug(scene *d);
+void display_delta_time(scene *d);
 
 //Environment
 void create_rain_env(scene *d);
@@ -117,7 +120,17 @@ void create_low_life_env(scene *d);
 void create_run_env(scene *d);
 void data_discuss(screen *screen1);
 game_obj *create_big_pnj(scene *d, sfVector2f pos, int scale);
-
+void destroy_display(scene *d, game_obj *g, player *p_data);
+void clear_inventory(inventory *inv);
+void sb_settings_change(sfEvent event, button *d, game_obj *g, scene *s);
+sfVector2f pos_management_action_slime(game_obj *g, scene *d, game_obj *map);
+void state_and_lifebar(scene *d, game_obj *g, sfVector2f pos_map, float distance);
+void action_living_slime(game_obj *g, scene *d, float distance, sfVector2f sec);
+void action_dead_slime(game_obj *g, scene *d, slime *s, sfVector2f sec);
+void animate_player(scene *d, game_obj *g);
+void print_life_bar_player(scene *d, player *p);
+void event_player(game_obj *g, scene *d, sfEvent event);
+void regeneration_player(game_obj *g, scene *d);
 //Quest
 int first_quest(scene *d);
 int seconds_quest(scene *d);

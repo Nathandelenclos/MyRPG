@@ -32,19 +32,6 @@ text *create_text(char *filename, char *string, sfColor color, sfVector2f v)
     return t;
 }
 
-text *get_text(scene *d, char *name)
-{
-    node *tmp = d->texts;
-    text *data = NULL;
-    while (tmp != NULL) {
-        data = (text *)tmp->data;
-        if (my_strcmp(data->name, name))
-            return data;
-        tmp = tmp->next;
-    }
-    return NULL;
-}
-
 void scroll_text_grp(scene *d, float x, float y, group grp)
 {
     node *tmp = d->texts;

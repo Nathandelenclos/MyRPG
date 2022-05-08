@@ -7,7 +7,7 @@
 
 #include "../include/rpg.h"
 
-sfVector2f *init_inventory_pos_places_p(void)
+sfVector2f *inventory_pos_places_p(void)
 {
     sfVector2f *pos = malloc(sizeof(sfVector2f) * 9);
     for (int i = 0; i < 9; i++) {

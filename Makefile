@@ -19,6 +19,7 @@ UTILS	=	life_bar.c	\
 			collision.c	\
 			position.c	\
 			fade_scene.c	\
+			quest.c	\
 
 SPRITES	=	banners/banners1.c	\
 			banners/banners2.c	\
@@ -63,7 +64,6 @@ SPRITES	=	banners/banners1.c	\
 			bed/bed.c	\
 			pnj/pnj.c	\
 			trees/trees.c	\
-
 
 ENVIRONMENTS	=	rain.c	\
 					snow.c	\
@@ -129,6 +129,8 @@ QUEST =	simon_quest.c	\
 TEXTS	=	fps.c	\
 			menu.c	\
 			discuss.c	\
+			entity_load.c	\
+			delta_time.c	\
 
 TEXTS_PATH	=	texts/
 

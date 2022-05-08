@@ -30,7 +30,6 @@ void start_screen(scene *data)
 void create_data(scene *d)
 {
     create_textures(d);
-    display_fps(d);
     sound_manager(d);
 }
 

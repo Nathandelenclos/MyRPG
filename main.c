@@ -12,10 +12,12 @@ void load_screen(sfRenderWindow *window, sfVideoMode mode)
 {
     sfSprite *sprite = sfSprite_create();
     sfIntRect rect = create_rect(600, 450, 0, 0);
-    sfTexture *t = sfTexture_createFromFile("./assets/ui/menu_sprites.png", &rect);
+    sfTexture
+        *t = sfTexture_createFromFile("./assets/ui/menu_sprites.png", &rect);
     sfSprite_setTexture(sprite, t, sfTrue);
     sfSprite_setPosition(sprite, create_vector2f(0, -50));
-    sfSprite_setScale(sprite, create_vector2f(mode.width / 600.0, mode.width / 600.0));
+    sfSprite_setScale(sprite,
+        create_vector2f(mode.width / 600.0, mode.width / 600.0));
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_display(window);
 }
@@ -50,7 +52,9 @@ screen *create_hub(void)
     hub->window = sfRenderWindow_create(mode, "MyRPG", sfFullscreen,
         NULL);
     hub->clock = sfClock_create();
+    hub->clock2 = sfClock_create();
     hub->fps = 0;
+    hub->entity_load = 0;
     hub->mode = mode;
     hub->datas = NULL;
     hub->s = init_settings_struct();
@@ -59,6 +63,7 @@ screen *create_hub(void)
 
 int main(int argc, char **argv)
 {
+    srand(rand());
     screen *hub = create_hub();
     sfImage *icon = sfImage_createFromFile("./assets/logo.png");
     sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,

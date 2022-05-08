@@ -20,7 +20,8 @@ int first_quest(scene *d)
     player *p = get_object(d, "player")->data;
     inventory *inv = p->inventory;
     for (int i = 0; i < p->inventory->size; ++i)
-        if (inv->slot[i] != NULL && my_strcmp(inv->slot[i]->obj->name, "apple")) {
+        if (inv->slot[i] != NULL &&
+            my_strcmp(inv->slot[i]->obj->name, "apple")) {
             inv->slot[i] = NULL;
             return 1;
         }

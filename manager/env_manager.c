@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** MyRPG - manager
 ** File description:
-** manager 
+** manager
 */
 
 #include "../include/rpg.h"
@@ -12,7 +12,7 @@ environment *get_env(scene *d, env_type type)
     node *tmp = d->envs;
     environment *env = NULL;
     while (tmp != NULL) {
-        env = (environment *)tmp->data;
+        env = (environment *) tmp->data;
         if (env->type == type)
             return env;
         tmp = tmp->next;
@@ -25,7 +25,7 @@ void env_manager(scene *d)
     node *tmp = d->envs;
     environment *env = NULL;
     while (tmp != NULL) {
-        env = (environment *)tmp->data;
+        env = (environment *) tmp->data;
         if (env->active == sfTrue) {
             env->animate(d, env);
             sfRenderWindow_drawVertexArray(d->hub->window, env->array, NULL);
