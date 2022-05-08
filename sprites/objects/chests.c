@@ -29,11 +29,11 @@ void action_chest(game_obj *obj, scene *d)
     pos_map.y += obj->vector.y * 9.0;
     sfSprite_setPosition(obj->sprite, pos_map);
     if (get_distance(get_object(d, "player"), obj) < 150) {
-        data->state= OPEN;
+        data->state = OPEN;
         data->open(d, obj);
     }
     else if (get_distance(get_object(d, "player"), obj) > 150) {
-        data->state= CLOSE;
+        data->state = CLOSE;
         data->close(d, obj);
     }
 }

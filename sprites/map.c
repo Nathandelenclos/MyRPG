@@ -46,7 +46,7 @@ void action_maps(game_obj *g, scene *s)
     maps *data = g->data;
     game_obj *p_g = get_object(s, "player");
     player *p = (player *) p_g->data;
-    sfVector2f vector = {0,0};
+    sfVector2f vector = {0, 0};
     if (p->state != MOVE && p->state != MOVE_MIRROR)
         return;
     collision_map(s, g);
