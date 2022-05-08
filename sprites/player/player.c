@@ -22,39 +22,54 @@ void regeneration_player(game_obj *g, scene *d)
     float seconds = sfTime_asSeconds(p->time);
     float old_seconds = sfTime_asSeconds(p->old_time_hp);
     if (pos_player.x + 144 >= pos_mapbg.x && pos_player.x + 144 <= pos_maphd.x
-    && pos_player.y + 144 <= pos_mapbg.y && pos_player.y + 144 >= pos_maphd.y
-    && g->display) {
-        if (seconds - old_seconds >= 0.2 && p->hp > 0 && p->hp < 100) {
+        && pos_player.y + 144 <= pos_mapbg.y &&
+        pos_player.y + 144 >= pos_maphd.y
+            && g->display) {
+        if (seconds - old_seconds >= 0.2 && p->hp > 0 && p->hp < p->total_hp) {
             p->hp += 1;
             p->old_time_hp = sfClock_getElapsedTime(g->clock);
         }
-        if (p->hp >= 100)
+        if (p->hp >= p->total_hp)
             get_env(d, REGEN)->active = sfFalse;
         else
             get_env(d, REGEN)->active = sfTrue;
     } else
         get_env(d, REGEN)->active = sfFalse;
-    if (p->hp > 0 && p->hp <= 15)
+    float percent = (((float )p->hp / (float )p->total_hp) * 100);
+    if (p->hp > 0 && p->hp <= 15.0 / 100.0 * p->total_hp)
         get_env(d, LOW_LIFE)->active = sfTrue;
     else
         get_env(d, LOW_LIFE)->active = sfFalse;
-    p->lb->main_color = sfColor_fromRGB(255 - (255*p->hp/100), (float )(p->hp) * 2.55, 0);
+    p->lb->main_color =
+        sfColor_fromRGB(255 - (255 * percent / 100),
+            (sfUint32) (((float) p->hp / (float) p->total_hp * 100.0) * 2.55),
+            50);
+    if (p->damage - 3 < p->xp / 100) {
+        p->total_hp += (p->xp / 100) * 10;
+        p->damage += (p->xp / 100);
+    }
 }
 
 void print_life_bar_player(scene *d, player *p)
 {
-    life_percent(p->lb, p->hp);
+    float percent = (((float )p->hp / (float )p->total_hp) * 100);
+    life_percent(p->lb, percent);
+    life_percent(p->xp_lb, p->xp % 100);
     sfVector2f v = sfSprite_getPosition(p->inv->sprite);
-    v.y -= 50;
+    v.y -= 30;
     v.x = d->hub->mode.width / 2 - p->lb->rect.width / 2;
     sfSprite_setPosition(p->lb->sprite, v);
+    v.y = 0;
+    v.x = 0;
+    sfSprite_setPosition(p->xp_lb->sprite, v);
     sfRenderWindow_drawSprite(d->hub->window, p->lb->sprite, NULL);
+    sfRenderWindow_drawSprite(d->hub->window, p->xp_lb->sprite, NULL);
 }
 
 int is_mirror(player *p)
 {
     if (p->state == IDLE_MIRROR || p->state == HIT_MIRROR
-    || p->state == MOVE_MIRROR) {
+        || p->state == MOVE_MIRROR) {
         return 1;
     }
     return 0;
@@ -70,15 +85,17 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         p->state = IDLE_MIRROR;
     else if (!is_mirror(p))
         p->state = IDLE;
-    if ((sfKeyboard_isKeyPressed(d->hub->s->c->left)) || ((sfKeyboard_isKeyPressed(d->hub->s->c->up) ||
-        sfKeyboard_isKeyPressed(d->hub->s->c->down)) && is_mirror(p))) {
+    if ((sfKeyboard_isKeyPressed(d->hub->s->c->left)) ||
+        ((sfKeyboard_isKeyPressed(d->hub->s->c->up) ||
+            sfKeyboard_isKeyPressed(d->hub->s->c->down)) && is_mirror(p))) {
         p->state = MOVE_MIRROR;
         if (event.key.shift)
             p->animation_speed = 0.1;
         else
             p->animation_speed = 0.15;
-    } else if (sfKeyboard_isKeyPressed(d->hub->s->c->right) || ((sfKeyboard_isKeyPressed(d->hub->s->c->up) ||
-        sfKeyboard_isKeyPressed(d->hub->s->c->down)) && !is_mirror(p))) {
+    } else if (sfKeyboard_isKeyPressed(d->hub->s->c->right) ||
+        ((sfKeyboard_isKeyPressed(d->hub->s->c->up) ||
+            sfKeyboard_isKeyPressed(d->hub->s->c->down)) && !is_mirror(p))) {
         p->state = MOVE;
         if (event.key.shift)
             p->animation_speed = 0.1;
@@ -92,7 +109,7 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         if (distance <= 175.0 && distance >= 0.0) {
             game_obj *s = get_closer_object(d, g, ENEMY);
             if (s != NULL)
-                ((slime *)s->data)->hp -= 3;
+                ((slime *) s->data)->hp -= 3;
         }
         sfSprite_setTextureRect(g->sprite, rect);
     } else if (sfKeyboard_isKeyPressed(d->hub->s->c->attack) && !is_mirror(p)) {
@@ -102,12 +119,12 @@ void event_player(game_obj *g, scene *d, sfEvent event)
         if (distance <= 175.0 && distance >= 0.0) {
             game_obj *s = get_closer_object(d, g, ENEMY);
             if (s != NULL)
-                ((slime *)s->data)->hp -= 3;
+                ((slime *) s->data)->hp -= 3;
         }
         sfSprite_setTextureRect(g->sprite, rect);
     }
     if (event.key.code == d->hub->s->c->interact &&
-    get_distance(g, get_closer_object(d, g, PNJ_ENTITY)) <= 200) {
+        get_distance(g, get_closer_object(d, g, PNJ_ENTITY)) <= 200) {
         switch_scene(d, DISCUSS);
     }
 }
@@ -167,11 +184,16 @@ player *create_player_data(scene *d)
     data->time = sfTime_Zero;
     data->state = IDLE;
     data->hp = 100;
+    data->total_hp = 100;
+    data->damage = 3;
     data->slot_select = 0;
+    data->xp = 10;
+    data->xp_lb = create_life_bar(d->hub->mode.width, 10, sfCyan, sfBlack);
     data->idle = idle_player_animation;
     data->move = move_player_animation;
     data->hit = hit_player_animation;
-    data->inventory = create_inventory_data(d, 9, init_inventory_pos_places_p());
+    data->inventory =
+        create_inventory_data(d, 9, init_inventory_pos_places_p());
     data->animation_speed = 0.15;
     data->inv = create_inventory(d);
     data->lb = create_life_bar(500, 20, sfGreen, sfBlack);
@@ -183,9 +205,9 @@ player *create_player_data(scene *d)
 void create_player(scene *d)
 {
     sfVector2f vector[2] = {{
-            (d->hub->mode.width / 2) - ((48 * 6) / 2),
-            (d->hub->mode.height / 2) - ((48 * 6) / 2)
-        }, {0, 0}};
+        (d->hub->mode.width / 2) - ((48 * 6) / 2),
+        (d->hub->mode.height / 2) - ((48 * 6) / 2)
+    }, {0, 0}};
     sfIntRect rect = create_rect(48, 48, 0, 0);
     game_obj *hero = create_obj(d, "player", rect, vector);
     set_scale(d, hero->sprite, 6);

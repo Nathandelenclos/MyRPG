@@ -97,9 +97,12 @@ void destroy_animate_slime(scene *d, game_obj *g)
         rect.left += 32;
         rect.top = 128;
         if (rect.left > (g->texture->rect.width - (3 * 32))) {
-            if (g->display != 0)
-                push_items(p_data->inventory, get_free_space_inv(p_data->inventory),
+            if (g->display != 0) {
+                push_items(p_data->inventory,
+                    get_free_space_inv(p_data->inventory),
                     obj_dup(d, g));
+                p_data->xp += 10;
+            }
             g->display = 0;
         }
         sfSprite_setTextureRect(g->sprite, rect);

@@ -41,11 +41,6 @@ void life_percent(life_bar *lb, float percent)
     lb->image = sfImage_createFromColor
     (lb->rect.width, lb->rect.height, lb->main_color);
     int u = ceilf(lb->rect.width / 100);
-    // for (int i = 0; i < u * lb->rect.height && percent > 0; i++)
-    //     for (int j = 0; j < 5; j++) {
-    //         sfImage_setPixel(lb->image, i, j,
-    //             lb->main_color);
-    //     }
     for (int i = u * percent; i < lb->rect.width && percent > 0; i++)
         for (int j = 0; j < lb->rect.height; j++) {
             sfImage_setPixel(lb->image, i, j,
