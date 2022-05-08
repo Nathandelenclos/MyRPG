@@ -8,9 +8,16 @@
 #include "include/rpg.h"
 #include <time.h>
 
-void load_screen(sfRenderWindow *window)
+void load_screen(sfRenderWindow *window, sfVideoMode mode)
 {
-
+    sfSprite *sprite = sfSprite_create();
+    sfIntRect rect = create_rect(600, 450, 0, 0);
+    sfTexture *t = sfTexture_createFromFile("./assets/ui/menu_sprites.png", &rect);
+    sfSprite_setTexture(sprite, t, sfTrue);
+    sfSprite_setPosition(sprite, create_vector2f(0, -50));
+    sfSprite_setScale(sprite, create_vector2f(mode.width / 600.0, mode.width / 600.0));
+    sfRenderWindow_drawSprite(window, sprite, NULL);
+    sfRenderWindow_display(window);
 }
 
 void start(screen *hub)
@@ -57,7 +64,7 @@ int main(int argc, char **argv)
     sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,
         sfImage_getSize(icon).y,
         sfImage_getPixelsPtr(icon));
-    load_screen(hub->window);
+    load_screen(hub->window, hub->mode);
     screen_manager(hub);
     start(hub);
     destroy_music(hub);
