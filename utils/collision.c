@@ -7,27 +7,28 @@
 
 #include "../include/rpg.h"
 
-sfVector2f get_direction(sfUint32 *radar, maps *m)
+sfVector2f get_direction(int delta_time, sfUint32 *radar, maps *m)
 {
+    float px = (10 * (float) delta_time) / 8;
     if (radar[0] != radar[7] && radar[0] != radar[8]) {
         if (radar[3] != radar[7] && radar[3] != radar[8])
-            return create_vector2f(0, -10);
+            return create_vector2f(0, -px);
         if (radar[2] != radar[7] && radar[2] != radar[8])
-            return create_vector2f(-10, 0);
-        return create_vector2f(-10, -10);
+            return create_vector2f(-px, 0);
+        return create_vector2f(-px, -px);
     }
     if (radar[3] != radar[7] && radar[3] != radar[8]) {
         if (radar[5] != radar[7] && radar[5] != radar[8])
-            return create_vector2f(10, 0);
-        return create_vector2f(10, -10);
+            return create_vector2f(px, 0);
+        return create_vector2f(px, -px);
     }
     if (radar[2] != radar[7] && radar[5] != radar[8]) {
         if (radar[5] != radar[7] && radar[5] != radar[8])
-            return create_vector2f(0, 10);
-        return create_vector2f(-10, 10);
+            return create_vector2f(0, px);
+        return create_vector2f(-px, px);
     }
     if (radar[5] != radar[7] && radar[5] != radar[8])
-        return create_vector2f(10, 10);
+        return create_vector2f(px, px);
     return create_vector2f(0, 0);
 }
 
@@ -50,7 +51,8 @@ void collision_map(scene *s, game_obj *g)
         top_left, middle_left, bottom_left, top_right, middle_right,
         bottom_right, bottom_middle, green, green_night, 0
     };
-    sfSprite_move(g->sprite, get_direction(all, get_object(s, "maps")->data));
+    sfSprite_move(g->sprite,
+        get_direction(s->hub->delta_time, all, get_object(s, "maps")->data));
     sfImage_destroy(i);
     sfTexture_destroy(texture);
 }
