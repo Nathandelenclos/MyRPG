@@ -78,7 +78,7 @@ void action_slime(game_obj *g, scene *d)
         s->old_time_hit = sfClock_getElapsedTime(g->clock);
         if (((player *) p->data)->hp <= 0) {
             ((player *) p->data)->hp = 100;
-            switch_scene(d, START);
+            switch_scene(d, GAME_OVER);
         }
     }
     if (s->hp <= 0) {

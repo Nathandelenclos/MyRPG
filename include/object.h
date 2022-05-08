@@ -21,6 +21,7 @@
     #define OBJECT_H_
 
 //Objects
+int create_sprite_bg_game_over(scene *d);
 void create_player_mirror(scene *d);
 int create_sprite_popup(scene *d);
 int create_sprite_bg_settings(scene *d);
