@@ -9,17 +9,12 @@
 
 void lb_window_change(sfEvent event, button *d, game_obj *g, scene *s)
 {
-    game_obj *pl = get_object(get_scene(s, PLAY), "player");
-    player *p = pl->data;
     if (is_on_btn(s, event.mouseButton, g->id) &&
         my_strcmp(d->t->string, "   QUIT"))
         sfRenderWindow_close(s->hub->window);
     if (is_on_btn(s, event.mouseButton, g->id) &&
         (my_strcmp(d->t->string, "   PLAY") ||
         my_strcmp(d->t->string, "RESPAWN"))) {
-        clear_inventory(p->inventory);
-        game_obj *maps = get_object(get_scene(s, PLAY), "maps");
-        sfSprite_setPosition(maps->sprite, maps->position);
         switch_scene(s, PLAY);
     }
     if (is_on_btn(s, event.mouseButton, g->id) &&

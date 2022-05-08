@@ -51,6 +51,11 @@ void save_background_game_over(scene *old, scene *new)
     color.g = 50;
     sfSprite_setColor(g->sprite, color);
     sfSprite_setTexture(g->sprite, texture, sfTrue);
+    game_obj *pl = get_object(old, "player");
+    player *p = pl->data;
+    clear_inventory(p->inventory);
+    game_obj *maps = get_object(old, "maps");
+    sfSprite_setPosition(maps->sprite, maps->position);
 }
 
 void data_game_over(screen *screen1)
