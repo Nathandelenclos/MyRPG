@@ -100,7 +100,7 @@ void create_slime_(scene *d, sfVector2f pos, char *name, sfVector2f hp_hit)
     sfVector2f vector[2] = {pos, pos};
     sfIntRect rect = create_rect(32, 32, 0, 0);
     game_obj *hero = create_obj(d, name, rect, vector);
-    set_scale(d, hero->sprite, 5);;
+    set_scale(d, hero->sprite, 5);
     hero->data = create_slime_data(hp_hit);
     hero->type = SLIME;
     hero->name = my_strdup(name);
