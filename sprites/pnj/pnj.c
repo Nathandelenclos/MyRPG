@@ -27,7 +27,6 @@ void animate_pnj(scene *d, game_obj *g)
 void action_pnj(game_obj *g, scene *d)
 {
     game_obj *map = get_object(d, "maps");
-    game_obj *p = get_object(d, "pnj");
     sfVector2f pos_map = sfSprite_getPosition(map->sprite);
     pos_map.x += g->vector.x * 9.0;
     pos_map.y += g->vector.y * 9.0;
@@ -40,7 +39,8 @@ pnj *create_pnj_data(scene *d)
     data->old_time_an = sfTime_Zero;
     data->time = sfTime_Zero;
     data->dialog = 0;
-    data->quest = 0;
+    data->step = 0;
+    data->quest = quests[data->dialog];
     return data;
 }
 

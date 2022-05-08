@@ -105,5 +105,8 @@ void create_env(scene *d);
 void create_bed(scene *d, sfVector2f pos);
 void play_screen(scene *data);
 void save_chest_background(scene *old, scene *new);
+int count_max_quest(void);
+
+static int (*quests[])(scene *) = {first_quest, seconds_quest, NULL};
 
 #endif

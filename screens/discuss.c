@@ -25,11 +25,21 @@ void active_discuss(scene *old, scene *new)
     game_obj
         *obj = get_closer_object(old, get_object(old, "player"), PNJ_ENTITY);
     game_obj *obj_b = get_object(new, "big_pnj");
+    pnj *p = obj->data;
     obj_b->data = obj->data;
     obj_b->animate = obj->animate;
     obj_b->texture = obj->texture;
     save_chest_background(old, new);
     sfSprite_setTexture(obj_b->sprite, obj->texture->texture, sfFalse);
+    if (p->step == 2) {
+        p->step = 0;
+        if (count_max_quest() > p->dialog) {
+            p->dialog++;
+            p->quest = quests[p->dialog];
+        }
+    }
+    if (p->step != 0)
+        p->step = p->quest(old) ? 2 : 1;
 }
 
 void events_discuss(scene *d, sfEvent event)
@@ -44,7 +54,7 @@ void events_discuss(scene *d, sfEvent event)
         break;
     case sfEvtKeyPressed:
         if (event.key.code == sfKeyEscape) {
-            p->dialog = p->quest ? 2 : 1;
+            p->step = p->quest(d) ? 2 : 1;
             switch_scene(d, PLAY);
         }
         break;

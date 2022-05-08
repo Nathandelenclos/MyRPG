@@ -14,6 +14,7 @@
 #include "my.h"
 #include "enum.h"
 #include "struct.h"
+#include "discuss.h"
 
 #ifndef GAME_OBJ_TYPE_H
     #define GAME_OBJ_TYPE_H
@@ -43,7 +44,6 @@ typedef struct {
     sfTime time;
     sfTime old_time_fruit;
 } tree;
-
 
 typedef struct {
     sfTime time;
@@ -95,7 +95,8 @@ typedef struct {
     sfTime time;
     sfTime old_time_an;
     int dialog;
-    int quest;
+    int step;
+    int (*quest)(scene *);
 } pnj;
 
 typedef struct {

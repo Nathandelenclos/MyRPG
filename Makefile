@@ -104,6 +104,8 @@ MANAGER =	sprites_manager.c	\
 			thread_manager.c	\
 			env_manager.c	\
 
+QUEST =	simon_quest.c	\
+
 TEXTS	=	fps.c	\
 			menu.c	\
 			discuss.c	\
@@ -111,6 +113,8 @@ TEXTS	=	fps.c	\
 TEXTS_PATH	=	texts/
 
 SCREEN_PATH	=	screens/
+
+QUEST_PATH	=	quest/
 
 SPRITE_PATH	=	sprites/
 
@@ -130,6 +134,7 @@ SRC	=		events.c	\
 			$(addprefix $(SPRITE_PATH), $(SPRITES))	\
 			$(addprefix $(UTIL_PATH), $(UTILS))	\
 			$(addprefix $(ENV_PATH), $(ENVIRONMENTS))	\
+			$(addprefix $(QUEST_PATH), $(QUEST))	\
 
 OBJ	=	$(MAIN:.c=.o) $(SRC:.c=.o)
 

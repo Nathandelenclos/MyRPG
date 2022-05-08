@@ -95,4 +95,8 @@ void create_run_env(scene *d);
 void data_discuss(screen *screen1);
 game_obj *create_big_pnj(scene *d, sfVector2f pos, int scale);
 
+//Quest
+int first_quest(scene *d);
+int seconds_quest(scene *d);
+
 #endif
