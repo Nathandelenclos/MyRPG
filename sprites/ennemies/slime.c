@@ -60,6 +60,8 @@ void action_slime(game_obj *g, scene *d)
     pos_map.x += g->vector.x * 9.0;
     pos_map.y += g->vector.y * 9.0;
     sfSprite_setPosition(g->sprite, pos_map);
+    if (!is_on_window(g, d))
+        return;
     pos_map.y += 20;
     pos_map.x += 35;
     float distance = get_distance(g, p);
