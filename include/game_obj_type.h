@@ -145,6 +145,13 @@ typedef struct {
     int selected;
 } player_inv;
 
+typedef struct {
+    slot_inv *stamp;
+    int stamp_i;
+    inventory *stamp_inv;
+    inventory_chest_state state;
+} stamp_inv;
+
 void destroy_animate_slime(scene *d, game_obj *g);
 void hit_animate_slime(scene *d, game_obj *g);
 void move_animate_slime(scene *d, game_obj *g);

@@ -24,36 +24,41 @@ int data_null(
     return 0;
 }
 
+void action_click_part_first(scene *d, int i, inventory *data)
+{
+    static slot_inv *stamp;
+    static int stamp_i;
+    static inventory *stamp_inv;
+    static inventory_chest_state state;
+    if (data_null(data, stamp, stamp_i, stamp_inv)) {
+        state = FIRST_CLICK;
+        return;
+    }
+    if (data->size == 9 && i >= 27)
+        i -= 27;
+    if (state == FIRST_CLICK) {
+        stamp = data->slot[i];
+        stamp_i = i;
+        stamp_inv = data;
+        state = SECOND_CLICK;
+    } else {
+        stamp_inv->slot[stamp_i] = data->slot[i];
+        data->slot[i] = stamp;
+        state = FIRST_CLICK;
+    }
+}
+
 void action_click_on_case(
     scene *d, int i, sfMouseButtonEvent event, inventory *data
 )
 {
-    static slot_inv *stamp = NULL;
-    static int stamp_i = -1;
-    static inventory *stamp_inv = NULL;
-    static inventory_chest_state state = FIRST_CLICK;
     sfVector2f *pos = d->state == CHEST ? init_inventory_pos_places_c()
                                         : init_inventory_pos_places_p();
-    if (data_null(data, stamp, stamp_i, stamp_inv)) {
-        free(pos);
-        state = FIRST_CLICK;
-        return;
-    }
+
     if (event.x >= pos[i].x && event.x <= pos[i].x + 140 &&
         event.y >= pos[i].y &&
         event.y <= pos[i].y + 140) {
-        if (data->size == 9 && i >= 27)
-            i -= 27;
-        if (state == FIRST_CLICK) {
-            stamp = data->slot[i];
-            stamp_i = i;
-            stamp_inv = data;
-            state = SECOND_CLICK;
-        } else {
-            stamp_inv->slot[stamp_i] = data->slot[i];
-            data->slot[i] = stamp;
-            state = FIRST_CLICK;
-        }
+        action_click_part_first(d, i, data);
     }
     free(pos);
 }
