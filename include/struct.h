@@ -30,6 +30,8 @@ typedef struct {
     int attack;
     int menu;
     int screen;
+    int drop;
+    int info;
     int slot1;
     int slot2;
     int slot3;

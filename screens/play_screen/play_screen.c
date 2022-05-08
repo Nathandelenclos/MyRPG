@@ -37,18 +37,18 @@ void play_screen(scene *data)
     game_obj *p = get_object(data, "player");
     game_obj *map = get_object(data, "maps");
     int seconds = sfTime_asMilliseconds(time) / 1000;
-    seconds %= 20;
+    seconds %= 120;
     sfColor color = sfSprite_getColor(map->sprite);
     sprites_manager(data);
     move_manager(data);
     time_manager(data);
     text_manager(data);
     env_manager(data);
-    if (seconds < 5 || seconds > 15)
+    if (seconds > 20 && seconds < 60)
         get_env(data, RAIN)->active = sfTrue;
     else
         get_env(data, RAIN)->active = sfFalse;
-    if (seconds < 10)
+    if (seconds < 40)
         color.a = 100;
     else
         color.a = 255;
@@ -118,7 +118,7 @@ void create_all_trees(scene *d)
     create_tree(d, create_vector2f(592, 434));
     create_tree(d, create_vector2f(190, 300));
     create_tree(d, create_vector2f(160, 200));
-    create_tree(d, create_vector2f(160, 418));
+    create_tree(d, create_vector2f(160, 400));
     create_tree(d, create_vector2f(320, 350));
 }
 

@@ -30,10 +30,10 @@ void create_data_win(scene *d)
     d->textures = get_scene(d, START)->textures;
     create_sprite_bg_game_over(d);
     create_sprite_popup(d, create_vector2f(598.5, 414.5));
-    create_btn_text(d, "WIN !", create_text_id_struct(120, UI, 3), create_vector2f(740, 450));
-    create_btn_text(d, "RESPAWN", create_text_id_struct(65, HOME_BTN, 3), create_vector2f(633.5, 945));
+    create_btn_text(d, "YOU WON", create_text_id_struct(120, UI, 3), create_vector2f(850, 450));
+    create_btn_text(d, "CONTINUE", create_text_id_struct(65, HOME_BTN, 3), create_vector2f(633.5, 945));
     create_btn_text(d, "MAIN MENU", create_text_id_struct(65, HOME_BTN, 3), create_vector2f(1066.5, 945));
-    create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(598.5, 945), 2, 5, HOME_BTN), "RESPAWN");
+    create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(598.5, 945), 2, 5, HOME_BTN), "CONTINUE");
     create_sprite_lb(d, "white_lb", create_btn_param(create_vector2f(1046.5, 945), 2, 5, HOME_BTN), "MAIN MENU");
 }
 
