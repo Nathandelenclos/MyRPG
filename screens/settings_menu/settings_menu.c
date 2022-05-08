@@ -1,7 +1,7 @@
 /*
 ** EPITECH PROJECT, 2021
 ** MyRPG
-** File descriptiofn:
+** File description:
 ** Screen
 */
 
@@ -30,39 +30,47 @@ void settings_screen(scene *data)
     time_manager(data);
 }
 
+void create_sprite_mod(scene *d)
+{
+    create_btn_text(d, my_int_to_str(d->hub->s->fps),
+    create_text_id_struct(50, UI, 3), create_vector2f(613, 80));
+    create_btn_text(d, "FPS:", create_text_id_struct(50, UI, 3),
+    create_vector2f(1265, 20));
+    create_sprite_sb(d, "white_plus",
+    create_btn_param(create_vector2f(1365, 80), 2, 4, HOME_BTN),
+    my_int_to_str(d->hub->s->fps));
+    create_sprite_sb(d, "white_minus",
+    create_btn_param(create_vector2f(1235, 80), 2, 4, HOME_BTN),
+    my_int_to_str(d->hub->s->fps));
+    create_sprite_sb(d, "white_sb",
+    create_btn_param(create_vector2f(1300, 80), 2, 4, HOME_BTN),
+    my_int_to_str(d->hub->s->fps));
+    create_sprite_sb(d, "white_minus",
+    create_btn_param(create_vector2f(535, 80), 2, 4, HOME_BTN),
+    my_int_to_str(d->hub->s->volume));
+    create_sprite_sb(d, "white_sb",
+    create_btn_param(create_vector2f(600, 80), 2, 4, HOME_BTN),
+    my_int_to_str(d->hub->s->volume));
+}
+
 void create_sprite_settings(scene *d)
 {
     d->textures = get_scene(d, START)->textures;
     d->sounds = get_scene(d, START)->sounds;
     create_settings_menu_sprite(d);
     create_settings_hud_sprite(d);
-    create_btn_text(d, "   DONE", create_text_id_struct(95, UI, 4), create_vector2f(822.5, 945));
+    create_btn_text(d, "   DONE", create_text_id_struct(95, UI, 4),
+    create_vector2f(822.5, 945));
     create_sprite_lb(d, "white_lb",
     create_btn_param(create_vector2f(822.5, 970), 2, 5, HOME_BTN), "   DONE");
-    create_btn_text(d, my_int_to_str(d->hub->s->volume), create_text_id_struct(50, UI, 3),
-        create_vector2f(613, 80));
-    create_btn_text(d, "VOLUME:", create_text_id_struct(50, UI, 3), create_vector2f(565, 20));
+    create_btn_text(d, my_int_to_str(d->hub->s->volume),
+    create_text_id_struct(50, UI, 3), create_vector2f(613, 80));
+    create_btn_text(d, "VOLUME:", create_text_id_struct(50, UI, 3),
+    create_vector2f(565, 20));
     create_sprite_sb(d, "white_plus",
-     create_btn_param(create_vector2f(665, 80), 2, 4, HOME_BTN),
-        my_int_to_str(d->hub->s->volume));
-    create_sprite_sb(d, "white_minus",
-     create_btn_param(create_vector2f(535, 80), 2, 4, HOME_BTN),
-        my_int_to_str(d->hub->s->volume));
-    create_sprite_sb(d, "white_sb",
-     create_btn_param(create_vector2f(600, 80), 2, 4, HOME_BTN),
-        my_int_to_str(d->hub->s->volume));
-    create_btn_text(d, my_int_to_str(d->hub->s->fps), create_text_id_struct(50, UI, 3),
-        create_vector2f(613, 80));
-    create_btn_text(d, "FPS:", create_text_id_struct(50, UI, 3), create_vector2f(1265, 20));
-    create_sprite_sb(d, "white_plus",
-     create_btn_param(create_vector2f(1365, 80), 2, 4, HOME_BTN),
-        my_int_to_str(d->hub->s->fps));
-    create_sprite_sb(d, "white_minus",
-     create_btn_param(create_vector2f(1235, 80), 2, 4, HOME_BTN),
-        my_int_to_str(d->hub->s->fps));
-    create_sprite_sb(d, "white_sb",
-     create_btn_param(create_vector2f(1300, 80), 2, 4, HOME_BTN),
-        my_int_to_str(d->hub->s->fps));
+    create_btn_param(create_vector2f(665, 80), 2, 4, HOME_BTN),
+    my_int_to_str(d->hub->s->volume));
+    create_sprite_mod(d);
     create_button_setting(d);
 }
 
