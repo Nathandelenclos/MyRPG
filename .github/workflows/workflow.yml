@@ -8,19 +8,6 @@ env:
   EXECUTABLES: "my_rpg"
 
 jobs:
-  normez:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3.0.0
-        with:
-          fetch-depth: 0
-      - name: Normez
-        id: normez
-        run: ./NormEZ.rb -f assets -m
-      - name: test
-        run: echo "${{ steps.run_tests.outputs }}"
-
   check_repos_size:
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - check_repos_size
-      - normez
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.0
