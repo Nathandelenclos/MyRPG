@@ -55,8 +55,8 @@ void action_maps(game_obj *g, scene *s)
     float old_seconds = sfTime_asSeconds(data->old_time_an);
     if (seconds - old_seconds > 0.001) {
         vector = g->vector;
-        vector.x = (g->vector.x * (float)s->hub->delta_time) / 5;
-        vector.y = (g->vector.y * (float)s->hub->delta_time) / 5;
+        vector.x = (g->vector.x * (float)s->hub->delta_time) / 10;
+        vector.y = (g->vector.y * (float)s->hub->delta_time) / 10;
         sfSprite_move(g->sprite, vector);
         data->old_time_an = sfClock_getElapsedTime(g->clock);
     }
