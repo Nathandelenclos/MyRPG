@@ -21,6 +21,17 @@
     #define OBJECT_H_
 
 //Objects
+void event_switch_case(scene *d, sfEvent event, game_obj *p, game_obj *c);
+void events_chest(scene *d, sfEvent event);
+void create_button_setting_basic(scene *d);
+void create_buttons_interact(scene *d);
+void create_buttons_move(scene *d);
+void create_move_text(scene *d);
+void create_text_setting_basic_right(scene *d);
+void create_interact_input(scene *d);
+void create_text_setting_basic_left(scene *d);
+void create_all_slimes(scene *d);
+void create_all_trees(scene *d);
 int create_sprite_bg_game_over(scene *d);
 void create_player_mirror(scene *d);
 game_obj *create_sprite_popup(scene *d, sfVector2f pos);
