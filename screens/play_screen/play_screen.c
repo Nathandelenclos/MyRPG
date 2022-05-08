@@ -120,11 +120,8 @@ void create_data_play(scene *d)
     create_golden_chest(d, 328, 225);
     game_obj *p = get_object(d, "player");
     game_obj *c = get_closer_object(d, p, CHESTS_G);
-    game_obj *slime = get_closer_object(d, p, ENEMY);
-    game_obj *slime_en = get_object(d, "enemy_slime");
     chest *ci = c->data;
-    push_items(ci->inventory, 5, slime);
-    push_items(((player *)p->data)->inventory, 2, slime_en);
+    push_items(ci->inventory, 0, create_apple(d));
 }
 
 void active_play(scene *old, scene *new)
