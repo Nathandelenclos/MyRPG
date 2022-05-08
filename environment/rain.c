@@ -11,7 +11,7 @@ void animate_rain(scene *d, environment *e)
 {
     for (size_t i = 0; i < sfVertexArray_getVertexCount(e->array); ++i) {
         sfVertex *v = sfVertexArray_getVertex(e->array, i);
-        v->position.y += 10;
+        v->position.y += 10 * ((float)d->hub->delta_time) / 8;
         if (v->position.y > d->hub->mode.height) {
             v->position.y = 0;
         }
