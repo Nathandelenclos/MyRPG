@@ -14,12 +14,21 @@ void action_click_on_case(
     scene *d, int i, sfMouseButtonEvent event, inventory *data
 )
 {
-    sfVector2f *pos = d->state == CHEST ? init_inventory_pos_places_c()
-                                        : init_inventory_pos_places_p();
     static slot_inv *stamp = NULL;
     static int stamp_i = -1;
     static inventory *stamp_inv = NULL;
     static inventory_chest_state state = FIRST_CLICK;
+
+    sfVector2f *pos = d->state == CHEST ? init_inventory_pos_places_c()
+                                        : init_inventory_pos_places_p();
+    if (data == NULL) {
+        free(pos);
+        stamp = NULL;
+        stamp_i = -1;
+        stamp_inv = NULL;
+        state = FIRST_CLICK;
+        return;
+    }
     if (event.x >= pos[i].x && event.x <= pos[i].x + 140 &&
         event.y >= pos[i].y &&
         event.y <= pos[i].y + 140) {
@@ -51,7 +60,7 @@ void events_chest(scene *d, sfEvent event)
         sfRenderWindow_close(d->hub->window);
         break;
     case sfEvtKeyPressed:
-        if (event.key.code == sfKeyEscape) {
+        if (event.key.code == d->hub->s->c->menu) {
             switch_scene(d, PLAY);
             action_click_on_case(d, 0, event.mouseButton, NULL);
         }
