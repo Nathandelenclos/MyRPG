@@ -28,7 +28,6 @@ void create_bed(scene *d, sfVector2f pos)
     bed->type = BED;
     bed->name = my_strdup("objects");
     bed->action = action_bed;
-//    bed->event = event_bed;
     bed->grp = OBJECT;
     bed->display = 1;
     pos_map.x += pos.x * 9.0;

@@ -66,6 +66,7 @@ chest *create_chest_data(scene *d)
     data->time = sfTime_Zero;
     data->open = open_animate_chest;
     data->close = close_animate_chest;
-    data->inventory = create_inventory_data(d, 27, init_inventory_pos_places_c());
+    data->inventory =
+        create_inventory_data(d, 27, init_inventory_pos_places_c());
     return data;
 }

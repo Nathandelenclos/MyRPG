@@ -36,7 +36,8 @@ int create_sprite_menu(scene *d)
     sfVector2f pos[2] = {{0, -50}, {0, 0}};
     game_obj *menu =
         create_obj(d, "menu", create_rect(600, 450, 0, 0), pos);
-    sfVector2f resize = {d->hub->mode.width / 600.0, d->hub->mode.width / 600.0};
+    sfVector2f resize = {d->hub->mode.width / 600.0,
+        d->hub->mode.width / 600.0};
     sfSprite_setScale(menu->sprite, resize);
     menu->data = create_menu_struct();
     menu->type = MENU_BG;

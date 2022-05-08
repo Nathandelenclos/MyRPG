@@ -7,34 +7,33 @@
 
 #include "../../include/rpg.h"
 
-void clear_inventory(inventory *inv)
+void event_slot_cond(player *p, scene *d, sfEvent event)
 {
-    for (int i = 0; i < inv->size; ++i)
-        inv->slot[i] = NULL;
+    if (event.key.code == d->hub->s->c->slot1)
+        p->slot_select = 0;
+    if (event.key.code == d->hub->s->c->slot2)
+        p->slot_select = 1;
+    if (event.key.code == d->hub->s->c->slot3)
+        p->slot_select = 2;
+    if (event.key.code == d->hub->s->c->slot4)
+        p->slot_select = 3;
+    if (event.key.code == d->hub->s->c->slot5)
+        p->slot_select = 4;
+    if (event.key.code == d->hub->s->c->slot6)
+        p->slot_select = 5;
+    if (event.key.code == d->hub->s->c->slot7)
+        p->slot_select = 6;
+    if (event.key.code == d->hub->s->c->slot8)
+        p->slot_select = 7;
+    if (event.key.code == d->hub->s->c->slot9)
+        p->slot_select = 8;
 }
 
 void event_slot(game_obj *g, scene *d, sfEvent event)
 {
     player *p = get_object(d, "player")->data;
     if (event.type == sfEvtKeyPressed) {
-        if (event.key.code == d->hub->s->c->slot1)
-            p->slot_select = 0;
-        if (event.key.code == d->hub->s->c->slot2)
-            p->slot_select = 1;
-        if (event.key.code == d->hub->s->c->slot3)
-            p->slot_select = 2;
-        if (event.key.code == d->hub->s->c->slot4)
-            p->slot_select = 3;
-        if (event.key.code == d->hub->s->c->slot5)
-            p->slot_select = 4;
-        if (event.key.code == d->hub->s->c->slot6)
-            p->slot_select = 5;
-        if (event.key.code == d->hub->s->c->slot7)
-            p->slot_select = 6;
-        if (event.key.code == d->hub->s->c->slot8)
-            p->slot_select = 7;
-        if (event.key.code == d->hub->s->c->slot9)
-            p->slot_select = 8;
+        event_slot_cond(p, d, event);
         if (event.key.code == d->hub->s->c->drop)
             p->inventory->slot[p->slot_select] = NULL;
     }
@@ -49,10 +48,8 @@ void animate_slot(scene *d, game_obj *g)
 
 game_obj *create_inventory(scene *d)
 {
-    sfVector2f vector[2] = {
-        {(d->hub->mode.width / 2) - (543 / 2),
-            (d->hub->mode.height - 61 )
-            }, {0, 0}};
+    sfVector2f vector[2] = {{(d->hub->mode.width / 2) - (543 / 2),
+        (d->hub->mode.height - 61 )}, {0, 0}};
     sfIntRect rect = create_rect(543, 61, 0, 0);
     game_obj *obj = create_obj(d, "hotbar", rect, vector);
     obj->data = malloc(sizeof(player_inv));
