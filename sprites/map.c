@@ -46,6 +46,7 @@ void action_maps(game_obj *g, scene *s)
     maps *data = g->data;
     game_obj *p_g = get_object(s, "player");
     player *p = (player *) p_g->data;
+    sfVector2f vector = {0,0};
     if (p->state != MOVE && p->state != MOVE_MIRROR)
         return;
     collision_map(s, g);
@@ -53,7 +54,10 @@ void action_maps(game_obj *g, scene *s)
     float seconds = sfTime_asSeconds(data->time);
     float old_seconds = sfTime_asSeconds(data->old_time_an);
     if (seconds - old_seconds > 0.001) {
-        sfSprite_move(g->sprite, g->vector);
+        vector = g->vector;
+        vector.x = (g->vector.x * (float)s->hub->delta_time) / 5;
+        vector.y = (g->vector.y * (float)s->hub->delta_time) / 5;
+        sfSprite_move(g->sprite, vector);
         data->old_time_an = sfClock_getElapsedTime(g->clock);
     }
 }

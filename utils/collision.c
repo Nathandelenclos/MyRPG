@@ -11,23 +11,23 @@ sfVector2f get_direction(sfUint32 *radar, maps *m)
 {
     if (radar[0] != radar[7]) {
         if (radar[3] != radar[7])
-            return create_vector2f(0, -(m->speed));
+            return create_vector2f(0, -20);
         if (radar[2] != radar[7])
-            return create_vector2f(-(m->speed), 0);
-        return create_vector2f(-(m->speed), -(m->speed));
+            return create_vector2f(-20, 0);
+        return create_vector2f(-20, -20);
     }
     if (radar[3] != radar[7]) {
         if (radar[5] != radar[7])
-            return create_vector2f((m->speed), 0);
-        return create_vector2f((m->speed), -(m->speed));
+            return create_vector2f(20, 0);
+        return create_vector2f(20, -20);
     }
     if (radar[2] != radar[7]) {
         if (radar[5] != radar[7])
-            return create_vector2f(0, (m->speed));
-        return create_vector2f(-(m->speed), (m->speed));
+            return create_vector2f(0, 20);
+        return create_vector2f(-20, 20);
     }
     if (radar[5] != radar[7])
-        return create_vector2f((m->speed), (m->speed));
+        return create_vector2f(20, 20);
     return create_vector2f(0, 0);
 }
 
