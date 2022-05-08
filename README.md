@@ -1,6 +1,6 @@
 # MyRPG
 
-In this project, you are asked to make a small video game based on the rules of a [Tower Defense](https://en.wikipedia.org/wiki/Tower_defense).
+In this project, you are asked to make a small video game based on the rules of a [RPG](https://en.wikipedia.org/wiki/Role-playing_video_game).
 ***
 ## How to play ?
 ### Installation CSFML

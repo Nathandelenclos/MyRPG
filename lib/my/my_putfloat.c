@@ -7,8 +7,10 @@
 
 #include "my.h"
 
-void my_putfloat(int nb)
+void my_put_float(float f)
 {
+    f = f * 100;
+    int nb = (int)f;
     my_put_nbr(nb / 100);
     my_putchar('.');
     my_put_nbr((nb / 10) % 10);

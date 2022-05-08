@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG
 ** File description:
 ** events
 */
@@ -13,6 +13,20 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+void draw_debug(scene *d)
+{
+    text *fps = get_text(d, "fps");
+    text *sprite = get_text(d, "entity");
+    text *delta = get_text(d, "delta_time");
+    if (fps == NULL || sprite == NULL || delta == NULL){
+        create_debug(d);
+        return draw_debug(d);
+    }
+    fps->display = fps->display ? 0 : 5;
+    sprite->display = sprite->display ? 0 : 5;
+    delta->display = delta->display ? 0 : 5;
+}
 
 void event_closed(scene *d)
 {
@@ -35,10 +49,12 @@ void event_manager(scene *d, sfEvent event)
         event_closed(d);
         break;
     case sfEvtKeyPressed:
-        if (event.key.code == sfKeyF4) {
-            my_printf("take screen...");
+        if (event.key.code == d->hub->s->c->screen) {
+            my_printf(1, "Taking screenshot..");
             take_screenshot(d, "screenshot.png");
-            my_printf("(screenshot.png)\n");
+            my_printf(1, "(screenshot.png)\n");
         }
+        if (event.key.code == d->hub->s->c->info)
+            draw_debug(d);
     }
 }

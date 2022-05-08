@@ -14,11 +14,11 @@ void show_list(node *list)
 {
     node *tmp = list;
 
-    my_printf("{");
+    my_printf(1, "{");
     while (tmp != NULL) {
-        my_printf("%i", tmp->data);
+        my_printf(1, "%i", tmp->data);
         tmp = tmp->next;
     }
-    my_printf("}");
+    my_printf(1, "}");
     return;
 }

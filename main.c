@@ -1,23 +1,25 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG
 ** File description:
 ** main
 */
 
 #include "include/rpg.h"
+#include <time.h>
 
-void load_screen(sfRenderWindow *window)
+void load_screen(sfRenderWindow *window, sfVideoMode mode)
 {
     sfSprite *sprite = sfSprite_create();
-    sfIntRect rect = create_rect(1080, 720, 0, 0);
-    sfTexture *t =
-        sfTexture_createFromFile("./assets/logo.png", &rect);
+    sfIntRect rect = create_rect(600, 450, 0, 0);
+    sfTexture
+        *t = sfTexture_createFromFile("./assets/ui/menu_sprites.png", &rect);
     sfSprite_setTexture(sprite, t, sfTrue);
+    sfSprite_setPosition(sprite, create_vector2f(0, -50));
+    sfSprite_setScale(sprite,
+        create_vector2f(mode.width / 600.0, mode.width / 600.0));
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_display(window);
-    sfSprite_destroy(sprite);
-    sfTexture_destroy(t);
 }
 
 void start(screen *hub)
@@ -33,8 +35,10 @@ void start(screen *hub)
             scene->event(scene, event);
             event_manager(scene, event);
         }
+        sfTime dtime = sfClock_restart(hub->clock);
+        hub->delta_time = sfTime_asMilliseconds(dtime);
         hub->fps = 1 /
-            (sfTime_asMilliseconds(sfClock_restart(hub->clock)) * 0.001);
+            (sfTime_asMilliseconds(dtime) * 0.001);
         sfRenderWindow_display(hub->window);
     }
     sfRenderWindow_destroy(hub->window);
@@ -44,27 +48,31 @@ screen *create_hub(void)
 {
     screen *hub = malloc(sizeof(screen));
     hub->state = START;
-    sfVideoMode mode = {1080, 608, 32};
-    hub->window = sfRenderWindow_create(mode, "MyRPG", sfDefaultStyle,
+    sfVideoMode mode = sfVideoMode_getDesktopMode();
+    hub->window = sfRenderWindow_create(mode, "MyRPG", sfFullscreen,
         NULL);
     hub->clock = sfClock_create();
+    hub->clock2 = sfClock_create();
     hub->fps = 0;
+    hub->entity_load = 0;
     hub->mode = mode;
     hub->datas = NULL;
+    hub->s = init_settings_struct();
     return hub;
 }
 
 int main(int argc, char **argv)
 {
+    srand(rand());
     screen *hub = create_hub();
     sfImage *icon = sfImage_createFromFile("./assets/logo.png");
     sfRenderWindow_setIcon(hub->window, sfImage_getSize(icon).x,
         sfImage_getSize(icon).y,
         sfImage_getPixelsPtr(icon));
-    //load_screen(hub->window);
+    load_screen(hub->window, hub->mode);
     screen_manager(hub);
     start(hub);
+    destroy_music(hub);
     sfImage_destroy(icon);
-    free_game(hub);
     return 0;
 }

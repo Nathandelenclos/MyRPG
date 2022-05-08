@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG
 ** File description:
 ** Screen
 */
@@ -8,48 +8,51 @@
 #include "../../include/my.h"
 #include "../../include/rpg.h"
 #include <SFML/Window.h>
-#include <stdio.h>
 #include <SFML/Graphics.h>
-#include <SFML/Audio.h>
-#include <stdlib.h>
 
 void events_play(scene *d, sfEvent event)
 {
+    events_manage(d, event);
+    game_obj *p = get_object(d, "player");
+    game_obj *chest = get_closer_object(d, p, CHESTS_G);
     switch (event.type) {
     case sfEvtClosed:
         sfRenderWindow_close(d->hub->window);
         break;
     case sfEvtKeyPressed:
-        if (event.key.code == sfKeyEscape)
-            d->hub->state = PAUSE;
-    case sfEvtMouseButtonPressed:
-        if (is_on_btn(d, event.mouseButton, INVISIBLE_BTN, NULL)) {
-            d->hub->state = BUY;
-            d->hub->data_switch->place =
-                is_on_btn(d, event.mouseButton, INVISIBLE_BTN, NULL)->name;
-        }
-        if (is_on_btn(d, event.mouseButton, PAUSE_BTN, NULL)) {
-            d->hub->state = PAUSE;
-        }
+        if (event.key.code == d->hub->s->c->menu)
+            switch_scene(d, PAUSE);
+        if (event.key.code == d->hub->s->c->interact &&
+            get_distance(p, chest) < 150)
+            switch_scene(d, CHEST);
+        if (sfKeyboard_isKeyPressed(sfKeyF12))
+            switch_scene(d, WIN);
         break;
     }
-}
-
-void play_screen(scene *data)
-{
-    sprites_manager(data);
-    move_manager(data);
-    time_manager(data);
-    print_main_life(data);
-    money_manager(data);
-    text_manager(data);
 }
 
 void create_data_play(scene *d)
 {
     d->textures = get_scene(d, START)->textures;
-    display_score(d);
-    display_money(d);
+    create_env(d);
+    create_sprite_map(d);
+    create_player(d);
+    create_pnj(d, create_vector2f(269, 281));
+    create_all_slimes(d);
+    create_bed(d, create_vector2f(292, 227));
+    create_all_trees(d);
+    create_basic_chest(d, 304, 225);
+    create_golden_chest(d, 328, 225);
+    game_obj *p = get_object(d, "player");
+    game_obj *c = get_closer_object(d, p, CHESTS_G);
+    chest *ci = c->data;
+    push_items(ci->inventory, 0, create_apple(d));
+}
+
+void active_play(scene *old, scene *new)
+{
+    sfRenderWindow_setMouseCursorVisible(new->hub->window, sfFalse);
+    fade_scene(old);
 }
 
 void data_play(screen *screen1)
@@ -57,11 +60,7 @@ void data_play(screen *screen1)
     scene *d = create_scene(screen1, PLAY);
     d->screen = play_screen;
     d->event = events_play;
-    d->stat = malloc(sizeof(game_stat));
-    d->stat->score = 0;
-    d->stat->game_life = 100;
-    d->stat->money = 450;
-    d->lb = create_life_bar(300, 20, sfGreen, sfBlack);
+    d->active = active_play;
     create_data_play(d);
     put_in_list(&screen1->datas, d);
 }

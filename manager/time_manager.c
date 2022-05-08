@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG - Manager
 ** File description:
 ** time manager
 */
@@ -20,7 +20,7 @@ void time_manager(scene *d)
     node *tmp = d->objs;
     while (tmp != NULL) {
         obj = (game_obj *) tmp->data;
-        if (obj->animate != NULL) {
+        if (obj->animate != NULL && is_on_window(obj, d)) {
             obj->animate(d, obj);
         }
         tmp = tmp->next;

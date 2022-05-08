@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG - Manager
 ** File description:
 ** Manager
 */
@@ -30,11 +30,11 @@ void play_sound(scene *d, enum sound_grp grp)
 
 void sound_manager(scene *d)
 {
-    //sound *music = create_sound("./assets/soundtrack.wav", MUSIC, 25);
-    //put_in_list(&d->sounds, music);
+    sound *music = create_sound("./assets/menu_soundtrack.wav", MUSIC, 25);
+    put_in_list(&d->sounds, music);
 
-    //sfMusic_setLoop(music->music, sfTrue);
-    //sfMusic_play(music->music);
+    sfMusic_setLoop(music->music, sfTrue);
+    sfMusic_play(music->music);
 }
 
 void destroy_music(screen *hub)
@@ -49,7 +49,9 @@ void destroy_music(screen *hub)
             tmp_d = d->sounds;
         while (tmp_d != NULL) {
             t = (sound *)tmp_d->data;
-            sfMusic_destroy(t->music);
+            if (t->music != NULL)
+                sfMusic_destroy(t->music);
+            t->music = NULL;
             tmp_d = tmp_d->next;
         }
         tmp = tmp->next;

@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRPG - manager
+** MyRPG - Manager
 ** File description:
 ** thread manager
 */

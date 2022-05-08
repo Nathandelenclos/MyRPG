@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRunner
+** MyRPG - Manager
 ** File description:
 ** Manager
 */
@@ -33,7 +33,32 @@ texture *get_texture(scene *d, char *name)
     return NULL;
 }
 
+void create_textures_part_1(scene *d)
+{
+    create_menu_texture(d);
+    create_buttons_texture(d);
+    create_slide_bar_texture(d);
+    create_characters_texture(d);
+    create_chest_and_obj_texture(d);
+    create_banners_texture(d);
+    create_controls_texture(d);
+    create_icon_questionmark_texture(d);
+    create_icon_ranking_texture(d);
+    create_icon_settings_texture(d);
+    create_icon_triangle_texture(d);
+}
+
 void create_textures(scene *d)
 {
-    //create_main_menu_texture(d);
+    create_textures_part_1(d);
+    create_icon_trophy_texture(d);
+    create_icon_twitter_texture(d);
+    create_icon_watchad_texture(d);
+    create_icon_youtube_texture(d);
+    create_icons_texture(d);
+    create_popup(d);
+    create_maps_textures(d);
+    create_menu_texture(d);
+    create_icons_texture(d);
+    create_chest_inventory_texture(d);
 }
