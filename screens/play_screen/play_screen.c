@@ -25,6 +25,8 @@ void events_play(scene *d, sfEvent event)
         if (event.key.code == d->hub->s->c->interact &&
             get_distance(p, chest) < 150)
             switch_scene(d, CHEST);
+        if (sfKeyboard_isKeyPressed(sfKeyF12))
+            switch_scene(d, WIN);
         break;
     }
 }

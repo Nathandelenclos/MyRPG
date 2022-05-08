@@ -71,6 +71,7 @@ SCREENS	=	main_menu/main_menu.c	\
 			settings_menu/wrong_input_screen.c	\
 			play_screen/play_screen.c	\
 			play_screen/game_over_screen.c	\
+			play_screen/win_screen.c	\
 			open_inventory_chest.c	\
 			discuss.c	\
 

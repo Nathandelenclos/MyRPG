@@ -70,6 +70,7 @@ typedef enum state_e {
     SETTINGS_ERROR,
     CHEST,
     GAME_OVER,
+    WIN,
     DISCUSS,
 } state;
 

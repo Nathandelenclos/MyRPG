@@ -92,4 +92,5 @@ void screen_manager(screen *s)
     data_chest(s);
     data_game_over(s);
     data_pause(s);
+    data_win(s);
 }

@@ -31,6 +31,13 @@ void action_pnj(game_obj *g, scene *d)
     pos_map.x += g->vector.x * 9.0;
     pos_map.y += g->vector.y * 9.0;
     sfSprite_setPosition(g->sprite, pos_map);
+
+    if (count_max_quest() == ((pnj *)g->data)->dialog + 1 && ((pnj *)g->data)->step == 2) {
+        switch_scene(d, WIN);
+        ((pnj *)g->data)->dialog = 0;
+        ((pnj *)g->data)->quest = quests[0];
+        ((pnj *)g->data)->step = 0;
+    }
 }
 
 pnj *create_pnj_data(scene *d)

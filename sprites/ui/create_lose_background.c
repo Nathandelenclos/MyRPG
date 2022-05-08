@@ -5,7 +5,7 @@
 ** Sprite - create long button
 */
 
-#include "../include/rpg.h"
+#include "../../include/rpg.h"
 
 int create_sprite_bg_game_over(scene *d)
 {
