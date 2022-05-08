@@ -23,10 +23,10 @@ static const char *DIALOG[][4] = {{
     "Try running around a bit.\n"
     "However, be careful about the mobs you could get hurt.",
     "...",
-    "I didn’t realize how strong you were when I saw you!\n"
+    "I didn't realize how strong you were when I saw you!\n"
     "Do you think you can kill some stronger slimes for me?\n"
-    "I’lltell you my plan later.\n"
-    "I don’t think you are ready to hear it.",
+    "I'll tell you my plan later.\n"
+    "I don't think you are ready to hear it.",
     NULL
 }};
 
