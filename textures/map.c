@@ -11,6 +11,7 @@ void create_maps_textures(scene *d)
 {
     put_in_list(&d->textures, create_texture("./assets/unknown.png", "maps",
         create_rect(787, 775, 0, 0)));
-    put_in_list(&d->textures, create_texture("./assets/ui/inventory_empty_slot.png", "empty_slot_inventory",
+    put_in_list(&d->textures, create_texture
+        ("./assets/ui/inventory_empty_slot.png", "empty_slot_inventory",
         create_simple_rect(140, 140)));
 }

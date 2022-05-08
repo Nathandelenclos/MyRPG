@@ -47,10 +47,3 @@ void free_scene(scene *s)
     free_list(s->textures, (void(*)(void *))free_texture);
     free(s);
 }
-
-void free_game(screen *hub)
-{
-    free_list(hub->datas, (void(*)(void *))free_scene);
-    sfClock_destroy(hub->clock);
-    free(hub);
-}

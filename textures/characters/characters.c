@@ -19,10 +19,8 @@ void create_skeleton_texture(scene *d)
 
 void create_slime_texture(scene *d)
 {
-    char *slimes[] = {
-        "enemy_slime", "green_slime", "pink_slime", "slime", "yellow_slime",
-        NULL
-    };
+    char *slimes[] = {"enemy_slime", "green_slime",
+        "pink_slime", "slime", "yellow_slime", NULL};
     char *filename = NULL;
     for (int i = 0; slimes[i] != NULL; ++i) {
         filename = malloc(sizeof(char) * 37);
@@ -56,22 +54,12 @@ void create_player_texture(scene *d)
     put_in_list(&d->textures, t);
 }
 
-void create_player_mirror_texture(scene *d)
-{
-    texture *t = malloc(sizeof(texture));
-    t->filename = "./assets/characters/player_mirror.png";
-    t->name = "player_mirror";
-    t->rect = create_rect(288, 240, 0, 0);
-    t->texture = sfTexture_createFromFile(t->filename, &t->rect);
-    put_in_list(&d->textures, t);
-}
-
 void create_characters_texture(scene *d)
 {
-    put_in_list(&d->textures, create_texture("./assets/ui/hotbar.jpg", "hotbar",
-        create_rect(543, 61, 0, 0)));
-    put_in_list(&d->textures, create_texture("./assets/ui/slot_pointer.png", "slot_pointer",
-        create_rect(60, 61, 0, 0)));
+    put_in_list(&d->textures, create_texture("./assets/ui/hotbar.jpg",
+        "hotbar", create_rect(543, 61, 0, 0)));
+    put_in_list(&d->textures, create_texture("./assets/ui/slot_pointer.png",
+        "slot_pointer", create_rect(60, 61, 0, 0)));
     create_skeleton_texture(d);
     create_slime_texture(d);
     create_player_texture(d);
