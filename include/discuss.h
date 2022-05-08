@@ -22,13 +22,25 @@ static const char *DIALOG[][4] = {{
     NULL
 }, {
     "Try running around a bit.\n"
-    "However, be careful about the mobs you could get hurt.",
-    "...",
-    "I didn't realize how strong you were when I saw you!\n"
-    "Do you think you can kill some stronger slimes for me?\n"
-    "I'll tell you my plan later.\n"
-    "I don't think you are ready to hear it.",
+    "However, be careful about the mobs you could get hurt.\n"
+    "Kill some pink slimes on the way !\n",
+    "x3 Pink slime\n",
+    "I didn't realize how strong you were when I saw you!\n",
     NULL
-}};
+}, {
+    "Damn, I'm so hungry ! Can you pick up some apple on the trees around ?\n"
+    "Be careful, there are lot of slime !\n",
+    "x5 Apple\n",
+    "How could i live without you !\n",
+    NULL
+}, {
+    "A client want some blue slimes.\n"
+    "I know you are busy but can you go to the north of the island\n",
+    "and kill 4 Blue slimes for me ?\n"
+    "x4 Blue slime\n",
+    "How could i live without you !\n",
+    NULL
+}
+};
 
 #endif

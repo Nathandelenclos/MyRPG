@@ -28,15 +28,15 @@ SPRITES	=	banners/banners1.c	\
 			icons/icon1.c	\
 			icons/icon2.c	\
 			icons/icon3.c	\
-      		ennemies/slime.c	\
+			ennemies/slime.c	\
 			ennemies/slime2.c	\
 			ennemies/slime_animation.c	\
 			ennemies/slime_animation2.c	\
-      		objects/chests.c	\
-      		objects/apples.c	\
-      		objects/chests_animation.c	\
-      		ui/l_btn.c	\
-      		ui/event_change_input_setting.c	\
+			objects/chests.c	\
+			objects/apples.c	\
+			objects/chests_animation.c	\
+			ui/l_btn.c	\
+			ui/event_change_input_setting.c	\
 			ui/change_move_input.c	\
 			ui/change_interact_input.c	\
 			ui/change_slot_input.c	\
@@ -66,11 +66,8 @@ SPRITES	=	banners/banners1.c	\
 			trees/trees.c	\
 
 ENVIRONMENTS	=	rain.c	\
-					snow.c	\
 					regen.c	\
-					spawn.c	\
 					low_life.c	\
-					run.c	\
 
 SCREENS	=	main_menu/main_menu.c	\
 			main_menu/pause_menu.c	\
@@ -94,9 +91,6 @@ TEXTURES	=	characters/characters.c	\
 				characters/characters2.c	\
 				characters/particle.c	\
 				objects/chest_and_obj.c	\
-				objects/particles.c	\
-				objects/walls.c	\
-				objects/tilesets.c	\
 				objects/bed_texture.c	\
 				ui/create_buttons_texture.c	\
 				ui/banners/banner1.c	\
@@ -125,6 +119,9 @@ MANAGER =	sprites_manager.c	\
 			env_manager.c	\
 
 QUEST =	simon_quest.c	\
+		second_quest.c	\
+		four_quest.c	\
+		third_quest.c	\
 
 TEXTS	=	fps.c	\
 			menu.c	\

@@ -40,16 +40,12 @@ void create_textures_part_1(scene *d)
     create_slide_bar_texture(d);
     create_characters_texture(d);
     create_chest_and_obj_texture(d);
-    create_particles_texture(d);
-    create_walls_texture(d);
-    create_tilesets_texture(d);
     create_banners_texture(d);
     create_controls_texture(d);
     create_icon_questionmark_texture(d);
     create_icon_ranking_texture(d);
     create_icon_settings_texture(d);
     create_icon_triangle_texture(d);
-    create_particle_texture(d);
 }
 
 void create_textures(scene *d)

@@ -71,11 +71,9 @@ void action_slime(game_obj *g, scene *d)
 
 void create_slime_(scene *d, sfVector2f pos, char *name, sfVector2f hp_hit)
 {
-    sfVector2f vector[2] =
-        {
-            create_vector2f(((float) (rand() % (10 - -10) + -10)) / 100,
-                ((float) (rand() % (10 - -10) + -10)) / 100), pos
-        };
+    sfVector2f vector[2] = {
+        create_vector2f(((float) (rand() % (10 - -10) + -10)) / 100,
+            ((float) (rand() % (10 - -10) + -10)) / 100), pos};
     sfIntRect rect = create_rect(32, 32, 0, 0);
     game_obj *hero = create_obj(d, name, rect, vector);
     set_scale(d, hero->sprite, 5);

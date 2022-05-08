@@ -69,11 +69,11 @@ void event_tree(game_obj *g, scene *d, sfEvent event)
         sfSprite_setTextureRect(obj->sprite, obj->rect);
         t->old_time_fruit = sfClock_getElapsedTime(obj->clock);
         if (rand() % 10 == 1)
-            push_items(p_data->inventory, get_free_space_inv(p_data->inventory),
-                create_golden_apple(d));
+            push_items(p_data->inventory,
+                get_free_space_inv(p_data->inventory),create_golden_apple(d));
         else
-            push_items(p_data->inventory, get_free_space_inv(p_data->inventory),
-                create_apple(d));
+            push_items(p_data->inventory,
+                get_free_space_inv(p_data->inventory),create_apple(d));
         t->state = NO_FRUIT;
     }
 }

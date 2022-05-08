@@ -9,15 +9,20 @@
 
 void create_other_things_texture(scene *d)
 {
-    put_in_list(&d->textures, create_texture("./assets/ui/others/coin.png",
+    put_in_list(&d->textures, create_texture(
+        "./assets/ui/others/coin.png",
         "coin", create_rect(8, 8, 0, 0)));
-    put_in_list(&d->textures, create_texture("./assets/ui/others/diamond.png",
+    put_in_list(&d->textures, create_texture(
+        "./assets/ui/others/diamond.png",
         "diamond", create_rect(8, 8, 0, 0)));
-    put_in_list(&d->textures, create_texture("./assets/ui/others/scrollbar.png",
+    put_in_list(&d->textures, create_texture(
+        "./assets/ui/others/scrollbar.png",
         "scrollbar", create_rect(8, 43, 0, 0)));
-    put_in_list(&d->textures, create_texture("./assets/ui/others/star.png",
+    put_in_list(&d->textures, create_texture(
+        "./assets/ui/others/star.png",
         "star", create_rect(20, 20, 0, 0)));
-    put_in_list(&d->textures, create_texture("./assets/ui/others/wreath.png",
+    put_in_list(&d->textures, create_texture(
+        "./assets/ui/others/wreath.png",
         "wreath", create_rect(17, 11, 0, 0)));
 }
 

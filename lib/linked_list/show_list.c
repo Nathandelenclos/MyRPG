@@ -16,7 +16,7 @@ void show_list(node *list)
 
     my_printf(1, "{");
     while (tmp != NULL) {
-        my_printf(1,"%i", tmp->data);
+        my_printf(1, "%i", tmp->data);
         tmp = tmp->next;
     }
     my_printf(1, "}");

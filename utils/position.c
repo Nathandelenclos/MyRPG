@@ -63,10 +63,13 @@ int is_on_window(game_obj *g, scene *d)
     sfVector2f scale = sfSprite_getScale(g->sprite);
     sfVector2f left_top = sfSprite_getPosition(g->sprite);
     sfVector2f left_bottom =
-    {left_top.x, left_top.y + (g->rect.height * scale.y)};
-    sfVector2f right_top = {left_top.x + (g->rect.width * scale.x), left_top.y};
-    sfVector2f right_bottom = {left_top.x + (g->rect.width * scale.x),
-    left_top.y + (g->rect.height * scale.y)};
+        {left_top.x, left_top.y + (g->rect.height * scale.y)};
+    sfVector2f right_top = {left_top.x + (g->rect.width * scale.x),
+        left_top.y};
+    sfVector2f right_bottom = {
+        left_top.x + (g->rect.width * scale.x),
+        left_top.y + (g->rect.height * scale.y)
+    };
     sfVector2f points[5] = {left_top, left_bottom, right_top, right_bottom, 0};
     if (my_strcmp(g->name, "maps"))
         return 1;

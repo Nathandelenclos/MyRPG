@@ -37,10 +37,6 @@ void env_manager(scene *d)
 void create_env(scene *d)
 {
     create_rain_env(d);
-    create_snow_env(d);
-    create_snow_env(d);
     create_regen_env(d);
-    create_spawn_env(d);
     create_low_life_env(d);
-    create_run_env(d);
 }
