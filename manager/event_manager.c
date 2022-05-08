@@ -14,7 +14,7 @@ void events_manage(scene *d, sfEvent event)
 
     while (tmp != NULL) {
         obj = (game_obj *) tmp->data;
-        if (obj->event != NULL)
+        if (obj->event != NULL && is_on_window(obj, d))
             obj->event(obj, d, event);
         tmp = tmp->next;
     }

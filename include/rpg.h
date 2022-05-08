@@ -108,6 +108,7 @@ void play_screen(scene *data);
 void save_chest_background(scene *old, scene *new);
 int count_max_quest(void);
 void clear_inventory(inventory *inv);
+int is_on_window(game_obj *g, scene *d);
 
 static int (*quests[])(scene *) = {first_quest, seconds_quest, NULL};
 
