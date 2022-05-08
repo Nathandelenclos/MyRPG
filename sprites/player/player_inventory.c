@@ -7,6 +7,12 @@
 
 #include "../../include/rpg.h"
 
+void clear_inventory(inventory *inv)
+{
+    for (int i = 0; i < inv->size; ++i)
+        inv->slot[i] = NULL;
+}
+
 void event_slot(game_obj *g, scene *d, sfEvent event)
 {
     player *p = get_object(d, "player")->data;

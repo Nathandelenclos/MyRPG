@@ -10,11 +10,10 @@
 void events_game_over(scene *d, sfEvent event)
 {
     events_manage(d, event);
-    game_obj *p = get_object(d, "white_lb");
     switch (event.type) {
     case sfEvtKeyPressed:
         if (event.key.code == sfKeyEscape)
-            d->hub->state = START;
+            switch_scene(d, START);
     }
 }
 
@@ -30,7 +29,7 @@ void create_data_game_over(scene *d)
 {
     d->textures = get_scene(d, START)->textures;
     create_sprite_bg_game_over(d);
-    create_sprite_popup(d);
+    create_sprite_popup(d, create_vector2f(598.5, 414.5));
     create_btn_text(d, "GAME OVER", create_text_id_struct(120, UI, 3), create_vector2f(740, 450));
     create_btn_text(d, "RESPAWN", create_text_id_struct(65, HOME_BTN, 3), create_vector2f(633.5, 945));
     create_btn_text(d, "MAIN MENU", create_text_id_struct(65, HOME_BTN, 3), create_vector2f(1066.5, 945));
