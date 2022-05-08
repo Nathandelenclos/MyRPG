@@ -195,7 +195,7 @@ void create_player(scene *d)
     hero->event = event_player;
     hero->grp = ENTITY;
     hero->action = regeneration_player;
-    hero->display = 2;
+    hero->display = 4;
     sfSprite_setTextureRect(hero->sprite, hero->rect);
     sfRenderWindow_drawSprite(d->hub->window, hero->sprite, NULL);
     put_in_end(&d->objs, hero);

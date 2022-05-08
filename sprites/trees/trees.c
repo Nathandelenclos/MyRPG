@@ -21,7 +21,7 @@ void action_tree(game_obj *g, scene *d)
 
 void fruit_tree(scene *d, game_obj *g)
 {
-    tree *data = (tree *)g->data;
+    tree *data = (tree *) g->data;
     float seconds;
     float old_seconds;
     sfIntRect rect;
@@ -31,7 +31,7 @@ void fruit_tree(scene *d, game_obj *g)
     data->time = sfClock_getElapsedTime(g->clock);
     seconds = sfTime_asSeconds(data->time);
     old_seconds = sfTime_asSeconds(data->old_time_fruit);
-    if (seconds - old_seconds >= 5) {
+    if (seconds - old_seconds >= data->regen) {
         rect = sfSprite_getTextureRect(g->sprite);
         rect.left = 48;
         if (rect.left > g->texture->rect.width - 48)
@@ -44,11 +44,12 @@ void fruit_tree(scene *d, game_obj *g)
 
 tree *create_tree_data(scene *d)
 {
-    tree *data = malloc(sizeof(player));
+    tree *data = malloc(sizeof(tree));
 
     data->time = sfTime_Zero;
     data->old_time_fruit = sfTime_Zero;
     data->state = NO_FRUIT;
+    data->regen = rand() % ((60 + 1) - 10) + 10;
     data->fruit = fruit_tree;
     return (data);
 }
@@ -58,6 +59,7 @@ void event_tree(game_obj *g, scene *d, sfEvent event)
     game_obj *p = get_object(d, "player");
     game_obj *obj = get_closer_object(d, p, TREES);
     float distance = get_distance(p, obj);
+    player *p_data = p->data;
     tree *t = (tree *) obj->data;
 
     if (t->state != FRUIT)
@@ -65,7 +67,13 @@ void event_tree(game_obj *g, scene *d, sfEvent event)
     if (sfKeyboard_isKeyPressed(d->hub->s->c->interact) && distance < 170) {
         obj->rect.left = 0;
         sfSprite_setTextureRect(obj->sprite, obj->rect);
-        t->old_time_fruit = sfClock_getElapsedTime(obj->clock);;
+        t->old_time_fruit = sfClock_getElapsedTime(obj->clock);
+        if (rand() % 10 == 1)
+            push_items(p_data->inventory, get_free_space_inv(p_data->inventory),
+                create_golden_apple(d));
+        else
+            push_items(p_data->inventory, get_free_space_inv(p_data->inventory),
+                create_apple(d));
         t->state = NO_FRUIT;
     }
 }

@@ -39,14 +39,13 @@ void event_map(game_obj *g, scene *s, sfEvent event)
         evt_key_released(s, g, event.key.code);
         break;
     }
-
 }
 
 void action_maps(game_obj *g, scene *s)
 {
     maps *data = g->data;
     game_obj *p_g = get_object(s, "player");
-    player *p = (player *)p_g->data;
+    player *p = (player *) p_g->data;
     if (p->state != MOVE && p->state != MOVE_MIRROR)
         return;
     collision_map(s, g);

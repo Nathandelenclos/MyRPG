@@ -28,6 +28,7 @@ SPRITES	=	banners/banners1.c	\
       		ennemies/slime.c	\
 			ennemies/slime_animation.c	\
       		objects/chests.c	\
+      		objects/apples.c	\
       		objects/chests_animation.c	\
       		ui/l_btn.c	\
       		ui/event_change_input_setting.c	\

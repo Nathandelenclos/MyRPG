@@ -39,6 +39,7 @@ typedef struct {
 typedef struct {
     void (*fruit)(scene *, game_obj *);
     tree_state state;
+    double regen;
     sfTime time;
     sfTime old_time_fruit;
 } tree;

@@ -117,7 +117,7 @@ void create_data_play(scene *d)
     create_all_trees(d);
     display_fps(d);
     create_basic_chest(d, 304, 225);
-    create_basic_chest(d, 328, 225);
+    create_golden_chest(d, 328, 225);
     game_obj *p = get_object(d, "player");
     game_obj *c = get_closer_object(d, p, CHESTS_G);
     game_obj *slime = get_closer_object(d, p, ENEMY);

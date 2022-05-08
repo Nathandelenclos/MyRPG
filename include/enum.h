@@ -59,6 +59,7 @@ typedef enum type_e {
     TREE,
     BED,
     PNJ,
+    APPLE,
 } type;
 
 typedef enum state_e {

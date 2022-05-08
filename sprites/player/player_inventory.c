@@ -59,7 +59,7 @@ game_obj *create_inventory(scene *d)
     obj->type = INV;
     obj->name = "inventory";
     obj->grp = UI;
-    obj->display = 2;
+    obj->display = 4;
     sfSprite_setTextureRect(obj->sprite, obj->rect);
     sfRenderWindow_drawSprite(d->hub->window, obj->sprite, NULL);
     return obj;
@@ -76,7 +76,7 @@ game_obj *create_slot_pointer(scene *d)
     obj->event = event_slot;
     obj->animate = animate_slot;
     obj->grp = UI;
-    obj->display = 4;
+    obj->display = 5;
     sfSprite_setTextureRect(obj->sprite, obj->rect);
     sfRenderWindow_drawSprite(d->hub->window, obj->sprite, NULL);
     free(v);
