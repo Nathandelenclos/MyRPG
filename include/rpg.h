@@ -24,6 +24,14 @@
 #ifndef RPG_H
     #define RPG_H
 
+void action_click_on_case(
+    scene *d, int i, sfMouseButtonEvent event, inventory *data
+);
+void play_screen(scene *data);
+void display_chest(scene *d, inventory *ci);
+void chest_screen(scene *data);
+void create_chest_scene_data(scene *d);
+void save_chest_background(scene *old, scene *new);
 void data_game_over(screen *screen1);
 game_obj *hover_on_btn(scene *d, int id);
 text_id *create_text_id_struct(int size, group grp, int);

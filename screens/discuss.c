@@ -45,7 +45,8 @@ void events_discuss(scene *d, sfEvent event)
 {
     events_manage(d, event);
     scene *play = get_scene(d, PLAY);
-    game_obj *pnj_a = get_closer_object(play, get_object(play, "player"), PNJ_ENTITY);
+    game_obj *pnj_a =
+        get_closer_object(play, get_object(play, "player"), PNJ_ENTITY);
     pnj *p = pnj_a->data;
     switch (event.type) {
     case sfEvtClosed:
@@ -70,7 +71,8 @@ void create_scene_data_discuss(scene *d)
         create_vector2f(d->hub->mode.width / 2 - (723 / 2) * 2, 800))->sprite,
         create_vector2f(2, 1.5));
     scene *play = get_scene(d, PLAY);
-    game_obj *pnj_a = get_closer_object(play, get_object(play, "player"), PNJ_ENTITY);
+    game_obj *pnj_a =
+    get_closer_object(play, get_object(play, "player"), PNJ_ENTITY);
     display_dialog(d, (pnj *) pnj_a->data);
 }
 

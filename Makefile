@@ -68,12 +68,18 @@ SCREENS	=	main_menu/main_menu.c	\
 			main_menu/pause_menu.c	\
 			settings_menu/settings_menu.c	\
 			settings_menu/moving_button.c	\
+			settings_menu/moving_button_text.c	\
 			settings_menu/slot_button.c	\
 			settings_menu/wrong_input_screen.c	\
 			play_screen/play_screen.c	\
+			play_screen/play_screen_trees.c	\
+			play_screen/play_screen_slimes.c	\
+			play_screen/play_screen_data.c	\
 			play_screen/game_over_screen.c	\
 			play_screen/win_screen.c	\
 			open_inventory_chest.c	\
+			open_inventory_chest_event.c	\
+			open_inventory_chest_data.c	\
 			discuss.c	\
 
 TEXTURES	=	characters/characters.c	\
