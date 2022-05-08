@@ -18,17 +18,13 @@ void animate_rain(scene *d, environment *e)
     }
 }
 
-void create_rain_env(scene *d)
+void create_rain_env2(scene *d, environment *env)
 {
-    environment *env = malloc(sizeof(environment));
-    env->type = RAIN;
-    env->active = sfFalse;
-    env->array = sfVertexArray_create();
-    sfVertexArray_setPrimitiveType(env->array, sfQuads);
     for (int i = 0; i < 100; ++i) {
         sfVertex v;
         v.color = sfBlue;
-        v.texCoords = create_vector2f(rand() % d->hub->mode.width, rand() % d->hub->mode.height);
+        v.texCoords = create_vector2f(rand() % d->hub->mode.width,
+            rand() % d->hub->mode.height);
         v.position = v.texCoords;
         sfVertexArray_append(env->array, v);
         v.position.y += 5;
@@ -39,6 +35,16 @@ void create_rain_env(scene *d)
         v.position.y += 5;
         sfVertexArray_append(env->array, v);
     }
+}
+
+void create_rain_env(scene *d)
+{
+    environment *env = malloc(sizeof(environment));
+    env->type = RAIN;
+    env->active = sfFalse;
+    env->array = sfVertexArray_create();
+    sfVertexArray_setPrimitiveType(env->array, sfQuads);
+    create_rain_env2(d, env);
     env->animate = animate_rain;
     put_in_list(&d->envs, env);
 }

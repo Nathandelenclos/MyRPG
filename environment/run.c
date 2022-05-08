@@ -22,7 +22,8 @@ void animate_run(scene *d, environment *e)
             v->color.a -= (rand() % (5 - -0 + 1) + -0);
         if (v->position.x < 0) {
             v->color = sfBlue;
-            v->position = create_vector2f(midx, rand() % ((midy + 5) - (midy - 5) + 1) + (midy - 5));
+            v->position = create_vector2f(midx,
+                rand() % ((midy + 5) - (midy - 5) + 1) + (midy - 5));
         }
     }
 }
@@ -39,7 +40,8 @@ void create_run_env(scene *d)
         v.color = sfBlue;
         int midx = d->hub->mode.width / 2;
         int midy = (d->hub->mode.height / 2) + 130;
-        v.texCoords = create_vector2f(midx, rand() % ((midy + 5) - (midy - 5) + 1) + (midy - 5));
+        v.texCoords = create_vector2f(midx,
+            rand() % ((midy + 5) - (midy - 5) + 1) + (midy - 5));
         v.position = v.texCoords;
         sfVertexArray_append(env->array, v);
     }

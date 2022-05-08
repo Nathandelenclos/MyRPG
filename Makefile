@@ -98,8 +98,10 @@ TEXTURES	=	characters/characters.c	\
 				ui/create_popup_texture.c	\
 
 MANAGER =	sprites_manager.c	\
+			sprites_manager2.c	\
 			time_manager.c	\
 			text_manager.c	\
+			text_manager2.c	\
 			sound_manager.c	\
 			texture_manager.c	\
 			screen_manager.c	\

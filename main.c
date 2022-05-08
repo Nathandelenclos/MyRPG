@@ -12,10 +12,12 @@ void load_screen(sfRenderWindow *window, sfVideoMode mode)
 {
     sfSprite *sprite = sfSprite_create();
     sfIntRect rect = create_rect(600, 450, 0, 0);
-    sfTexture *t = sfTexture_createFromFile("./assets/ui/menu_sprites.png", &rect);
+    sfTexture *t =
+        sfTexture_createFromFile("./assets/ui/menu_sprites.png", &rect);
     sfSprite_setTexture(sprite, t, sfTrue);
     sfSprite_setPosition(sprite, create_vector2f(0, -50));
-    sfSprite_setScale(sprite, create_vector2f(mode.width / 600.0, mode.width / 600.0));
+    sfSprite_setScale(sprite,
+        create_vector2f(mode.width / 600.0, mode.width / 600.0));
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_display(window);
 }

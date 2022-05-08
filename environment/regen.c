@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** MyRPG - environment 
+** MyRPG - environment
 ** File description:
 ** regen environment particle
 */
@@ -15,7 +15,8 @@ void animate_regen(scene *d, environment *e)
         v->position.x += rand() % (5 - -5 + 1) + -5;
         v->color.a -= 2;
         if (v->color.a <= 5) {
-            v->position = create_vector2f(d->hub->mode.width / 2,(d->hub->mode.height / 2) + 130);
+            v->position = create_vector2f(d->hub->mode.width / 2,
+                (d->hub->mode.height / 2) + 130);
             v->color = sfGreen;
         }
     }
@@ -31,7 +32,8 @@ void create_regen_env(scene *d)
     for (int i = 0; i < 500; ++i) {
         sfVertex v;
         v.color = sfGreen;
-        v.texCoords = create_vector2f(d->hub->mode.width / 2, (d->hub->mode.height / 2) + 130);
+        v.texCoords = create_vector2f(d->hub->mode.width / 2,
+            (d->hub->mode.height / 2) + 130);
         v.position = v.texCoords;
         sfVertexArray_append(env->array, v);
     }

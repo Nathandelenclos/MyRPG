@@ -30,7 +30,8 @@ void create_spawn_env(scene *d)
         v.color = sfWhite;
         int midx = d->hub->mode.width / 2;
         int midy = (d->hub->mode.height / 2);
-        v.texCoords = create_vector2f(midx + (rand() % (75 - -75 + 1) + -75), midy + (rand() % (75 - -75 + 1) + -75));
+        v.texCoords = create_vector2f(midx + (rand() % (75 - -75 + 1) + -75),
+            midy + (rand() % (75 - -75 + 1) + -75));
         v.position = v.texCoords;
         sfVertexArray_append(env->array, v);
     }

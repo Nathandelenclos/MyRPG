@@ -31,10 +31,16 @@ void play_sound(scene *d, enum sound_grp grp)
 void sound_manager(scene *d)
 {
     sound *music = create_sound("./assets/menu_soundtrack.wav", MUSIC, 25);
-    put_in_list(&d->sounds, music);
 
+    put_in_list(&d->sounds, music);
     sfMusic_setLoop(music->music, sfTrue);
     sfMusic_play(music->music);
+}
+
+void destroy_music2(sound *t)
+{
+    if (t->music != NULL)
+        sfMusic_destroy(t->music);
 }
 
 void destroy_music(screen *hub)
@@ -49,8 +55,7 @@ void destroy_music(screen *hub)
             tmp_d = d->sounds;
         while (tmp_d != NULL) {
             t = (sound *)tmp_d->data;
-            if (t->music != NULL)
-                sfMusic_destroy(t->music);
+            destroy_music2(t);
             t->music = NULL;
             tmp_d = tmp_d->next;
         }

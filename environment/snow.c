@@ -18,7 +18,6 @@ void animate_snow(scene *d, environment *e)
     }
 }
 
-
 void create_snow_env(scene *d)
 {
     environment *env = malloc(sizeof(environment));

@@ -14,13 +14,17 @@ float get_distance(game_obj *first, game_obj *seconds)
     sfVector2f pos1 = sfSprite_getPosition(first->sprite);
     sfVector2f pos2 = sfSprite_getPosition(seconds->sprite);
     double rx =
-        (pos1.x + ((first->rect.width / 2.0) * sfSprite_getScale(first->sprite).x))
+        (pos1.x + ((first->rect.width / 2.0) *
+        sfSprite_getScale(first->sprite).x))
         -
-        (pos2.x + ((seconds->rect.width / 2.0) * sfSprite_getScale(seconds->sprite).x));
+        (pos2.x + ((seconds->rect.width / 2.0) *
+        sfSprite_getScale(seconds->sprite).x));
     double ry =
-        (pos1.y + ((first->rect.height / 2.0) * sfSprite_getScale(first->sprite).y))
+        (pos1.y + ((first->rect.height / 2.0) *
+        sfSprite_getScale(first->sprite).y))
         -
-        (pos2.y + ((seconds->rect.height / 2.0) * sfSprite_getScale(seconds->sprite).y));
+        (pos2.y + ((seconds->rect.height / 2.0) *
+        sfSprite_getScale(seconds->sprite).y));
     float range = (float)sqrt(rx * rx + ry * ry);
     return (range);
 }
@@ -57,12 +61,6 @@ game_obj *get_object(scene *d, char *name)
         tmp = tmp->next;
     }
     return NULL;
-}
-
-void scroll_object_by_name(scene *d, float x, float y, char *name)
-{
-    game_obj *obj = get_object(d, name);
-    sfSprite_move(obj->sprite, create_vector2f(x, y));
 }
 
 void scroll_object_by_grp(scene *d, float x, float y, group grp)

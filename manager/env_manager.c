@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** MyRPG - manager
 ** File description:
-** manager 
+** manager
 */
 
 #include "../include/rpg.h"
