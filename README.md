@@ -3,6 +3,7 @@
 [![version](https://img.shields.io/badge/Version-1.0-vert)](https://github.com/Nathandelenclos/MyRPG)
 
 In this project, you are asked to make a small video game based on the rules of a [RPG](https://en.wikipedia.org/wiki/Role-playing_video_game).
+
 This repository contains:
 
 1.  The description of the web application
