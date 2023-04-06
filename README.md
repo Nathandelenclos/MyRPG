@@ -88,7 +88,7 @@ This project does not use C language with CSFML library.
 ## Demo
 <div id="demo"></div>
 
-[![Video](https://im5.ezgif.com/tmp/ezgif-5-c337382b69-jpg/ezgif-frame-001.jpg)](https://youtu.be/D8Xp8WMaH7c)
+[![Video](https://i3.ytimg.com/vi/D8Xp8WMaH7c/maxresdefault.jpg)](https://youtu.be/D8Xp8WMaH7c)
  
 ## Contact
 <div id="contact"></div>
